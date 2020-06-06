@@ -131,12 +131,12 @@ Author URI: http://themeforest.net/user/fbemplates
   border-color: var(--secondary);
 }
 
-.btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active,
+/* .btn-success:not(:disabled):not(.disabled):active, .btn-success:not(:disabled):not(.disabled).active,
 .btn-success,
 .btn-success:hover {
   background-color: var(--success);
   border-color: var(--success);
-}
+} */
 
 .btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active,
 .btn-info,
@@ -506,9 +506,9 @@ a:hover .fbt-bg-white {
 }
 
 .navbar .nav-link {
-  text-transform: uppercase;
-  font-family: "Roboto", sans-serif;
-  font-size: 13px;
+  /* text-transform: uppercase; */
+  /* font-family: "Roboto", sans-serif; */
+  font-size: 17px;
   font-weight: 400;
   letter-spacing: 0.2px;
 }
@@ -573,11 +573,11 @@ a:hover .fbt-bg-white {
 .dropdown .dropdown-menu .dropdown-item {
   position: relative;
   padding: 0.45rem 1rem;
-  font-family: "Roboto", sans-serif;
-  font-size: 13px;
+  /* font-family: "Roboto", sans-serif; */
+  font-size: 17px;
   font-weight: 400;
   color: #333;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   letter-spacing: 0.2px;
 }
 
@@ -638,7 +638,7 @@ a:hover .fbt-bg-white {
 
 @media (min-width: 1200px) {
   .header-buttons {
-    min-width: 200px;
+    /* min-width: 200px; */
     text-align: right;
   }
 }
@@ -2684,8 +2684,8 @@ a.pinterest.fbt-pinterest {
 /* Headline
 ===================================== */
 #headline {
-  background-image: -webkit-gradient(linear, left top, right top, from(#007bff), to(#ff005b));
-  background-image: linear-gradient(90deg, #007bff, #ff005b);
+  background-image: -webkit-gradient(linear, left top, right top, from(#39d3ff), to(#000000));
+  background-image: linear-gradient(90deg, #39d3ff, #000000);
   color: #fff;
 }
 

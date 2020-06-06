@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'HOME')
+@section('title', 'Home')
 @section('content')
     <main>
         <div class="slider-container m-0 pt-5 pb-0">

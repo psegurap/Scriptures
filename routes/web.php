@@ -15,6 +15,23 @@
 //     return view('welcome');
 // });
 
-Route::get('/', function(){
-    return view('index');
+Auth::routes();
+
+
+Route::get('/', 'MainController@index')->name('index');
+
+Route::group(['middleware' => ['auth']], function(){
+    
+    Route::group(['prefix' => 'admin'], function(){
+        Route::get('home', 'AdminMainController@home')->name('admin');
+
+        Route::group(['prefix' => 'maintenance'], function(){
+            
+            Route::group(['prefix' => 'categories'], function(){
+                Route::get('/', 'Maintenance\CategoriesController@all');
+            });
+        });
+
+    });
+
 });
