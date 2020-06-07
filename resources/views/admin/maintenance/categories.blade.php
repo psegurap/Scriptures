@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('title', 'Categories')
 @section('content')
-    <main>
+    <main class="oswald">
         <div class="outer-wrapper my-5 container" id="outer-wrapper">
             <div class="row mb-3">
                 <div class="col-12">
@@ -17,18 +17,18 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <table id="table" class="table table-bordered table-hover text-center table-responsive-sm" style="width:100%; font-family: serif;">
-                        <thead class="table-header bg-info text-white">
+                    <table id="table" class="table table-hover text-center border table-responsive-sm table-sm" style="width:100%; font-size: 1.3em;">
+                        <thead class="table-header text-white" style="background: #061318;">
                             <tr>
-                                <th>{{__('ID')}}</th>
-                                <th>{{__('CATEGORY ES')}}</th>
-                                <th>{{__('CATEGORY EN')}}</th>
-                                <th>{{__('STATUS')}}</th>
-                                <th>{{__('ARTICLES')}}</th>
-                                <th>{{__('OPTIONS')}}</th>
+                                {{-- <th>{{__('ID')}}</th> --}}
+                                <th>{{__('Category (es)')}}</th>
+                                <th>{{__('Category (en)')}}</th>
+                                <th>{{__('Articles')}}</th>
+                                <th>{{__('Status')}}</th>
+                                <th>{{__('Options')}}</th>
                             </tr>
                         </thead>
-                        <tbody class=""></tbody>
+                        <tbody class="bg-light"></tbody>
                     </table>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                 </section>
                 </div>
                 <div class="modal-footer">
-                <button type="button" class="btn btn-danger rounded-0" data-dismiss="modal">{{__('Close')}}</button>
+                <button type="button" @click="closeModal()" class="btn btn-danger rounded-0" data-dismiss="modal">{{__('Close')}}</button>
                 <button v-if="view == 'create'" type="button" @click="validate(saveCategory)" class="btn btn-success rounded-0">{{__('Save Category')}}</button>
                 <button v-if="view == 'edit'" type="button" @click="validate(updateCategory)" class="btn btn-info rounded-0">{{__('Update Category')}}</button>
                 </div>
@@ -69,5 +69,8 @@
 @endsection
 @section('scripts')
     <script src="{{asset('/js/custom/admin/categories.js')}}"></script>
+    <script>
+        var categories = {!! json_encode($categories); !!}
+    </script>
     
 @endsection

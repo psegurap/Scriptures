@@ -6,8 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title') - {{__('Scriptures')}}</title>
 	<link rel="shortcut icon" href="{{asset('/images/icono.favicon')}}" type="image/x-icon">
-	{{-- <link rel="icon" href="{{asset('/images/icon.png')}}"> --}}
+    <!-- FONTS -->    
     <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:600,700%7CNunito:300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <!-- FONTS -->    
     <link href="{{asset('/css/animate.min.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('/css/fonts.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet" media="screen">
@@ -99,7 +101,7 @@
                 </div>
                 <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler order-1 order-xl-2"
                     data-target="#navbar-menu" data-toggle="collapse" type="button">☰</button>
-                <div class="collapse navbar-collapse justify-content-end order-4 order-xl-3 clearfix" id="navbar-menu">
+                <div class="collapse navbar-collapse justify-content-end order-4 order-xl-3 clearfix oswald" id="navbar-menu">
                     <ul class="navbar-nav clearfix d-flex">
                         <li class="nav-item">
                             <a href="{{route('index')}}" class="nav-link">{{__('Home')}}</a>

@@ -29,8 +29,30 @@ Route::group(['middleware' => ['auth']], function(){
             
             Route::group(['prefix' => 'categories'], function(){
                 Route::get('/', 'Maintenance\CategoriesController@all');
+                Route::post('/store', 'Maintenance\CategoriesController@store');
+                Route::post('/update/{id}', 'Maintenance\CategoriesController@update');
+                Route::post('/delete/{id}', 'Maintenance\CategoriesController@delete');
+            });
+
+            Route::group(['prefix' => 'tags'], function(){
+                Route::get('/', 'Maintenance\TagsController@all');
+                Route::post('/store', 'Maintenance\TagsController@store');
+                Route::post('/update/{id}', 'Maintenance\TagsController@update');
+                Route::post('/delete/{id}', 'Maintenance\TagsController@delete');
+            });
+
+            Route::group(['prefix' => 'series'], function(){
+                Route::get('/', 'Maintenance\SeriesController@all');
+                Route::post('/store', 'Maintenance\SeriesController@store');
+                Route::post('/update/{id}', 'Maintenance\SeriesController@update');
+                Route::post('/delete/{id}', 'Maintenance\SeriesController@delete');
             });
         });
+
+        Route::group(['prefix' => 'articles'], function(){
+            Route::get('/new', 'ArticlesController@new');
+        });
+
 
     });
 

@@ -5,34 +5,34 @@ $(document).ready(function(){
     main = new Vue({
         el: 'main',
         data: {
-            categories : categories,
-            category : {
-                category_name_es : null,
-                category_name_en : null,
+            series : series,
+            serie : {
+                serie_name_es : null,
+                serie_name_en : null,
             },
             dt : null,
             view : 'create',
-            current_category : null,
+            current_serie : null,
         },
         watch: {
-            categories : function(val){
+            series : function(val){
                 this.dt.clear()
                 this.dt.rows.add(val);
                 this.dt.draw();
             },
-            'CurrentCategory': function(val){
-                let category = val[0];
-                if(category){
-                    this.category.category_name_es = category.category_es;
-                    this.category.category_name_en = category.category_en;
+            'CurrentSerie': function(val){
+                let serie = val[0];
+                if(serie){
+                    this.serie.serie_name_es = serie.serie_es;
+                    this.serie.serie_name_en = serie.serie_en;
                 }
             }
         },
         computed: {
-            CurrentCategory: function(){
+            CurrentSerie: function(){
                 var _this = this;
-                return this.categories.filter(function(category){
-                   return category.id == _this.current_category;
+                return this.series.filter(function(serie){
+                   return serie.id == _this.current_serie;
                 }) 
             }
         },
@@ -46,71 +46,71 @@ $(document).ready(function(){
             },
             closeModal: function(modal){
                 var _this = this;
-                this.category.category_name_es = '';
-                this.category.category_name_en = '';
+                this.serie.serie_name_es = '';
+                this.serie.serie_name_en = '';
                 $('#'+modal).modal('hide');
                 setTimeout(function(){
                     _this.errors.clear();
                 }, 100);
             },
-            addCategory:function(){
+            addSerie:function(){
                 this.view = 'create';
-                this.openModal('CategoryModal');
+                this.openModal('SerieModal');
             },
-            saveCategory: function(){
+            saveSerie: function(){
                 var _this = this;
-                axios.post( homepath + '/admin/maintenance/categories/store', this.category).then(function(response){
-                    _this.categories = response.data;
+                axios.post( homepath + '/admin/maintenance/series/store', this.serie).then(function(response){
+                    _this.series = response.data;
                     $.toast({
                         heading: 'Success',
-                        text: 'La categoría ha sido guardada.',
+                        text: 'La serie ha sido guardada.',
                         showHideTransition: 'fade',
                         icon: 'success',
                         position : 'top-right'
                     })
-                    _this.closeModal('CategoryModal');
+                    _this.closeModal('SerieModal');
                 }).catch(function(error){
                     $.toast({
                         heading: 'Error',
-                        text: 'Ocurrió un error guardando la categoría.',
+                        text: 'Ocurrió un error guardando la serie.',
                         showHideTransition: 'fade',
                         icon: 'error',
                         position : 'top-right'
                     })
                 });
             },
-            editCategory: function(id){
-                this.current_category = id;
+            editSerie: function(id){
+                this.current_serie = id;
                 this.view = 'edit';
-                this.openModal('CategoryModal');
+                this.openModal('SerieModal');
             },
-            updateCategory: function(){
+            updateSerie: function(){
                 var _this = this;
-                axios.post( homepath + '/admin/maintenance/categories/update/' + this.current_category, this.category).then(function(response){
-                    _this.categories = response.data;
+                axios.post( homepath + '/admin/maintenance/series/update/' + this.current_serie, this.serie).then(function(response){
+                    _this.series = response.data;
                     $.toast({
                         heading: 'Success',
-                        text: 'La categoría fue actualizada.',
+                        text: 'La serie fue actualizada.',
                         showHideTransition: 'fade',
                         icon: 'success',
                         position : 'top-right'
                     })
-                    _this.closeModal('CategoryModal');
+                    _this.closeModal('SerieModal');
                 }).catch(function(error){
                     $.toast({
                         heading: 'Error',
-                        text: 'Ocurrió un error actualizando la categoría.',
+                        text: 'Ocurrió un error actualizando la serie.',
                         showHideTransition: 'fade',
                         icon: 'error',
                         position : 'top-right'
                     })
                 });
             },
-            deleteCategory: function(id){
+            deleteSerie: function(id){
                 var _this = this;
                 swal({
                     title: "¿Estas seguro?",
-                    text: "¡La categoría va a ser eliminada!",
+                    text: "¡La serie va a ser eliminada!",
                     // icon: "warning",
                     buttons: ["Cancelar", "Aceptar"],
                     dangerMode: true,
@@ -118,12 +118,12 @@ $(document).ready(function(){
                 .then(function(willDelete){
                     var _this_ = _this;
                     if (willDelete) {
-                        axios.post( homepath + '/admin/maintenance/categories/delete/' + id).then(function(response){
-                            _this.current_category = null;
-                            _this_.categories = response.data;
+                        axios.post( homepath + '/admin/maintenance/series/delete/' + id).then(function(response){
+                            _this.current_serie = null;
+                            _this_.series = response.data;
                             $.toast({
                                 heading: 'Success',
-                                text: 'La categoría ha sido eliminada',
+                                text: 'La serie ha sido eliminada',
                                 showHideTransition: 'fade',
                                 icon: 'success',
                                 position : 'top-right'
@@ -131,7 +131,7 @@ $(document).ready(function(){
                         }).catch(function(error){
                             $.toast({
                                 heading: 'Error',
-                                text: 'Ocurrió un error eliminando la categoría.',
+                                text: 'Ocurrió un error eliminando la serie.',
                                 showHideTransition: 'fade',
                                 icon: 'error',
                                 position : 'top-right'
@@ -142,12 +142,12 @@ $(document).ready(function(){
             },
             initDataTable: function(){
                 this.dt = $('#table').DataTable({
-                    data : this.categories,
+                    data : this.series,
                     // responsive : true,
                     columns: [
                         // {data : 'id'},
-                        {data : 'category_es'},
-                        {data : 'category_en'},
+                        {data : 'serie_es'},
+                        {data : 'serie_en'},
                         {data : 'id'},
                         {
                             data : 'status',
@@ -162,7 +162,7 @@ $(document).ready(function(){
                         {
                             data : 'id',
                             render: function(data, row){
-                                return "<div class='d-flex justify-content-around'><div class='text-info' style='font-size: 1.3em;'><i onclick='main.editCategory("+data+")' style='cursor:pointer' class='fa fa-pencil-square-o' aria-hidden='true'></i></div><div class='text-danger' style='font-size: 1.3em';><i onclick='main.deleteCategory("+data+")' style='cursor:pointer' class='fa fa-trash' aria-hidden='true'></i></div></div>"
+                                return "<div class='d-flex justify-content-around'><div class='text-info' style='font-size: 1.3em;'><i onclick='main.editSerie("+data+")' style='cursor:pointer' class='fa fa-pencil-square-o' aria-hidden='true'></i></div><div class='text-danger' style='font-size: 1.3em';><i onclick='main.deleteSerie("+data+")' style='cursor:pointer' class='fa fa-trash' aria-hidden='true'></i></div></div>"
                             }
                         }
                     ]

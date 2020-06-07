@@ -7,11 +7,13 @@
     <title>@yield('title') - {{__('Scriptures')}} - {{__('Admin')}}</title>
 	<link rel="shortcut icon" href="{{asset('/images/icono.favicon')}}" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:600,700%7CNunito:300,400" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
     <link href="{{asset('/css/animate.min.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('/css/fonts.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="{{asset('/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('/css/jquery.toast.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/summernote.min.css')}}">
     <link href="{{asset('/css/style.css')}}" rel="stylesheet" media="screen">
     @yield('styles')
 </head>
@@ -83,16 +85,24 @@
                     <span class="fa fa-search navbar-search search-trigger"></span>
                     <span class="fbt-sidenav ml-1 active" onclick="openNav()">☰</span>
                 </div> --}}
-                <div class="collapse navbar-collapse justify-content-end order-4 order-xl-3 clearfix" id="navbar-menu">
+                <div class="collapse navbar-collapse justify-content-end order-4 order-xl-3 clearfix oswald" id="navbar-menu">
                     <ul class="navbar-nav clearfix d-flex">
                         <li class="nav-item">
                             <a href="{{route('admin')}}" class="nav-link">{{__('Home')}}</a>
                         </li>
                         <li class="nav-item dropdown">
+                            <a href="javascript:void(0)" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">{{__('Articles')}}</a>
+                            <div class="dropdown-menu">
+                                <a href="/admin/articles/new" class="dropdown-item">{{__('New Article')}}</a>
+                                <a href="/admin/articles" class="dropdown-item">{{__('All Articles')}}</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
                             <a href="javascript:void(0)" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">{{__('Others')}}</a>
                             <div class="dropdown-menu">
                                 <a href="/admin/maintenance/categories" class="dropdown-item">{{__('Categories')}}</a>
-                                <a href="#" class="dropdown-item">{{__('Tags')}}</a>
+                                <a href="/admin/maintenance/tags" class="dropdown-item">{{__('Tags')}}</a>
+                                <a href="/admin/maintenance/series" class="dropdown-item">{{__('Series')}}</a>
                             </div>
                         </li>
                     </ul>
@@ -317,6 +327,7 @@
     <script src="{{asset('/js/axios.js')}}"></script>
     <script src="{{asset('/js/sweetalert.min.js')}}"></script>
     <script src="{{asset('/js/loadingoverlay.js')}}"></script>
+    <script src="{{asset('/js/summernote.min.js')}}"></script>
 
     <script src="{{asset('/js/main.js')}}"></script>
     <script>
