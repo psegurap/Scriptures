@@ -51,6 +51,12 @@ Route::group(['middleware' => ['auth']], function(){
 
         Route::group(['prefix' => 'articles'], function(){
             Route::get('/new', 'ArticlesController@new');
+            Route::post('/StoreArticle', 'ArticlesController@StoreArticle');
+
+            Route::group(['prefix' => 'files'], function(){
+                Route::post('/storePicture', 'ArticlesController@StorePicture');
+            });
+
         });
 
 

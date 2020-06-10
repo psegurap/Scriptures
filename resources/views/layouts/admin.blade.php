@@ -14,7 +14,12 @@
     <link rel="stylesheet" href="{{asset('/css/dataTables.bootstrap4.min.css')}}">
     <link rel="stylesheet" href="{{asset('/css/jquery.toast.css')}}">
     <link rel="stylesheet" href="{{asset('/css/summernote.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/plugins/MDB/css/mdb-lite-pro.css')}}">
+    <link rel="stylesheet" href="{{asset('/plugins/dropzone/dropzone.css')}}">
+    <link rel="stylesheet" href="{{asset('/plugins/bootstrap-select/css/bootstrap-select.min.css')}}">
+    
     <link href="{{asset('/css/style.css')}}" rel="stylesheet" media="screen">
+    
     @yield('styles')
 </head>
 
@@ -325,6 +330,9 @@
     <script src="{{asset('/js/jquery.toast.js')}}"></script>
     <script src="{{asset('/js/moment.js')}}"></script>
     <script src="{{asset('/js/axios.js')}}"></script>
+    <script src="{{asset('/plugins/MDB/js/mdb.lite.min.js')}}"></script>
+    <script src="{{asset('/plugins/dropzone/dropzone.js')}}"></script>
+    <script src="{{asset('/plugins/bootstrap-select/js/bootstrap-select.min.js')}}"></script>
     <script src="{{asset('/js/sweetalert.min.js')}}"></script>
     <script src="{{asset('/js/loadingoverlay.js')}}"></script>
     <script src="{{asset('/js/summernote.min.js')}}"></script>
@@ -332,6 +340,12 @@
     <script src="{{asset('/js/main.js')}}"></script>
     <script>
         var homepath = "{{url('/')}}";
+        var lang = "{{App::getLocale()}}";
+        Dropzone.autoDiscover = false;
+        $.fn.selectpicker.Constructor.BootstrapVersion = '4';
+
+        
+
     </script>
     @yield('scripts')
 </body>

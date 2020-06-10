@@ -1,5 +1,10 @@
 @extends('layouts.main')
 @section('title', 'Home')
+@section('styles')
+    <style>
+        
+    </style>
+@endsection
 @section('content')
     <main>
         <div class="slider-container m-0 pt-5 pb-0">

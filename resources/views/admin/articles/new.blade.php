@@ -1,31 +1,57 @@
 @extends('layouts.admin')
 @section('title', 'New Article')
+@section('styles')
+    <style>
+        .article_options{
+            max-height: 172px;
+            overflow-y: auto;
+        }
+        .custom-control-input:focus ~ .custom-control-label::before {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+
+        .note-toolbar button{
+            border: 1px solid lightgray;
+        }
+        .modal-header .close{
+            padding: 0px;
+            margin: 0px
+        }
+
+    </style>
+@endsection
 @section('content')
-    <main>        
+    <main class="">        
         <div class="outer-wrapper my-5" id="outer-wrapper">
             <div class="container fbt-elastic-container">
-                <div class="row justify-content-center">
+                <div class="row justify-content-center all_content">
                     <!-- Main Wrapper -->
                     <div class="fbt-main-wrapper col-lg-12 mb-3">
-                        <div class="row">
+                        <div class="row oswald">
                             <div class="col-md-12">
-                                <div class="header-pages d-flex justify-content-between text-right pb-3" style="border-bottom: 1px solid #00c2ff;">
+                                <div class="header-pages d-flex justify-content-between text-right pb-3" style="border-bottom: 1px solid #17a2b8;">
                                     <h2 class="h1" style="font-family: 'Oswald', sans-serif;">{{__('New Article')}}</h2>
+                                    <button @click="validate(SaveArticle)" class="btn btn-info rounded-0">
+                                        <span class="font-weight-bold text-uppercase">
+                                            {{__('Save Article')}}
+                                        </span> 
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="fbt-main-wrapper col-lg-8 mb-5 mb-lg-0">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 oswald">
                                 <div class="form-group">
-                                    <input v-validate="'required'" v-model="post.title" class="form-control admin-input" name="title" id="tile" type="text" name="title" placeholder="{{__('Type the title')}}">
+                                    <input v-validate="'required'" v-model.lazy="article.title" class="form-control admin-input" name="title" id="tile" type="text" name="title" placeholder="{{__('Type the title')}}">
                                     <span class="text-danger" style="font-size: 12px;" v-show="errors.has('title')">* @{{ errors.first('title') }}</span>
                                  </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 oswald">
                                 <div class="form-group">
-                                    <textarea v-validate="'required|max:157'" class="form-control w-100 admin-area" v-model="post.short_description" name="short description" cols="30" rows="7" placeholder="{{__('Type short description')}}"></textarea>
+                                    <textarea v-validate="'required|max:157'" class="form-control w-100 admin-area" v-model.lazy="article.short_description" name="short description" cols="30" rows="7" placeholder="{{__('Type short description')}}"></textarea>
                                     <span class="text-danger" style="font-size: 12px;" v-show="errors.has('short description')">* @{{ errors.first('short description') }}</span>
                                  </div>
                             </div>
@@ -36,233 +62,109 @@
                             </div>
                         </div>
                     </div><!-- .fbt-main-wrapper -->
-                    <div class="fbt-main-sidebar col-lg-4">
+                    <div class="fbt-main-sidebar col-lg-4 oswald">
                         <div class="fbt-main-sidebar__content h-100 pl-lg-3">
-                            <div class="widget FeaturedPost mb-5">
+                            <div class="widget mb-4">
                                 <div class="fbt-sep-title">
-                                    <h4 class="title title-heading-left">Featured Post</h4>
+                                    <h4 class="title title-heading-left">{{__('Picture')}}:</h4>
                                     <div class="title-sep-container">
                                         <div class="title-sep sep-double"></div>
                                     </div>
                                 </div>
                                 <div class="widget-content">
-                                    <div class="FeaturedPostContainer">
-                                        <div class="fbt-item-thumbnail">
-                                            <a class="post-image-link" href="./single_mag.html">
-                                                <img alt=" " class="post-thumbnail lazyloaded" data-src="./images/mag-img-20.jpg" 
-                                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                            </a>
+                                    <div class="">
+                                        <div class="dropzone-container rounded text-center">
+                                            <form class="dropzone dz-clickable " id="Dropzone">
+                                            @csrf
+                                            <input type="hidden" name="attach_reference" v-model="article.attach_reference">
+                                            </form>
+                                         </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget mb-4">
+                                <div class="fbt-sep-title">
+                                    <h4 class="title title-heading-left">{{__('Select Serie (Optional)')}}:</h4>
+                                    <div class="title-sep-container">
+                                        <div class="title-sep sep-double"></div>
+                                    </div>
+                                </div>
+                                <div class="widget-content border p-2">
+                                    <div class="">
+                                        <select v-model.lazy="article.serie" id="select-category" class="mdb-select md-form m-0" searchable="Search here...">
+                                            <option value="" disabled selected>Choose a serie</option>
+                                            <option v-for="serie in series" :value="serie.id">
+                                                @if (App::getLocale() == 'es')
+                                                    @{{serie.serie_es}}
+                                                @else
+                                                    @{{serie.serie_en}}
+                                                @endif
+                                            </option>
+                                          </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widget mb-4">
+                                <div class="fbt-sep-title">
+                                    <h4 class="title title-heading-left">{{__('Select Category')}}:</h4>
+                                    <div class="title-sep-container">
+                                        <div class="title-sep sep-double"></div>
+                                    </div>
+                                </div>
+                                <span class="text-danger" style="font-size: 12px;" v-show="errors.has('category')">* @{{ errors.first('category') }}</span>
+                                <div class="widget-content border p-2">
+                                    <div class="article_options">
+                                        <div v-for="category in categories" class="custom-control custom-radio">
+                                            <input v-validate="'required'" type="radio" class="custom-control-input" v-model.lazy="article.category" :value="category.id" :id="'category' + category.id" name="category">
+                                            <label class="custom-control-label" :for="'category' + category.id">
+                                                @if (App::getLocale() == 'es')
+                                                    @{{category.category_es}}
+                                                @else
+                                                    @{{category.category_en}}
+                                                @endif
+                                            </label>
                                         </div>
-                                        <div class="fbt-title-section mt-3">
-                                            <div class="post-meta mb-2">
-                                                <span class="post-author">fbtemplates</span>
-                                                <span class="post-date published">March 08, 2017</span>
-                                            </div>
-                                            <h3 class="post-title">
-                                                <a href="./single_mag.html">
-                                                    Etiam nec enim id mi maximus consequat sed ut tortor.
-                                                </a>
-                                            </h3>
-                                            <p class="post-excerpt">
-                                                Suspendisse posuere mi lacus, vitae fringilla leo gravida eu. Donec a nisi
-                                                vel ligula fringilla tem…
-                                            </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="widget mb-4">
+                                <div class="fbt-sep-title">
+                                    <h4 class="title title-heading-left">{{__('Choose Tags')}}:</h4>
+                                    <div class="title-sep-container">
+                                        <div class="title-sep sep-double"></div>
+                                    </div>
+                                </div>
+                                <span class="text-danger" style="font-size: 12px;" v-show="errors.has('tags')">* @{{ errors.first('tags') }}</span>
+                                <div class="widget-content border p-2">
+                                    <div class="article_options">
+                                        <div v-for="tag in tags" class="custom-control custom-checkbox">
+                                            <input v-validate="'required'" type="checkbox" name="tags" class="custom-control-input" :value="tag.id" v-model.lazy="article.tags" :id="'tag' + tag.id">
+                                            <label class="custom-control-label" :for="'tag' + tag.id">
+                                                @if (App::getLocale() == 'es')
+                                                    @{{tag.tag_es}}
+                                                @else
+                                                    @{{tag.tag_en}}
+                                                @endif
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="widget fbt_list_posts mb-5">
-                                <div class="fbt-sep-title">
-                                    <h4 class="title title-heading-left">Popular Posts</h4>
-                                    <div class="title-sep-container">
-                                        <div class="title-sep sep-double"></div>
-                                    </div>
-                                </div>
-                                <div class="widget-content">
-                                    <article class="post mb-3">
-                                        <div class="post-content media align-items-center">
-                                            <div class="fbt-item-thumbnail clearfix">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/thumb-1.jpg"
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
-                                            </div>
-                                            <div class="ml-3 fbt-title-caption media-body">
-                                                <span class="pp-post-tag">Lifestyle</span>
-                                                <h3 class="post-title">
-                                                    <a href="./single_mag.html">Sed odio eros, dictum non augue et, tincidunt.</a>
-                                                </h3>
-                                                <div class="post-meta">
-                                                    <span class="post-date published">March 28, 2017</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>
-                                    <article class="post mb-3">
-                                        <div class="post-content media align-items-center">
-                                            <div class="fbt-item-thumbnail clearfix">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/thumb-2.jpg"
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
-                                            </div>
-                                            <div class="ml-3 fbt-title-caption media-body">
-                                                <span class="pp-post-tag">Technology</span>
-                                                <h3 class="post-title">
-                                                    <a href="./single_mag.html"> Ne amores quidem sanctos alienos esse.</a>
-                                                </h3>
-                                                <div class="post-meta">
-                                                    <span class="post-date published">March 27, 2017</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>
-                                    <article class="post mb-3">
-                                        <div class="post-content media align-items-center">
-                                            <div class="fbt-item-thumbnail clearfix">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/thumb-3.jpg"
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
-                                            </div>
-                                            <div class="ml-3 fbt-title-caption media-body">
-                                                <span class="pp-post-tag">Featured</span>
-                                                <h3 class="post-title">
-                                                    <a href="./single_mag.html">Suspendisse sed tortor eget justo aliquam euismod.</a>
-                                                </h3>
-                                                <div class="post-meta">
-                                                    <span class="post-date published">March 28, 2017</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>
-                                    <article class="post mb-3">
-                                        <div class="post-content media align-items-center">
-                                            <div class="fbt-item-thumbnail clearfix">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/thumb-4.jpg"
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
-                                            </div>
-                                            <div class="ml-3 fbt-title-caption media-body">
-                                                <span class="pp-post-tag">Sport</span>
-                                                <h3 class="post-title">
-                                                    <a href="./single_mag.html">Nunc accumsan ex ligula, in malesuada sapien.</a>
-                                                </h3>
-                                                <div class="post-meta">
-                                                    <span class="post-date published">March 28, 2017</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>
-                                    <article class="post mb-3">
-                                        <div class="post-content media align-items-center">
-                                            <div class="fbt-item-thumbnail clearfix">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/thumb-5.jpg"
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
-                                            </div>
-                                            <div class="ml-3 fbt-title-caption media-body">
-                                                <span class="pp-post-tag">Family</span>
-                                                <h3 class="post-title">
-                                                    <a href="./single_mag.html">Mihi vero, inquit, placet agi subtilius et pressius.</a>
-                                                </h3>
-                                                <div class="post-meta">
-                                                    <span class="post-date published">March 27, 2017</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                            </div><!-- .fbt_list_posts -->
                         </div>    
                     </div><!-- .fbt-main-sidebar -->
-                    <!-- Sidebar Wrapper -->
-                    <div class="sidebar-wrapper" id="sidebar-wrapper">
-                        <div class="sidebar-wrapper__content">
-                            <div class="navigation-container clearfix">
-                                <span class="closebtn" onclick="closeNav()">×</span>
-                            </div>
-                            <div class="sidebar-top section" id="menu_sidebar">
-                                <div class="widget LinkList mt-0">
-                                    <div class="widget-content fbt-sidebar--menu">
-                                        <ul class="list-group">
-                                            <li class="list-group-item"><a href="/">HOME</a></li>
-                                            <li class="list-group-item"><a href="#">ABOUT</a></li>
-                                            <li class="list-group-item"><a href="#">SERVICES</a></li>
-                                            <li class="list-group-item"><a href="#">CONTACT</a></li>
-                                            <li class="list-group-item"><a href="#">PRIVACY</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="sidebar section" id="main_sidebar">
-                                <div class="widget Label">
-        
-                                    <div class="fbt-sep-title">
-                                        <h4 class="title title-heading-left">Categories</h4>
-                                        <div class="title-sep-container">
-                                            <div class="title-sep sep-double"></div>
-                                        </div>
-                                    </div>
-        
-                                    <div class="widget-content cloud-label--widget-content">
-                                        <a href="#"><span class="badge badge-success py-1 px-2 mb-1">Business</span></a>
-                                        <a href="#"><span class="badge badge-success py-1 px-2 mb-1">Carousel</span></a>
-                                        <a href="#"><span class="badge badge-success py-1 px-2 mb-1">Design</span></a>
-                                        <a href="#"><span class="badge badge-success py-1 px-2 mb-1">Entertainment</span></a>
-                                        <a href="#"><span class="badge badge-success py-1 px-2 mb-1">Featured</span></a>
-                                        <a href="#"><span class="badge badge-success py-1 px-2 mb-1">Friends</span></a>
-                                        <a href="#"><span class="badge badge-success py-1 px-2 mb-1">Home</span></a>
-                                        <a href="#"><span class="badge badge-success py-1 px-2 mb-1">Lifestyle</span></a>
-                                        <a href="#"><span class="badge badge-success py-1 px-2 mb-1">People</span></a>
-                                        <a href="#"><span class="badge badge-success py-1 px-2 mb-1">Slider</span></a>
-                                        <a href="#"><span class="badge badge-success py-1 px-2 mb-1">Sport</span></a>
-                                        <a href="#"><span class="badge badge-success py-1 px-2 mb-1">Technology</span></a>
-                                        <a href="#"><span class="badge badge-success py-1 px-2 mb-1">Training</span></a>
-                                    </div>
-                                </div>
-                                <div class="widget BlogArchive">
-                                    <div class="fbt-sep-title">
-                                        <h4 class="title title-heading-left">Archive</h4>
-                                        <div class="title-sep-container">
-                                            <div class="title-sep sep-double"></div>
-                                        </div>
-                                    </div>
-                                    <div class="widget-content">
-                                        <div id="ArchiveList">
-                                            <div id="BlogArchive1_ArchiveList">
-                                                <ul class="flat list-unstyled">
-                                                    <li class="archivedate">
-                                                        <a href="#">June<span class="post-count float-right badge badge-primary">2</span></a>
-                                                    </li>
-                                                    <li class="archivedate">
-                                                        <a href="#">September<span class="post-count float-right badge badge-primary">1</span></a>
-                                                    </li>
-                                                    <li class="archivedate">
-                                                        <a href="#">May<span class="post-count float-right badge badge-primary">1</span></a>
-                                                    </li>
-                                                    <li class="archivedate">
-                                                        <a href="#">April<span class="post-count float-right badge badge-primary">1</span></a>
-                                                    </li>
-                                                    <li class="archivedate">
-                                                        <a href="#">March<span class="post-count float-right badge badge-primary">26</span></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- #sidebar-wrapper -->
                 </div>
             </div>
         </div><!-- .outer-wrapper -->
     </main>
 @endsection
 @section('scripts')
+
+<script>
+    var tags = {!! json_encode($tags) !!};
+    var categories = {!! json_encode($categories) !!};
+    var series = {!! json_encode($series) !!};
+</script>
 <script src="{{asset('/js/custom/admin/new_article.js')}}"></script>
     
 @endsection

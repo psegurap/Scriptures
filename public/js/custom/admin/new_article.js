@@ -1,24 +1,30 @@
 $(window).ready(function(){
     Vue.use(VeeValidate);
 
-        // Dropzone.autoDiscover = false;
 
     main = new Vue({
         el: 'main',
         data : {
-            // categories : categories,
+            tags : tags,
+            categories : categories,
+            series : series,
             summernote : null,
+            dropzone : null,
             dropzone_galery : null,
-            dropzone_default : null,
             summernoteValue : null,
-            post : {
+            filter: {
+                category : '',
+            },
+            article : {
                 title : null,
                 content : null,
                 img_thumbnail : null,
-                categories: [],
+                tags: [],
+                category: '',
                 attach_reference: '',
                 short_description : '',
-                status : 0,              
+                serie : '',
+                url : '',              
             },
             spinner : null,
             // lang_check : '',
@@ -27,9 +33,12 @@ $(window).ready(function(){
         mounted: function(){
 
             this.initSummernote();
-            // this.initDropzoneGalery();
-            // this.initDefaultDropzone();
+            this.initDropzone();
+            $('.mdb-select').materialSelect();
 
+            
+            
+            
             // $( "#language-switch" ).change(function() {
             //     if(lang == 'es'){
             //         window.location.href = homepath + "/changeLanguage/en";
@@ -41,66 +50,83 @@ $(window).ready(function(){
             // $( "#active-switch" ).change(function(val) {
             //     var _this = this;
             //     if(val.target.checked){
-            //         main.post.status = 1 
+            //         main.article.status = 1 
             //     }else{
-            //         main.post.status = 0 
+            //         main.article.status = 0 
             //     }
             // });
 
-            // this.post.attach_reference = this.randomString() + new Date().getTime();
+            this.article.attach_reference = this.randomString() + new Date().getTime();
 
+        },
+        computed: {
+            
         },
         watch : {
-            // lang_check: function(val){
+            // 'article.category': function(val){
             //     console.log(val);
-            // }
+            // },
+            
         },
         methods: {
-            // randomString: function(){
-            //     var result = '';
-            //     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-            //     var charactersLength = characters.length;
-            //     for ( var i = 0; i < 30; i++ ) {
-            //         result += characters.charAt(Math.floor(Math.random() * charactersLength));
-            //     }
-            //     return result;
-            // },
-            // saveTrip(){
-            //     var go_to_go = true;
-            //     if(this.summernote.summernote('code').length < 500){
-            //         $.toast({
-            //         heading: 'Error',
-            //         text: '{{__("Trip description is too small")}}',
-            //         showHideTransition: 'fade',
-            //         icon: 'error',
-            //         position : 'top-right'
-            //         });
-            //         go_to_go = false;
-            //     }
-
-            //     if(this.dropzone_galery[0].dropzone.files.length == 0 || this.dropzone_default[0].dropzone.files.length == 0){
-            //         $.toast({
-            //         heading: 'Error',
-            //         text: '{{__("Your galery or default picture is empty")}}',
-            //         showHideTransition: 'fade',
-            //         icon: 'error',
-            //         position : 'top-right'
-            //         })
-            //         go_to_go = false;
-            //     }
-
-            //     if(go_to_go){
-            //         $(".single-post-area").LoadingOverlay("show");
-            //         this.post.content = this.summernote.summernote('code');
-            //         this.post.img_thumbnail = this.dropzone_default[0].dropzone.files[0].name;
-            //         axios.post(homepath + '/admin/blog/store', {post_info : this.post, lang : lang}).then(function(response){
-            //         console.log(response.data);
-            //         }).catch(function(error){
-            //         console.log(error);
-            //         });
-            //         this.dropzone_galery[0].dropzone.processQueue();
-            //     }
-            // },
+            randomString: function(){
+                var result = '';
+                var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                var charactersLength = characters.length;
+                for ( var i = 0; i < 20; i++ ) {
+                    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                }
+                return result;
+            },
+            SaveArticle(){
+                var go_to_go = true;
+                if(this.summernote.summernote('code').length < 500){
+                    $.toast({
+                    heading: 'Error',
+                    text: 'La contenido es muy corto.',
+                    showHideTransition: 'fade',
+                    icon: 'error',
+                    position : 'top-right'
+                    });
+                    go_to_go = false;
+                }
+                if(this.dropzone[0].dropzone.files.length == 0){
+                    $.toast({
+                        heading: 'Error',
+                        text: 'Necesitas agregar una imagen.',
+                        showHideTransition: 'fade',
+                        icon: 'error',
+                        position : 'top-right'
+                    })
+                    go_to_go = false;
+                }
+                if(go_to_go){
+                    $(".all_content").LoadingOverlay("show");
+                    this.dropzone[0].dropzone.processQueue();
+                }
+            },
+            SaveInformation: function(){
+                this.article.content = this.summernote.summernote('code');
+                this.article.img_thumbnail = this.dropzone[0].dropzone.files[0].name;
+                this.article.url = this.article.title.replace(/ /gi, '-');
+                console.log(this.article);
+                main.dropzone[0].dropzone.removeAllFiles();
+                
+                axios.post(homepath + '/admin/articles/StoreArticle', {article_info : this.article}).then(function(response){
+                    $(".all_content").LoadingOverlay("hide");
+                    console.log(response.data);
+                }).catch(function(error){
+                    $(".all_content").LoadingOverlay("hide");
+                    $.toast({
+                        heading: 'Error',
+                        text: 'Ha ocurrido un error.',
+                        showHideTransition: 'fade',
+                        icon: 'error',
+                        position : 'top-right'
+                    })
+                    console.log(error);
+                });
+            },
             initSummernote: function(){
                 var HightlightButton = function(context) {
                 var ui = $.summernote.ui;
@@ -122,53 +148,52 @@ $(window).ready(function(){
                     minHeight: 500,
                     maxHeight: 500,  
                     toolbar: [
-                    // [groupName, [list of button]]
-                    ['style', ['bold', 'italic', 'underline', 'clear']],
-                    ['font', ['strikethrough', 'superscript', 'subscript']],
-                    ['fontsize', ['fontsize']],
-                    ['fontname', ['fontname']],
-                    ['color', ['color']],
-                    ['para', [ 'paragraph']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['view', ['fullscreen', 'codeview']],
-
+                        ['style', ['bold', 'italic', 'underline', 'clear']],
+                        ['fontsize', ['fontsize']],
+                        ['font', ['bold', 'underline', 'clear', 'strikethrough', 'superscript', 'subscript']],
+                        ['color', ['color']],
+                        ['fontname', ['fontname']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['table', ['table']],
+                        ['insert', ['link', 'picture', 'video']],
+                        ['view', ['fullscreen', 'codeview', 'help']]
                     ],
                     buttons: {
-                    highlight: HightlightButton
+                        highlight: HightlightButton
                     }
                 });
             },
-            initDropzoneGalery:  function(){
-                this.dropzone_galery = $("#galeryDropzone").dropzone({ 
-                    url: "/admin/blog/file/galery",
-                    uploadMultiple: true,
-                    paramName: "file",
-                    parallelUploads: 10,
-                    acceptedFiles: "image/*",
-                    autoProcessQueue: false,
-                    addRemoveLinks: true,
-                    dictDefaultMessage: `<i class="fa fa-hand-o-up mb-2" aria-hidden="true" style="font-size: 1.5em"></i><br/>
-                                        <span style="font-size: 1em">{{__('Drop or click here to upload your galery')}}</span>`,
-                    init : function(){
-                    var _this = this;
-                    this.on('error', function(file, error){
-                        _this.removeFile(file)
-                    //   toastr["error"](error, "Error");
-                    });
-                    this.on("successmultiple", function(file, response) {
-                        if(file){
-                            console.log(file);
-                            main.dropzone_galery[0].dropzone.removeAllFiles()
-                            main.dropzone_default[0].dropzone.processQueue();
-                        }
-                    });
-                    }, 
-                });
-            },
-            initDefaultDropzone: function(){
+            // initDropzoneGalery:  function(){
+            //     this.dropzone_galery = $("#galeryDropzone").dropzone({ 
+            //         url: "/admin/blog/file/galery",
+            //         uploadMultiple: true,
+            //         paramName: "file",
+            //         parallelUploads: 10,
+            //         acceptedFiles: "image/*",
+            //         autoProcessQueue: false,
+            //         addRemoveLinks: true,
+            //         dictDefaultMessage: `<i class="fa fa-hand-o-up mb-2" aria-hidden="true" style="font-size: 1.5em"></i><br/>
+            //                             <span style="font-size: 1em">{{__('Drop or click here to upload your galery')}}</span>`,
+            //         init : function(){
+            //         var _this = this;
+            //         this.on('error', function(file, error){
+            //             _this.removeFile(file)
+            //         //   toastr["error"](error, "Error");
+            //         });
+            //         this.on("successmultiple", function(file, response) {
+            //             if(file){
+            //                 console.log(file);
+            //                 main.dropzone_galery[0].dropzone.removeAllFiles()
+            //                 main.dropzone_default[0].dropzone.processQueue();
+            //             }
+            //         });
+            //         }, 
+            //     });
+            // },
+            initDropzone: function(){
                 var _this = this;
-                this.dropzone_default = $("#defaultDropzone").dropzone({ 
-                    url: "/admin/blog/file/default",
+                this.dropzone = $("#Dropzone").dropzone({ 
+                    url: "/admin/articles/files/storePicture",
                     uploadMultiple: true,
                     maxFiles:1,
                     paramName: "file",
@@ -177,7 +202,7 @@ $(window).ready(function(){
                     autoProcessQueue: false,
                     addRemoveLinks: true,
                     dictDefaultMessage: `<i class="fa fa-hand-o-up mb-2" aria-hidden="true" style="font-size: 1.5em"></i><br/>
-                                        <span style="font-size: 1em">{{__('Drop or click here to upload your custom image')}}</span>`,
+                                        <span style="font-size: 1em">Drop or click here to upload the picture</span>`,
                     init : function(){
                     var _this_ = _this;
                     this.on('error', function(file, error){
@@ -186,10 +211,10 @@ $(window).ready(function(){
                     });
                     this.on("success", function(file, response) {
                         if(file){
-                            main.dropzone_default[0].dropzone.removeAllFiles();
-                            $(".single-post-area").LoadingOverlay("hide");
+                            main.SaveInformation();
+                            // $(".single-post-area").LoadingOverlay("hide");
                             //response bring the ID of just created trip
-                            window.location.href = homepath + "/blog/" + response;
+                            // window.location.href = homepath + "/blog/" + response;
                         }
                     });
                     },
@@ -199,15 +224,15 @@ $(window).ready(function(){
                 var _this = this;
                 this.$validator.validateAll().then(function(result){
                     if(result){
-                    callback();
+                        callback(); 
                     }else{
-                    $.toast({
-                        heading: 'Error',
-                        text: '{{__("You need to fix the errors")}}',
-                        showHideTransition: 'fade',
-                        icon: 'error',
-                        position : 'top-right'
-                    })
+                        $.toast({
+                            heading: 'Error',
+                            text: 'Necesitas corregir los errores.',
+                            showHideTransition: 'fade',
+                            icon: 'error',
+                            position : 'top-right'
+                        })
                     }
                 })
             }
