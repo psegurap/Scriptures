@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth']], function(){
         });
 
         Route::group(['prefix' => 'articles'], function(){
+            Route::get('/', 'ArticlesController@articles');
             Route::get('/new', 'ArticlesController@new');
             Route::post('/StoreArticle', 'ArticlesController@StoreArticle');
 

@@ -12,4 +12,8 @@ class Category extends Model
     protected $table = 'categories';
     protected $guarded = [];
     protected $dates = ['deleted_at'];
+
+    public function articles(){
+        return $this->belongsToMany('App\Article', 'articles_categories', 'category_id', 'article_id')->withTimestamps();
+    }
 }
