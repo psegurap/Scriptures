@@ -61,6 +61,13 @@
                             
                             <ul class="nav justify-content-center justify-content-md-end social-icons">
                                 <li class="nav-item">
+                                    @if (App::getLocale() == 'es')
+                                        <a class="nav-link" href="/language/en"><i class="fa fa-language"></i></a>
+                                    @else
+                                        <a class="nav-link" href="/language/es"><i class="fa fa-language"></i></a>
+                                    @endif
+                                </li>
+                                <li class="nav-item">
                                     <a class="nav-link" href="{{route('index')}}"><i class="fa fa-home"></i></a>
                                 </li>
                                 <li class="nav-item">
@@ -328,7 +335,7 @@
     <script src="{{asset('/js/vue.js')}}"></script>
     <script src="{{asset('/js/vee-validate.js')}}"></script>
     <script src="{{asset('/js/jquery.toast.js')}}"></script>
-    <script src="{{asset('/js/moment.js')}}"></script>
+    <script src="{{asset('/js/moment-with-locales.min.js')}}"></script>
     <script src="{{asset('/js/axios.js')}}"></script>
     <script src="{{asset('/plugins/MDB/js/mdb.lite.min.js')}}"></script>
     <script src="{{asset('/plugins/dropzone/dropzone.js')}}"></script>
@@ -340,10 +347,10 @@
     <script src="{{asset('/js/main.js')}}"></script>
     <script>
         var homepath = "{{url('/')}}";
-        var lang = "{{App::getLocale()}}";
+        const lang = "{{App::getLocale()}}";
         Dropzone.autoDiscover = false;
         $.fn.selectpicker.Constructor.BootstrapVersion = '4';
-
+        moment.locale(lang);
         
 
     </script>

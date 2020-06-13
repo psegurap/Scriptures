@@ -14,8 +14,8 @@ class ArticlesController extends Controller
     public function articles()
     {
         $articles = Article::with('categories', 'tags', 'series')->get();
-        dd($articles);
-        return view('admin.articles.articles');
+        // dd($articles);
+        return view('admin.articles.articles', compact('articles'));
     }
 
     public function new()

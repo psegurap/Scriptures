@@ -15,10 +15,19 @@
 //     return view('welcome');
 // });
 
+//------------------ Auth Routes -------------------//
 Auth::routes();
 
+//------------------ Language Route -------------------//
+Route::get('language/{locale}', function($locale){
+    App::setlocale($locale);
+	session()->put('locale',$locale);
+	return redirect()->back();
+});
 
 Route::get('/', 'MainController@index')->name('index');
+Route::get('/article/{url}', 'MainController@single_article');
+Route::get('/articulo/{url}', 'MainController@single_article');
 
 Route::group(['middleware' => ['auth']], function(){
     

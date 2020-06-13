@@ -13,6 +13,8 @@
     <link href="{{asset('/css/animate.min.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('/css/fonts.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="{{asset('/css/jquery.toast.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/summernote.min.css')}}">
     <link href="{{asset('/css/style.css')}}" rel="stylesheet" media="screen">
     @yield('styles')
 </head>
@@ -74,6 +76,13 @@
                                     <a class="nav-link" href="javascript:void(0)"><i class="fa fa-search navbar-search search-trigger"></i></a>
                                 </li>
                                 @if (Auth::check())
+                                    <li class="nav-item">
+                                        @if (App::getLocale() == 'es')
+                                            <a class="nav-link" href="/language/en"><i class="fa fa-language"></i></a>
+                                        @else
+                                            <a class="nav-link" href="/language/es"><i class="fa fa-language"></i></a>
+                                        @endif
+                                    </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="{{route('admin')}}"><i class="fa fa-cogs"></i></a>
                                     </li>
@@ -335,8 +344,22 @@
     <script src="{{asset('/js/jquery.min.js')}}"></script>
     <script src="{{asset('/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('/js/plugins.js')}}"></script>
-    <script src="{{asset('/js/main.js')}}"></script>
+    <script src="{{asset('/js/vue.js')}}"></script>
+    <script src="{{asset('/js/vee-validate.js')}}"></script>
+    <script src="{{asset('/js/jquery.toast.js')}}"></script>
+    <script src="{{asset('/js/moment.js')}}"></script>
+    <script src="{{asset('/js/moment-with-locales.min.js')}}"></script>
+    <script src="{{asset('/js/axios.js')}}"></script>
+    <script src="{{asset('/js/sweetalert.min.js')}}"></script>
+    <script src="{{asset('/js/loadingoverlay.js')}}"></script>
+    <script src="{{asset('/js/summernote.min.js')}}"></script>
 
+    <script src="{{asset('/js/main.js')}}"></script>
+    <script>
+        const homepath = "{{url('/')}}";
+        const lang = "{{App::getLocale()}}";
+        moment.locale(lang);
+    </script>
     @yield('scripts')
 </body>
 

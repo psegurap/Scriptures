@@ -141,21 +141,24 @@ $(window).ready(function(){
                 }
                 var codigo = `<h6><span style="font-family: Arial; color: rgb(206, 198, 206);">Escribe la información del artículo...</span></h6>`;
                 this.summernote = $('#summernote').summernote({
-                    blockquoteBreakingLevel: 2,
+                    blockquoteBreakingLevel: 4,
                     placeholder: codigo,
                     tabsize: 2,
+                    fontSizes: ['8', '9', '10', '11', '12', '14', '17', '18', '24'],
                     height: 500,
                     minHeight: 500,
                     maxHeight: 500,  
                     toolbar: [
-                        ['style', ['bold', 'italic', 'underline', 'clear']],
+                        // ['style', ['bold', 'italic', 'underline', 'clear']],
+                        ['style', ['style']],
                         ['fontsize', ['fontsize']],
                         ['font', ['bold', 'underline', 'clear', 'strikethrough', 'superscript', 'subscript']],
                         ['color', ['color']],
+                        ['height', ['height']],
                         ['fontname', ['fontname']],
                         ['para', ['ul', 'ol', 'paragraph']],
                         ['table', ['table']],
-                        ['insert', ['link', 'picture', 'video']],
+                        ['insert', ['link', 'picture', 'video', 'hr']],
                         ['view', ['fullscreen', 'codeview', 'help']]
                     ],
                     buttons: {
