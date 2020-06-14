@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'New Article')
+@section('title', 'Edit Article')
 @section('styles')
     <style>
         .article_options{
@@ -41,9 +41,9 @@
                             <div class="col-md-12">
                                 <div class="header-pages d-flex justify-content-between text-right pb-3" style="border-bottom: 1px solid #17a2b8;">
                                     <h2 class="h1" style="font-family: 'Oswald', sans-serif;">{{__('New Article')}}</h2>
-                                    <button @click="validate(SaveArticle)" class="btn btn-info rounded-0">
+                                    <button @click="validate(UpdateArticle)" class="btn btn-info rounded-0">
                                         <span class="font-weight-bold text-uppercase">
-                                            {{__('Save Article')}}
+                                            {{__('Update Article')}}
                                         </span> 
                                     </button>
                                 </div>
@@ -99,10 +99,12 @@
                                     <div class="title-sep-container">
                                         <div class="title-sep sep-double"></div>
                                     </div>
+                                    <span @click="change_picture = !change_picture" class="btn btn-outline-info btn-sm px-4 rounded-0">{{__('Change')}}</span>
                                 </div>
                                 <div class="widget-content">
                                     <div class="">
-                                        <div class="dropzone-container rounded text-center">
+                                        <img v-show="!change_picture" style="width: 100%; box-shadow: 3px 4px 3px black;" :src="homepath + '/images/articles/' + current_article.attach_reference + '/' + current_article.img_thumbnail" alt="">
+                                        <div v-show="change_picture" class="dropzone-container rounded text-center">
                                             <form class="dropzone dz-clickable " id="Dropzone">
                                             @csrf
                                             <input type="hidden" name="attach_reference" v-model="article.attach_reference">
@@ -193,7 +195,8 @@
     var tags = {!! json_encode($tags) !!};
     var categories = {!! json_encode($categories) !!};
     var series = {!! json_encode($series) !!};
+    var article = {!! json_encode($article) !!};
 </script>
-<script src="{{asset('/js/custom/admin/new_article.js')}}"></script>
+<script src="{{asset('/js/custom/admin/edit_article.js')}}"></script>
     
 @endsection

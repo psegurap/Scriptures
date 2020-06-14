@@ -43,17 +43,24 @@
                                                 <a :href="homepath + '/article/' + article.url_en">@{{article.title_en}}</a>
                                             @endif
                                         </h3>
-                                        <div class="mt-2 pb-2 rounded-0 d-flex justify-content-between">
+                                        <div class="mt-2 pb-2 rounded-0 d-flex justify-content-between border-top">
                                             <div>
-                                                <a href="#">
-                                                    <span class="btn btn-sm rounded-0 btn-info border-0" style="box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.1); background-color: darkblue">Editar</span>
+                                                <a :href="homepath + '/admin/articles/edit/' + article.id">
+                                                    <span class="btn btn-sm rounded-0 border-0 text-warning"><i class="fa fa-pencil fa-lg align-baseline" ></i></span>
                                                 </a>
-                                                <a href="#">
-                                                    <span class="btn btn-sm rounded-0 btn-success border-0" style="box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.1); background-color: green">Visualizar</span>
-                                                </a>
+                                                @if (App::getLocale() == 'es')
+                                                    <a :href="homepath + '/articulo/' + article.url_es">
+                                                        <span class="btn btn-sm rounded-0 border-0 text-info"><i class="fa fa-eye fa-lg align-baseline" ></i></span>
+                                                    </a>
+                                                @else
+                                                    <a :href="homepath + '/article/' + article.url_en" target="_blank">
+                                                        <span class="btn btn-sm rounded-0 border-0 text-info"><i class="fa fa-eye fa-lg align-baseline" ></i></span>
+                                                    </a>
+                                                @endif
+                                                
                                             </div>
                                             <div>
-                                                <span class="btn btn-sm rounded-0 btn-danger border-0" style="box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.1); background-color: red"><i class="fa fa-trash fa-lg align-baseline" aria-hidden="true"></i></span>
+                                                <span class="btn btn-sm rounded-0 border-0 text-danger"><i class="fa fa-trash fa-lg align-baseline" ></i></span>
                                             </div>
                                         </div>
                                     </div>

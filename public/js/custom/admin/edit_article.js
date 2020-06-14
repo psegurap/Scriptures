@@ -8,6 +8,7 @@ $(window).ready(function(){
             tags : tags,
             categories : categories,
             series : series,
+            current_article: article,
             summernote : null,
             dropzone : null,
             dropzone_galery : null,
@@ -16,6 +17,7 @@ $(window).ready(function(){
                 category : '',
             },
             article : {
+                id : null,
                 title : null,
                 content : null,
                 img_thumbnail : null,
@@ -27,7 +29,7 @@ $(window).ready(function(){
                 url : '',              
             },
             spinner : null,
-            // lang_check : '',
+            change_picture : false,
             
         },
         mounted: function(){
@@ -47,17 +49,37 @@ $(window).ready(function(){
                 }
             });
 
-            // $( "#active-switch" ).change(function(val) {
-            //     var _this = this;
-            //     if(val.target.checked){
-            //         main.article.status = 1 
-            //     }else{
-            //         main.article.status = 0 
-            //     }
-            // });
+            this.article.id = this.current_article.id;
+            if(lang == 'es'){
+                this.article.title = this.current_article.title_es;
+                this.article.content = this.current_article.full_content_es;
+                this.article.short_description = this.current_article.short_description_es;
+                this.article.url = this.current_article.url_es;
+            }else{
+                this.article.title = this.current_article.title_en;
+                this.article.content = this.current_article.full_content_en;
+                this.article.short_description = this.current_article.short_description_en;
+                this.article.url = this.current_article.url_en;
+            }
 
-            this.article.attach_reference = this.randomString() + new Date().getTime();
+            this.article.category = this.current_article.categories.map(function(category){
+                return category.category_id;
+            });
+            this.article.category = this.article.category.toString();
 
+            this.article.tags = this.current_article.tags.map(function(tag){
+                return tag.tag_id;
+            });
+
+            this.article.serie = this.current_article.series.map(function(serie){
+                return serie.serie_id;
+            });
+            this.article.serie = this.article.serie.toString();
+
+            this.summernote.summernote('code', this.article.content)
+            this.article.attach_reference = this.current_article.picture_path;
+            this.article.img_thumbnail = this.current_article.img_thumbnail;
+            this.article.attach_reference = this.current_article.attach_reference;
         },
         computed: {
             
@@ -78,8 +100,8 @@ $(window).ready(function(){
                 }
                 return result;
             },
-            SaveArticle(){
-                var go_to_go = true;
+            UpdateArticle(){
+                var good_to_go = true;
                 if(this.summernote.summernote('code').length < 500){
                     $.toast({
                     heading: 'Error',
@@ -88,36 +110,28 @@ $(window).ready(function(){
                     icon: 'error',
                     position : 'top-right'
                     });
-                    go_to_go = false;
+                    good_to_go = false;
                 }
-                if(this.dropzone[0].dropzone.files.length == 0){
-                    $.toast({
-                        heading: 'Error',
-                        text: 'Necesitas agregar una imagen.',
-                        showHideTransition: 'fade',
-                        icon: 'error',
-                        position : 'top-right'
-                    })
-                    go_to_go = false;
-                }
-                if(go_to_go){
-                    $(".all_content").LoadingOverlay("show");
-                    this.dropzone[0].dropzone.processQueue();
-                }
-            },
-            SaveInformation: function(){
-                this.article.content = this.summernote.summernote('code');
-                this.article.img_thumbnail = this.dropzone[0].dropzone.files[0].name;
-                this.article.url = this.article.title.replace(/ /gi, '-');
-                main.dropzone[0].dropzone.removeAllFiles();
-                
-                axios.post(homepath + '/admin/articles/StoreArticle', {article_info : this.article}).then(function(response){
-                    $(".all_content").LoadingOverlay("hide");
-                    if(lang == 'es'){
-                        window.location.href = homepath + '/articulo/' + response.data.url_es;
+                if(good_to_go){
+                    if(this.dropzone[0].dropzone.files.length != 0){
+                        $(".all_content").LoadingOverlay("show");
+                        this.article.img_thumbnail = this.dropzone[0].dropzone.files[0].name;
+                        this.dropzone[0].dropzone.processQueue();
                     }else{
-                        window.location.href = homepath + '/article/' + response.data.url_en;
+                        $(".all_content").LoadingOverlay("show");
+                        this.UpdateInformation();
                     }
+                }
+                
+            },
+            UpdateInformation: function(){
+                this.article.content = this.summernote.summernote('code');
+                this.article.url = this.article.title.replace(/ /gi, '-');
+                
+                
+                axios.post(homepath + '/admin/articles/UpdateArticle', {article_info : this.article}).then(function(response){
+                    $(".all_content").LoadingOverlay("hide");
+                    window.location.reload();
                 }).catch(function(error){
                     $(".all_content").LoadingOverlay("hide");
                     $.toast({
@@ -169,33 +183,6 @@ $(window).ready(function(){
                     }
                 });
             },
-            // initDropzoneGalery:  function(){
-            //     this.dropzone_galery = $("#galeryDropzone").dropzone({ 
-            //         url: "/admin/blog/file/galery",
-            //         uploadMultiple: true,
-            //         paramName: "file",
-            //         parallelUploads: 10,
-            //         acceptedFiles: "image/*",
-            //         autoProcessQueue: false,
-            //         addRemoveLinks: true,
-            //         dictDefaultMessage: `<i class="fa fa-hand-o-up mb-2" aria-hidden="true" style="font-size: 1.5em"></i><br/>
-            //                             <span style="font-size: 1em">{{__('Drop or click here to upload your galery')}}</span>`,
-            //         init : function(){
-            //         var _this = this;
-            //         this.on('error', function(file, error){
-            //             _this.removeFile(file)
-            //         //   toastr["error"](error, "Error");
-            //         });
-            //         this.on("successmultiple", function(file, response) {
-            //             if(file){
-            //                 console.log(file);
-            //                 main.dropzone_galery[0].dropzone.removeAllFiles()
-            //                 main.dropzone_default[0].dropzone.processQueue();
-            //             }
-            //         });
-            //         }, 
-            //     });
-            // },
             initDropzone: function(){
                 var _this = this;
                 this.dropzone = $("#Dropzone").dropzone({ 
@@ -210,19 +197,20 @@ $(window).ready(function(){
                     dictDefaultMessage: `<i class="fa fa-hand-o-up mb-2" aria-hidden="true" style="font-size: 1.5em"></i><br/>
                                         <span style="font-size: 1em">Drop or click here to upload the picture</span>`,
                     init : function(){
-                    var _this_ = _this;
-                    this.on('error', function(file, error){
-                        _this.removeFile(file)
-                    //   toastr["error"](error, "Error");
-                    });
-                    this.on("success", function(file, response) {
-                        if(file){
-                            main.SaveInformation();
-                            // $(".single-post-area").LoadingOverlay("hide");
-                            //response bring the ID of just created trip
-                            // window.location.href = homepath + "/blog/" + response;
-                        }
-                    });
+                        var _this_ = _this;
+                        this.on('error', function(file, error){
+                            _this.removeFile(file)
+                        //   toastr["error"](error, "Error");
+                        });
+                        this.on("success", function(file, response) {
+                            if(file){
+                                main.dropzone[0].dropzone.removeAllFiles();
+                                main.UpdateInformation();
+                                // $(".single-post-area").LoadingOverlay("hide");
+                                //response bring the ID of just created article
+                                // window.location.href = homepath + "/blog/" + response;
+                            }
+                        });
                     },
                 });
             },

@@ -62,6 +62,9 @@ Route::group(['middleware' => ['auth']], function(){
             Route::get('/', 'ArticlesController@articles');
             Route::get('/new', 'ArticlesController@new');
             Route::post('/StoreArticle', 'ArticlesController@StoreArticle');
+            Route::get('/edit/{id}', 'ArticlesController@edit');
+            Route::post('/UpdateArticle', 'ArticlesController@UpdateArticle');
+
 
             Route::group(['prefix' => 'files'], function(){
                 Route::post('/storePicture', 'ArticlesController@StorePicture');
