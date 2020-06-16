@@ -1,5 +1,5 @@
 // 'use strict'
-$(document).ready(function(){
+// $(document).ready(function(){
     Vue.use(VeeValidate);
     
     main = new Vue({
@@ -17,6 +17,10 @@ $(document).ready(function(){
         },
         mounted: function(){
             var _this = this;
+
+            setTimeout(function(){
+                $('.main-container').toggleClass("sidebar-closed");
+            }, 100);
         },
         methods: {
             initDataTable: function(){
@@ -65,4 +69,4 @@ $(document).ready(function(){
             }
         }
     });
-});
+// });

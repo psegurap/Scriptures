@@ -10,7 +10,7 @@ use App\Tag;
 class TagsController extends Controller
 {
     public function all(){
-        $tags = Tag::all();
+        $tags = Tag::withCount('articles')->get();
         return view('admin.maintenance.tags', compact('tags'));
     }
 
@@ -20,7 +20,7 @@ class TagsController extends Controller
             'tag_en' => $request->tag_name_en
         ];
         Tag::create($category);
-        $tags = Tag::all();
+        $tags = Tag::withCount('articles')->get();
         return $tags;
     }
 
@@ -29,13 +29,13 @@ class TagsController extends Controller
             'tag_es' => $request->tag_name_es,
             'tag_en' => $request->tag_name_en
         ]);
-        $tags = Tag::all();
+        $tags = Tag::withCount('articles')->get();
         return $tags;
     }
 
     public function delete($id){
         Tag::destroy($id);
-        $tags = Tag::all();
+        $tags = Tag::withCount('articles')->get();
         return $tags;
     }
 }

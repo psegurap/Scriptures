@@ -15,7 +15,11 @@
     <link href="{{asset('/admin/assets/css/plugins.css')}}" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
 
+    
+    <link rel="stylesheet" href="{{asset('admin/plugins/bootstrap-select/bootstrap-select.min.css')}}">
     <link rel="stylesheet" href="{{asset('/css/jquery.toast.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/font-awesome.min.css')}}">
+    
     <link rel="stylesheet" href="{{asset('/css/summernote.min.css')}}">
     <link rel="stylesheet" href="{{asset('/plugins/dropzone/dropzone.css')}}">
 
@@ -65,13 +69,15 @@
 
                 <li class="nav-item dropdown language-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="language-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{asset('admin/assets/img/ca.png')}}" class="flag-width" alt="flag">
+                        @if (App::getLocale() == 'es')
+                            <img src="{{asset('admin/assets/img/sp.png')}}" class="flag-width" alt="flag">
+                        @else
+                            <img src="{{asset('admin/assets/img/us.png')}}" class="flag-width" alt="flag">
+                        @endif
                     </a>
                     <div class="dropdown-menu position-absolute" aria-labelledby="language-dropdown">
-                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{asset('admin/assets/img/de.png')}}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;German</span></a>
-                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{asset('admin/assets/img/jp.png')}}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;Japanese</span></a>
-                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{asset('admin/assets/img/fr.png')}}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;French</span></a>
-                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{asset('admin/assets/img/ca.png')}}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;English</span></a>
+                        <a class="dropdown-item d-flex" href="{{url('/') . '/language/es'}}"><img src="{{asset('admin/assets/img/sp.png')}}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;Spanish</span></a>
+                        <a class="dropdown-item d-flex" href="{{url('/') . '/language/en'}}"><img src="{{asset('admin/assets/img/us.png')}}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;English</span></a>
                     </div>
                 </li>
 
@@ -254,7 +260,7 @@
                     <li class="menu">
                         <a href="{{route('admin')}}" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                <i data-feather="home"></i>
                                 <span>{{__('Home')}}</span>
                             </div>
                         </a>
@@ -262,7 +268,7 @@
                     <li class="menu">
                         <a href="#articles" data-active="false" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                <i data-feather="book"></i>
                                 <span>{{__('Articles')}}</span>
                             </div>
                             <div>
@@ -281,7 +287,7 @@
                     <li class="menu">
                         <a href="#maintenance" data-active="false" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                <i data-feather="sliders"></i>
                                 <span>{{__('Maintenance')}}</span>
                             </div>
                             <div>
@@ -303,7 +309,7 @@
                     <li class="menu">
                         <a href="#dropdown" data-active="false" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                             <div class="">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                                <i data-feather="clipboard"></i>
                                 <span>Dropdown</span>
                             </div>
                             <div>
@@ -350,6 +356,8 @@
     <script src="{{asset('admin/bootstrap/js/popper.min.js')}}"></script>
     <script src="{{asset('admin/bootstrap/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('admin/plugins/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+    <script src="{{asset('admin/plugins/bootstrap-select/bootstrap-select.min.js')}}"></script>
+    <script src="{{asset('admin/plugins/font-icons/feather/feather.min.js')}}"></script>
     <script src="{{asset('admin/assets/js/app.js')}}"></script>
 
     <script src="{{asset('/js/vue.js')}}"></script>
@@ -362,6 +370,9 @@
     <script src="{{asset('/js/loadingoverlay.js')}}"></script>
     <script src="{{asset('/js/summernote.min.js')}}"></script>
 
+    
+    
+    
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
     {{-- <script src="{{asset('/admin/plugins/apex/apexcharts.min.js')}}"></script>
     <script src="{{asset('/admin/assets/js/dashboard/dash_1.js')}}"></script> --}}
@@ -373,10 +384,15 @@
     </script>
     <script src="{{asset('/admin/assets/js/custom.js')}}"></script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
-
     
+    <script>
+        feather.replace();
+        var homepath = "{{url('/')}}";
+        const lang = "{{App::getLocale()}}";
+        Dropzone.autoDiscover = false;
+        moment.locale(lang);
 
-    
+    </script>
 
     @yield('scripts')
 

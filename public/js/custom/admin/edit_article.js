@@ -1,6 +1,5 @@
-$(window).ready(function(){
+// $(window).ready(function(){
     Vue.use(VeeValidate);
-
 
     main = new Vue({
         el: 'main',
@@ -36,7 +35,7 @@ $(window).ready(function(){
 
             this.initSummernote();
             this.initDropzone();
-            $('.mdb-select').materialSelect();
+            // $('.mdb-select').materialSelect();
 
             
             
@@ -80,6 +79,10 @@ $(window).ready(function(){
             this.article.attach_reference = this.current_article.picture_path;
             this.article.img_thumbnail = this.current_article.img_thumbnail;
             this.article.attach_reference = this.current_article.attach_reference;
+
+            setTimeout(function(){
+                $('.main-container').toggleClass("sidebar-closed");
+            }, 100);
         },
         computed: {
             
@@ -194,8 +197,8 @@ $(window).ready(function(){
                     acceptedFiles: "image/*",
                     autoProcessQueue: false,
                     addRemoveLinks: true,
-                    dictDefaultMessage: `<i class="fa fa-hand-o-up mb-2" aria-hidden="true" style="font-size: 1.5em"></i><br/>
-                                        <span style="font-size: 1em">Drop or click here to upload the picture</span>`,
+                    dictDefaultMessage: `<i class="fa fa-hand-o-up mb-2 text-white" aria-hidden="true" style="font-size: 1.5em"></i><br/>
+                                        <span class="text-white" style="font-size: 1.2em">Drop or click here to upload the picture</span>`,
                     init : function(){
                         var _this_ = _this;
                         this.on('error', function(file, error){
@@ -232,4 +235,4 @@ $(window).ready(function(){
             }
         },
     });
-});
+// });

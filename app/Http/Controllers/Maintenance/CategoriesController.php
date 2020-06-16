@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CategoriesController extends Controller
 {
     public function all(){
-        $categories = Category::all();
+        $categories = Category::withCount('articles')->get();
         return view('admin.maintenance.categories', compact('categories'));
     }
 
@@ -19,7 +19,7 @@ class CategoriesController extends Controller
             'category_en' => $request->category_name_en
         ];
         Category::create($category);
-        $categories = Category::all();
+        $categories = Category::withCount('articles')->get();
         return $categories;
     }
 
@@ -28,13 +28,13 @@ class CategoriesController extends Controller
             'category_es' => $request->category_name_es,
             'category_en' => $request->category_name_en
         ]);
-        $categories = Category::all();
+        $categories = Category::withCount('articles')->get();
         return $categories;
     }
 
     public function delete($id){
         Category::destroy($id);
-        $categories = Category::all();
+        $categories = Category::withCount('articles')->get();
         return $categories;
     }
 }

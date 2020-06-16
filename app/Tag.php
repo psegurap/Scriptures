@@ -12,4 +12,8 @@ class Tag extends Model
     protected $table = 'tags';
     protected $guarded = [];
     protected $dates = ['deleted_at'];
+
+    public function articles(){
+        return $this->belongsToMany('App\Article', 'articles_tags', 'tag_id', 'article_id')->withTimestamps();
+    }
 }

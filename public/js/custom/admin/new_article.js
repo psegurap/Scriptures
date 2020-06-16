@@ -1,4 +1,4 @@
-$(window).ready(function(){
+// $(document).ready(function(){
     Vue.use(VeeValidate);
 
     main = new Vue({
@@ -31,13 +31,9 @@ $(window).ready(function(){
         },
         mounted: function(){
 
-            $('.main-container').toggleClass("sidebar-closed");
-            // this.initSummernote();
-            // this.initDropzone();
+            this.initSummernote();
+            this.initDropzone();
             // $('.mdb-select').materialSelect();
-
-            
-            
             
             $( "#language-switch" ).change(function() {
                 if(lang == 'es'){
@@ -47,16 +43,15 @@ $(window).ready(function(){
                 }
             });
 
-            // $( "#active-switch" ).change(function(val) {
-            //     var _this = this;
-            //     if(val.target.checked){
-            //         main.article.status = 1 
-            //     }else{
-            //         main.article.status = 0 
-            //     }
+            // this.$nextTick(function(){
+            //     $('.selectpicker').selectpicker();
             // });
 
             this.article.attach_reference = this.randomString() + new Date().getTime();
+            setTimeout(function(){
+                $('.main-container').toggleClass("sidebar-closed");
+            }, 100);
+
 
         },
         computed: {
@@ -101,7 +96,7 @@ $(window).ready(function(){
                     go_to_go = false;
                 }
                 if(go_to_go){
-                    $(".all_content").LoadingOverlay("show");
+                    $("main").LoadingOverlay("show");
                     this.dropzone[0].dropzone.processQueue();
                 }
             },
@@ -112,11 +107,11 @@ $(window).ready(function(){
                 main.dropzone[0].dropzone.removeAllFiles();
                 
                 axios.post(homepath + '/admin/articles/StoreArticle', {article_info : this.article}).then(function(response){
-                    $(".all_content").LoadingOverlay("hide");
+                    $("main").LoadingOverlay("hide");
                     if(lang == 'es'){
-                        window.location.href = homepath + '/articulo/' + response.data.url_es;
+                        window.open(homepath + '/articulo/' + response.data.url_es, '_blank');
                     }else{
-                        window.location.href = homepath + '/article/' + response.data.url_en;
+                        window.open(homepath + '/article/' + response.data.url_en, '_blank');
                     }
                 }).catch(function(error){
                     $(".all_content").LoadingOverlay("hide");
@@ -207,8 +202,8 @@ $(window).ready(function(){
                     acceptedFiles: "image/*",
                     autoProcessQueue: false,
                     addRemoveLinks: true,
-                    dictDefaultMessage: `<i class="fa fa-hand-o-up mb-2" aria-hidden="true" style="font-size: 1.5em"></i><br/>
-                                        <span style="font-size: 1em">Drop or click here to upload the picture</span>`,
+                    dictDefaultMessage: `<i class="fa fa-hand-o-up mb-2 text-white" aria-hidden="true" style="font-size: 1.5em"></i><br/>
+                                        <span style="font-size: 1.2em; color:white;">Drop or click here to upload the picture</span>`,
                     init : function(){
                     var _this_ = _this;
                     this.on('error', function(file, error){
@@ -244,4 +239,4 @@ $(window).ready(function(){
             }
         },
     });
-});
+// });

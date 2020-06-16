@@ -142,27 +142,35 @@ $(document).ready(function(){
             },
             initDataTable: function(){
                 this.dt = $('#table').DataTable({
+                    "oLanguage": {
+                        "oPaginate": { "sPrevious": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>', "sNext": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>' },
+                        "sInfo": "Showing page _PAGE_ of _PAGES_",
+                        "sSearch": '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>',
+                        "sSearchPlaceholder": "Search...",
+                       "sLengthMenu": "Results :  _MENU_",
+                    },
+                    "stripeClasses": [],
                     data : this.series,
-                    // responsive : true,
                     columns: [
                         // {data : 'id'},
                         {data : 'serie_es'},
                         {data : 'serie_en'},
-                        {data : 'id'},
+                        {data : 'articles_count'},
                         {
                             data : 'status',
                             render: function(data){
                                 if(data == 1){
-                                    return "<div class='text-success' style='font-size: 1.3em;'><i class='fa fa-square' aria-hidden='true'></i></div>"
+                                    return "<span class='shadow-none badge badge-success'>Active</span>"
+
                                 }else{
-                                    return "<div class='text-secondary' style='font-size: 1.3em;'><i class='fa fa-square' aria-hidden='true'></i></div>"
+                                    return "<span class='shadow-none badge badge-danger'>Inactive</span>"
                                 }
                             }
                         },
                         {
                             data : 'id',
                             render: function(data, row){
-                                return "<div class='d-flex justify-content-around'><div class='text-info' style='font-size: 1.3em;'><i onclick='main.editSerie("+data+")' style='cursor:pointer' class='fa fa-pencil-square-o' aria-hidden='true'></i></div><div class='text-danger' style='font-size: 1.3em';><i onclick='main.deleteSerie("+data+")' style='cursor:pointer' class='fa fa-trash' aria-hidden='true'></i></div></div>"
+                                return "<div class='d-flex justify-content-around'><div class='text-info badge' ><i onclick='main.editSerie("+data+")' style='cursor:pointer' class='fa fa-pencil-square-o fa-lg fa-2x'></i></div><div class='text-danger badge' ><i onclick='main.deleteSerie("+data+")' style='cursor:pointer' class='fa fa-trash fa-lg fa-2x'></i></div></div>"
                             }
                         }
                     ]

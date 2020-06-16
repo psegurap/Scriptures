@@ -30,12 +30,13 @@ class ArticlesController extends Controller
             $series = Serie::where('status', 1)->orderBy('serie_en', 'asc')->get();
         }
 
-        return view('admin.articles.new2', compact('tags', 'categories', 'series'));
+        return view('admin.articles.new', compact('tags', 'categories', 'series'));
     }
     
 
     public function StoreArticle(Request $request)
     {
+        
         $article_info = $request->article_info;
         $article_data = [
             'img_thumbnail' => $article_info['img_thumbnail'],

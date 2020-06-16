@@ -12,4 +12,8 @@ class Serie extends Model
     protected $table = 'series';
     protected $guarded = [];
     protected $dates = ['deleted_at'];
+
+    public function articles(){
+        return $this->belongsToMany('App\Article', 'articles_series', 'serie_id', 'article_id')->withTimestamps();
+    }
 }
