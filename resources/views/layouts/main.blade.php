@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title') - {{__('Scriptures')}}</title>
-	<link rel="shortcut icon" href="{{asset('/images/icono.favicon')}}" type="image/x-icon">
+    <title>@yield('title') ─ Escrituras</title>
+	<link rel="shortcut icon" href="{{asset('/images/icon.favicon')}}" type="image/x-icon">
     <!-- FONTS -->    
     <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:600,700%7CNunito:300,400" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
@@ -33,6 +33,7 @@
 
     <div id="page-wrapper" class="magazine-view feed-view">
 
+        @if (Auth::check())
         <div class="fbt-headline clearfix" id="headline">
             <div class="container">
                 <div class="row align-items-center justify-content-between py-1 py-md-0">
@@ -58,50 +59,30 @@
                             
                             <ul class="nav justify-content-center justify-content-md-end social-icons">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-facebook"></i></a>
+                                    @if (App::getLocale() == 'es')
+                                        <a class="nav-link" href="/language/en"><i class="fa fa-language"></i></a>
+                                    @else
+                                        <a class="nav-link" href="/language/es"><i class="fa fa-language"></i></a>
+                                    @endif
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-twitter"></i></a>
+                                    <a class="nav-link" href="{{route('admin')}}"><i class="fa fa-cogs"></i></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-instagram"></i></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-linkedin"></i></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-youtube-play"></i></a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="javascript:void(0)"><i class="fa fa-search navbar-search search-trigger"></i></a>
-                                </li>
-                                @if (Auth::check())
-                                    <li class="nav-item">
-                                        @if (App::getLocale() == 'es')
-                                            <a class="nav-link" href="/language/en"><i class="fa fa-language"></i></a>
-                                        @else
-                                            <a class="nav-link" href="/language/es"><i class="fa fa-language"></i></a>
-                                        @endif
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{route('admin')}}"><i class="fa fa-cogs"></i></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i></a>
+                                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i></a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            @csrf
-                                        </form>
-                                    </li>
-                                @endif
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </li>
                             </ul>
-                                
                         </div>
                     </div>
                 </div>
             </div>
         </div><!-- .fbt-headline -->
+        @endif
 
         <nav class="navbar navbar-expand-xl navbar-fbt fbt-nav-skin fbt_sticky_nav m-0 py-2">
             <div class="container nav-mobile-px clearfix">

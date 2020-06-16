@@ -29,10 +29,16 @@ Route::get('/', 'MainController@index')->name('index');
 Route::get('/article/{url}', 'MainController@single_article');
 Route::get('/articulo/{url}', 'MainController@single_article');
 
+
+
+
 Route::group(['middleware' => ['auth']], function(){
     
     Route::group(['prefix' => 'admin'], function(){
         Route::get('home', 'AdminMainController@home')->name('admin');
+        Route::get('home2', function(){
+            return view('admin.index_admin2');
+        });
 
         Route::group(['prefix' => 'maintenance'], function(){
             

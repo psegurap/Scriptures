@@ -30,7 +30,7 @@ class ArticlesController extends Controller
             $series = Serie::where('status', 1)->orderBy('serie_en', 'asc')->get();
         }
 
-        return view('admin.articles.new', compact('tags', 'categories', 'series'));
+        return view('admin.articles.new2', compact('tags', 'categories', 'series'));
     }
     
 

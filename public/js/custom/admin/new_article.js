@@ -1,7 +1,6 @@
 $(window).ready(function(){
     Vue.use(VeeValidate);
 
-
     main = new Vue({
         el: 'main',
         data : {
@@ -32,9 +31,10 @@ $(window).ready(function(){
         },
         mounted: function(){
 
-            this.initSummernote();
-            this.initDropzone();
-            $('.mdb-select').materialSelect();
+            $('.main-container').toggleClass("sidebar-closed");
+            // this.initSummernote();
+            // this.initDropzone();
+            // $('.mdb-select').materialSelect();
 
             
             
