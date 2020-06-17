@@ -7,6 +7,7 @@ $(document).ready(function(){
         data: {
             article : article,
             featured_post : featured_post,
+            others_posts : others_posts,
             summernote : null,
         },
         watch: {

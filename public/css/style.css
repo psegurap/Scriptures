@@ -677,8 +677,8 @@ a:hover .fbt-bg-white {
 
 .fbt_sticky_nav.sticky__nav.scrolling_nav {
   background: #fff;
-  -webkit-box-shadow: 0 0 20px rgba(103, 151, 255, 0.25);
-          box-shadow: 0 0 20px rgba(103, 151, 255, 0.25);
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
 }
 
 .navbar-fbt.fbt_sticky_nav.sticky__nav.scrolling_nav .fbt-sidenav,
@@ -2207,8 +2207,8 @@ a.pinterest.fbt-pinterest {
 
 .magazine-view .fbt-nav-skin,
 .magazine-view .fbt_sticky_nav.sticky__nav.scrolling_nav {
-  -webkit-box-shadow: 0 0 40px rgba(103, 151, 255, 0.25);
-          box-shadow: 0 0 40px rgba(103, 151, 255, 0.25);
+  -webkit-box-shadow: 0 0 40px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 0 40px rgba(0, 0, 0, 0.25);
 }
 
 @media (min-width: 1200px) {
@@ -2421,15 +2421,15 @@ a.pinterest.fbt-pinterest {
 }
 
 .magazine-view .fbt_list_posts article:nth-child(2) .pp-post-tag {
-  background: #ff005b;
+  background: #009714;
 }
 
 .magazine-view .fbt_list_posts article:nth-child(5) .pp-post-tag {
-  background: #9adca1;
+  background: #f0e000;
 }
 
 .magazine-view .fbt_list_posts article:nth-child(7) .pp-post-tag {
-  background: #ffc107;
+  background: #806000;
 }
 
 .magazine-view .fbt_list_posts article:nth-child(8) .pp-post-tag {
@@ -2437,11 +2437,11 @@ a.pinterest.fbt-pinterest {
 }
 
 .magazine-view .fbt_list_posts article:nth-child(9) .pp-post-tag {
-  background: #ff005b;
+  background: #031681;
 }
 
 .magazine-view .fbt_list_posts article:nth-child(10) .pp-post-tag {
-  background: #9adca1;
+  background: #4eee5e;
 }
 
 .magazine-view .fbt_list_posts article:hover .pp-post-tag {

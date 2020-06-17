@@ -125,95 +125,29 @@
                                                         <div class="title-sep sep-double"></div>
                                                     </div>
                                                 </div>
-                                                <div id="related-posts">
+                                                <div id="related-posts" v-for="category in article.categories">
                                                     <div class="row px-2">
-                                                        <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4 rp-item px-2">
+                                                        <div v-for="article_category in category.articles" class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4 rp-item px-2">
                                                             <div class="fbt-post-thumbnail">
-                                                                <a href="./single_mag.html">
-                                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-1.jpg"
-                                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                                </a>
+                                                                @if (App::getLocale() == 'es')
+                                                                    <a :href="homepath + '/articulo/' + article_category.url_es">
+                                                                        <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + article_category.attach_reference + '/' + article_category.img_thumbnail"
+                                                                        :src="homepath + '/images/articles/' + article_category.attach_reference + '/' + article_category.img_thumbnail">
+                                                                    </a>
+                                                                @else
+                                                                    <a :href="homepath + '/article/' + article_category.url_en">
+                                                                        <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + article_category.attach_reference + '/' + article_category.img_thumbnail"
+                                                                        :src="homepath + '/images/articles/' + article_category.attach_reference + '/' + article_category.img_thumbnail">
+                                                                    </a>
+                                                                @endif
                                                             </div>
                                                             <div class="fbt-post-caption text-center mt-2 px-2">
                                                                 <h5>
-                                                                    <a href="./single_mag.html">
-                                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                                    </a>
-                                                                </h5>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4 rp-item px-2">
-                                                            <div class="fbt-post-thumbnail">
-                                                                <a href="./single_mag.html">
-                                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-7.jpg"
-                                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                                </a>
-                                                            </div>
-                                                            <div class="fbt-post-caption text-center mt-2 px-2">
-                                                                <h5>
-                                                                    <a href="./single_mag.html">
-                                                                        Quae quo sunt excelsiores, eo dant clariora indicia naturae.
-                                                                    </a>
-                                                                </h5>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4 rp-item px-2">
-                                                            <div class="fbt-post-thumbnail">
-                                                                <a href="./single_mag.html">
-                                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-13.jpg"
-                                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                                </a>
-                                                            </div>
-                                                            <div class="fbt-post-caption text-center mt-2 px-2">
-                                                                <h5>
-                                                                    <a href="./single_mag.html">
-                                                                        Sed quod proximum fuit non vidit. Tu quidem reddes.
-                                                                    </a>
-                                                                </h5>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4 rp-item px-2">
-                                                            <div class="fbt-post-thumbnail">
-                                                                <a href="./single_mag.html">
-                                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-21.jpg"
-                                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                                </a>
-                                                            </div>
-                                                            <div class="fbt-post-caption text-center mt-2 px-2">
-                                                                <h5>
-                                                                    <a href="./single_mag.html">
-                                                                        Nulla profecto est, quin suam vim retineat extremum.
-                                                                    </a>
-                                                                </h5>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4 rp-item px-2">
-                                                            <div class="fbt-post-thumbnail">
-                                                                <a href="./single_mag.html">
-                                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-18.jpg"
-                                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                                </a>
-                                                            </div>
-                                                            <div class="fbt-post-caption text-center mt-2 px-2">
-                                                                <h5>
-                                                                    <a href="./single_mag.html">
-                                                                        Non dolere, inquam, istud quam vim habeat postea.
-                                                                    </a>
-                                                                </h5>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4 rp-item px-2">
-                                                            <div class="fbt-post-thumbnail">
-                                                                <a href="./single_mag.html">
-                                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-19.jpg"
-                                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                                </a>
-                                                            </div>
-                                                            <div class="fbt-post-caption text-center mt-2 px-2">
-                                                                <h5>
-                                                                    <a href="./single_mag.html">
-                                                                        Nulla profecto est, quin suam vim retineat a primo ad.
-                                                                    </a>
+                                                                    @if (App::getLocale() == 'es')
+                                                                        <a :href="homepath + '/articulo/' + article_category.url_es">@{{article_category.title_es}}</a>
+                                                                    @else
+                                                                        <a :href="homepath + '/article/' + article_category.url_en">@{{article_category.title_en}}</a>
+                                                                    @endif
                                                                 </h5>
                                                             </div>
                                                         </div>
@@ -221,7 +155,7 @@
                                                 </div>
                                             </div><!-- .fbt-rel-post-wrapper -->
 
-                                            <div class="row justify-content-center mt-n4">
+                                            {{-- <div class="row justify-content-center mt-n4">
                                                 <div class="col-lg-12">
                                                     <div class="blog-post-comments">
                                                         <section class="comments embed" id="comments">
@@ -378,7 +312,7 @@
                                                         </section>
                                                     </div><!-- .blog-post-comments -->
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
 
@@ -445,13 +379,11 @@
                                                 <span class="post-date published text-uppercase">@{{moment(featured_post.created_at).format('LL')}}</span>
                                             </div>
                                             <h3 class="post-title">
-                                                <a :href="homepath + '/article/' + featured_post.url_en">
-                                                    @if (App::getLocale() == 'es')
-                                                        @{{featured_post.title_es}}
-                                                    @else
-                                                        @{{featured_post.title_en}}
-                                                    @endif
-                                                </a>
+                                                @if (App::getLocale() == 'es')
+                                                    <a :href="homepath + '/articulo/' + featured_post.url_es">@{{featured_post.title_es}}</a>
+                                                @else
+                                                    <a :href="homepath + '/article/' + featured_post.url_en">@{{featured_post.title_en}}</a>
+                                                @endif
                                             </h3>
                                             <p class="post-excerpt">
                                                 @if (App::getLocale() == 'es')
@@ -467,32 +399,42 @@
 
                             <div class="widget fbt_list_posts mb-5">
                                 <div class="fbt-sep-title">
-                                    <h4 class="title title-heading-left">Popular Posts</h4>
+                                    <h4 class="title title-heading-left">Others Posts</h4>
                                     <div class="title-sep-container">
                                         <div class="title-sep sep-double"></div>
                                     </div>
                                 </div>
                                 <div class="widget-content">
-                                    <article class="post mb-3">
+                                    <article v-for="other_article in others_posts" class="post mb-3">
                                         <div class="post-content media align-items-center">
                                             <div class="fbt-item-thumbnail clearfix">
                                                 <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/thumb-1.jpg"
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                                                    <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + other_article.attach_reference + '/' + other_article.img_thumbnail"
+                                                        :src="homepath + '/images/articles/' + other_article.attach_reference + '/' + other_article.img_thumbnail">
                                                 </a>
                                             </div>
                                             <div class="ml-3 fbt-title-caption media-body">
-                                                <span class="pp-post-tag">Lifestyle</span>
+                                                <span v-for="category in other_article.categories" class="pp-post-tag">
+                                                    @if (App::getLocale() == 'es')
+                                                        @{{category.category_es}}
+                                                    @else
+                                                        @{{category.category_en}}
+                                                    @endif
+                                                </span>
                                                 <h3 class="post-title">
-                                                    <a href="./single_mag.html">Sed odio eros, dictum non augue et, tincidunt.</a>
+                                                    @if (App::getLocale() == 'es')
+                                                        <a :href="homepath + '/articulo/' + other_article.url_es">@{{other_article.title_es}}</a>
+                                                    @else
+                                                        <a :href="homepath + '/article/' + other_article.url_en">@{{other_article.title_en}}</a>
+                                                    @endif
                                                 </h3>
                                                 <div class="post-meta">
-                                                    <span class="post-date published">March 28, 2017</span>
+                                                    <span class="post-date published">@{{moment(other_article.created_at).format('LL')}}</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </article>
-                                    <article class="post mb-3">
+                                    {{-- <article class="post mb-3">
                                         <div class="post-content media align-items-center">
                                             <div class="fbt-item-thumbnail clearfix">
                                                 <a href="./single_mag.html">
@@ -567,7 +509,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </article>
+                                    </article> --}}
                                 </div>
                             </div><!-- .fbt_list_posts -->
 
@@ -707,6 +649,7 @@
     <script>
         var article = {!! json_encode($article) !!};
         var featured_post = {!! json_encode($featured_post) !!};
+        var others_posts = {!! json_encode($others_posts) !!};
         
     </script>
     <script src="{{asset('/js/custom/general/single_article.js')}}"></script>

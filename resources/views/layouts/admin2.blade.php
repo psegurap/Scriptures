@@ -45,12 +45,12 @@
 
             <ul class="navbar-item theme-brand flex-row  text-center">
                 <li class="nav-item theme-logo">
-                    <a href="index.html">
+                    <a href="{{route('admin')}}">
                         <img src="{{asset('/images/icon.png')}}" class="navbar-logo" alt="logo">
                     </a>
                 </li>
                 <li class="nav-item theme-text">
-                    <a href="index.html" class="nav-link"> ESCRITURAS </a>
+                    <a href="{{route('admin')}}" class="nav-link"> ESCRITURAS </a>
                 </li>
             </ul>
 
