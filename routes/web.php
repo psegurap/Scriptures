@@ -78,6 +78,20 @@ Route::group(['middleware' => ['auth']], function(){
 
         });
 
+        Route::group(['prefix' => 'collaborators'], function(){
+            Route::get('/', 'CollaboratorsController@collaborators');
+            Route::get('/new', 'CollaboratorsController@new');
+            Route::post('/StoreCollaborator', 'CollaboratorsController@StoreCollaborator');
+            // Route::get('/edit/{id}', 'CollaboratorsController@edit');
+            // Route::post('/UpdateArticle', 'CollaboratorsController@UpdateArticle');
+
+
+            Route::group(['prefix' => 'files'], function(){
+                Route::post('/storePicture', 'CollaboratorsController@StorePicture');
+            });
+
+        });
+
 
     });
 

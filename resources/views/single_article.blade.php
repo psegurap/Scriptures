@@ -399,7 +399,7 @@
 
                             <div class="widget fbt_list_posts mb-5">
                                 <div class="fbt-sep-title">
-                                    <h4 class="title title-heading-left">Others Posts</h4>
+                                    <h4 class="title title-heading-left">Popular Posts</h4>
                                     <div class="title-sep-container">
                                         <div class="title-sep sep-double"></div>
                                     </div>
@@ -434,82 +434,6 @@
                                             </div>
                                         </div>
                                     </article>
-                                    {{-- <article class="post mb-3">
-                                        <div class="post-content media align-items-center">
-                                            <div class="fbt-item-thumbnail clearfix">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/thumb-2.jpg"
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
-                                            </div>
-                                            <div class="ml-3 fbt-title-caption media-body">
-                                                <span class="pp-post-tag">Technology</span>
-                                                <h3 class="post-title">
-                                                    <a href="./single_mag.html"> Ne amores quidem sanctos alienos esse.</a>
-                                                </h3>
-                                                <div class="post-meta">
-                                                    <span class="post-date published">March 27, 2017</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>
-                                    <article class="post mb-3">
-                                        <div class="post-content media align-items-center">
-                                            <div class="fbt-item-thumbnail clearfix">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/thumb-3.jpg"
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
-                                            </div>
-                                            <div class="ml-3 fbt-title-caption media-body">
-                                                <span class="pp-post-tag">Featured</span>
-                                                <h3 class="post-title">
-                                                    <a href="./single_mag.html">Suspendisse sed tortor eget justo aliquam euismod.</a>
-                                                </h3>
-                                                <div class="post-meta">
-                                                    <span class="post-date published">March 28, 2017</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>
-                                    <article class="post mb-3">
-                                        <div class="post-content media align-items-center">
-                                            <div class="fbt-item-thumbnail clearfix">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/thumb-4.jpg"
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
-                                            </div>
-                                            <div class="ml-3 fbt-title-caption media-body">
-                                                <span class="pp-post-tag">Sport</span>
-                                                <h3 class="post-title">
-                                                    <a href="./single_mag.html">Nunc accumsan ex ligula, in malesuada sapien.</a>
-                                                </h3>
-                                                <div class="post-meta">
-                                                    <span class="post-date published">March 28, 2017</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article>
-                                    <article class="post mb-3">
-                                        <div class="post-content media align-items-center">
-                                            <div class="fbt-item-thumbnail clearfix">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/thumb-5.jpg"
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
-                                            </div>
-                                            <div class="ml-3 fbt-title-caption media-body">
-                                                <span class="pp-post-tag">Family</span>
-                                                <h3 class="post-title">
-                                                    <a href="./single_mag.html">Mihi vero, inquit, placet agi subtilius et pressius.</a>
-                                                </h3>
-                                                <div class="post-meta">
-                                                    <span class="post-date published">March 27, 2017</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </article> --}}
                                 </div>
                             </div><!-- .fbt_list_posts -->
 

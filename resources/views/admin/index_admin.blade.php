@@ -1,4 +1,4 @@
-@extends('layouts.admin2')
+@extends('layouts.admin')
 @section('title', 'Home')
 @section('breadcrumb')
     <li class="breadcrumb-item active" aria-current="page"><span>{{__('Home')}}</span></li>

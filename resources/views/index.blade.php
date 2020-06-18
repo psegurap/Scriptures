@@ -10,27 +10,42 @@
         <div class="slider-container m-0 pt-5 pb-0">
             <div class="slider-container-row fbt-mag-slider" id="slider-posts">
                 <div class="container-fluid px-xl-5">
-                    <div class="row">
+                    <div class="row" v-if="slider_post.length == 4">
         
                         <div class="col-lg-6 pr-lg-1 mb-2 mb-lg-0">
                             <div class="post-item large">
                                 <div class="fbt-post-thumbnail">
-                                    <a href="./single_mag.html">
-                                        <img class="post-thumbnail lazyloaded" data-src="./images/mag-img-18.jpg"
-                                            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                    </a>
+                                    @if (App::getLocale() == 'es')
+                                        <a :href="homepath + '/articulo/' + slider_post[0].url_es">
+                                            <img class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + slider_post[0].attach_reference + '/' + slider_post[0].img_thumbnail"
+                                            :src="homepath + '/images/articles/' + slider_post[0].attach_reference + '/' + slider_post[0].img_thumbnail">
+                                        </a>
+                                    @else
+                                        <a :href="homepath + '/article/' + slider_post[0].url_en">
+                                            <img class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + slider_post[0].attach_reference + '/' + slider_post[0].img_thumbnail"
+                                            :src="homepath + '/images/articles/' + slider_post[0].attach_reference + '/' + slider_post[0].img_thumbnail">
+                                        </a>
+                                    @endif
                                 </div>
                                 <div class="fbt-post-caption">
-                                    <span class="post-tag index-post-tag">Family</span>
+                                    <span v-for="category in slider_post[0].categories" class="post-tag index-post-tag">
+                                        @if (App::getLocale() == 'es')
+                                            @{{category.category_es}}
+                                        @else
+                                            @{{category.category_en}}
+                                        @endif
+                                    </span>
                                     <div class="title-caption p-4">
                                         <div class="post-meta mb-2">
-                                            <span class="post-author"><a href="#">fbtemplates</a></span>
-                                            <span class="post-time">February 29, 2020</span>
+                                            <span class="post-author"><a class="text-capitalize" href="#">Autor name...</a></span>
+                                            <span class="post-time">@{{moment(slider_post[0].created_at).format('LL')}}</span>
                                         </div>
                                         <h1 class="post-title w-75">
-                                            <a href="./single_mag.html">
-                                                Vestibulum maximus ipsum lacus, tempus suscipit augue.
-                                            </a>
+                                            @if (App::getLocale() == 'es')
+                                                <a :href="homepath + '/articulo/' + slider_post[0].url_es">@{{slider_post[0].title_es}}</a>
+                                            @else
+                                                <a :href="homepath + '/article/' + slider_post[0].url_en">@{{slider_post[0].title_en}}</a>
+                                            @endif
                                         </h1>
                                         
                                     </div>
@@ -44,22 +59,37 @@
                                 <div class="col-md-6 pl-lg-1 pr-md-1 mb-2 mb-md-0">
                                     <div class="post-item medium">
                                         <div class="fbt-post-thumbnail">
-                                            <a href="./single_mag.html">
-                                                <img class="post-thumbnail lazyloaded" data-src="./images/img-7.jpg"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                            </a>
+                                            @if (App::getLocale() == 'es')
+                                                <a :href="homepath + '/articulo/' + slider_post[1].url_es">
+                                                    <img class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + slider_post[1].attach_reference + '/' + slider_post[1].img_thumbnail"
+                                                    :src="homepath + '/images/articles/' + slider_post[1].attach_reference + '/' + slider_post[1].img_thumbnail">
+                                                </a>
+                                            @else
+                                                <a :href="homepath + '/article/' + slider_post[1].url_en">
+                                                    <img class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + slider_post[1].attach_reference + '/' + slider_post[1].img_thumbnail"
+                                                    :src="homepath + '/images/articles/' + slider_post[1].attach_reference + '/' + slider_post[1].img_thumbnail">
+                                                </a>
+                                            @endif
                                         </div>
                                         <div class="fbt-post-caption">
-                                            <span class="post-tag index-post-tag">Technology</span>
+                                            <span v-for="category in slider_post[1].categories" class="post-tag index-post-tag">
+                                                @if (App::getLocale() == 'es')
+                                                    @{{category.category_es}}
+                                                @else
+                                                    @{{category.category_en}}
+                                                @endif
+                                            </span>
                                             <div class="title-caption p-4">
                                                 <div class="post-meta mb-2">
-                                                    <span class="post-author"><a href="#">fbtemplates</a></span>
-                                                    <span class="post-time">December 31, 2019</span>
+                                                    <span class="post-author"><a class="text-capitalize" href="#">Autor name...</a></span>
+                                                    <span class="post-time">@{{moment(slider_post[1].created_at).format('LL')}}</span>
                                                 </div>
                                                 <h3 class="post-title">
-                                                    <a href="./single_mag.html">
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                    </a>
+                                                    @if (App::getLocale() == 'es')
+                                                        <a :href="homepath + '/articulo/' + slider_post[1].url_es">@{{slider_post[1].title_es}}</a>
+                                                    @else
+                                                        <a :href="homepath + '/article/' + slider_post[1].url_en">@{{slider_post[1].title_en}}</a>
+                                                    @endif
                                                 </h3>
                                             </div>
                                         </div>
@@ -71,22 +101,37 @@
                                         <div class="col-6 col-md-12 pl-md-1 grid-padding-right">
                                             <div class="post-item small_thumb">
                                                 <div class="fbt-post-thumbnail">
-                                                    <a href="./single_mag.html">
-                                                        <img class="post-thumbnail lazyloaded" data-src="./images/img-11.jpg"
-                                                            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                    </a>
+                                                    @if (App::getLocale() == 'es')
+                                                        <a :href="homepath + '/articulo/' + slider_post[2].url_es">
+                                                            <img class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + slider_post[2].attach_reference + '/' + slider_post[2].img_thumbnail"
+                                                            :src="homepath + '/images/articles/' + slider_post[2].attach_reference + '/' + slider_post[2].img_thumbnail">
+                                                        </a>
+                                                    @else
+                                                        <a :href="homepath + '/article/' + slider_post[2].url_en">
+                                                            <img class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + slider_post[2].attach_reference + '/' + slider_post[2].img_thumbnail"
+                                                            :src="homepath + '/images/articles/' + slider_post[2].attach_reference + '/' + slider_post[2].img_thumbnail">
+                                                        </a>
+                                                    @endif
                                                 </div>
                                                 <div class="fbt-post-caption">
-                                                    <span class="post-tag index-post-tag">Nature</span>
+                                                    <span v-for="category in slider_post[2].categories" class="post-tag index-post-tag">
+                                                        @if (App::getLocale() == 'es')
+                                                            @{{category.category_es}}
+                                                        @else
+                                                            @{{category.category_en}}
+                                                        @endif
+                                                    </span>
                                                     <div class="title-caption p-4">
                                                         <div class="post-meta mb-2">
-                                                            <span class="post-author"><a href="#">fbtemplates</a></span>
-                                                            <span class="post-time">November 26, 2019</span>
+                                                            <span class="post-author"><a class="text-capitalize" href="#">Autor name...</a></span>
+                                                            <span class="post-time">@{{moment(slider_post[2].created_at).format('LL')}}</span>
                                                         </div>
                                                         <h3 class="post-title h5">
-                                                            <a href="./single_mag.html">
-                                                                Nulla sed eros sit amet ipsum mattis pulvinar quis quis sem.
-                                                            </a>
+                                                            @if (App::getLocale() == 'es')
+                                                                <a :href="homepath + '/articulo/' + slider_post[2].url_es">@{{slider_post[2].title_es}}</a>
+                                                            @else
+                                                                <a :href="homepath + '/article/' + slider_post[2].url_en">@{{slider_post[2].title_en}}</a>
+                                                            @endif
                                                         </h3>
                                                     </div>
                                                 </div>
@@ -95,22 +140,37 @@
                                         <div class="col-6 col-md-12 pl-md-1 grid-padding-left">
                                             <div class="post-item small_thumb last">
                                                 <div class="fbt-post-thumbnail">
-                                                    <a href="./single_mag.html">
-                                                        <img class="post-thumbnail lazyloaded" data-src="./images/img-5.jpg"
-                                                            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                    </a>
+                                                    @if (App::getLocale() == 'es')
+                                                        <a :href="homepath + '/articulo/' + slider_post[3].url_es">
+                                                            <img class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + slider_post[3].attach_reference + '/' + slider_post[3].img_thumbnail"
+                                                            :src="homepath + '/images/articles/' + slider_post[3].attach_reference + '/' + slider_post[3].img_thumbnail">
+                                                        </a>
+                                                    @else
+                                                        <a :href="homepath + '/article/' + slider_post[3].url_en">
+                                                            <img class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + slider_post[3].attach_reference + '/' + slider_post[3].img_thumbnail"
+                                                            :src="homepath + '/images/articles/' + slider_post[3].attach_reference + '/' + slider_post[3].img_thumbnail">
+                                                        </a>
+                                                    @endif
                                                 </div>
                                                 <div class="fbt-post-caption">
-                                                    <span class="post-tag index-post-tag">Friends</span>
+                                                    <span v-for="category in slider_post[3].categories" class="post-tag index-post-tag">
+                                                        @if (App::getLocale() == 'es')
+                                                            @{{category.category_es}}
+                                                        @else
+                                                            @{{category.category_en}}
+                                                        @endif
+                                                    </span>
                                                     <div class="title-caption p-4">
                                                         <div class="post-meta mb-2">
-                                                            <span class="post-author"><a href="#">fbtemplates</a></span>
-                                                            <span class="post-time">September 12, 2019</span>
+                                                            <span class="post-author"><a class="text-capitalize" href="#">Autor name...</a></span>
+                                                            <span class="post-time">@{{moment(slider_post[3].created_at).format('LL')}}</span>
                                                         </div>
                                                         <h3 class="post-title h5">
-                                                            <a href="./single_mag.html">
-                                                                Nunc accumsan ex ligula, in sapien consectetur.
-                                                            </a>
+                                                            @if (App::getLocale() == 'es')
+                                                                <a :href="homepath + '/articulo/' + slider_post[3].url_es">@{{slider_post[3].title_es}}</a>
+                                                            @else
+                                                                <a :href="homepath + '/article/' + slider_post[3].url_en">@{{slider_post[3].title_en}}</a>
+                                                            @endif
                                                         </h3>
                                                     </div>
                                                 </div>
@@ -1360,4 +1420,11 @@
             </div>
         </div>
     </main>
+@endsection
+@section('scripts')
+    <script>
+        var slider_post = {!! json_encode($slider_post) !!};
+        
+    </script>
+    <script src="{{asset('/js/custom/general/index.js')}}"></script>
 @endsection

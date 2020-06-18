@@ -1,4 +1,4 @@
-@extends('layouts.admin2')
+@extends('layouts.admin')
 @section('title', 'New Article')
 @section('styles')
     <link rel="stylesheet" href="{{asset('admin/assets/css/forms/switches.css')}}">

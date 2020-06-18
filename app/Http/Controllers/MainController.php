@@ -9,7 +9,9 @@ use App;
 class MainController extends Controller
 {
     public function index(){
-        return view('index');
+        $slider_post = Article::with('categories')->orderBy('id', 'desc')->take(4)->get();
+        // dd($slider_post);
+        return view('index', compact('slider_post'));
     }
 
     public function single_article($url){

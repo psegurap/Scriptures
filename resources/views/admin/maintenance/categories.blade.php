@@ -1,4 +1,4 @@
-@extends('layouts.admin2')
+@extends('layouts.admin')
 @section('title', 'Categories')
 @section('styles')
     <link rel="stylesheet" href="{{asset('admin/plugins/table/datatable/datatables.css')}}">

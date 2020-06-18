@@ -1,5 +1,5 @@
-@extends('layouts.admin2')
-@section('title', 'Home')
+@extends('layouts.admin')
+@section('title', 'Articles')
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{route('admin')}}">{{__('Home')}}</a></li>
     <li class="breadcrumb-item"><a href="/admin/articles">{{__('Articles')}}</a></li>
@@ -16,14 +16,6 @@
                     <div class="widget-heading mb-0">
                         <h5 class="text-uppercase font-weight-bold">Articles</h5>
                     </div>
-    
-                    {{-- <div class="widget-content">
-                        <div class="tabs tab-content">
-                            <div id="content_1" class="tabcontent"> 
-                                <div id="revenueMonthly"></div>
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
     
