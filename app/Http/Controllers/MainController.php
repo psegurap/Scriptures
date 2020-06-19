@@ -4,17 +4,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use App\Collaborator;
 use App;
 
 class MainController extends Controller
 {
-    public function index(){
-        $slider_post = Article::with('categories')->orderBy('id', 'desc')->take(4)->get();
+    public function index()
+    {
+        $slider_post = Article::with('categories', 'author')->orderBy('id', 'desc')->take(4)->get();
         // dd($slider_post);
         return view('index', compact('slider_post'));
     }
 
-    public function single_article($url){
+    public function single_article($url)
+    {
         if(App::getLocale() == 'es'){
             $article = Article::with(['categories' => function($category) use ($url){
                 if(App::getLocale() == 'es'){
@@ -51,5 +54,18 @@ class MainController extends Controller
         }
         
         return view('single_article', compact('article', 'featured_post', 'others_posts'));
+    }
+
+    public function collaborators()
+    {
+        $collaborators = Collaborator::where('status' , 1)->orderBy('name')->get();
+        // dd($collaborators);
+        return view('collaborators', compact('collaborators'));
+    }
+
+    public function single_collaborator($name)
+    {
+        $collaborator = Collaborator::where('name' , $name)->get();
+        dd($collaborator);
     }
 }

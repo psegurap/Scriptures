@@ -25,9 +25,17 @@ Route::get('language/{locale}', function($locale){
 	return redirect()->back();
 });
 
+//------------------ GENERAL ROUTES ---------------------//
+
 Route::get('/', 'MainController@index')->name('index');
 Route::get('/article/{url}', 'MainController@single_article');
 Route::get('/articulo/{url}', 'MainController@single_article');
+
+Route::get('/collaborators', 'MainController@collaborators');
+Route::get('/colaboradores', 'MainController@collaborators');
+
+Route::get('/collaborator/{name}', 'MainController@single_collaborator');
+Route::get('/colaborador/{name}', 'MainController@single_collaborator');
 
 
 
@@ -82,8 +90,8 @@ Route::group(['middleware' => ['auth']], function(){
             Route::get('/', 'CollaboratorsController@collaborators');
             Route::get('/new', 'CollaboratorsController@new');
             Route::post('/StoreCollaborator', 'CollaboratorsController@StoreCollaborator');
-            // Route::get('/edit/{id}', 'CollaboratorsController@edit');
-            // Route::post('/UpdateArticle', 'CollaboratorsController@UpdateArticle');
+            Route::get('/edit/{id}', 'CollaboratorsController@edit');
+            Route::post('/UpdateCollaborator/{id}', 'CollaboratorsController@UpdateCollaborator');
 
 
             Route::group(['prefix' => 'files'], function(){

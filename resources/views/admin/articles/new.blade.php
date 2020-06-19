@@ -91,11 +91,24 @@
                         </div>
                         <div class="col-md-12 mb-2">
                             <div class="border-bottom widget-heading px-0">
+                                <h6 class="">{{__('Select Collaborator')}}:</h6>
+                            </div>
+                            <div class="form-group">
+                                <select  data-live-search="true" class="selectpicker form-control rounded-0" v-model="article.collaborator">
+                                    <option value="" disabled selected>Choose an author...</option>
+                                    <option v-for="collaborator in collaborators" :value=collaborator.id>
+                                            @{{collaborator.name}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <div class="border-bottom widget-heading px-0">
                                 <h6 class="">{{__('Select Serie (Optional)')}}:</h6>
                             </div>
-                            <div class="form-groups">
-                                <select class="selectpicker form-control rounded-0" v-model="article.serie">
-                                    <option value="" disabled selected>Choose a serie</option>
+                            <div class="form-group">
+                                <select  data-live-search="true" class="selectpicker form-control rounded-0" v-model="article.serie">
+                                    <option value="" disabled selected>Choose a serie...</option>
                                     <option v-for="serie in series" :value=serie.id>
                                         @if (App::getLocale() == 'es')
                                             @{{serie.serie_es}}
@@ -103,12 +116,9 @@
                                             @{{serie.serie_en}}
                                         @endif
                                     </option>
-                                    
                                 </select>
-                                
                             </div>
                         </div>
-                        
                         <div class="col-md-12 mb-2">
                             <div class="border-bottom widget-heading px-0">
                                 <h6 class="">{{__('Select Category')}}:</h6>
@@ -162,10 +172,8 @@
     var tags = {!! json_encode($tags) !!};
     var categories = {!! json_encode($categories) !!};
     var series = {!! json_encode($series) !!};
+    var collaborators = {!! json_encode($collaborators) !!};
 
-    // $(function () {
-    // });
-    // $('select').selectpicker();
 </script>
 
 <script src="{{asset('/js/custom/admin/new_article.js')}}"></script>

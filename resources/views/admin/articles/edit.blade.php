@@ -93,6 +93,19 @@
                         </div>
                         <div class="col-md-12 mb-2">
                             <div class="border-bottom widget-heading px-0">
+                                <h6 class="">{{__('Select Collaborator')}}:</h6>
+                            </div>
+                            <div class="form-group">
+                                <select  data-live-search="true" class="selectpicker form-control rounded-0" v-model="article.collaborator">
+                                    <option value="" disabled selected>Choose an author...</option>
+                                    <option v-for="collaborator in collaborators" :value=collaborator.id>
+                                            @{{collaborator.name}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-2">
+                            <div class="border-bottom widget-heading px-0">
                                 <h6 class="">{{__('Select Serie (Optional)')}}:</h6>
                             </div>
                             <div class="form-groups">
@@ -164,6 +177,7 @@
     var tags = {!! json_encode($tags) !!};
     var categories = {!! json_encode($categories) !!};
     var series = {!! json_encode($series) !!};
+    var collaborators = {!! json_encode($collaborators) !!};
     var article = {!! json_encode($article) !!};
 </script>
 <script src="{{asset('/js/custom/admin/edit_article.js')}}"></script>

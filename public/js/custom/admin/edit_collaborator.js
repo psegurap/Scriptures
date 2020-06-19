@@ -4,16 +4,10 @@
     main = new Vue({
         el: 'main',
         data : {
-            // tags : tags,
-            // categories : categories,
-            // series : series,
+            collaborator : collaborator,
             summernote : null,
             dropzone : null,
-            dropzone_galery : null,
             summernoteValue : null,
-            filter: {
-                category : '',
-            },
             collaborator : {
                 nombre : null,
                 email : null,
@@ -25,26 +19,26 @@
                 biography_es : '',              
                 biography_en : '',              
             },
-            
+            change_picture : false,
         },
         mounted: function(){
-            
+            this.collaborator.nombre = collaborator.name;
+            this.collaborator.email = collaborator.email;
+            this.collaborator.country = collaborator.country;
+            this.collaborator.phone = collaborator.phone;
+            this.collaborator.website = collaborator.website;
+            this.collaborator.biography_es = collaborator.info_es;
+            this.collaborator.biography_en = collaborator.info_en;
+            this.collaborator.img_thumbnail = collaborator.img_thumbnail;
+            this.collaborator.attach_reference = collaborator.attach_reference;
+
             this.initDropzone();
-
-            // this.$nextTick(function(){
-            //     $('.selectpicker').selectpicker();
-            // });
-
-            this.collaborator.attach_reference = this.randomString() + new Date().getTime();
 
         },
         computed: {
             
         },
         watch : {
-            // 'article.category': function(val){
-            //     console.log(val);
-            // },
             
         },
         methods: {
@@ -57,37 +51,28 @@
                 }
                 return result;
             },
-            SaveCollaborator(){
-                var go_to_go = true;
-                if(this.dropzone[0].dropzone.files.length == 0){
-                    $.toast({
-                        heading: 'Error',
-                        text: 'Necesitas agregar una imagen.',
-                        showHideTransition: 'fade',
-                        icon: 'error',
-                        position : 'top-right'
-                    })
-                    go_to_go = false;
-                }
-                if(go_to_go){
+            UpdateCollaborator(){
+                if(this.dropzone[0].dropzone.files.length != 0){
                     $("main").LoadingOverlay("show");
+                    this.collaborator.img_thumbnail = this.dropzone[0].dropzone.files[0].name;
                     this.dropzone[0].dropzone.processQueue();
+                }else{
+                    $("main").LoadingOverlay("show");
+                    this.UpdateInformation();
                 }
-            },
-            SaveInformation: function(){
-                this.collaborator.img_thumbnail = this.dropzone[0].dropzone.files[0].name;
-                main.dropzone[0].dropzone.removeAllFiles();
                 
-                axios.post(homepath + '/admin/collaborators/StoreCollaborator', {collaborator : this.collaborator}).then(function(response){
+            },
+            UpdateInformation: function(){
+                axios.post(homepath + '/admin/collaborators/UpdateCollaborator/' + collaborator.id, {collaborator : this.collaborator}).then(function(response){
                     $("main").LoadingOverlay("hide");
                     swal({
-                        text: "¡El colaborador ha sido agregado!",
+                        text: "¡El colaborador ha sido actualizado!",
                         icon: "success",
                     }).then(function(){
-                        window.location.href = homepath + '/admin/collaborators';
+                        window.location.reload();
                     });
                 }).catch(function(error){
-                    $(".all_content").LoadingOverlay("hide");
+                    $("main").LoadingOverlay("hide");
                     $.toast({
                         heading: 'Error',
                         text: 'Ha ocurrido un error.',
@@ -119,7 +104,7 @@
                     });
                     this.on("success", function(file, response) {
                         if(file){
-                            main.SaveInformation();
+                            main.UpdateInformation();
                         }
                     });
                     },

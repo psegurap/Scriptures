@@ -60,6 +60,9 @@
                                         @endif
                                     </h6>
                                     <div class="mb-1">
+                                        <span class="badge badge-primary">{{__('Author')}}: </span> <span class="badge badge-light">@{{article.author.name}}</span> 
+                                    </div>
+                                    <div class="mb-1">
                                         <span class="badge badge-primary">{{__('Created')}}: </span> <span class="badge badge-light">@{{moment(article.created_at).format('L')}}</span> 
                                     </div>
                                     <div>

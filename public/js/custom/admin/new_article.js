@@ -7,6 +7,7 @@
             tags : tags,
             categories : categories,
             series : series,
+            collaborators : collaborators,
             summernote : null,
             dropzone : null,
             dropzone_galery : null,
@@ -20,6 +21,7 @@
                 img_thumbnail : null,
                 tags: [],
                 category: '',
+                collaborator: '',
                 attach_reference: '',
                 short_description : '',
                 serie : '',
@@ -108,11 +110,11 @@
                 
                 axios.post(homepath + '/admin/articles/StoreArticle', {article_info : this.article}).then(function(response){
                     $("main").LoadingOverlay("hide");
-                    if(lang == 'es'){
-                        window.open(homepath + '/articulo/' + response.data.url_es, '_blank');
-                    }else{
-                        window.open(homepath + '/article/' + response.data.url_en, '_blank');
-                    }
+                    // if(lang == 'es'){
+                    //     window.open(homepath + '/articulo/' + response.data.url_es, '_blank');
+                    // }else{
+                    //     window.open(homepath + '/article/' + response.data.url_en, '_blank');
+                    // }
                 }).catch(function(error){
                     $(".all_content").LoadingOverlay("hide");
                     $.toast({

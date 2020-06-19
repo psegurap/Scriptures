@@ -102,11 +102,19 @@
                         <li class="nav-item dropdown">
                             <a href="javascript:void(0)" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">{{__('About Us')}}</a>
                             <div class="dropdown-menu">
-                                <a href="#" class="dropdown-item">{{__('Profession Of Faith')}}</a>
-                                <a href="#" class="dropdown-item">{{__('Our History')}}</a>
-                                <a href="#" class="dropdown-item">{{__('Our Team')}}</a>
-                                <a href="#" class="dropdown-item">{{__('Collaborators')}}</a>
-                                <a href="#" class="dropdown-item">{{__('Contact')}}</a>
+                                @if (App::getLocale() == 'es')
+                                    <a href="#" class="dropdown-item">{{__('Profession Of Faith')}}</a>
+                                    <a href="#" class="dropdown-item">{{__('Our History')}}</a>
+                                    <a href="#" class="dropdown-item">{{__('Our Team')}}</a>
+                                    <a href="/colaboradores" class="dropdown-item">{{__('Collaborators')}}</a>
+                                    <a href="#" class="dropdown-item">{{__('Contact')}}</a>
+                                @else
+                                    <a href="#" class="dropdown-item">{{__('Profession Of Faith')}}</a>
+                                    <a href="#" class="dropdown-item">{{__('Our History')}}</a>
+                                    <a href="#" class="dropdown-item">{{__('Our Team')}}</a>
+                                    <a href="/collaborators" class="dropdown-item">{{__('Collaborators')}}</a>
+                                    <a href="#" class="dropdown-item">{{__('Contact')}}</a>
+                                @endif
                             </div>
                         </li>
                         {{-- <li class="nav-item d-inline-block d-md-none">

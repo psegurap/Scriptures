@@ -11,8 +11,8 @@ class CollaboratorsController extends Controller
     public function collaborators()
     {
         $collaborators = Collaborator::all();
-        dd($collaborators);
-        return view('admin.collaborators.collaborators');
+        // dd($collaborators);
+        return view('admin.collaborators.collaborators', compact('collaborators'));
     }
 
     
@@ -42,21 +42,28 @@ class CollaboratorsController extends Controller
     }
 
     
-    public function show($id)
-    {
-        //
-    }
-
-    
     public function edit($id)
     {
-        //
+        $collaborator = Collaborator::find($id);
+        return view('admin.collaborators.edit', compact('collaborator'));
     }
 
     
-    public function update(Request $request, $id)
+    public function UpdateCollaborator(Request $request, $id)
     {
-        //
+        $collaborator = $request->collaborator;
+        $collaborator_data = [
+            'name' => $collaborator['nombre'],
+            'email' => $collaborator['email'],
+            'country' => $collaborator['country'],
+            'phone' => $collaborator['phone'],
+            'info_es' => $collaborator['biography_es'],
+            'info_en' => $collaborator['biography_en'],
+            'img_thumbnail' => $collaborator['img_thumbnail'],
+            'website' => $collaborator['website'],
+        ];
+        $collaborator = Collaborator::find($id)->update($collaborator_data);
+        return response()->json($collaborator, 200);
     }
 
     

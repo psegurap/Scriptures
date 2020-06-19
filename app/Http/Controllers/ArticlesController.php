@@ -8,12 +8,13 @@ use App\Tag;
 use App\Serie;
 use App\Category;
 use App\Article;
+use App\Collaborator;
 
 class ArticlesController extends Controller
 {
     public function articles()
     {
-        $articles = Article::with('categories', 'tags', 'series')->orderBy('id', 'desc')->get();
+        $articles = Article::with('categories', 'tags', 'series', 'author')->orderBy('id', 'desc')->get();
         // dd($articles);
         return view('admin.articles.articles', compact('articles'));
     }
@@ -30,18 +31,15 @@ class ArticlesController extends Controller
             $series = Serie::where('status', 1)->orderBy('serie_en', 'asc')->get();
         }
 
-        return view('admin.articles.new', compact('tags', 'categories', 'series'));
+        $collaborators = Collaborator::where('status', 1)->orderBy('name', 'asc')->get();
+
+        return view('admin.articles.new', compact('tags', 'categories', 'series', 'collaborators'));
     }
     
 
     public function StoreArticle(Request $request)
     {
-        
         $article_info = $request->article_info;
-        $article_data = [
-            'img_thumbnail' => $article_info['img_thumbnail'],
-            'attach_reference' => $article_info['attach_reference']
-        ];
         if(App::getLocale() == 'es'){
             $article_data = [
                 'title_es' => $article_info['title'],
@@ -60,6 +58,7 @@ class ArticlesController extends Controller
 
         $article_data['img_thumbnail'] = $article_info['img_thumbnail'];
         $article_data['attach_reference'] = $article_info['attach_reference'];
+        $article_data['author_id'] = $article_info['collaborator'];
         
         $article = Article::create($article_data);
 
@@ -90,17 +89,16 @@ class ArticlesController extends Controller
             $series = Serie::where('status', 1)->orderBy('serie_en', 'asc')->get();
         }
 
-        return view('admin.articles.edit', compact('tags', 'categories', 'series', 'article'));
+        $collaborators = Collaborator::where('status', 1)->orderBy('name', 'asc')->get();
+
+        return view('admin.articles.edit', compact('tags', 'categories', 'series', 'article', 'collaborators'));
     }
 
     public function UpdateArticle(Request $request)
     {
         // return $request;
         $article_info = $request->article_info;
-        $article_data = [
-            'img_thumbnail' => $article_info['img_thumbnail'],
-            'attach_reference' => $article_info['attach_reference']
-        ];
+        
         if(App::getLocale() == 'es'){
             $article_data = [
                 'title_es' => $article_info['title'],
@@ -119,6 +117,7 @@ class ArticlesController extends Controller
 
         $article_data['img_thumbnail'] = $article_info['img_thumbnail'];
         $article_data['attach_reference'] = $article_info['attach_reference'];
+        $article_data['author_id'] = $article_info['collaborator'];
         
         $article = Article::find($article_info['id'])->update($article_data);
 

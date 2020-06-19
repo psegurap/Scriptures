@@ -17,7 +17,6 @@ class Article extends Model
     public function categories()
     {
         return $this->belongsToMany('App\Category', 'articles_categories', 'article_id', 'category_id')->withTimestamps();   
-
     }
 
     public function tags()
@@ -28,5 +27,10 @@ class Article extends Model
     public function series()
     {
         return $this->belongsToMany('App\Serie', 'articles_series', 'article_id', 'serie_id')->withTimestamps();   
+    }
+
+    public function author()
+    {
+        return $this->belongsTo('App\Collaborator', 'author_id', 'id');   
     }
 }

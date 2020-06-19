@@ -7,6 +7,7 @@
             tags : tags,
             categories : categories,
             series : series,
+            collaborators : collaborators,
             current_article: article,
             summernote : null,
             dropzone : null,
@@ -22,6 +23,7 @@
                 img_thumbnail : null,
                 tags: [],
                 category: '',
+                collaborator : '',
                 attach_reference: '',
                 short_description : '',
                 serie : '',
@@ -35,9 +37,6 @@
 
             this.initSummernote();
             this.initDropzone();
-            // $('.mdb-select').materialSelect();
-
-            
             
             
             $( "#language-switch" ).change(function() {
@@ -79,6 +78,7 @@
             this.article.attach_reference = this.current_article.picture_path;
             this.article.img_thumbnail = this.current_article.img_thumbnail;
             this.article.attach_reference = this.current_article.attach_reference;
+            this.article.collaborator = this.current_article.author_id;
 
             setTimeout(function(){
                 $('.main-container').toggleClass("sidebar-closed");
@@ -117,11 +117,11 @@
                 }
                 if(good_to_go){
                     if(this.dropzone[0].dropzone.files.length != 0){
-                        $(".all_content").LoadingOverlay("show");
+                        $("main").LoadingOverlay("show");
                         this.article.img_thumbnail = this.dropzone[0].dropzone.files[0].name;
                         this.dropzone[0].dropzone.processQueue();
                     }else{
-                        $(".all_content").LoadingOverlay("show");
+                        $("main").LoadingOverlay("show");
                         this.UpdateInformation();
                     }
                 }
@@ -133,10 +133,10 @@
                 
                 
                 axios.post(homepath + '/admin/articles/UpdateArticle', {article_info : this.article}).then(function(response){
-                    $(".all_content").LoadingOverlay("hide");
-                    window.location.reload();
+                    $("main").LoadingOverlay("hide");
+                    // window.location.reload();
                 }).catch(function(error){
-                    $(".all_content").LoadingOverlay("hide");
+                    $("main").LoadingOverlay("hide");
                     $.toast({
                         heading: 'Error',
                         text: 'Ha ocurrido un error.',

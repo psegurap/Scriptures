@@ -37,7 +37,7 @@
                                     </span>
                                     <div class="title-caption p-4">
                                         <div class="post-meta mb-2">
-                                            <span class="post-author"><a class="text-capitalize" href="#">Autor name...</a></span>
+                                            <span class="post-author"><a class="text-capitalize" href="#">@{{slider_post[0].author.name}}</a></span>
                                             <span class="post-time">@{{moment(slider_post[0].created_at).format('LL')}}</span>
                                         </div>
                                         <h1 class="post-title w-75">
@@ -81,7 +81,7 @@
                                             </span>
                                             <div class="title-caption p-4">
                                                 <div class="post-meta mb-2">
-                                                    <span class="post-author"><a class="text-capitalize" href="#">Autor name...</a></span>
+                                                    <span class="post-author"><a class="text-capitalize" href="#">@{{slider_post[1].author.name}}</a></span>
                                                     <span class="post-time">@{{moment(slider_post[1].created_at).format('LL')}}</span>
                                                 </div>
                                                 <h3 class="post-title">
@@ -123,7 +123,7 @@
                                                     </span>
                                                     <div class="title-caption p-4">
                                                         <div class="post-meta mb-2">
-                                                            <span class="post-author"><a class="text-capitalize" href="#">Autor name...</a></span>
+                                                            <span class="post-author"><a class="text-capitalize" href="#">@{{slider_post[2].author.name}}</a></span>
                                                             <span class="post-time">@{{moment(slider_post[2].created_at).format('LL')}}</span>
                                                         </div>
                                                         <h3 class="post-title h5">
@@ -162,7 +162,7 @@
                                                     </span>
                                                     <div class="title-caption p-4">
                                                         <div class="post-meta mb-2">
-                                                            <span class="post-author"><a class="text-capitalize" href="#">Autor name...</a></span>
+                                                            <span class="post-author"><a class="text-capitalize" href="#">@{{slider_post[3].author.name}}</a></span>
                                                             <span class="post-time">@{{moment(slider_post[3].created_at).format('LL')}}</span>
                                                         </div>
                                                         <h3 class="post-title h5">
