@@ -18,6 +18,7 @@
             <div class="container fbt-elastic-container">
                 <div class="row justify-content-center">
 
+                    
                     <!-- Main Wrapper -->
                     <div class="fbt-main-wrapper col-lg-8 mb-5 mb-lg-0">
 
@@ -92,26 +93,27 @@
                                             <div class="fbt-item-post-pager">
                                                 <div class="card- mt-3 mb-5">
                                                     <div class="col-lg-12">
-                                                        <div class="post-pager row">
-                                                            <div class="previous col-lg-6 bg-dark px-4 py-4 text-left">
-                                                                <a class="fbt-newer-link text-white" href="./single_mag.html">
-                                                                    <strong class="text-left pl-3">
-                                                                        <i class="fa fa-angle-left"></i> Previous
-                                                                    </strong>
-                                                                    <div class="h5 text-white fbt-np-title mt-2 pl-3">
-                                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                                    </div>
-                                                                </a>
+                                                        <div class="post-pager row bg-secondary" style="background-color: rgb(205, 217, 228) !important;">
+                                                            <div class="previous col-lg-3 px-4 py-4 text-left">
+                                                                <img style="width: 100%; border-radius: 100%;" :src="homepath + '/images/collaborators/' + article.author.attach_reference + '/' + article.author.img_thumbnail" alt="">
                                                             </div>
-                                                            <div class="next col-lg-6 bg-secondary px-4 py-4 text-right">
-                                                                <a class="fbt-older-link text-white" href="./single_mag.html">
-                                                                    <strong class="text-right pr-3">
-                                                                        Next <i class="fa fa-angle-right"></i>
-                                                                    </strong>
-                                                                    <div class="h5 text-white text-right fbt-np-title mt-2 pr-3">
-                                                                        Nulla sed eros sit amet ipsum mattis pulvinar quis quis sem.
-                                                                    </div>
-                                                                </a>
+                                                            <div class="next col-lg-9 py-4">
+                                                                @if (App::getLocale() == 'es')
+                                                                    <a class="fbt-older-link h5"  :href="homepath + '/colaborador/' + article.author.name">
+                                                                        <strong class="pr-3">@{{article.author.name}}</strong>
+                                                                    </a>
+                                                                @else
+                                                                    <a class="fbt-older-link h5" style="color: black;" :href="homepath + '/collaborator/' + article.author.name">
+                                                                        <strong class="pr-3">@{{article.author.name}}</strong>
+                                                                    </a>
+                                                                @endif
+                                                                <div class="fbt-np-title mt-2 pr-3" style="color: black;">
+                                                                    @if (App::getLocale() == 'es')
+                                                                        @{{article.author.info_es}}
+                                                                    @else
+                                                                        @{{article.author.info_en}}
+                                                                    @endif
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>

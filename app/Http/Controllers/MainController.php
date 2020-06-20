@@ -31,7 +31,7 @@ class MainController extends Controller
                 }
             }, 'tags' => function($tag){
                 $tag->with('articles')->get();
-            }, 'series'])->where('url_es', $url)->first();
+            }, 'series', 'author'])->where('url_es', $url)->first();
             $featured_post = Article::with('categories')->orderBy('id', 'desc')->where('url_es', '!=', $url)->first();
         }else{
             $article = Article::with(['categories', 'tags' => function($tag){
@@ -65,7 +65,8 @@ class MainController extends Controller
 
     public function single_collaborator($name)
     {
-        $collaborator = Collaborator::where('name' , $name)->get();
-        dd($collaborator);
+        $collaborator = Collaborator::where('name' , $name)->first();
+        // dd($collaborator);
+        return view('author', compact('collaborator'));
     }
 }

@@ -92,9 +92,10 @@
                         <div class="col-md-12 mb-2">
                             <div class="border-bottom widget-heading px-0">
                                 <h6 class="">{{__('Select Collaborator')}}:</h6>
+                                <span class="text-danger" style="font-size: 12px;" v-show="errors.has('collaborator')">* @{{ errors.first('collaborator') }}</span>
                             </div>
                             <div class="form-group">
-                                <select  data-live-search="true" class="selectpicker form-control rounded-0" v-model="article.collaborator">
+                                <select v-validate="'required'" data-live-search="true" class="selectpicker form-control rounded-0" name="collaborator" v-model="article.collaborator">
                                     <option value="" disabled selected>Choose an author...</option>
                                     <option v-for="collaborator in collaborators" :value=collaborator.id>
                                             @{{collaborator.name}}
