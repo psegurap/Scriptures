@@ -1,9 +1,9 @@
 @extends('layouts.admin')
-@section('title', 'New Collaborator')
+@section('title', 'New Member')
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{route('admin')}}">{{__('Home')}}</a></li>
-    <li class="breadcrumb-item"><a href="/admin/collaborators">{{__('Collaborators')}}</a></li>
-    <li class="breadcrumb-item active" aria-current="page"><span>{{__('New Collaborator')}}</span></li>
+    <li class="breadcrumb-item"><a href="/admin/team">{{__('Team')}}</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><span>{{__('New Member')}}</span></li>
 @endsection
 @section('styles')
     <link rel="stylesheet" href="{{asset('/admin/assets/css/plugins.css')}}">
@@ -28,7 +28,7 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                     <div class="widget widget-chart-one px-4 py-3">
                         <div class="widget-heading mb-0">
-                            <h5 class=" font-weight-bold">New Collaborator</h5>
+                            <h5 class=" font-weight-bold">New Member</h5>
                         </div>
                     </div>
                 </div>
@@ -49,7 +49,7 @@
                                                         <div class="dropzone-container rounded text-center">
                                                             <form class="dropzone dz-clickable " id="Dropzone">
                                                             @csrf
-                                                            <input type="hidden" name="attach_reference" v-model="collaborator.attach_reference">
+                                                            <input type="hidden" name="attach_reference" v-model="member.attach_reference">
                                                             </form>
                                                         </div>
                                                     </div>
@@ -60,14 +60,14 @@
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
                                                                     <label for="fullName">Full Name</label>
-                                                                    <input v-validate="'required'" type="text" class="form-control" name="name" id="fullName" v-model="collaborator.nombre" placeholder="Full Name">
+                                                                    <input v-validate="'required'" type="text" class="form-control" name="name" id="fullName" v-model="member.nombre" placeholder="Full Name">
                                                                     <span class="text-danger" style="font-size: 12px;" v-show="errors.has('name')">* @{{ errors.first('name') }}</span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="profession">Email</label>
-                                                            <input v-validate="'required'" type="email" class="form-control" id="profession" name="email" v-model="collaborator.email" placeholder="Email Address">
+                                                            <input v-validate="'required'" type="email" class="form-control" id="profession" name="email" v-model="member.email" placeholder="Email Address">
                                                             <span class="text-danger" style="font-size: 12px;" v-show="errors.has('email')">* @{{ errors.first('email') }}</span>
                                                         </div>
                                                     </div>
@@ -79,48 +79,72 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
+                                                        <label for="">Role (es)</label>
+                                                        <input v-validate="'required'" type="text" class="form-control" name="role (es)" id="rolees" v-model="member.role_es" placeholder="Write the role...">
+                                                        <span class="text-danger" style="font-size: 12px;" v-show="errors.has('role (es)')">* @{{ errors.first('role (es)') }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="">Role (en)</label>
+                                                        <input v-validate="'required'" type="text" class="form-control" name="role (en)" id="roleen" v-model="member.role_en" placeholder="Write the role...">
+                                                        <span class="text-danger" style="font-size: 12px;" v-show="errors.has('role (en)')">* @{{ errors.first('role (en)') }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
                                                         <label for="country">Country</label>
-                                                        <select class="form-control" v-model="collaborator.country" name="country" id="country">
-                                                            <option>United States</option>
+                                                        <select v-validate="'required'" class="form-control" v-model="member.country" name="country" id="country">
+                                                            <option disabled value="">Select a country...</option>
+                                                            {{-- <option>United States</option>
                                                             <option>India</option>
                                                             <option>Japan</option>
                                                             <option>China</option>
                                                             <option>Brazil</option>
                                                             <option>Norway</option>
-                                                            <option>Canada</option>
+                                                            <option>Canada</option> --}}
                                                             <option>República Dominicana</option>
                                                         </select>
+                                                        <span class="text-danger" style="font-size: 12px;" v-show="errors.has('country')">* @{{ errors.first('country') }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="phone">Phone</label>
-                                                        <input type="text" class="form-control mb-4" name="phone" id="phone" v-model="collaborator.phone" placeholder="Write your phone number here">
+                                                        <label for="">Website</label>
+                                                        <input type="text" class="form-control " id="website1" v-model="member.website" placeholder="Write the website here">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="website1">Website</label>
-                                                        <input type="text" class="form-control mb-4" id="website1" v-model="collaborator.website" placeholder="Write your website here">
+                                                        <label for="">Facebook</label>
+                                                        <input  type="text" class="form-control " name="facebook" id="facebook" v-model="member.facebook" placeholder="Write the Facebook Account...">
+                                                        <span class="text-danger" style="font-size: 12px;" v-show="errors.has('facebook')">* @{{ errors.first('facebook') }}</span>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="website1">Biography (es)</label>
-                                                        <textarea v-validate="'required|max:500'" class="form-control" name="biography (es)" id="aboutBio" style="height: 100%;" v-model="collaborator.biography_es" placeholder="Tell something interesting about yourself" rows="5"></textarea>
-                                                        <span class="text-danger" style="font-size: 12px;" v-show="errors.has('biography (es)')">* @{{ errors.first('biography (es)') }}</span>
+                                                        <label for="">Instagram</label>
+                                                        <input  type="text" class="form-control" name="instagram" id="instagram" v-model="member.instagram" placeholder="Write the Instagram Account...">
+                                                        <span class="text-danger" style="font-size: 12px;" v-show="errors.has('instagram')">* @{{ errors.first('instagram') }}</span>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12">
+                                                <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="website1">Biography (en)</label>
-                                                        <textarea v-validate="'required|max:500'" class="form-control" name="biography (en)" id="aboutBio" style="height: 100%;" v-model="collaborator.biography_en" placeholder="Tell something interesting about yourself" rows="5"></textarea>
-                                                        <span class="text-danger" style="font-size: 12px;" v-show="errors.has('biography (en)')">* @{{ errors.first('biography (en)') }}</span>
+                                                        <label for="">Twitter</label>
+                                                        <input  type="text" class="form-control " name="twitter" id="twitter" v-model="member.twitter" placeholder="Write the Twitter Account...">
+                                                        <span class="text-danger" style="font-size: 12px;" v-show="errors.has('twitter')">* @{{ errors.first('twitter') }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="">YouTube</label>
+                                                        <input  type="text" class="form-control " name="youtube" id="youtube" v-model="member.youtube" placeholder="Write the Youtube Account...">
+                                                        <span class="text-danger" style="font-size: 12px;" v-show="errors.has('youtube')">* @{{ errors.first('youtube') }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group text-right">
-                                                        <button @click="validate(SaveCollaborator)" class="btn btn-primary rounded-0 font-weight-bold text-uppercase">Save Collaborator</button>
+                                                        <button @click="validate(SaveMember)" class="btn btn-primary rounded-0 font-weight-bold text-uppercase">Save Member</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -141,6 +165,6 @@
     <script>
         
     </script>
-    <script src="{{asset('/js/custom/admin/new_collaborator.js')}}"></script>
+    <script src="{{asset('/js/custom/admin/new_team.js')}}"></script>
 
 @endsection

@@ -4,47 +4,47 @@
     main = new Vue({
         el: 'main',
         data : {
-            // tags : tags,
-            // categories : categories,
-            // series : series,
+            member : member,
             summernote : null,
             dropzone : null,
-            dropzone_galery : null,
             summernoteValue : null,
-            filter: {
-                category : '',
-            },
-            collaborator : {
+            member : {
                 nombre : null,
                 email : null,
+                role_es: null,
+                role_en: null,
                 img_thumbnail : null,
                 country: '',
                 attach_reference: '',
-                phone : '',
                 website : '',
-                biography_es : '',              
-                biography_en : '',              
+                facebook : null,                            
+                instagram : null,                            
+                twitter : null,                            
+                youtube : null,                            
             },
-            
+            change_picture : false,
         },
         mounted: function(){
-            
+            this.member.nombre = member.name;
+            this.member.email = member.email;
+            this.member.role_es = member.role;
+            this.member.role_en = member.role_en;
+            this.member.country = member.country;
+            this.member.website = member.website;
+            this.member.facebook = member.facebook;
+            this.member.instagram = member.instagram;
+            this.member.twitter = member.twitter;
+            this.member.youtube = member.youtube;
+            this.member.img_thumbnail = member.img_thumbnail;
+            this.member.attach_reference = member.attach_reference;
+
             this.initDropzone();
-
-            // this.$nextTick(function(){
-            //     $('.selectpicker').selectpicker();
-            // });
-
-            this.collaborator.attach_reference = this.randomString() + new Date().getTime();
 
         },
         computed: {
             
         },
         watch : {
-            // 'article.category': function(val){
-            //     console.log(val);
-            // },
             
         },
         methods: {
@@ -57,34 +57,25 @@
                 }
                 return result;
             },
-            SaveCollaborator(){
-                var go_to_go = true;
-                if(this.dropzone[0].dropzone.files.length == 0){
-                    $.toast({
-                        heading: 'Error',
-                        text: 'Necesitas agregar una imagen.',
-                        showHideTransition: 'fade',
-                        icon: 'error',
-                        position : 'top-right'
-                    })
-                    go_to_go = false;
-                }
-                if(go_to_go){
+            UpdateMember(){
+                if(this.dropzone[0].dropzone.files.length != 0){
                     $("main").LoadingOverlay("show");
+                    this.member.img_thumbnail = this.dropzone[0].dropzone.files[0].name;
                     this.dropzone[0].dropzone.processQueue();
+                }else{
+                    $("main").LoadingOverlay("show");
+                    this.UpdateInformation();
                 }
-            },
-            SaveInformation: function(){
-                this.collaborator.img_thumbnail = this.dropzone[0].dropzone.files[0].name;
-                main.dropzone[0].dropzone.removeAllFiles();
                 
-                axios.post(homepath + '/admin/collaborators/StoreCollaborator', {collaborator : this.collaborator}).then(function(response){
+            },
+            UpdateInformation: function(){
+                axios.post(homepath + '/admin/team/UpdateTeam/' + member.id, {member : this.member}).then(function(response){
                     $("main").LoadingOverlay("hide");
                     swal({
-                        text: "¡El colaborador ha sido agregado!",
+                        text: "¡El miembro ha sido actualizado!",
                         icon: "success",
                     }).then(function(){
-                        window.location.href = homepath + '/admin/collaborators';
+                        window.location.reload();
                     });
                 }).catch(function(error){
                     $("main").LoadingOverlay("hide");
@@ -101,7 +92,7 @@
             initDropzone: function(){
                 var _this = this;
                 this.dropzone = $("#Dropzone").dropzone({ 
-                    url: "/admin/collaborators/files/storePicture",
+                    url: "/admin/team/files/storePicture",
                     uploadMultiple: true,
                     maxFiles:1,
                     paramName: "file",
@@ -119,7 +110,7 @@
                     });
                     this.on("success", function(file, response) {
                         if(file){
-                            main.SaveInformation();
+                            main.UpdateInformation();
                         }
                     });
                     },

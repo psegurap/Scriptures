@@ -100,6 +100,19 @@ Route::group(['middleware' => ['auth']], function(){
 
         });
 
+        Route::group(['prefix' => 'team'], function(){
+            Route::get('/', 'TeamController@team');
+            Route::get('/new', 'TeamController@new');
+            Route::post('/StoreTeam', 'TeamController@StoreTeam');
+            Route::get('/edit/{id}', 'TeamController@edit');
+            Route::post('/UpdateTeam/{id}', 'TeamController@UpdateTeam');
+
+            Route::group(['prefix' => 'files'], function(){
+                Route::post('/storePicture', 'TeamController@StorePicture');
+            });
+
+        });
+
 
     });
 

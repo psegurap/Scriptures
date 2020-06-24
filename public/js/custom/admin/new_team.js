@@ -11,19 +11,19 @@
             dropzone : null,
             dropzone_galery : null,
             summernoteValue : null,
-            filter: {
-                category : '',
-            },
-            collaborator : {
+            member : {
                 nombre : null,
                 email : null,
                 img_thumbnail : null,
                 country: '',
-                attach_reference: '',
-                phone : '',
+                role_es: null,
+                role_en: null,
                 website : '',
-                biography_es : '',              
-                biography_en : '',              
+                facebook : '',
+                instagram : '',
+                twitter : '',
+                youtube : '',
+                attach_reference: '',
             },
             
         },
@@ -35,7 +35,7 @@
             //     $('.selectpicker').selectpicker();
             // });
 
-            this.collaborator.attach_reference = this.randomString() + new Date().getTime();
+            this.member.attach_reference = this.randomString() + new Date().getTime();
 
         },
         computed: {
@@ -57,7 +57,7 @@
                 }
                 return result;
             },
-            SaveCollaborator(){
+            SaveMember(){
                 var go_to_go = true;
                 if(this.dropzone[0].dropzone.files.length == 0){
                     $.toast({
@@ -75,16 +75,16 @@
                 }
             },
             SaveInformation: function(){
-                this.collaborator.img_thumbnail = this.dropzone[0].dropzone.files[0].name;
+                this.member.img_thumbnail = this.dropzone[0].dropzone.files[0].name;
                 main.dropzone[0].dropzone.removeAllFiles();
                 
-                axios.post(homepath + '/admin/collaborators/StoreCollaborator', {collaborator : this.collaborator}).then(function(response){
+                axios.post(homepath + '/admin/team/StoreTeam', {member : this.member}).then(function(response){
                     $("main").LoadingOverlay("hide");
                     swal({
-                        text: "¡El colaborador ha sido agregado!",
+                        text: "¡El miembro ha sido agregado!",
                         icon: "success",
                     }).then(function(){
-                        window.location.href = homepath + '/admin/collaborators';
+                        window.location.href = homepath + '/admin/team';
                     });
                 }).catch(function(error){
                     $("main").LoadingOverlay("hide");
@@ -101,7 +101,7 @@
             initDropzone: function(){
                 var _this = this;
                 this.dropzone = $("#Dropzone").dropzone({ 
-                    url: "/admin/collaborators/files/storePicture",
+                    url: "/admin/team/files/storePicture",
                     uploadMultiple: true,
                     maxFiles:1,
                     paramName: "file",

@@ -65,7 +65,9 @@ class MainController extends Controller
 
     public function single_collaborator($name)
     {
-        $collaborator = Collaborator::where('name' , $name)->first();
+        $collaborator = Collaborator::with(['articles' => function($article){
+            $article->take(12)->get();
+        }])->where('name' , $name)->first();
         // dd($collaborator);
         return view('author', compact('collaborator'));
     }
