@@ -34,9 +34,15 @@ Route::get('/articulo/{url}', 'MainController@single_article');
 Route::get('/collaborators', 'MainController@collaborators');
 Route::get('/colaboradores', 'MainController@collaborators');
 
+Route::get('/team', 'MainController@team');
+Route::get('/equipo', 'MainController@team');
+
+
 Route::get('/collaborator/{name}', 'MainController@single_collaborator');
 Route::get('/colaborador/{name}', 'MainController@single_collaborator');
 
+Route::get('/profession-of-faith', 'MainController@profession');
+Route::get('/profesion-de-fe', 'MainController@profession');
 
 
 

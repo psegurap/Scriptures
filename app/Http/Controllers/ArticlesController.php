@@ -45,14 +45,14 @@ class ArticlesController extends Controller
                 'title_es' => $article_info['title'],
                 'short_description_es' => $article_info['short_description'],
                 'full_content_es' => $article_info['content'],
-                'url_es' => $article_info['url']
+                'url_es' => str_replace('?', '', $article_info['url'])
             ];
         }else{
             $article_data = [
                 'title_en' => $article_info['title'],
                 'short_description_en' => $article_info['short_description'],
                 'full_content_en' => $article_info['content'],
-                'url_en' => $article_info['url']
+                'url_en' => str_replace('?', '', $article_info['url'])
             ];
         }
 
@@ -69,7 +69,7 @@ class ArticlesController extends Controller
         $article->tags()->attach($tags);
         
         if($article_info['serie'] != null && $article_info['category'] != ''){
-            $serie = Category::find($article_info['serie']);
+            $serie = Serie::find($article_info['serie']);
             $article->series()->attach($serie);
         }
         return $article;
@@ -104,14 +104,14 @@ class ArticlesController extends Controller
                 'title_es' => $article_info['title'],
                 'short_description_es' => $article_info['short_description'],
                 'full_content_es' => $article_info['content'],
-                'url_es' => $article_info['url']
+                'url_es' => str_replace('?', '', $article_info['url'])
             ];
         }else{
             $article_data = [
                 'title_en' => $article_info['title'],
                 'short_description_en' => $article_info['short_description'],
                 'full_content_en' => $article_info['content'],
-                'url_en' => $article_info['url']
+                'url_en' => str_replace('?', '', $article_info['url'])
             ];
         }
 
@@ -129,7 +129,7 @@ class ArticlesController extends Controller
         Article::find($article_info['id'])->tags()->sync($tags);
         
         if($article_info['serie'] != null && $article_info['category'] != ''){
-            $serie = Category::find($article_info['serie']);
+            $serie = Serie::find($article_info['serie']);
             Article::find($article_info['id'])->series()->sync($serie);
         }
 

@@ -5,7 +5,7 @@ $(document).ready(function(){
     main = new Vue({
         el: 'main',
         data: {
-            slider_post : slider_post,
+            team : team,
         },
         watch: {
             

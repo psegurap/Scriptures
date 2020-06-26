@@ -96,22 +96,22 @@
                         <li class="nav-item">
                             <a href="{{route('index')}}" class="nav-link">{{__('Home')}}</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="#" class="nav-link">{{__('Articles')}}</a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item dropdown">
                             <a href="javascript:void(0)" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">{{__('About Us')}}</a>
                             <div class="dropdown-menu">
                                 @if (App::getLocale() == 'es')
-                                    <a href="#" class="dropdown-item">{{__('Profession Of Faith')}}</a>
+                                    <a href="/profesion-de-fe" class="dropdown-item">{{__('Profession Of Faith')}}</a>
                                     <a href="#" class="dropdown-item">{{__('Our History')}}</a>
-                                    <a href="#" class="dropdown-item">{{__('Our Team')}}</a>
+                                    <a href="/equipo" class="dropdown-item">{{__('Our Team')}}</a>
                                     <a href="/colaboradores" class="dropdown-item">{{__('Collaborators')}}</a>
                                     <a href="#" class="dropdown-item">{{__('Contact')}}</a>
                                 @else
-                                    <a href="#" class="dropdown-item">{{__('Profession Of Faith')}}</a>
+                                    <a href="/profession-of-faith" class="dropdown-item">{{__('Profession Of Faith')}}</a>
                                     <a href="#" class="dropdown-item">{{__('Our History')}}</a>
-                                    <a href="#" class="dropdown-item">{{__('Our Team')}}</a>
+                                    <a href="/team" class="dropdown-item">{{__('Our Team')}}</a>
                                     <a href="/collaborators" class="dropdown-item">{{__('Collaborators')}}</a>
                                     <a href="#" class="dropdown-item">{{__('Contact')}}</a>
                                 @endif

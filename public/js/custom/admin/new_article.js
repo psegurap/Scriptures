@@ -110,11 +110,12 @@
                 
                 axios.post(homepath + '/admin/articles/StoreArticle', {article_info : this.article}).then(function(response){
                     $("main").LoadingOverlay("hide");
-                    // if(lang == 'es'){
-                    //     window.open(homepath + '/articulo/' + response.data.url_es, '_blank');
-                    // }else{
-                    //     window.open(homepath + '/article/' + response.data.url_en, '_blank');
-                    // }
+                    swal({
+                        text: "¡El articulo ha sido agregado!",
+                        icon: "success",
+                    }).then(function(){
+                        window.location.href = homepath + '/admin/articles';
+                    });
                 }).catch(function(error){
                     $(".all_content").LoadingOverlay("hide");
                     $.toast({

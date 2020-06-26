@@ -134,7 +134,12 @@
                 
                 axios.post(homepath + '/admin/articles/UpdateArticle', {article_info : this.article}).then(function(response){
                     $("main").LoadingOverlay("hide");
-                    // window.location.reload();
+                    swal({
+                        text: "¡El articulo ha sido editado!",
+                        icon: "success",
+                    }).then(function(){
+                        window.location.reload();
+                    });
                 }).catch(function(error){
                     $("main").LoadingOverlay("hide");
                     $.toast({

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Article;
 use App\Collaborator;
+use App\Team;
+use App\Serie;
 use App;
 
 class MainController extends Controller
@@ -18,6 +20,9 @@ class MainController extends Controller
 
     public function single_article($url)
     {
+        // dd($url);
+        // $article = Article::with(['categories' , 'tags' , 'series', 'author'])->where("url_es", $url)->first();
+        // dd($article);
         if(App::getLocale() == 'es'){
             $article = Article::with(['categories' => function($category) use ($url){
                 if(App::getLocale() == 'es'){
@@ -34,9 +39,19 @@ class MainController extends Controller
             }, 'series', 'author'])->where('url_es', $url)->first();
             $featured_post = Article::with('categories')->orderBy('id', 'desc')->where('url_es', '!=', $url)->first();
         }else{
-            $article = Article::with(['categories', 'tags' => function($tag){
+            $article = Article::with(['categories' => function($category) use ($url){
+                if(App::getLocale() == 'es'){
+                    $category->with(['articles' => function($article) use ($url){
+                        $article->where('url_es', '!=', $url)->get();
+                    }])->take(6);
+                }else{
+                    $category->with(['articles' => function($article) use ($url){
+                        $article->where('url_en', '!=', $url)->get();
+                    }])->take(6);
+                }
+            }, 'tags' => function($tag){
                 $tag->with('articles')->get();
-            }, 'series'])->where('url_en', $url)->first();
+            }, 'series', 'author'])->where('url_en', $url)->first();
             $featured_post = Article::with('categories')->orderBy('id', 'desc')->where('url_en', '!=', $url)->first();
         }
 
@@ -71,4 +86,18 @@ class MainController extends Controller
         // dd($collaborator);
         return view('author', compact('collaborator'));
     }
+
+    public function team()
+    {
+        $team = Team::where('status' , 1)->orderBy('name')->get();
+        // dd($collaborators);
+        return view('team', compact('team'));
+    }
+
+    public function profession(){
+        $serie = Serie::with('articles')->find(12);
+        // dd($serie);
+        return view('profession', compact('serie'));
+    }
+    
 }

@@ -49,7 +49,7 @@
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <textarea v-validate="'required|max:157'" v-model="article.short_description" class="form-control rounded-0" name="short description" cols="30" rows="5" placeholder="{{__('Type short description')}}"></textarea>
+                                            <textarea v-validate="'required|max:250'" v-model="article.short_description" class="form-control rounded-0" name="short description" cols="30" rows="5" placeholder="{{__('Type short description')}}"></textarea>
                                             <span class="text-danger" style="font-size: 12px;" v-show="errors.has('short description')">* @{{ errors.first('short description') }}</span>
                                          </div>
                                     </div>
