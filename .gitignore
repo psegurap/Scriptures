@@ -3,6 +3,7 @@
 /public/images/articles
 /public/images/collaborators
 /public/images/team
+/public/images/admin
 /public/storage
 /storage/*.key
 /vendor

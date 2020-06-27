@@ -50,9 +50,16 @@ Route::group(['middleware' => ['auth']], function(){
     
     Route::group(['prefix' => 'admin'], function(){
         Route::get('home', 'AdminMainController@home')->name('admin');
-        Route::get('home2', function(){
-            return view('admin.index_admin2');
+        
+        Route::group(['prefix' => 'profile'], function(){
+            Route::get('/', 'AdminMainController@profile');
+            Route::post('/UpdateProfile', 'AdminMainController@update_profile');
+
+            Route::group(['prefix' => 'files'], function(){
+                Route::post('/StoreProfilePicture', 'AdminMainController@StoreProfilePicture');
+            });
         });
+
 
         Route::group(['prefix' => 'maintenance'], function(){
             
