@@ -4,7 +4,7 @@
     main = new Vue({
         el: 'main',
         data : {
-            user : user,
+            article : article,
             change_info : false,
             profile : {
                 name : null,
@@ -15,15 +15,15 @@
             }
         },
         mounted: function(){
-            this.profile.name = user.name;
-            this.profile.email = user.email;
-            this.profile.phone = user.phone;
-            this.profile.img_thumbnail = user.img_thumbnail;
-            if(user.attach_reference == '' || user.attach_reference == null){
-                this.profile.attach_reference = this.randomString() + new Date().getTime();
-            }else{
-                this.profile.attach_reference = user.attach_reference;
-            }
+            // this.profile.name = user.name;
+            // this.profile.email = user.email;
+            // this.profile.phone = user.phone;
+            // this.profile.img_thumbnail = user.img_thumbnail;
+            // if(user.attach_reference == '' || user.attach_reference == null){
+            //     this.profile.attach_reference = this.randomString() + new Date().getTime();
+            // }else{
+            //     this.profile.attach_reference = user.attach_reference;
+            // }
 
             this.initDropzone();
 

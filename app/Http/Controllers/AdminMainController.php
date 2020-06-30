@@ -33,6 +33,28 @@ class AdminMainController extends Controller
         return $request;
     }
 
+    public function users()
+    {
+        if(Auth::user()->developer == 1){
+            $users = User::orderBy('name')->get();
+        }else{
+            $users = User::where('developer', '!=', 1)->orderBy('name')->get();
+        }
+        // dd($users);
+        return view('admin.users', compact('users'));
+    }
+
+    public function UpdatePermission(Request $request){
+        User::find($request->user)->update([$request->column => $request->permission]);
+
+        if(Auth::user()->developer == 1){
+            $users = User::orderBy('name')->get();
+        }else{
+            $users = User::where('developer', '!=', 1)->orderBy('name')->get();
+        }
+
+        return $users;
+    }
 
 
     /******************* ATTACHMENTS ******************/

@@ -138,6 +138,12 @@ class ArticlesController extends Controller
         return $articles;
     }
 
+    public function review_article($id){
+        $article = Article::with('author', 'categories')->find($id);
+        // dd($article);
+        return view('admin.articles.review_article', compact('article'));
+    }
+
 
     /******************* ATTACHMENTS ******************/
     

@@ -19,9 +19,7 @@
 @section('content')
 <main>
     <div class="layout-px-spacing">
-
         <div class="row layout-spacing">
-
             <!-- Content -->
             <div class="col-xl-4 col-lg-6 col-md-5 col-sm-12 layout-top-spacing">
 
@@ -112,79 +110,7 @@
                         </div>
                     </div>
                 </div>
-
-                {{-- <div class="bio layout-spacing ">
-                    <div class="widget-content widget-content-area">
-                        <h3 class="">Bio</h3>
-                        <p>I'm Web Developer from California. I code and design websites worldwide. Mauris varius tellus vitae tristique sagittis. Sed aliquet, est nec auctor aliquet, orci ex vestibulum ex, non pharetra lacus erat ac nulla.</p>
-
-                        <p>Sed vulputate, ligula eget mollis auctor, lectus elit feugiat urna, eget euismod turpis lectus sed ex. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nunc ut velit finibus, scelerisque sapien vitae, pharetra est. Nunc accumsan ligula vehicula scelerisque vulputate.</p>
-
-                        <div class="bio-skill-box">
-
-                            <div class="row">
-                                
-                                <div class="col-12 col-xl-6 col-lg-12 mb-xl-5 mb-5 ">
-                                    
-                                    <div class="d-flex b-skills">
-                                        <div>
-                                        </div>
-                                        <div class="">
-                                            <h5>Sass Applications</h5>
-                                            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse eu fugiat nulla pariatur.</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="col-12 col-xl-6 col-lg-12 mb-xl-5 mb-5 ">
-                                    
-                                    <div class="d-flex b-skills">
-                                        <div>
-                                        </div>
-                                        <div class="">
-                                            <h5>Github Countributer</h5>
-                                            <p>Ut enim ad minim veniam, quis nostrud exercitation aliquip ex ea commodo consequat.</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="col-12 col-xl-6 col-lg-12 mb-xl-0 mb-5 ">
-                                    
-                                    <div class="d-flex b-skills">
-                                        <div>
-                                        </div>
-                                        <div class="">
-                                            <h5>Photograhpy</h5>
-                                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia anim id est laborum.</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="col-12 col-xl-6 col-lg-12 mb-xl-0 mb-0 ">
-                                    
-                                    <div class="d-flex b-skills">
-                                        <div>
-                                        </div>
-                                        <div class="">
-                                            <h5>Mobile Apps</h5>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do et dolore magna aliqua.</p>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>                                
-                </div> --}}
-
             </div>
-
         </div>
     </div>
 </main>
