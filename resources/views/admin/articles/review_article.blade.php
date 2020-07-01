@@ -2,6 +2,7 @@
 @section('title', 'Review Article')
 @section('styles')
     <link href="{{asset('/admin/assets/css/users/user-profile.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{asset('admin/assets/css/forms/theme-checkbox-radio.css')}}">
     <style>
         .dropzone{
             background: none;
@@ -44,8 +45,6 @@
                             @endif
                         </div>
                         <div class="text-center user-info mt-0">
-                            
-                            
                             <img class="img-thumbnail rounded-0" :src="homepath + '/images/articles/' + article.attach_reference + '/' + article.img_thumbnail" style="width: 100%;" alt="avatar">
                             <p class="border-bottom border-top mb-0 py-1">
                                 @if (App::getLocale() == 'es')
@@ -75,38 +74,41 @@
             </div>
             <div class="col-xl-8 col-lg-6 col-md-7 col-sm-12 layout-top-spacing">
                 <div class="user-profile layout-spacing">
-                    <div class="widget-content widget-content-area">
-                        <div class="d-flex justify-content-between mb-3">
-                            <h3 class="">Edit Information</h3>
-                            <a href="javascript:void(0)" class="mt-2 edit-profile badge"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-key"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg></a>
-                        </div>
-                        <div class="row">
-                            <div class="col-xl-5 col-lg-12 col-md-4">
-                                <div class="">
-                                    <div class="dropzone-container rounded text-center mb-md-2">
-                                        <form class="dropzone dz-clickable " id="Dropzone">
-                                        @csrf
-                                        <input type="hidden" name="attach_reference" v-model="profile.attach_reference">
-                                        </form>
-                                    </div>
+                    <div class="widget-content widget-content-area review_area">
+                        <div class="border-bottom text-light mb-2 pb-2">
+                            <label for="">Choose your desicion:</label>
+                            <div class="d-flex">
+                                <div class="n-chk">
+                                    <label class="new-control new-radio new-radio-text radio-success">
+                                      <input type="radio" class="new-control-input" v-model="review.desicion" value="1" name="desicion-input">
+                                      <span class="new-control-indicator"></span><span class="new-radio-content text-white">Approved</span>
+                                    </label>
+                                </div>
+                                <div class="n-chk">
+                                    <label class="new-control new-radio new-radio-text radio-warning">
+                                      <input type="radio" class="new-control-input" v-model="review.desicion" value="2" name="desicion-input">
+                                      <span class="new-control-indicator"></span><span class="new-radio-content text-white">Revision</span>
+                                    </label>
+                                </div>
+                                <div class="n-chk">
+                                    <label class="new-control new-radio new-radio-text radio-danger">
+                                      <input type="radio" class="new-control-input" v-model="review.desicion" value="3" name="desicion-input">
+                                      <span class="new-control-indicator"></span><span class="new-radio-content text-white">Declined</span>
+                                    </label>
                                 </div>
                             </div>
-                            <div class="col-xl-7 col-lg-12 col-md-8 mt-md-0 mt-4">
-                                <div class="form" style="width:100%;">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="fullName">Name</label>
-                                                <input v-validate="'required'" type="text" class="form-control" name="name" v-model="profile.name" id="fullName" placeholder="Write your name...">
-                                                <span class="text-danger" style="font-size: 12px;" v-show="errors.has('name')">* @{{ errors.first('name') }}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="phone">Email</label>
-                                        <input type="text" class="form-control" name="emal" v-model="profile.email" id="email" placeholder="Write your email...">
-                                        <span class="text-danger" style="font-size: 12px;" v-show="errors.has('emal')">* @{{ errors.first('emal') }}</span>
-                                    </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">Leave a comment:</label>
+                                    <textarea v-validate="'required'" v-model="review.comment" class="form-control rounded-0" name="comments" cols="30" rows="5" placeholder="{{__('Type your comment...')}}"></textarea>
+                                    <span class="text-danger" style="font-size: 12px;" v-show="errors.has('comments')">* @{{ errors.first('comments') }}</span>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group text-right">
+                                    <button @click="validate(SaveReview)" class="btn btn-primary rounded-0 text-uppercase font-weight-bold">Save Review</button>
                                 </div>
                             </div>
                         </div>

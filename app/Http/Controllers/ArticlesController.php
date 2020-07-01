@@ -144,6 +144,10 @@ class ArticlesController extends Controller
         return view('admin.articles.review_article', compact('article'));
     }
 
+    public function StoreReview(Request $request){
+        return $request;
+    }
+
 
     /******************* ATTACHMENTS ******************/
     

@@ -28,14 +28,12 @@
                 url : '',              
             },
             spinner : null,
-            // lang_check : '',
             
         },
         mounted: function(){
 
             this.initSummernote();
             this.initDropzone();
-            // $('.mdb-select').materialSelect();
             
             $( "#language-switch" ).change(function() {
                 if(lang == 'es'){
@@ -45,9 +43,6 @@
                 }
             });
 
-            // this.$nextTick(function(){
-            //     $('.selectpicker').selectpicker();
-            // });
 
             this.article.attach_reference = this.randomString() + new Date().getTime();
             setTimeout(function(){
@@ -60,9 +55,6 @@
             
         },
         watch : {
-            // 'article.category': function(val){
-            //     console.log(val);
-            // },
             
         },
         methods: {

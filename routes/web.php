@@ -104,6 +104,11 @@ Route::group(['middleware' => ['auth']], function(){
                 Route::post('/storePicture', 'ArticlesController@StorePicture');
             });
 
+            Route::group(['prefix' => 'reviews'], function(){
+                Route::post('/StoreReview', 'ArticlesController@StoreReview');
+            });
+    
+
         });
 
         Route::group(['prefix' => 'collaborators'], function(){
