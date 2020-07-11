@@ -7,66 +7,47 @@ use App\Article;
 use App\Collaborator;
 use App\Team;
 use App\Serie;
+use App\User;
 use App;
 
 class MainController extends Controller
 {
     public function index()
     {
+        // $checkers_count = intval(round(User::where('filter', 1)->count() / 2));
+        // $slider_post = Article::with('categories', 'author')->orderBy('id', 'desc')->wherehas('reviews', function($review){
+        //     $review->where('desicion', 'Approved');
+        // }, '>=', $checkers_count)->take(4)->get();
         $slider_post = Article::with('categories', 'author')->orderBy('id', 'desc')->take(4)->get();
-        // dd($slider_post);
         return view('index', compact('slider_post'));
     }
 
     public function single_article($url)
     {
-        // dd($url);
-        // $article = Article::with(['categories' , 'tags' , 'series', 'author'])->where("url_es", $url)->first();
-        // dd($article);
-        if(App::getLocale() == 'es'){
-            $article = Article::with(['categories' => function($category) use ($url){
-                if(App::getLocale() == 'es'){
-                    $category->with(['articles' => function($article) use ($url){
-                        $article->where('url_es', '!=', $url)->get();
-                    }])->take(6);
-                }else{
-                    $category->with(['articles' => function($article) use ($url){
-                        $article->where('url_en', '!=', $url)->get();
-                    }])->take(6);
-                }
-            }, 'tags' => function($tag){
-                $tag->with('articles')->get();
-            }, 'series', 'author'])->where('url_es', $url)->first();
-            $featured_post = Article::with('categories')->orderBy('id', 'desc')->where('url_es', '!=', $url)->first();
-        }else{
-            $article = Article::with(['categories' => function($category) use ($url){
-                if(App::getLocale() == 'es'){
-                    $category->with(['articles' => function($article) use ($url){
-                        $article->where('url_es', '!=', $url)->get();
-                    }])->take(6);
-                }else{
-                    $category->with(['articles' => function($article) use ($url){
-                        $article->where('url_en', '!=', $url)->get();
-                    }])->take(6);
-                }
-            }, 'tags' => function($tag){
-                $tag->with('articles')->get();
-            }, 'series', 'author'])->where('url_en', $url)->first();
-            $featured_post = Article::with('categories')->orderBy('id', 'desc')->where('url_en', '!=', $url)->first();
-        }
+        $checkers_count = intval(round(User::where('filter', 1)->count() / 2));
+        $article = Article::with(['categories', 'tags' => function($tag) use ($checkers_count){
+            $tag->with(['articles' => function($article) use ($checkers_count){
+                $article->wherehas('reviews', function($review) use ($checkers_count){
+                    $review->where('desicion', 'Approved');
+                }, '>=', $checkers_count)->get();
+            }])->get();
+        }, 'series', 'author' => function($author) use ($url){
+            $author->with(['articles' => function($article) use ($url){
+                $article->inRandomOrder()->where('url_es', '!=', $url)->where('url_en', '!=', $url)->take(6);
+            }])->get();
+        }])->where('url_es', $url)->orwhere('url_en', $url)->first();
+
+        $featured_post = Article::with('categories')->orderBy('id', 'desc')->where('url_es', '!=', $url)->wherehas('reviews', function($review){
+            $review->where('desicion', 'Approved');
+        }, '>=', $checkers_count)->first();
 
         $others_posts = [];
-        // dd($article);
         foreach($article->tags as $tag){
             foreach($tag->articles as $current_article){
                 array_push($others_posts, $current_article->id);
             }
         }
-        if(App::getLocale() == 'es'){
-            $others_posts = Article::with('categories')->where('url_es', '!=', $url)->where('id', '!=', $featured_post->id)->find($others_posts)->take(5);
-        }else{
-            $others_posts = Article::with('categories')->where('url_en', '!=', $url)->where('id', '!=', $featured_post->id)->find($others_posts)->take(5);
-        }
+        $others_posts = Article::with('categories')->where('author_id', '!=', $article->author_id)->where('id', '!=', $featured_post->id)->find($others_posts)->take(5);
         
         return view('single_article', compact('article', 'featured_post', 'others_posts'));
     }

@@ -33,4 +33,8 @@ class Article extends Model
     {
         return $this->belongsTo('App\Collaborator', 'author_id', 'id');   
     }
+
+    public function reviews(){
+        return $this->hasMany('App\ReviewArticle', 'article_id', 'id');   
+    }
 }

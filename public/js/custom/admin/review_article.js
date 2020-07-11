@@ -11,7 +11,10 @@
             }
         },
         mounted: function(){
-
+            if(article.reviews.length > 0){
+                this.review.desicion = article.reviews[0].desicion;
+                this.review.comment = article.reviews[0].comment;
+            }
         },
         computed: {
             
@@ -37,7 +40,29 @@
                         text: "¡La respuesta ha sido guardada!",
                         icon: "success",
                     }).then(function(){
-                        // window.location.reload();
+                        window.location.reload();
+                    });
+                }).catch(function(error){
+                    $("main").LoadingOverlay("hide");
+                    $.toast({
+                        heading: 'Error',
+                        text: 'Ha ocurrido un error.',
+                        showHideTransition: 'fade',
+                        icon: 'error',
+                        position : 'top-right'
+                    })
+                    console.log(error);
+                });
+            },
+            UpdateReview: function(){
+                $(".review_area").LoadingOverlay("show");
+                axios.post(homepath + '/admin/articles/reviews/UpdateReview', {article_id : this.article.id, review : this.review}).then(function(response){
+                    $(".review_area").LoadingOverlay("hide");
+                    swal({
+                        text: "¡La respuesta ha sido actualizada!",
+                        icon: "success",
+                    }).then(function(){
+                        window.location.reload();
                     });
                 }).catch(function(error){
                     $("main").LoadingOverlay("hide");

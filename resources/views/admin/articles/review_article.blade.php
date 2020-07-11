@@ -76,27 +76,28 @@
                 <div class="user-profile layout-spacing">
                     <div class="widget-content widget-content-area review_area">
                         <div class="border-bottom text-light mb-2 pb-2">
-                            <label for="">Choose your desicion:</label>
+                            <label for="">Choose your answer:</label>
                             <div class="d-flex">
                                 <div class="n-chk">
                                     <label class="new-control new-radio new-radio-text radio-success">
-                                      <input type="radio" class="new-control-input" v-model="review.desicion" value="1" name="desicion-input">
+                                      <input v-validate="'required'" type="radio" class="new-control-input" v-model="review.desicion" value="Approved" name="answer">
                                       <span class="new-control-indicator"></span><span class="new-radio-content text-white">Approved</span>
                                     </label>
                                 </div>
                                 <div class="n-chk">
                                     <label class="new-control new-radio new-radio-text radio-warning">
-                                      <input type="radio" class="new-control-input" v-model="review.desicion" value="2" name="desicion-input">
+                                      <input v-validate="'required'" type="radio" class="new-control-input" v-model="review.desicion" value="Revision" name="answer">
                                       <span class="new-control-indicator"></span><span class="new-radio-content text-white">Revision</span>
                                     </label>
                                 </div>
                                 <div class="n-chk">
                                     <label class="new-control new-radio new-radio-text radio-danger">
-                                      <input type="radio" class="new-control-input" v-model="review.desicion" value="3" name="desicion-input">
+                                      <input v-validate="'required'" type="radio" class="new-control-input" v-model="review.desicion" value="Declined" name="answer">
                                       <span class="new-control-indicator"></span><span class="new-radio-content text-white">Declined</span>
                                     </label>
                                 </div>
                             </div>
+                            <span class="text-danger" style="font-size: 12px;" v-show="errors.has('answer')">* @{{ errors.first('answer') }}</span>
                         </div>
                         <div class="row">
                             <div class="col-md-12">
@@ -108,7 +109,8 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group text-right">
-                                    <button @click="validate(SaveReview)" class="btn btn-primary rounded-0 text-uppercase font-weight-bold">Save Review</button>
+                                    <button v-if="article.reviews.length == 0" @click="validate(SaveReview)" class="btn btn-primary rounded-0 text-uppercase font-weight-bold">Save Review</button>
+                                    <button v-else @click="validate(UpdateReview)" class="btn btn-primary rounded-0 text-uppercase font-weight-bold">Update Review</button>
                                 </div>
                             </div>
                         </div>

@@ -18,22 +18,22 @@ $(document).ready(function(){
         },
         mounted: function(){
             var _this = this;
-            this.initSummernote();
+            // this.initSummernote();
 
         },
         methods: {
-            initSummernote: function(){
-                var _this = this;
-                this.summernote = $('#summernote').summernote({
-                   airMode: true,
-                });
-                if(lang == 'es'){
-                   $('#summernote').summernote('code', this.article.full_content_es );
-                }else{
-                   $('#summernote').summernote('code', this.article.full_content_en );
-                }
-                $('#summernote').summernote('disable')
-             },
+            // initSummernote: function(){
+            //     var _this = this;
+            //     this.summernote = $('#summernote').summernote({
+            //        airMode: true,
+            //     });
+            //     if(lang == 'es'){
+            //        $('#summernote').summernote('code', this.article.full_content_es );
+            //     }else{
+            //        $('#summernote').summernote('code', this.article.full_content_en );
+            //     }
+            //     $('#summernote').summernote('disable')
+            // },
             validate: function(callback){
                 var _this = this;
                 this.$validator.validateAll().then(function(result){

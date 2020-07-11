@@ -25,14 +25,27 @@
                     <div class="widget-heading mb-3 border-bottom pb-2">
                         <div class="d-flex justify-content-between">
                             <div>
+                                @if (App::getLocale() == 'es')
+                                    <a :href="homepath + '/articulo/' + article.url_es">
+                                        <span class="btn badge badge-primary">
+                                            <i data-feather="eye"></i>
+                                        </span>
+                                    </a>
+                                @else
+                                    <a :href="homepath + '/article/' + article.url_en">
+                                        <span class="btn badge badge-primary">
+                                            <i data-feather="eye"></i>
+                                        </span>
+                                    </a>
+                                @endif
                                 <a :href="homepath + '/admin/articles/edit/' + article.id">
                                     <span class="btn badge badge-warning">
                                         <i data-feather="edit-2"></i>
                                     </span>
                                 </a>
-                                <a :href="homepath + '/articulo/' + article.url_es">
-                                    <span class="btn badge badge-primary">
-                                        <i data-feather="eye"></i>
+                                <a :href="homepath + '/admin/articles/review/' + article.id">
+                                    <span class="btn badge badge-info">
+                                        <i data-feather="check-circle"></i>
                                     </span>
                                 </a>
                             </div>

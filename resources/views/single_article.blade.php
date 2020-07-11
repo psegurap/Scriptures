@@ -58,7 +58,12 @@
                                             </div>
                                         </div>
                                         <div class="post-body post-content px-1">
-                                            <textarea id="summernote" data-toolbar="slim"></textarea>
+                                            @if (App::getLocale() == 'es')
+                                                <div v-html="article.full_content_es"></div>
+                                            @else
+                                                <div v-html="article.full_content_en"></div>
+                                            @endif
+                                            {{-- <textarea id="summernote" data-toolbar="slim"></textarea> --}}
                                         </div>
                                         <div class="post-footer">
                                             <div class="row justify-content-center">
@@ -120,35 +125,35 @@
                                                 </div>
                                             </div>
                                         
-                                            <div class="fbt-rel-post-wrapper mb-5">
+                                            <div class="fbt-rel-post-wrapper mb-5" v-show="article.author.articles.length > 0">
                                                 <div class="title-wrap fbt-sep-title">
-                                                    <h4 class="title title-heading-left">Related Articles</h4>
+                                                    <h4 class="title title-heading-left">More from @{{article.author.name}}</h4>
                                                     <div class="title-sep-container">
                                                         <div class="title-sep sep-double"></div>
                                                     </div>
                                                 </div>
-                                                <div id="related-posts" v-for="category in article.categories">
+                                                <div id="related-posts">
                                                     <div class="row px-2">
-                                                        <div v-for="article_category in category.articles" class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4 rp-item px-2">
+                                                        <div v-for="author_article in article.author.articles" class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4 rp-item px-2">
                                                             <div class="fbt-post-thumbnail">
                                                                 @if (App::getLocale() == 'es')
-                                                                    <a :href="homepath + '/articulo/' + article_category.url_es">
-                                                                        <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + article_category.attach_reference + '/' + article_category.img_thumbnail"
-                                                                        :src="homepath + '/images/articles/' + article_category.attach_reference + '/' + article_category.img_thumbnail">
+                                                                    <a :href="homepath + '/articulo/' + author_article.url_es">
+                                                                        <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + author_article.attach_reference + '/' + author_article.img_thumbnail"
+                                                                        :src="homepath + '/images/articles/' + author_article.attach_reference + '/' + author_article.img_thumbnail">
                                                                     </a>
                                                                 @else
-                                                                    <a :href="homepath + '/article/' + article_category.url_en">
-                                                                        <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + article_category.attach_reference + '/' + article_category.img_thumbnail"
-                                                                        :src="homepath + '/images/articles/' + article_category.attach_reference + '/' + article_category.img_thumbnail">
+                                                                    <a :href="homepath + '/article/' + author_article.url_en">
+                                                                        <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + author_article.attach_reference + '/' + author_article.img_thumbnail"
+                                                                        :src="homepath + '/images/articles/' + author_article.attach_reference + '/' + author_article.img_thumbnail">
                                                                     </a>
                                                                 @endif
                                                             </div>
                                                             <div class="fbt-post-caption text-center mt-2 px-2">
                                                                 <h5>
                                                                     @if (App::getLocale() == 'es')
-                                                                        <a :href="homepath + '/articulo/' + article_category.url_es">@{{article_category.title_es}}</a>
+                                                                        <a :href="homepath + '/articulo/' + author_article.url_es">@{{author_article.title_es}}</a>
                                                                     @else
-                                                                        <a :href="homepath + '/article/' + article_category.url_en">@{{article_category.title_en}}</a>
+                                                                        <a :href="homepath + '/article/' + author_article.url_en">@{{author_article.title_en}}</a>
                                                                     @endif
                                                                 </h5>
                                                             </div>
@@ -399,9 +404,9 @@
                                 </div>
                             </div>
 
-                            <div class="widget fbt_list_posts mb-5">
+                            <div class="widget fbt_list_posts mb-5" v-show="others_posts.length > 0">
                                 <div class="fbt-sep-title">
-                                    <h4 class="title title-heading-left">Popular Posts</h4>
+                                    <h4 class="title title-heading-left">Related Posts</h4>
                                     <div class="title-sep-container">
                                         <div class="title-sep sep-double"></div>
                                     </div>

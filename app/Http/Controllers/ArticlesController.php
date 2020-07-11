@@ -4,18 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
+use Auth;
+use App\User;
 use App\Tag;
 use App\Serie;
 use App\Category;
 use App\Article;
 use App\Collaborator;
+use App\ReviewArticle;
 
 class ArticlesController extends Controller
 {
     public function articles()
     {
+        $checkers_count = intval(round(User::where('filter', 1)->count() / 2));
+        $approved_articles = Article::with('categories', 'tags', 'series', 'author')->wherehas('reviews', function($review){
+            $review->where('desicion', 'Approved');
+        }, '>=', $checkers_count)->orderBy('id', 'desc')->get();
         $articles = Article::with('categories', 'tags', 'series', 'author')->orderBy('id', 'desc')->get();
-        // dd($articles);
+        dd($approved_articles);
         return view('admin.articles.articles', compact('articles'));
     }
 
@@ -139,13 +146,33 @@ class ArticlesController extends Controller
     }
 
     public function review_article($id){
-        $article = Article::with('author', 'categories')->find($id);
+        $article = Article::with(['author', 'categories', 'reviews' => function($article){
+            $article->where('user_id', Auth::user()->id)->first();
+        }])->find($id);
         // dd($article);
         return view('admin.articles.review_article', compact('article'));
     }
 
     public function StoreReview(Request $request){
-        return $request;
+        $data = [
+            'article_id' => $request->article_id,
+            'desicion' => $request->review['desicion'],
+            'comment' => $request->review['comment'],
+            'user_id' => Auth::user()->id
+        ];
+        ReviewArticle::create($data);
+        $reviews = ReviewArticle::all();
+        return $reviews;
+    }
+
+    public function UpdateReview(Request $request){
+        $data = [
+            'desicion' => $request->review['desicion'],
+            'comment' => $request->review['comment'],
+        ];
+        ReviewArticle::where('article_id', $request->article_id)->where('user_id', Auth::user()->id)->update($data);
+        $reviews = ReviewArticle::all();
+        return $reviews;
     }
 
 

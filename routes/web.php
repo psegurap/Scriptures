@@ -106,6 +106,7 @@ Route::group(['middleware' => ['auth']], function(){
 
             Route::group(['prefix' => 'reviews'], function(){
                 Route::post('/StoreReview', 'ArticlesController@StoreReview');
+                Route::post('/UpdateReview', 'ArticlesController@UpdateReview');
             });
     
 
