@@ -105,8 +105,10 @@ Route::group(['middleware' => ['auth']], function(){
             });
 
             Route::group(['prefix' => 'reviews'], function(){
+                Route::get('/', 'ArticlesController@articles_reviews');
                 Route::post('/StoreReview', 'ArticlesController@StoreReview');
                 Route::post('/UpdateReview', 'ArticlesController@UpdateReview');
+                Route::post('/searchReviews', 'ArticlesController@searchReviews');
             });
     
 

@@ -22,7 +22,7 @@ class ArticlesController extends Controller
             $review->where('desicion', 'Approved');
         }, '>=', $checkers_count)->orderBy('id', 'desc')->get();
         $articles = Article::with('categories', 'tags', 'series', 'author')->orderBy('id', 'desc')->get();
-        dd($approved_articles);
+        // dd($approved_articles);
         return view('admin.articles.articles', compact('articles'));
     }
 
@@ -145,6 +145,15 @@ class ArticlesController extends Controller
         return $articles;
     }
 
+    public function articles_reviews(){
+        // date('m') -- date('Y')
+        $articles = Article::with(['author', 'reviews' => function($review){
+            $review->where('user_id', Auth::user()->id)->get();
+        }])->whereMonth('created_at', '06')->whereYear('created_at', '2020')->orderBy('id', 'desc')->get();
+        // dd($articles);
+        return view('admin.articles.articles_reviews', compact('articles'));
+    }
+
     public function review_article($id){
         $article = Article::with(['author', 'categories', 'reviews' => function($article){
             $article->where('user_id', Auth::user()->id)->first();
@@ -173,6 +182,15 @@ class ArticlesController extends Controller
         ReviewArticle::where('article_id', $request->article_id)->where('user_id', Auth::user()->id)->update($data);
         $reviews = ReviewArticle::all();
         return $reviews;
+    }
+
+    public function searchReviews(Request $request){
+        $date = explode('-', $request->date);
+        $articles = Article::with(['author', 'reviews' => function($review){
+            $review->where('user_id', Auth::user()->id)->get();
+        }])->whereMonth('created_at', $date[1])->whereYear('created_at', $date[0])->orderBy('id', 'desc')->get();
+        
+        return $articles;
     }
 
 

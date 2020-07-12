@@ -31,9 +31,11 @@ class MainController extends Controller
                     $review->where('desicion', 'Approved');
                 }, '>=', $checkers_count)->get();
             }])->get();
-        }, 'series', 'author' => function($author) use ($url){
-            $author->with(['articles' => function($article) use ($url){
-                $article->inRandomOrder()->where('url_es', '!=', $url)->where('url_en', '!=', $url)->take(6);
+        }, 'series', 'author' => function($author) use ($url, $checkers_count){
+            $author->with(['articles' => function($article) use ($url, $checkers_count){
+                $article->wherehas('reviews', function($review){
+                    $review->where('desicion', 'Approved');
+                }, '>=', $checkers_count)->inRandomOrder()->where('url_es', '!=', $url)->where('url_en', '!=', $url)->take(6);
             }])->get();
         }])->where('url_es', $url)->orwhere('url_en', $url)->first();
 
