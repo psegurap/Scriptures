@@ -8,6 +8,7 @@ use App\Collaborator;
 use App\Team;
 use App\Serie;
 use App\User;
+use App\Category;
 use App;
 
 class MainController extends Controller
@@ -19,6 +20,14 @@ class MainController extends Controller
         //     $review->where('desicion', 'Approved');
         // }, '>=', $checkers_count)->take(4)->get();
         $slider_post = Article::with('categories', 'author')->orderBy('id', 'desc')->take(4)->get();
+        $slider_ids = $slider_post->pluck('id')->toArray();
+        // dd($slider_ids);
+        $categories_articles = Category::with(['articles' => function($article) use($slider_ids){
+            $article->whereNotIn('article_id', $slider_ids)->get();
+        }])->whereHas('articles', function($article) use ($slider_ids){
+            $article->whereNotIn('article_id', $slider_ids);
+        })->get();
+        // dd($categories_articles);
         return view('index', compact('slider_post'));
     }
 

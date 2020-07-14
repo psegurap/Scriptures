@@ -146,10 +146,9 @@ class ArticlesController extends Controller
     }
 
     public function articles_reviews(){
-        // date('m') -- date('Y')
         $articles = Article::with(['author', 'reviews' => function($review){
             $review->where('user_id', Auth::user()->id)->get();
-        }])->whereMonth('created_at', '06')->whereYear('created_at', '2020')->orderBy('id', 'desc')->get();
+        }])->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('id', 'desc')->get();
         // dd($articles);
         return view('admin.articles.articles_reviews', compact('articles'));
     }
@@ -189,7 +188,7 @@ class ArticlesController extends Controller
         $articles = Article::with(['author', 'reviews' => function($review){
             $review->where('user_id', Auth::user()->id)->get();
         }])->whereMonth('created_at', $date[1])->whereYear('created_at', $date[0])->orderBy('id', 'desc')->get();
-        
+
         return $articles;
     }
 

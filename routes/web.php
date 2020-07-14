@@ -63,6 +63,11 @@ Route::group(['middleware' => ['auth']], function(){
                     Route::post('/StoreProfilePicture', 'AdminMainController@StoreProfilePicture');
                 });
             });
+
+            Route::group(['prefix' => 'password'], function(){
+                Route::get('change', 'Auth\ChangePasswordController@index');
+                Route::post('change', 'Auth\ChangePasswordController@store')->name('change.password');
+            });
         });
 
 
@@ -141,6 +146,7 @@ Route::group(['middleware' => ['auth']], function(){
 
         });
 
+        
 
     });
 

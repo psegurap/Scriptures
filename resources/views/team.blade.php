@@ -13,8 +13,7 @@
             <div class="fbt-gallery mb-5">
                 <div class="fbt-elastic-container fbt-gallery-1 px-xl-5">
                     <div class="row px-2">
-                        <div v-for="member in team" class="col-lg-3 col-md-6 mb-5">
-        
+                        <div v-for="member in team" class="col-lg-3 col-md-4 col-sm-6 col-12 mb-5">
                             <div class="post-item">
                                 <div class="">
                                     <img style="border-radius: 100%; width: 100%;" alt="" class="lazyloaded" :data-src="homepath + '/images/team/' + member.attach_reference + '/' + member.img_thumbnail"
@@ -40,6 +39,13 @@
                                         <h3 class="post-title">
                                             @{{member.name}}
                                         </h3>
+                                        <div class="mt-2">
+                                            <span v-if="member.facebook != null && member.facebook != ''" class="mx-2"><a :href="'//' + member.facebook" target="_blank"><i class="fa fa-facebook fa-lg" aria-hidden="true"></a></i></span>
+                                            <span v-if="member.twitter != null && member.twitter != ''" class="mx-2"><a :href="'//' + member.twitter" target="_blank"><i class="fa fa-twitter fa-lg" aria-hidden="true"></a></i></span>
+                                            <span v-if="member.instagram != null && member.instagram != ''" class="mx-2"><a :href="'//' + member.instagram" target="_blank"><i class="fa fa-instagram fa-lg" aria-hidden="true"></a></i></span>
+                                            <span v-if="member.youtube != null && member.youtube != ''" class="mx-2"><a :href="'//' + member.youtube" target="_blank"><i class="fa fa-youtube fa-lg" aria-hidden="true"></a></i></span>
+                                            <span v-if="member.website != null && member.website != ''" class="mx-2"><a :href="'//' + member.website" target="_blank"><i class="fa fa-link fa-lg" aria-hidden="true"></a></i></span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -50,35 +56,7 @@
             </div><!-- .fbt-gallery -->
         </div><!-- .outer-wrapper -->
         
-        <div class="fbt-newsletter-area">
-            <div class="fbt-bottom-section clearfix" id="fbt_bottom_section">
         
-                <div class="widget FollowByEmail">
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="follow-by-email-inner subscriber-form col-lg-12">
-                                <div class="card-- py-5">
-                                    <div class="row justify-content-center align-items-center">
-                                        <div class="col-lg-6">
-                                            <h2 class="title mb-4 mb-lg-0 text-center text-lg-left">
-                                                Subscribe to our Newsletter!!!
-                                            </h2>
-                                        </div>
-                                        <div class="ml-lg-auto col-lg-6">
-                                            <form action="#" class="fbt-email-form" method="post">
-                                                <input autocomplete="off" class="follow-by-email-address" name="email" placeholder="Enter your Email" type="email">
-                                                <input class="follow-by-email-submit" type="submit" value="Subscribe">
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- .FollowByEmail -->
-        
-            </div>
-        </div>
     </main>
 @endsection
 @section('scripts')

@@ -269,94 +269,101 @@
                             </div>
                         </a>
                     </li>
-                    <li class="menu">
-                        <a href="#articles" data-active="false" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <i data-feather="book"></i>
-                                <span>{{__('Articles')}}</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </div>
-                        </a>
-                        <ul class="collapse submenu list-unstyled" id="articles" data-parent="#accordionExample">
-                            <li>
-                                <a href="/admin/articles"> {{__('All Articles')}} </a>
-                            </li>
-                            <li class="">
-                                <a href="/admin/articles/new"> {{__('New Article')}} </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="menu">
-                        <a href="/admin/articles/reviews" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <i data-feather="check-circle"></i>
-                                <span>{{__('Articles Reviews')}}</span>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="menu">
-                        <a href="#collaborators" data-active="false" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <i data-feather="users"></i>
-                                <span>{{__('Collaborators')}}</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </div>
-                        </a>
-                        <ul class="collapse submenu list-unstyled" id="collaborators" data-parent="#accordionExample">
-                            <li>
-                                <a href="/admin/collaborators"> {{__('All Colaborators')}} </a>
-                            </li>
-                            <li class="">
-                                <a href="/admin/collaborators/new"> {{__('New Collaborator')}} </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="menu">
-                        <a href="#team" data-active="false" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <i data-feather="users"></i>
-                                <span>{{__('Team')}}</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </div>
-                        </a>
-                        <ul class="collapse submenu list-unstyled" id="team" data-parent="#accordionExample">
-                            <li>
-                                <a href="/admin/team"> {{__('All Members')}} </a>
-                            </li>
-                            <li class="">
-                                <a href="/admin/team/new"> {{__('New Member')}} </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="menu">
-                        <a href="#maintenance" data-active="false" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                            <div class="">
-                                <i data-feather="sliders"></i>
-                                <span>{{__('Maintenance')}}</span>
-                            </div>
-                            <div>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
-                            </div>
-                        </a>
-                        <ul class="collapse submenu list-unstyled" id="maintenance" data-parent="#accordionExample">
-                            <li class="">
-                                <a href="/admin/maintenance/categories"> {{__('Categories')}} </a>
-                            </li>
-                            <li>
-                                <a href="/admin/maintenance/series"> {{__('Series')}} </a>
-                            </li>
-                            <li>
-                                <a href="/admin/maintenance/tags"> {{__('Tags')}} </a>
-                            </li>
-                        </ul>
-                    </li>
-                    @if (Auth::user()->developer == 1 || Auth::user()->admin == 1)
+                    @if (Auth::user()->admin == 1 || Auth::user()->developer == 1)
+                        <li class="menu">
+                            <a href="#articles" data-active="false" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <div class="">
+                                    <i data-feather="book"></i>
+                                    <span>{{__('Articles')}}</span>
+                                </div>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </div>
+                            </a>
+                            <ul class="collapse submenu list-unstyled" id="articles" data-parent="#accordionExample">
+                                <li>
+                                    <a href="/admin/articles"> {{__('All Articles')}} </a>
+                                </li>
+                                <li class="">
+                                    <a href="/admin/articles/new"> {{__('New Article')}} </a>
+                                </li>
+                                <li class="">
+                                    <a href="/admin/articles/reviews"> {{__('Articles Reviews')}} </a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+                    @if (Auth::user()->admin != 1 && Auth::user()->developer != 1 && Auth::user()->filter == 1)
+                        <li class="menu">
+                            <a href="/admin/articles/reviews" aria-expanded="false" class="dropdown-toggle">
+                                <div class="">
+                                    <i data-feather="check-circle"></i>
+                                    <span>{{__('Articles Reviews')}}</span>
+                                </div>
+                            </a>
+                        </li>
+                    @endif
+                    @if (Auth::user()->admin == 1 || Auth::user()->developer == 1)
+                        <li class="menu">
+                            <a href="#collaborators" data-active="false" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <div class="">
+                                    <i data-feather="users"></i>
+                                    <span>{{__('Collaborators')}}</span>
+                                </div>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </div>
+                            </a>
+                            <ul class="collapse submenu list-unstyled" id="collaborators" data-parent="#accordionExample">
+                                <li>
+                                    <a href="/admin/collaborators"> {{__('All Colaborators')}} </a>
+                                </li>
+                                <li class="">
+                                    <a href="/admin/collaborators/new"> {{__('New Collaborator')}} </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu">
+                            <a href="#team" data-active="false" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <div class="">
+                                    <i data-feather="users"></i>
+                                    <span>{{__('Team')}}</span>
+                                </div>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </div>
+                            </a>
+                            <ul class="collapse submenu list-unstyled" id="team" data-parent="#accordionExample">
+                                <li>
+                                    <a href="/admin/team"> {{__('All Members')}} </a>
+                                </li>
+                                <li class="">
+                                    <a href="/admin/team/new"> {{__('New Member')}} </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu">
+                            <a href="#maintenance" data-active="false" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                                <div class="">
+                                    <i data-feather="sliders"></i>
+                                    <span>{{__('Maintenance')}}</span>
+                                </div>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                                </div>
+                            </a>
+                            <ul class="collapse submenu list-unstyled" id="maintenance" data-parent="#accordionExample">
+                                <li class="">
+                                    <a href="/admin/maintenance/categories"> {{__('Categories')}} </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/maintenance/series"> {{__('Series')}} </a>
+                                </li>
+                                <li>
+                                    <a href="/admin/maintenance/tags"> {{__('Tags')}} </a>
+                                </li>
+                            </ul>
+                        </li>
                         <li class="menu">
                             <a href="/admin/users" aria-expanded="false" class="dropdown-toggle">
                                 <div class="">
@@ -366,6 +373,7 @@
                             </a>
                         </li>
                     @endif
+
                 </ul>
                 <!-- <div class="shadow-bottom"></div> -->
                 

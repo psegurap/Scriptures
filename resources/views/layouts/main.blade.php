@@ -104,7 +104,7 @@
                             <div class="dropdown-menu">
                                 @if (App::getLocale() == 'es')
                                     <a href="/profesion-de-fe" class="dropdown-item">{{__('Profession Of Faith')}}</a>
-                                    <a href="#" class="dropdown-item">{{__('Our History')}}</a>
+                                    <a href="#" class="dropdown-item">{{__('Our Story')}}</a>
                                     <a href="/equipo" class="dropdown-item">{{__('Our Team')}}</a>
                                     <a href="/colaboradores" class="dropdown-item">{{__('Collaborators')}}</a>
                                     <a href="#" class="dropdown-item">{{__('Contact')}}</a>
@@ -127,6 +127,35 @@
 
         @yield('content')
 
+        <div class="fbt-newsletter-area">
+            <div class="fbt-bottom-section clearfix" id="fbt_bottom_section">
+        
+                <div class="widget FollowByEmail">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="follow-by-email-inner subscriber-form col-lg-12">
+                                <div class="card-- py-5">
+                                    <div class="row justify-content-center align-items-center">
+                                        <div class="col-lg-6">
+                                            <h2 class="title mb-4 mb-lg-0 text-center text-lg-left">
+                                                Subscribe to our Newsletter!!!
+                                            </h2>
+                                        </div>
+                                        <div class="ml-lg-auto col-lg-6">
+                                            <form action="#" class="fbt-email-form" method="post">
+                                                <input autocomplete="off" class="follow-by-email-address" name="email" placeholder="Enter your Email" type="email">
+                                                <input class="follow-by-email-submit" type="submit" value="Subscribe">
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .FollowByEmail -->
+        
+            </div>
+        </div>
         <div class="footer-dark footer-black pt-5" id="footer-content">
             <div class="container pb-4">
                 <div class="row clearfix">
