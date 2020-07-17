@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\MailController;
 use App\Article;
 use App\Collaborator;
 use App\Team;
 use App\Serie;
 use App\User;
 use App\Category;
+use App\Subscriber;
 use App;
 
 class MainController extends Controller
@@ -90,6 +92,25 @@ class MainController extends Controller
         $serie = Serie::with('articles')->find(12);
         // dd($serie);
         return view('profession', compact('serie'));
+    }
+
+    public function contact(){
+        return view('contact');
+    }
+
+    public function StoreSubscriber(Request $request){
+        $exist = Subscriber::where('email', $request->email)->get();
+        if(count($exist) == 0){
+            $subscriber_info = [
+                'email' => $request->email,
+                'language' => App::getLocale(),
+            ];
+            $susbcriber = Subscriber::create($subscriber_info);
+            MailController::new_subscriber_notification($susbcriber->email);
+            return $susbcriber;
+        }else{
+            return response()->json("Exist", 406);
+        }
     }
     
 }

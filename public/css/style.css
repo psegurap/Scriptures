@@ -2871,7 +2871,7 @@ a.pinterest.fbt-pinterest {
   color: #393939;
 }
 
-.subscriber-form input[type="submit"] {
+.subscriber-form input[type="button"] {
   position: absolute;
   right: 10px;
   top: 10px;

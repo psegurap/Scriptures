@@ -33,7 +33,6 @@
                     </div>
                 </div>
             </div>
-
             
             <div class="account-content">
                 <div class="scrollspy-example" data-spy="scroll" data-target="#account-settings-scroll" data-offset="-100">

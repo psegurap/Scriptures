@@ -362,6 +362,9 @@
                                 <li>
                                     <a href="/admin/maintenance/tags"> {{__('Tags')}} </a>
                                 </li>
+                                <li>
+                                    <a href="/admin/maintenance/subscribers"> {{__('Subscribers')}} </a>
+                                </li>
                             </ul>
                         </li>
                         <li class="menu">

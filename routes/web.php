@@ -37,12 +37,22 @@ Route::get('/colaboradores', 'MainController@collaborators');
 Route::get('/team', 'MainController@team');
 Route::get('/equipo', 'MainController@team');
 
-
 Route::get('/collaborator/{name}', 'MainController@single_collaborator');
 Route::get('/colaborador/{name}', 'MainController@single_collaborator');
 
 Route::get('/profession-of-faith', 'MainController@profession');
 Route::get('/profesion-de-fe', 'MainController@profession');
+
+Route::get('/contact', 'MainController@contact');
+Route::get('/contacto', 'MainController@contact');
+Route::post('/NewMessage', 'MailController@ContactMessage');
+
+Route::post('/StoreSubscriber', 'MainController@StoreSubscriber');
+
+Route::get('/subscriber', function(){
+    return view('mails.new_subscriber_es');
+});
+
 
 
 
@@ -93,6 +103,13 @@ Route::group(['middleware' => ['auth']], function(){
                 Route::post('/store', 'Maintenance\SeriesController@store');
                 Route::post('/update/{id}', 'Maintenance\SeriesController@update');
                 Route::post('/delete/{id}', 'Maintenance\SeriesController@delete');
+            });
+
+            Route::group(['prefix' => 'subscribers'], function(){
+                Route::get('/', 'Maintenance\SubscriberController@all');
+                // Route::post('/store', 'Maintenance\CategoriesController@store');
+                // Route::post('/update/{id}', 'Maintenance\CategoriesController@update');
+                // Route::post('/delete/{id}', 'Maintenance\CategoriesController@delete');
             });
         });
 
