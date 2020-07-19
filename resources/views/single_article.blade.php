@@ -42,9 +42,9 @@
                                                     @endif
                                                 </h1>
                                                 <div class="item-post-meta mt-3">
-                                                    <div class="post-meta mb-3">
+                                                    <div class="post-meta mb-3 merriweather">
                                                         <span v-for="category in article.categories" class="post-author">
-                                                            <a href="" target="_blank" title="fbtemplates">
+                                                            <a href="" target="_blank" class="text-capitalize" title="fbtemplates">
                                                                 @if (App::getLocale() == 'es')
                                                                     @{{category.category_es}}
                                                                 @else
@@ -52,7 +52,7 @@
                                                                 @endif
                                                             </a>
                                                         </span>
-                                                        <span class="post-date published text-uppercase">@{{moment(article.created_at).format('LL')}}</span>
+                                                        <span class="post-date published">@{{moment(article.created_at).format('LL')}}</span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -70,16 +70,20 @@
                                                 <div class="col-lg-12">
                                                     <div class="row align-items-center my-4">
                                                         <div class="col-xl-7 text-center text-xl-left mb-3 mb-xl-0">
-                                                            <div class="post-labels pl-xl-5">
-                                                                <span class="mr-2">Categories:</span>
+                                                            <div class="post-labels pl-xl-5 merriweather">
+                                                                <span class="mr-2">{{__('Tags')}}:</span>
                                                                 <span class="label-head Label">
-                                                                    <a class="label-link badge badge-secondary py-1 px-3" href="#">Lifestyle</a>
-                                                                    <a class="label-link badge badge-secondary py-1 px-3" href="#">People</a>
-                                                                    <a class="label-link badge badge-secondary py-1 px-3" href="#">Slider</a>
+                                                                    <a v-for="tag in article.tags" class="label-link badge text-white py-1 px-3 mr-1 single-tag" href="#">
+                                                                        @if (App::getLocale() == 'es')
+                                                                            @{{tag.tag_es}}
+                                                                        @else
+                                                                            @{{tag.tag_en}}
+                                                                        @endif
+                                                                    </a>
                                                                 </span>
                                                             </div>
                                                         </div>
-                                                        <div class="col-xl-5 text-center text-xl-right">
+                                                        {{-- <div class="col-xl-5 text-center text-xl-right">
                                                             <div class="sharepost clearfix pr-xl-5">
                                                                 <div class="post-share clearfix">
                                                                     <ul>
@@ -91,33 +95,38 @@
                                                                     </ul>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div> --}}
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="fbt-item-post-pager">
                                                 <div class="card- mt-3 mb-5">
                                                     <div class="col-lg-12">
-                                                        <div class="post-pager row bg-secondary" style="background-color: rgb(205, 217, 228) !important;">
+                                                        <div class="post-pager row bg-secondary" style="background-color: rgba(0, 0, 0, 0.09) !important;">
                                                             <div class="previous col-lg-3 px-4 py-4 text-left">
                                                                 <img style="width: 100%; border-radius: 100%;" :src="homepath + '/images/collaborators/' + article.author.attach_reference + '/' + article.author.img_thumbnail" alt="">
                                                             </div>
                                                             <div class="next col-lg-9 py-4">
                                                                 @if (App::getLocale() == 'es')
-                                                                    <a class="fbt-older-link h5"  :href="homepath + '/colaborador/' + article.author.name">
+                                                                    <a class="fbt-older-link h4 author-name" :href="homepath + '/colaborador/' + article.author.name">
                                                                         <strong class="pr-3">@{{article.author.name}}</strong>
                                                                     </a>
                                                                 @else
-                                                                    <a class="fbt-older-link h5" style="color: black;" :href="homepath + '/collaborator/' + article.author.name">
+                                                                    <a class="fbt-older-link h4 author-name" :href="homepath + '/collaborator/' + article.author.name">
                                                                         <strong class="pr-3">@{{article.author.name}}</strong>
                                                                     </a>
                                                                 @endif
-                                                                <div class="fbt-np-title mt-2 pr-3" style="color: black;">
-                                                                    @if (App::getLocale() == 'es')
-                                                                        @{{article.author.info_es}}
-                                                                    @else
-                                                                        @{{article.author.info_en}}
-                                                                    @endif
+                                                                <div class="fbt-np-title mt-1 pr-3" style="color: black;">
+                                                                    <p class="roboto mb-0" style="font-size: 14px;">
+                                                                        @if (App::getLocale() == 'es')
+                                                                            @{{article.author.info_es}}
+                                                                        @else
+                                                                            @{{article.author.info_en}}
+                                                                        @endif
+                                                                    </p>
+                                                                </div>
+                                                                <div class="d-flex justify-content-end yanone" v-if="article.author.website != null && article.author.website != ''">
+                                                                    <a :href="'//' + article.author.website" class="font-weight-bold" target="_blank">@{{article.author.website}}</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -127,7 +136,7 @@
                                         
                                             <div class="fbt-rel-post-wrapper mb-5" v-show="article.author.articles.length > 0">
                                                 <div class="title-wrap fbt-sep-title">
-                                                    <h4 class="title title-heading-left">More from @{{article.author.name}}</h4>
+                                                    <h4 class="title title-heading-left">{{__('More from')}} @{{article.author.name}}</h4>
                                                     <div class="title-sep-container">
                                                         <div class="title-sep sep-double"></div>
                                                     </div>
@@ -361,7 +370,7 @@
                             </div>
                             <div class="widget FeaturedPost mb-5">
                                 <div class="fbt-sep-title">
-                                    <h4 class="title title-heading-left">Featured Post</h4>
+                                    <h4 class="title title-heading-left">{{__('Featured Post')}}</h4>
                                     <div class="title-sep-container">
                                         <div class="title-sep sep-double"></div>
                                     </div>
@@ -375,15 +384,11 @@
                                             </a>
                                         </div>
                                         <div class="fbt-title-section mt-3">
-                                            <div class="post-meta mb-2">
-                                                <span v-for="category in featured_post.categories" class="post-author">
-                                                        @if (App::getLocale() == 'es')
-                                                            @{{category.category_es}}
-                                                        @else
-                                                            @{{category.category_en}}
-                                                        @endif
+                                            <div class="post-meta mb-2 merriweather">
+                                                <span v-for="category in featured_post.categories" class="post-author text-capitalize">
+                                                    @{{featured_post.author.name}}
                                                 </span>
-                                                <span class="post-date published text-uppercase">@{{moment(featured_post.created_at).format('LL')}}</span>
+                                                <span class="post-date published">@{{moment(featured_post.created_at).format('LL')}}</span>
                                             </div>
                                             <h3 class="post-title">
                                                 @if (App::getLocale() == 'es')
@@ -392,7 +397,7 @@
                                                     <a :href="homepath + '/article/' + featured_post.url_en">@{{featured_post.title_en}}</a>
                                                 @endif
                                             </h3>
-                                            <p class="post-excerpt">
+                                            <p class="post-excerpt ">
                                                 @if (App::getLocale() == 'es')
                                                     @{{featured_post.short_description_es}}
                                                 @else
@@ -406,7 +411,7 @@
 
                             <div class="widget fbt_list_posts mb-5" v-show="others_posts.length > 0">
                                 <div class="fbt-sep-title">
-                                    <h4 class="title title-heading-left">Related Posts</h4>
+                                    <h4 class="title title-heading-left">{{__('Related Posts')}}</h4>
                                     <div class="title-sep-container">
                                         <div class="title-sep sep-double"></div>
                                     </div>
@@ -447,7 +452,7 @@
                             <div class="widget fbt-sticky-content sticky-top fbt-ad-block">
                                 <div class="fbt_ad text-center">
                                     <span class="fbt-ad-title">
-                                        Advertisement <span class="ad_block"></span>
+                                        {{__('Advertisement')}} <span class="ad_block"></span>
                                     </span>
                                     <div class="widget-content">
                                         <a href="#">

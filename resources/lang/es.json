@@ -1,3 +1,13 @@
 {
-    "Home" : "Inicio"
+    "Home" : "Inicio",
+    "About Us" : "Nosotros",
+    "Subscribe to our Newsletter!" : "¡Suscríbete a nuestros anuncios!",
+    "Enter your email..." : "Coloca tu correo...",
+    "Subscribe" : "Suscribir",
+    "Tags" : "Etiquetas",
+    "More from" : "Más de",
+    "Featured Post" : "Publicación Destacada",
+    "Related Posts" : "Relacionados",
+    "Advertisement" : "Publicidad",
+    "All Rights Reserved" : "Todos los Derechos Reservados"
 }

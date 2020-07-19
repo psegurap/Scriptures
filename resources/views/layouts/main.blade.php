@@ -8,7 +8,10 @@
 	<link rel="shortcut icon" href="{{asset('/images/icon.favicon')}}" type="image/x-icon">
     <!-- FONTS -->    
     <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:600,700%7CNunito:300,400" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300&display=swap" rel="stylesheet">
     <!-- FONTS -->    
     <link href="{{asset('/css/animate.min.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('/css/fonts.css')}}" rel="stylesheet" media="screen">
@@ -34,10 +37,10 @@
     <div id="page-wrapper" class="magazine-view feed-view">
 
         @if (Auth::check())
-        <div class="fbt-headline clearfix" id="headline">
+        {{-- <div class="fbt-headline clearfix" id="headline">
             <div class="container">
                 <div class="row align-items-center justify-content-between py-1 py-md-0">
-                    {{-- <div class="col-md-7 left-headline-content">
+                    <div class="col-md-7 left-headline-content">
                         <div class="fbt-left-headline" id="left-headline">
                             
                             <ul class="nav justify-content-center justify-content-md-start">
@@ -53,7 +56,7 @@
                             </ul>
 
                         </div>
-                    </div> --}}
+                    </div>
                     <div class="col-md-12 right-headline-content">
                         <div class="fbt-right-headline" id="right-headline">
                             
@@ -81,17 +84,17 @@
                     </div>
                 </div>
             </div>
-        </div><!-- .fbt-headline -->
+        </div><!-- .fbt-headline --> --}}
         @endif
 
         <nav class="navbar navbar-expand-xl navbar-fbt fbt-nav-skin fbt_sticky_nav m-0 py-2">
             <div class="container nav-mobile-px clearfix">
                 <div class="navbar-brand order-2 order-xl-1 m-auto">
-                    <a href="{{route('index')}}"><img alt="Nemesis" src="{{asset('/images/logo_black.png')}}"></a>
+                    <a href="{{route('index')}}"><img alt="AESP" src="{{asset('/images/logo_black.png')}}"></a>
                 </div>
                 <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler order-1 order-xl-2"
                     data-target="#navbar-menu" data-toggle="collapse" type="button">☰</button>
-                <div class="collapse navbar-collapse justify-content-end order-4 order-xl-3 clearfix oswald" id="navbar-menu">
+                <div class="collapse navbar-collapse justify-content-end order-4 order-xl-3 clearfix josefin" id="navbar-menu">
                     <ul class="navbar-nav clearfix d-flex">
                         <li class="nav-item">
                             <a href="{{route('index')}}" class="nav-link">{{__('Home')}}</a>
@@ -103,13 +106,13 @@
                             <a href="javascript:void(0)" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">{{__('About Us')}}</a>
                             <div class="dropdown-menu">
                                 @if (App::getLocale() == 'es')
-                                    <a href="/profesion-de-fe" class="dropdown-item">{{__('Profession Of Faith')}}</a>
-                                    <a href="#" class="dropdown-item">{{__('Our Story')}}</a>
-                                    <a href="/equipo" class="dropdown-item">{{__('Our Team')}}</a>
-                                    <a href="/colaboradores" class="dropdown-item">{{__('Collaborators')}}</a>
-                                    <a href="/contacto" class="dropdown-item">{{__('Contact')}}</a>
+                                    <a href="/profesion-de-fe" class="dropdown-item">{{__('Profesión de Fe')}}</a>
+                                    <a href="#" class="dropdown-item">{{__('Nuestra Historia')}}</a>
+                                    <a href="/equipo" class="dropdown-item">{{__('Equipo')}}</a>
+                                    <a href="/colaboradores" class="dropdown-item">{{__('Colaboradores')}}</a>
+                                    <a href="/contacto" class="dropdown-item">{{__('Contacto')}}</a>
                                 @else
-                                    <a href="/profession-of-faith" class="dropdown-item">{{__('Profession Of Faith')}}</a>
+                                    <a href="/profession-of-faith" class="dropdown-item">{{__('Profession of Faith')}}</a>
                                     <a href="#" class="dropdown-item">{{__('Our History')}}</a>
                                     <a href="/team" class="dropdown-item">{{__('Our Team')}}</a>
                                     <a href="/collaborators" class="dropdown-item">{{__('Collaborators')}}</a>
@@ -139,13 +142,13 @@
                                         <div class="row justify-content-center align-items-center">
                                             <div class="col-lg-6">
                                                 <h2 class="title mb-4 mb-lg-0 text-center text-lg-left">
-                                                    Subscribe to our Newsletter!!!
+                                                    {{__('Subscribe to our Newsletter!')}}
                                                 </h2>
                                             </div>
                                             <div class="ml-lg-auto col-lg-6">
                                                 <form class="fbt-email-form">
-                                                    <input v-model="email_address" v-validate="'required|email'" autocomplete="off" class="follow-by-email-address" name="email" placeholder="Enter your Email" type="email">
-                                                    <input class="follow-by-email-submit" @click="validate(StoreSubscriber)" type="button" value="Subscribe">
+                                                    <input v-model="email_address" v-validate="'required|email'" autocomplete="off" class="follow-by-email-address" name="email" placeholder="{{__('Enter your email...')}}" type="email">
+                                                    <input class="follow-by-email-submit" @click="validate(StoreSubscriber)" type="button" value="{{__('Subscribe')}}">
                                                 </form>
                                                 <span class="text-danger font-weight-bold" style="font-size: 12px;" v-show="errors.has('email')">* @{{ errors.first('email') }}</span>
                                             </div>
@@ -326,7 +329,7 @@
                             <div class="col-lg-6">
                                 <div class="copyright-section text-center text-lg-left">
                                     ©
-                                    <script>document.write(new Date().getFullYear());</script> Nemesis | All Rights Reserved
+                                    <script>document.write(new Date().getFullYear());</script> Anclados en Su Palabra | {{__('All Rights Reserved')}}
                                 </div>
                             </div>
                             <div class="col-lg-6">

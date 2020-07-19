@@ -211,7 +211,7 @@
             </div>
         </div><!-- .slider-container -->
         
-        <div class="outer-wrapper my-5" id="outer-wrapper">
+        {{-- <div class="outer-wrapper my-5" id="outer-wrapper">
         
             <div class="container fbt-elastic-container">
                 <div class="row justify-content-center">
@@ -1412,7 +1412,7 @@
                     </div><!-- #sidebar-wrapper -->
                 </div>
             </div>
-        </div><!-- .outer-wrapper -->
+        </div><!-- .outer-wrapper --> --}}
         
         
     </main>

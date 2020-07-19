@@ -50,7 +50,15 @@ class MainController extends Controller
             }])->get();
         }])->where('url_es', $url)->orwhere('url_en', $url)->first();
 
-        $featured_post = Article::with('categories')->orderBy('id', 'desc')->where('url_es', '!=', $url)->wherehas('reviews', function($review){
+        // $article = Article::with(['categories', 'tags' => function($tag) use ($checkers_count){
+        //     $tag->with(['articles'])->get();
+        // }, 'series', 'author' => function($author) use ($url, $checkers_count){
+        //     $author->with(['articles' => function($article) use ($url, $checkers_count){
+        //         $article->inRandomOrder()->where('url_es', '!=', $url)->where('url_en', '!=', $url)->take(6);
+        //     }])->get();
+        // }])->where('url_es', $url)->orwhere('url_en', $url)->first();
+
+        $featured_post = Article::with('categories', 'author')->orderBy('id', 'desc')->where('url_es', '!=', $url)->wherehas('reviews', function($review){
             $review->where('desicion', 'Approved');
         }, '>=', $checkers_count)->first();
 

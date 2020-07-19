@@ -200,7 +200,7 @@ body {
 }
 
 body {
-  background: #fff;
+  background: #f9f9f9;
   color: #333;
   font-size: 14px;
   font-family: "Nunito", sans-serif;
@@ -217,8 +217,13 @@ a .fa, a .fab, a .fad, a .fal, a .far, a .fas {
 }
 
 a:hover {
-  color: #47c3fb;
+  color: #0a171d;
   text-decoration: none;
+}
+
+.author-name:hover {
+  color: #000000;
+  text-decoration: underline;
 }
 
 p {
@@ -456,7 +461,7 @@ a:hover .fbt-bg-white {
 .navbar .nav-link {
   text-transform: uppercase;
   /* font-family: "Roboto", sans-serif; */
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 400;
   letter-spacing: 0.2px;
 }
@@ -467,7 +472,7 @@ a:hover .fbt-bg-white {
     padding-bottom: 30px;
   }
   .navbar .dropdown-menu {
-    border-top: 3px solid #47c3fb !important;
+    border-top: none;
     -webkit-animation: dropdown 0.2s ease forwards;
             animation: dropdown 0.2s ease forwards;
   }
@@ -481,7 +486,7 @@ a:hover .fbt-bg-white {
   content: "\f078";
   font-family: fontAwesome;
   border: 0;
-  font-size: 7px;
+  font-size: 12px;
   margin-left: 3px;
   font-weight: normal;
 }
@@ -499,13 +504,14 @@ a:hover .fbt-bg-white {
 .dropdown .dropdown-menu {
   -webkit-box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.06);
           box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.06);
-  background: #fff;
+  background: #ffffff00;
   border-radius: 0;
   overflow: hidden;
   margin: 0 0 0;
   padding: 0.4rem 0;
   border: 0;
   min-width: 11rem;
+  padding-bottom: 0px;
 }
 
 @media (max-width: 1199.98px) {
@@ -522,16 +528,18 @@ a:hover .fbt-bg-white {
   position: relative;
   padding: 0.45rem 1rem;
   /* font-family: "Roboto", sans-serif; */
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 400;
   color: #333;
   /* text-transform: uppercase; */
   letter-spacing: 0.2px;
+  background: white;
+  margin-top: 3px;
 }
 
 .dropdown .dropdown-menu .dropdown-item:hover,
 .dropdown .dropdown-menu .dropdown-item:focus {
-  background-color: rgba(0, 0, 0, 0.05) !important;
+  background-color: rgb(245, 245, 245) !important;
   color: #000;
 }
 
@@ -1828,7 +1836,7 @@ a:hover .fbt-bg-white {
 ===================================== */
 #toTop {
   border-radius: 2000px;
-  background-color: var(--primary);
+  background-color: #005296;
   bottom: 10px;
   color: #fff;
   display: none;
@@ -1845,7 +1853,7 @@ a:hover .fbt-bg-white {
 }
 
 #toTop:hover {
-  background: var(--warning);
+  background: #000d2b;
   color: #fff;
 }
 
@@ -2195,7 +2203,7 @@ a.pinterest.fbt-pinterest {
 
 #page-wrapper.magazine-view h5, #page-wrapper.magazine-view .h5 {
   font-family: "Barlow Semi Condensed", sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   line-height: 20px;
 }
 
@@ -2207,8 +2215,8 @@ a.pinterest.fbt-pinterest {
 
 .magazine-view .fbt-nav-skin,
 .magazine-view .fbt_sticky_nav.sticky__nav.scrolling_nav {
-  -webkit-box-shadow: 0 0 40px rgba(0, 0, 0, 0.25);
-          box-shadow: 0 0 40px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
 }
 
 @media (min-width: 1200px) {
@@ -3250,11 +3258,11 @@ a.pinterest.fbt-pinterest {
 }
 
 .fbt-newsletter-area .follow-by-email-submit {
-  background-color: #ff005b !important;
+  background-color: #0066ff !important;
 }
 
 .fbt-newsletter-area .follow-by-email-submit:hover {
-  background-color: #ff9900 !important;
+  background-color: #0089ff !important;
 }
 
 .fbt-newsletter-area .title {
@@ -3763,7 +3771,7 @@ a.pinterest.fbt-pinterest {
 }
 
 #related-posts h5 a:hover {
-  color: #47c3fb;
+  color: #0a171d;
   text-decoration: none;
 }
 
@@ -3826,10 +3834,29 @@ a.pinterest.fbt-pinterest {
 }
 /*# sourceMappingURL=style.css.map */
 
+
+
 /******************* CUSTOM **********************/
 .oswald{
   font-family: 'Oswald', sans-serif;
 }
+
+.josefin{
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.roboto{
+  font-family: 'Roboto', sans-serif;
+}
+
+.merriweather{
+  font-family: 'Merriweather', serif;
+}
+
+.yanone{
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
 
 .admin-input{
   border: 1px solid #e5e6e9;
@@ -3859,4 +3886,12 @@ a.pinterest.fbt-pinterest {
 .admin-area:focus {
   outline: 0;
   box-shadow: none;
+}
+
+.single-tag{
+  background-color: var(--primary);
+}
+
+.single-tag:hover{
+  background-color: #005fc5;
 }
