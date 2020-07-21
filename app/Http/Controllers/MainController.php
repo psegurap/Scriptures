@@ -82,8 +82,11 @@ class MainController extends Controller
 
     public function single_collaborator($name)
     {
-        $collaborator = Collaborator::with(['articles' => function($article){
-            $article->take(12)->get();
+        $checkers_count = intval(round(User::where('filter', 1)->count() / 2));
+        $collaborator = Collaborator::with(['articles' => function($article) use ($checkers_count){
+            $article->wherehas('reviews', function($review){
+                $review->where('desicion', 'Approved');
+            }, '>=', $checkers_count)->take(12)->get();
         }])->where('name' , $name)->first();
         // dd($collaborator);
         return view('author', compact('collaborator'));
@@ -97,7 +100,13 @@ class MainController extends Controller
     }
 
     public function profession(){
-        $serie = Serie::with('articles')->find(12);
+
+        $checkers_count = intval(round(User::where('filter', 1)->count() / 2));
+        $serie = Serie::with(['articles' => function($article) use ($checkers_count){
+            $article->with('author')->wherehas('reviews', function($review){
+                    $review->where('desicion', 'Approved');
+                }, '>=', $checkers_count)->get();
+        }])->find(12);
         // dd($serie);
         return view('profession', compact('serie'));
     }

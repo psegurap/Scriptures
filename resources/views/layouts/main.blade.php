@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@1&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
     <!-- FONTS -->    
     <link href="{{asset('/css/animate.min.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('/css/fonts.css')}}" rel="stylesheet" media="screen">
@@ -94,7 +95,7 @@
                 </div>
                 <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler order-1 order-xl-2"
                     data-target="#navbar-menu" data-toggle="collapse" type="button">☰</button>
-                <div class="collapse navbar-collapse justify-content-end order-4 order-xl-3 clearfix josefin" id="navbar-menu">
+                <div class="collapse navbar-collapse justify-content-end order-4 order-xl-3 clearfix bree" id="navbar-menu">
                     <ul class="navbar-nav clearfix d-flex">
                         <li class="nav-item">
                             <a href="{{route('index')}}" class="nav-link">{{__('Home')}}</a>
@@ -104,7 +105,7 @@
                         </li> --}}
                         <li class="nav-item dropdown">
                             <a href="javascript:void(0)" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">{{__('About Us')}}</a>
-                            <div class="dropdown-menu">
+                            <div class="dropdown-menu pt-0">
                                 @if (App::getLocale() == 'es')
                                     <a href="/profesion-de-fe" class="dropdown-item">{{__('Profesión de Fe')}}</a>
                                     <a href="#" class="dropdown-item">{{__('Nuestra Historia')}}</a>

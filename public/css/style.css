@@ -217,7 +217,7 @@ a .fa, a .fab, a .fad, a .fal, a .far, a .fas {
 }
 
 a:hover {
-  color: #0a171d;
+  color: #98a5ac;
   text-decoration: none;
 }
 
@@ -461,7 +461,7 @@ a:hover .fbt-bg-white {
 .navbar .nav-link {
   text-transform: uppercase;
   /* font-family: "Roboto", sans-serif; */
-  font-size: 19px;
+  font-size: 25px;
   font-weight: 400;
   letter-spacing: 0.2px;
 }
@@ -528,7 +528,7 @@ a:hover .fbt-bg-white {
   position: relative;
   padding: 0.45rem 1rem;
   /* font-family: "Roboto", sans-serif; */
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 400;
   color: #333;
   /* text-transform: uppercase; */
@@ -3856,6 +3856,11 @@ a.pinterest.fbt-pinterest {
 .yanone{
   font-family: 'Yanone Kaffeesatz', sans-serif;
 }
+
+.bree{
+  font-family: 'Bree Serif', serif;
+}
+
 
 
 .admin-input{

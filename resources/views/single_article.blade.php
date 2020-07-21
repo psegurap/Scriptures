@@ -340,34 +340,6 @@
 
                     <div class="fbt-main-sidebar col-lg-4">
                         <div class="fbt-main-sidebar__content h-100 pl-lg-3">
-                            <div class="sidebar-block fbt-social-counter mb-5">
-                                <div class="widget">
-                                    <ul class="social-list">
-                                        <li class="social-item facebook fb">
-                                            <a href="#">
-                                                <span class="soc-ic"><i class="item-icon fa fa-facebook"></i></span>
-                                                <span class="item-counter">2340</span>
-                                                <span class="item-text soc-btn">Fans</span>
-                                            </a>
-                                        </li>
-                                        <li class="social-item twitter tw">
-                                            <a href="#">
-                                                <span class="soc-ic"><i class="item-icon fa fa-twitter"></i></span>
-                                                <span class="item-counter">3290</span>
-                                                <span class="item-text soc-btn">Followers</span>
-                                            </a>
-                                        </li>
-                                        <li class="social-item instagram instg">
-                                            <a href="#">
-                                                <span class="soc-ic"><i class="item-icon fa fa-instagram"></i></span>
-                                                <span class="item-counter">5212</span>
-                                                <span class="item-text soc-btn">Followers</span>
-                                            </a>
-                                        </li>
-                                        
-                                    </ul><!-- .social-list -->
-                                </div>
-                            </div>
                             <div class="widget FeaturedPost mb-5">
                                 <div class="fbt-sep-title">
                                     <h4 class="title title-heading-left">{{__('Featured Post')}}</h4>

@@ -2,7 +2,26 @@
 @section('title') {{$collaborator->name}} @endsection
 @section('styles')
     <style>
-        
+
+        .colaborator-image{
+            box-shadow: 0px 2px 10px 0px #777777;
+        }
+
+        .colaborator-image:hover{
+            transition: all 0.3s ease-out;
+            -webkit-transition: all 0.3s ease-out;
+            -webkit-transform: translateY(-1px);
+            transform: translateY(-1px);
+        }
+
+        .title-page{
+            font-size: 3em;
+        }
+
+        .diviser{
+            height: 2px;
+            background: black;
+        }
     </style>
 @endsection
 @section('content')
@@ -25,48 +44,34 @@
                                         <div class="post-body post-content px-1">
                                             <div class="fbt-elastic-container fbt-gallery-1">
                                                 <div class="row px-2">
-                                                    <div class="col-lg-3 mb-5">
-                                                        <div class="post-item">
-                                                            <div class="text-center">
-                                                                <img style="border-radius: 100%; max-width: 200px;" alt="" class="lazyloaded" :data-src="homepath + '/images/collaborators/' + collaborator.attach_reference + '/' + collaborator.img_thumbnail"
-                                                                :src="homepath + '/images/collaborators/' + collaborator.attach_reference + '/' + collaborator.img_thumbnail">
-                                                            </div>
-                                                            {{-- <div class="fbt-post-caption">
-                                                                <div class="title-caption text-center pt-3 px-2">
-                                                                    <div class="post-meta mb-2">
-                                                                    </div>
-                                                                    <h3 class="post-title">
-                                                                        @if (App::getLocale() == 'es')
-                                                                            <a :href="homepath + '/colaborador/' + collaborator.name">@{{collaborator.name}}</a>
-                                                                        @else
-                                                                            <a :href="homepath + '/collaborator/' + collaborator.name">@{{collaborator.name}}</a>
-                                                                        @endif
-                                                                        
-                                                                    </h3>
-                                                                </div>
-                                                            </div> --}}
+                                                    <div class="col-md-12">
+                                                        <div>
+                                                            <span class="text-uppercase bree title-page">@{{collaborator.name}}</span>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-9 align-items-center d-flex">
+                                                    <div class="col-md-12 px-2">
+                                                        <hr class="mt-1 mb-4 diviser"/>
+                                                    </div>
+                                                </div>
+                                                <div class="row px-2">
+                                                    <div class="col-lg-12 mb-4">
                                                         <div class="post-item">
-                                                            <p class="post-title display-2 font-weight-bold d-none d-lg-inline-block">
-                                                                @{{collaborator.name}}
-                                                            </p>
+                                                            <div class="">
+                                                                <img style="border-radius: 100%; max-width: 250px;" alt="" class="lazyloaded colaborator-image" :data-src="homepath + '/images/collaborators/' + collaborator.attach_reference + '/' + collaborator.img_thumbnail"
+                                                                :src="homepath + '/images/collaborators/' + collaborator.attach_reference + '/' + collaborator.img_thumbnail">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-lg-12 align-items-center d-flex">
                                                         <div class="post-item">
-                                                            <h2 class="border-bottom d-block d-lg-none font-weight-bold h1 pb-1 post-title">
-                                                                @{{collaborator.name}}
-                                                            </h2>
-                                                            <p class="mb-1">
+                                                            <p class="mb-0 merriweather font-weight-bold">
                                                                 @if (App::getLocale() == 'es')
                                                                     @{{collaborator.info_es}}
                                                                 @else
                                                                     @{{collaborator.info_en}}
                                                                 @endif
                                                             </p>
-                                                            <span v-if="collaborator.website != '' && collaborator.website != null">Website: <a  :href="collaborator.website">@{{collaborator.website}}</a></span>
+                                                            <span v-if="collaborator.website != '' && collaborator.website != null" class="yanone"><a class="font-weight-bold" style="text-decoration: underline;" :href="collaborator.website">@{{collaborator.website}}</a></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -106,7 +111,7 @@
                                         
                                             <div class="fbt-rel-post-wrapper mb-5">
                                                 <div class="title-wrap fbt-sep-title">
-                                                    <h4 class="title title-heading-left">Related Articles</h4>
+                                                    <h4 class="title title-heading-left">{{__('More from')}} @{{collaborator.name}}</h4>
                                                     <div class="title-sep-container">
                                                         <div class="title-sep sep-double"></div>
                                                     </div>
