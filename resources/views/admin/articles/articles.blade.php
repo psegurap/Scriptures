@@ -14,7 +14,7 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                 <div class="widget widget-chart-one">
                     <div class="widget-heading mb-0">
-                        <h5 class="text-uppercase font-weight-bold">Articles</h5>
+                        <h5 class="text-uppercase font-weight-bold">{{__('Articles')}}</h5>
                     </div>
                 </div>
             </div>

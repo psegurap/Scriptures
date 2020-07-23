@@ -21,7 +21,7 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 pb-4 layout-spacing">
                 <div class="px-4 py-3 widget widget-chart-one">
                     <div class="widget-heading mb-0">
-                        <h5 class="align-self-center font-weight-bold text-uppercase mb-0">Subscribers</h5>
+                        <h5 class="align-self-center font-weight-bold text-uppercase mb-0">{{__('Subscribers')}}</h5>
                         {{-- <button @click="addSerie()" class="btn btn-primary font-weight-bold">{{__('Create Serie')}}</button> --}}
                     </div>
                 </div>

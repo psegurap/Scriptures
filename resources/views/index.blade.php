@@ -2,7 +2,20 @@
 @section('title', 'Home')
 @section('styles')
     <style>
-        
+        .video-image{
+            background: #ffffff !important;
+            border-radius: 4px;
+        }
+
+        .coming-soon-title{
+            font-size: 4em;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .coming-soon-title{
+                font-size: 2em;
+            }
+        }
     </style>
 @endsection
 @section('content')
@@ -211,7 +224,7 @@
             </div>
         </div><!-- .slider-container -->
         
-        {{-- <div class="outer-wrapper my-5" id="outer-wrapper">
+        <div class="outer-wrapper my-5" id="outer-wrapper">
         
             <div class="container fbt-elastic-container">
                 <div class="row justify-content-center">
@@ -642,116 +655,123 @@
                 </div>
             </div><!-- .fbt-gallery -->
         
-            <div class="fbt-video-gallery mb-5">
-                <div class="container fbt-elastic-container fbt-gallery-2">
-                    <h4 class="title title-heading h2">
-                        Featured Videos
-                    </h4>
-                    <div class="row">
-                        <div class="fbt-main-gallery col-lg-8 mb-4 mb-lg-0">
-                            <div class="post-item large">
-                                        
-                                <div class="fbt-post-thumbnail">
-                                    <a href="./single_mag.html">
-                                        <img alt="" class="post-thumbnail lazyloaded" data-src="./images/single-1.jpg"
-                                            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                    </a>
-                                    <span class="video-icon"><i class="fa fa-play"></i></span>
-                                </div>
-                                <div class="fbt-post-caption">
-                                    <span class="post-tag index-post-tag">Movie</span>
-                                    <div class="title-caption p-4">
-                                        <div class="post-meta mb-2">
-                                            <span class="post-author">
-                                                <a href="#">fbtemplates</a>
-                                            </span>
-                                            <span class="post-date published">June 19, 2019</span>
-                                        </div>
-                                        <h3 class="post-title h1 w-75">
-                                            <a href="./single_mag.html">
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            </a>
-                                        </h3>
+            <div class="mb-5" style="position: relative;width: 100%;height: 100%;">
+                <div class="fbt-video-gallery" style="width: 100%;height: 100%;top: 0;left: 0;">
+                    <div class="container fbt-elastic-container fbt-gallery-2">
+                        <h4 class="title title-heading h2">
+                            {{__('Encaunters')}}
+                        </h4>
+                        <div class="row">
+                            <div class="fbt-main-gallery col-lg-8 mb-4 mb-lg-0 d-none d-md-inline-block">
+                                <div class="post-item large video-image">
+                                            
+                                    <div class="fbt-post-thumbnail">
+                                        <a href="./single_mag.html">
+                                            <img alt="" class="post-thumbnail lazyloaded rounded " data-src=""
+                                                src="">
+                                        </a>
+                                        <span class="video-icon"><i class="fa fa-play"></i></span>
                                     </div>
+                                    <div class="fbt-post-caption">
+                                        <span class="post-tag index-post-tag">Movie</span>
+                                        <div class="title-caption p-4">
+                                            <div class="post-meta mb-2 merriweather">
+                                                <span class="post-author">
+                                                    <a href="#">fbtemplates</a>
+                                                </span>
+                                                <span class="post-date published">June 19, 2019</span>
+                                            </div>
+                                            <h3 class="post-title h1 w-75">
+                                                <a href="./single_mag.html">
+                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                </a>
+                                            </h3>
+                                        </div>
+                                    </div>
+                                    
                                 </div>
-                                
                             </div>
-                        </div>
-                        <div class="col-lg-4 fbt_list_posts">
-                            <div class="post-content pl-lg-3">
-                                <article class="post mb-3">
-                                    <div class="post-content media align-items-center">
-                                        <div class="fbt-item-thumbnail clearfix">
-                                            <a href="./single_mag.html">
-                                                <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-16.jpg"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                            </a>
-                                            <span class="video-icon"><i class="fa fa-play"></i></span>
+                            <div class="col-lg-4 fbt_list_posts">
+                                <div class="post-content pl-lg-3">
+                                    <article class="post mb-3">
+                                        <div class="post-content media align-items-center">
+                                            <div class="fbt-item-thumbnail clearfix video-image">
+                                                <a href="./single_mag.html">
+                                                    <img alt="" class="post-thumbnail lazyloaded rounded video-image" data-src=""
+                                                        src="">
+                                                </a>
+                                                <span class="video-icon"><i class="fa fa-play"></i></span>
+                                            </div>
+                                            <div class="ml-3 fbt-title-caption media-body">
+                                                <span class="pp-post-tag">Tech</span>
+                                                <h3 class="post-title">
+                                                    <a href="./single_mag.html"> Ne amores quidem sanctos alienos esse.</a>
+                                                </h3>
+                                            </div>
                                         </div>
-                                        <div class="ml-3 fbt-title-caption media-body">
-                                            <span class="pp-post-tag">Tech</span>
-                                            <h3 class="post-title">
-                                                <a href="./single_mag.html"> Ne amores quidem sanctos alienos esse.</a>
-                                            </h3>
+                                    </article>
+                                    <article class="post mb-3">
+                                        <div class="post-content media align-items-center">
+                                            <div class="fbt-item-thumbnail clearfix video-image">
+                                                <a href="./single_mag.html">
+                                                    <img alt="" class="post-thumbnail lazyloaded rounded video-image" data-src=""
+                                                        src="">
+                                                </a>
+                                                <span class="video-icon"><i class="fa fa-play"></i></span>
+                                            </div>
+                                            <div class="ml-3 fbt-title-caption media-body">
+                                                <span class="pp-post-tag">Family</span>
+                                                <h3 class="post-title">
+                                                    <a href="./single_mag.html">Mihi vero, inquit, placet agi subtilius et pressius.</a>
+                                                </h3>
+                                            </div>
                                         </div>
-                                    </div>
-                                </article>
-                                <article class="post mb-3">
-                                    <div class="post-content media align-items-center">
-                                        <div class="fbt-item-thumbnail clearfix">
-                                            <a href="./single_mag.html">
-                                                <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-15.jpg"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                            </a>
-                                            <span class="video-icon"><i class="fa fa-play"></i></span>
+                                    </article>
+                                    <article class="post mb-3">
+                                        <div class="post-content media align-items-center">
+                                            <div class="fbt-item-thumbnail clearfix video-image">
+                                                <a href="./single_mag.html">
+                                                    <img alt="" class="post-thumbnail lazyloaded rounded video-image" data-src=""
+                                                        src="">
+                                                </a>
+                                                <span class="video-icon"><i class="fa fa-play"></i></span>
+                                            </div>
+                                            <div class="ml-3 fbt-title-caption media-body">
+                                                <span class="pp-post-tag">Featured</span>
+                                                <h3 class="post-title">
+                                                    <a href="./single_mag.html">Suspendisse sed tortor eget justo aliquam.</a>
+                                                </h3>
+                                            </div>
                                         </div>
-                                        <div class="ml-3 fbt-title-caption media-body">
-                                            <span class="pp-post-tag">Family</span>
-                                            <h3 class="post-title">
-                                                <a href="./single_mag.html">Mihi vero, inquit, placet agi subtilius et pressius.</a>
-                                            </h3>
+                                    </article>
+                                    <article class="post mb-3">
+                                        <div class="post-content media align-items-center">
+                                            <div class="fbt-item-thumbnail clearfix video-image">
+                                                <a href="./single_mag.html">
+                                                    <img alt="" class="post-thumbnail lazyloaded rounded video-image" data-src=""
+                                                        src="">
+                                                </a>
+                                                <span class="video-icon"><i class="fa fa-play"></i></span>
+                                            </div>
+                                            <div class="ml-3 fbt-title-caption media-body">
+                                                <span class="pp-post-tag">Sport</span>
+                                                <h3 class="post-title">
+                                                    <a href="./single_mag.html">Nunc accumsan ex ligula, in malesuada sapien.</a>
+                                                </h3>
+                                            </div>
                                         </div>
-                                    </div>
-                                </article>
-                                <article class="post mb-3">
-                                    <div class="post-content media align-items-center">
-                                        <div class="fbt-item-thumbnail clearfix">
-                                            <a href="./single_mag.html">
-                                                <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-14.jpg"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                            </a>
-                                            <span class="video-icon"><i class="fa fa-play"></i></span>
-                                        </div>
-                                        <div class="ml-3 fbt-title-caption media-body">
-                                            <span class="pp-post-tag">Featured</span>
-                                            <h3 class="post-title">
-                                                <a href="./single_mag.html">Suspendisse sed tortor eget justo aliquam.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </article>
-                                <article class="post mb-3">
-                                    <div class="post-content media align-items-center">
-                                        <div class="fbt-item-thumbnail clearfix">
-                                            <a href="./single_mag.html">
-                                                <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-13.jpg"
-                                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                            </a>
-                                            <span class="video-icon"><i class="fa fa-play"></i></span>
-                                        </div>
-                                        <div class="ml-3 fbt-title-caption media-body">
-                                            <span class="pp-post-tag">Sport</span>
-                                            <h3 class="post-title">
-                                                <a href="./single_mag.html">Nunc accumsan ex ligula, in malesuada sapien.</a>
-                                            </h3>
-                                        </div>
-                                    </div>
-                                </article>
+                                    </article>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div><!-- .fbt-video-gallery -->
+                <div class="cover-soon" style="z-index: 10;width: 100%;height: 100%;position: absolute;top: 0;left: 0;background: #000000eb;">
+                    <div class="container mt-5">
+                        <span class="border-bottom d-inline-block merriweather text-white text-uppercase coming-soon-title">{{__('Coming Soon')}}</span>
+                    </div>
                 </div>
-            </div><!-- .fbt-video-gallery -->
+            </div>
         
             <div class="fbt-gallery mb-5">
                 <div class="container fbt-elastic-container fbt-gallery-1">
@@ -1412,7 +1432,7 @@
                     </div><!-- #sidebar-wrapper -->
                 </div>
             </div>
-        </div><!-- .outer-wrapper --> --}}
+        </div><!-- .outer-wrapper -->
         
         
     </main>

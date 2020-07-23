@@ -1,12 +1,64 @@
 @extends('layouts.main')
-@section('title', 'Contact')
+@section('title'){{__('Contact')}}@endsection
 @section('styles')
+    <style>
+        .title-page{
+            font-size: 3em;
+        }
+
+        .diviser{
+            height: 2px;
+            background: black;
+        }
+
+        .contact-form .form-control {
+            border-width: 1px;
+            border-color: #ccc;
+        }
+        .contact-form{
+            box-shadow: 0px 1px 3px 0px #777777;
+        }
+        
+        .fbt-contact-info{
+            box-shadow: 0px 1px 3px 0px #777777;
+        }
+
+        .single-input-form {
+            border: 1px solid #d2d2d2;
+            /* border-radius: 0px; */
+            height: 45px;
+            padding-left: 18px;
+            font-size: 13px;
+            /* background: transparent; */
+        }
+
+        .single-input-form:focus {
+            outline: 0;
+            box-shadow: none;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .title-page{
+                font-size: 2em;
+            }
+        }
+    </style>
 @endsection
 @section('content')
 <main>
-    <div class="outer-wrapper my-5" id="outer-wrapper">
+    <div class="outer-wrapper mb-5 mt-4" id="outer-wrapper">
 
         <div class="container fbt-elastic-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <span class="text-uppercase bree title-page">{{__('Contact')}} - Anclados en Su Palabra</span>
+                    </div>
+                </div>
+                <div class="col-md-12 px-2">
+                    <hr class="mt-1 mb-4 diviser"/>
+                </div>
+            </div>
             <div class="row justify-content-center">
 
                 <!-- Main Wrapper -->
@@ -15,60 +67,47 @@
                     <div id="main-wrapper">
                         <div class="main-section" id="main_content">
                             
-                            
-                            
                             <div class="blog-posts fbt-item-post-wrap">
 
                                 <div class="blog-post fbt-item-post">
-                                    
-                                    <div class="fbt-sep-title">
-                                        <h4 class="title title-heading-left">Contact Us</h4>
-                                        <div class="title-sep-container">
-                                            <div class="title-sep sep-double"></div>
-                                        </div>
-                                    </div>
+                                   
                                     <div class="post-body post-content">
-                                        <p class="mb-4">
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                                            Ut porttitor leo vel nulla posuere accumsan. 
-                                            Suspendisse sed tortor eget justo aliquam euismod. 
-                                            Morbi ut massa et neque iaculis lacinia a eu...
-                                        </p>
-                                        <div id="fbt-contact-form" class="contact-form">
+                                        
+                                        <div id="fbt-contact-form" class="border contact-form p-3 rounded bree">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="name">Name*</label>
-                                                        <input v-model="message.name" v-validate="'required'" class="form-control shadow-none radius-0" id="name" name="name" type="text">
+                                                        <label for="name">{{__('Name')}}*</label>
+                                                        <input v-model="message.name" v-validate="'required'" class="form-control single-input-form" id="name" name="name" type="text" placeholder="{{__('Write your name...')}}">
                                                         <span class="text-danger" style="font-size: 12px;" v-show="errors.has('name')">* @{{ errors.first('name') }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="mail">E-mail*</label>
-                                                        <input v-model="message.email" v-validate="'required|email'" class="form-control shadow-none radius-0" id="email" name="email" type="text">
+                                                        <label for="mail">{{__('Email Address')}}*</label>
+                                                        <input v-model="message.email" v-validate="'required|email'" class="form-control single-input-form" id="email" name="email" type="text" placeholder="{{__('Write your email...')}}">
                                                         <span class="text-danger" style="font-size: 12px;" v-show="errors.has('email')">* @{{ errors.first('email') }}</span>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-9">
+                                                <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label for="name">Subject*</label>
-                                                        <input v-model="message.subject" v-validate="'required'" class="form-control shadow-none radius-0" id="subject" name="subject" type="text">
+                                                        <label for="name">{{__('Subject')}}*</label>
+                                                        <input v-model="message.subject" v-validate="'required'" class="form-control single-input-form" id="subject" name="subject" type="text" placeholder="{{__('Write the subject...')}}">
                                                         <span class="text-danger" style="font-size: 12px;" v-show="errors.has('subject')">* @{{ errors.first('subject') }}</span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row mb-4">
+                                            <div class="row mb-2">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label for="message">Message*</label>
-                                                        <textarea v-model="message.message" v-validate="'required'" class="form-control shadow-none radius-0" rows="8" id="message" name="message"></textarea>
+                                                        <label for="message">{{__('Message')}}*</label>
+                                                        <textarea v-model="message.message" v-validate="'required'" class="form-control single-input-form" rows="8" id="message" name="message" placeholder="{{__('Write the message...')}}"></textarea>
                                                         <span class="text-danger" style="font-size: 12px;" v-show="errors.has('message')">* @{{ errors.first('message') }}</span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <button class="btn btn-success radius-0" @click="validate(SendMessage)" type="button" id="submit-contact">
-                                                Submit Message
+                                                {{__('Submit Message')}}
                                             </button>
                                         </div>
                                     </div>
@@ -82,7 +121,7 @@
                 <div class="fbt-main-sidebar col-lg-4">
                     <div class="fbt-main-sidebar__content h-100 pl-lg-3">
 
-                        <div class="fbt-contact-info">
+                        <div class="fbt-contact-info p-3">
 
                             <div class="fbt-contact-info-box">
                                 <div class="fbt-contact-info-box-content">
@@ -92,7 +131,7 @@
                                             <div class="title-sep sep-double"></div>
                                         </div>
                                     </div>
-                                    <p>Vouliagmenis Ave 325, <br/>Athens CA 17575</p>
+                                    <p class="merriweather">Santo Domingo, <br/>{{__('Dominican Republic')}}</p>
                                 </div>
                             </div>
                         
@@ -104,11 +143,11 @@
                                             <div class="title-sep sep-double"></div>
                                         </div>
                                     </div>
-                                    <p>info@nemesis.com</p>
+                                    <p class="merriweather">{{env('APP_EMAIL')}}</p>
                                 </div>
                             </div>
                         
-                            <div class="fbt-contact-info-box">
+                            {{-- <div class="fbt-contact-info-box">
                                 <div class="fbt-contact-info-box-content">
                                     <div class="fbt-sep-title">
                                         <h4 class="title title-heading-left">Call Us</h4>
@@ -118,7 +157,7 @@
                                     </div>
                                     <p>+123-456-7890</p>
                                 </div>
-                            </div>
+                            </div> --}}
                         
                         </div><!-- Widget end -->
 

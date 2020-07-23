@@ -33,8 +33,8 @@
             <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                 <div class="widget widget-chart-one">
                     <div class="border-bottom flex-column flex-sm-row pb-2 widget-heading">
-                        <h5 class="align-self-center font-weight-bold">Editing article:</h5>
-                        <button @click="validate(UpdateArticle)" class="btn btn-primary btn-sm-block font-weight-bold rounded-0 text-uppercase">Update Article</button>
+                        <h5 class="align-self-center font-weight-bold">{{__('Editing article')}}:</h5>
+                        <button @click="validate(UpdateArticle)" class="btn btn-primary btn-sm-block font-weight-bold rounded-0 text-uppercase">{{__('Update Article')}}</button>
                     </div>
     
                     <div class="widget-content">
@@ -69,7 +69,7 @@
             <div class="col-xl-4 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                 <div class="widget widget-chart-two">
                     <div class="widget-content py-3">
-                        <div class="col-md-12 mb-3">
+                        <!-- <div class="col-md-12 mb-3">
                             <div class="d-flex pb-2 border-bottom text-white">
                                 {{__('Spanish')}}
                                 <label class="mb-0 s-outline s-outline-default switch mx-2">
@@ -78,10 +78,10 @@
                                 </label>
                                 {{__('English')}}
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-12 mb-4">
                             <div class="">
-                                <span @click="change_picture = !change_picture" class="btn btn-block font-weight-bold mb-2 px-2 py-1 rounded-0">Change Picture</span>
+                                <span @click="change_picture = !change_picture" class="btn btn-block font-weight-bold mb-2 px-2 py-1 rounded-0">{{__('Change Picture')}}</span>
                                 <img v-show="!change_picture" class="img-thumbnail rounded-0" style="width: 100%; box-shadow: 3px 4px 3px black;" :src="homepath + '/images/articles/' + current_article.attach_reference + '/' + current_article.img_thumbnail" alt="">
                                 <div v-show="change_picture" class="dropzone-container rounded text-center">
                                     <form class="dropzone dz-clickable " id="Dropzone">

@@ -4,13 +4,25 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Article;
 use Auth;
 
 class AdminMainController extends Controller
 {
     public function home()
     {
-        return view('admin.index_admin');
+        $year = date('Y');
+        $month = date('m');
+
+        $current_month_articles = Article::with('author')->whereYear('created_at', $year)->whereMonth('created_at', $month)->get();
+        // $current_month_articles = Article::with('author')->whereYear('created_at', '2020')->whereMonth('created_at', '06')->get();
+        // dd($current_month_articles);
+        
+        if(Auth::user()->admin == 1 || Auth::user()->developer == 1){
+            return view('admin.index_admin', compact('current_month_articles'));
+        }else{
+            return view('admin.index_filter', compact('current_month_articles'));
+        }
     }
 
     public function profile()

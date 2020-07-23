@@ -28,7 +28,7 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 layout-spacing">
                     <div class="widget widget-chart-one px-4 py-3">
                         <div class="widget-heading mb-0">
-                            <h5 class=" font-weight-bold">Edit Member</h5>
+                            <h5 class=" font-weight-bold">{{__('Edit Member')}}</h5>
                         </div>
                     </div>
                 </div>
@@ -60,48 +60,48 @@
                                                         <div class="row">
                                                             <div class="col-md-12">
                                                                 <div class="form-group">
-                                                                    <label for="fullName">Full Name</label>
-                                                                    <input v-validate="'required'" type="text" class="form-control" name="name" id="fullName" v-model="member.nombre" placeholder="Full Name">
+                                                                    <label for="fullName">{{__('Full Name')}}</label>
+                                                                    <input v-validate="'required'" type="text" class="form-control" name="name" id="fullName" v-model="member.nombre" placeholder="{{__('Full Name')}}">
                                                                     <span class="text-danger" style="font-size: 12px;" v-show="errors.has('name')">* @{{ errors.first('name') }}</span>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
-                                                                <div class="form-group">
-                                                                    <label for="profession">Email</label>
-                                                                    <input v-validate="'required'" type="email" class="form-control" id="profession" name="email" v-model="member.email" placeholder="Email Address">
+                                                                 <div class="form-group">
+                                                                    <label for="profession">{{__('Email')}}</label>
+                                                                    <input v-validate="'required'" type="email" class="form-control" id="profession" name="email" v-model="member.email" placeholder="{{__('Email Address')}}">
                                                                     <span class="text-danger" style="font-size: 12px;" v-show="errors.has('email')">* @{{ errors.first('email') }}</span>
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-12">
-                                                                <span @click="change_picture = !change_picture" class="btn font-weight-bold mb-2 px-2 py-1 rounded-0">Change Picture</span>
+                                                                <span @click="change_picture = !change_picture" class="btn font-weight-bold mb-2 px-2 py-1 rounded-0">{{__('Change Picture')}}</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-12">
+                                            <div class="col-md-12">
                                                     <div class="border-top my-3"></div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="">Role (es)</label>
-                                                        <input v-validate="'required'" type="text" class="form-control" name="role (es)" id="rolees" v-model="member.role_es" placeholder="Write the role...">
+                                                        <label for="">{{__('Role')}} (es)</label>
+                                                        <input v-validate="'required'" type="text" class="form-control" name="role (es)" id="rolees" v-model="member.role_es" placeholder="{{__('Write the role...')}}">
                                                         <span class="text-danger" style="font-size: 12px;" v-show="errors.has('role (es)')">* @{{ errors.first('role (es)') }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="">Role (en)</label>
-                                                        <input v-validate="'required'" type="text" class="form-control" name="role (en)" id="roleen" v-model="member.role_en" placeholder="Write the role...">
+                                                        <label for="">{{__('Role')}} (en)</label>
+                                                        <input v-validate="'required'" type="text" class="form-control" name="role (en)" id="roleen" v-model="member.role_en" placeholder="{{__('Write the role...')}}">
                                                         <span class="text-danger" style="font-size: 12px;" v-show="errors.has('role (en)')">* @{{ errors.first('role (en)') }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="country">Country</label>
+                                                        <label for="country">{{__('Country')}}</label>
                                                         <select v-validate="'required'" class="form-control" v-model="member.country" name="country" id="country">
-                                                            <option disabled value="">Select a country...</option>
+                                                            <option disabled value="">{{__('Select Country')}}</option>
                                                             {{-- <option>United States</option>
                                                             <option>India</option>
                                                             <option>Japan</option>
@@ -116,41 +116,41 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label for="">Website</label>
-                                                        <input type="text" class="form-control " id="website1" v-model="member.website" placeholder="Write the website here">
+                                                        <label for="">{{__('Website')}}</label>
+                                                        <input type="text" class="form-control " id="website1" v-model="member.website" placeholder="{{__('Write the website here')}}">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Facebook</label>
-                                                        <input  type="text" class="form-control " name="facebook" id="facebook" v-model="member.facebook" placeholder="Write the Facebook Account...">
+                                                        <input  type="text" class="form-control " name="facebook" id="facebook" v-model="member.facebook" placeholder="{{__('Write the Facebook Account...')}}">
                                                         <span class="text-danger" style="font-size: 12px;" v-show="errors.has('facebook')">* @{{ errors.first('facebook') }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Instagram</label>
-                                                        <input  type="text" class="form-control" name="instagram" id="instagram" v-model="member.instagram" placeholder="Write the Instagram Account...">
+                                                        <input  type="text" class="form-control" name="instagram" id="instagram" v-model="member.instagram" placeholder="{{__('Write the Instagram Account...')}}">
                                                         <span class="text-danger" style="font-size: 12px;" v-show="errors.has('instagram')">* @{{ errors.first('instagram') }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Twitter</label>
-                                                        <input  type="text" class="form-control " name="twitter" id="twitter" v-model="member.twitter" placeholder="Write the Twitter Account...">
+                                                        <input  type="text" class="form-control " name="twitter" id="twitter" v-model="member.twitter" placeholder="{{__('Write the Twitter Account...')}}">
                                                         <span class="text-danger" style="font-size: 12px;" v-show="errors.has('twitter')">* @{{ errors.first('twitter') }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">YouTube</label>
-                                                        <input  type="text" class="form-control " name="youtube" id="youtube" v-model="member.youtube" placeholder="Write the Youtube Account...">
+                                                        <input  type="text" class="form-control " name="youtube" id="youtube" v-model="member.youtube" placeholder="{{__('Write the Youtube Account...')}}">
                                                         <span class="text-danger" style="font-size: 12px;" v-show="errors.has('youtube')">* @{{ errors.first('youtube') }}</span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <div class="form-group text-right">
-                                                        <button @click="validate(UpdateMember)" class="btn btn-primary rounded-0 font-weight-bold text-uppercase">Update Member</button>
+                                                        <button @click="validate(UpdateMember)" class="btn btn-primary rounded-0 font-weight-bold text-uppercase">{{__('Update Member')}}</button>
                                                     </div>
                                                 </div>
                                             </div>

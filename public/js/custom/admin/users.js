@@ -180,8 +180,7 @@ $(document).ready(function(){
                         {
                             data : 'id',
                             render: function(data, row){
-                                // return "<div class='d-flex justify-content-around'><div class='text-info badge' ><i onclick='main.editTag("+data+")' style='cursor:pointer' class='fa fa-pencil-square-o fa-lg fa-2x'></i></div><div class='text-danger badge' ><i onclick='main.deleteTag("+data+")' style='cursor:pointer' class='fa fa-trash fa-lg fa-2x'></i></div></div>"
-                                return "<button onclick='main.editUser("+data+")' class='btn btn-primary py-1 px-2'>Permissions</button>"
+                                return "<a class='text-warning badge' onclick='main.editUser("+data+")' href='javascript:void(0)'><i style='cursor:pointer' class='fa fa-sliders fa-lg fa-2x'></i><a>"
                             }
                         },
                         {

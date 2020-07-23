@@ -26,7 +26,7 @@
                 <div class="user-profile layout-spacing">
                     <div class="widget-content widget-content-area">
                         <div class="d-flex justify-content-between">
-                            <h3 class="">Profile</h3>
+                            <h3 class="">{{__('Profile')}}</h3>
                             <a @click="change_info = !change_info" href="javascript:void(0)" class="mt-2 edit-profile badge"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-3"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg></a>
                         </div>
                         <div class="text-center user-info">
@@ -59,7 +59,7 @@
                 <div class="user-profile layout-spacing" v-show="change_info">
                     <div class="widget-content widget-content-area">
                         <div class="d-flex justify-content-between mb-3">
-                            <h3 class="">Edit Information</h3>
+                            <h3 class="">{{__('Edit Information')}}</h3>
                             <a href="/admin/users/password/change" class="mt-2 edit-profile badge"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-key"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"></path></svg></a>
                         </div>
                         <div class="row">
@@ -78,16 +78,16 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="fullName">Name</label>
-                                                <input v-validate="'required'" type="text" class="form-control" name="name" v-model="profile.name" id="fullName" placeholder="Write your name...">
+                                                <label for="fullName">{{__('Name')}}</label>
+                                                <input v-validate="'required'" type="text" class="form-control" name="name" v-model="profile.name" id="fullName" placeholder="{{__('Write the name...')}}">
                                                 <span class="text-danger" style="font-size: 12px;" v-show="errors.has('name')">* @{{ errors.first('name') }}</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="phone">Email</label>
-                                        <input type="text" class="form-control" name="emal" v-model="profile.email" id="email" placeholder="Write your email...">
-                                        <span class="text-danger" style="font-size: 12px;" v-show="errors.has('emal')">* @{{ errors.first('emal') }}</span>
+                                        <label for="phone">{{__('Email')}}</label>
+                                        <input type="text" v-validate="'required'" class="form-control" name="email" v-model="profile.email" id="email" placeholder="{{__('Write the email...')}}">
+                                        <span class="text-danger" style="font-size: 12px;" v-show="errors.has('email')">* @{{ errors.first('email') }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -95,8 +95,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group mb-0">
-                                    <label for="phone">Phone</label>
-                                    <input type="text" class="form-control" name="phone" v-model="profile.phone" id="phone" placeholder="Write your phone number here">
+                                    <label for="phone">{{__('Phone')}}</label>
+                                    <input type="text" class="form-control" name="phone" v-model="profile.phone" id="phone" placeholder="{{__('Write the phone number here')}}">
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -104,7 +104,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group text-right">
-                                    <button @click="validate(UpdateProfile)" class="btn btn-primary rounded-0 font-weight-bold text-uppercase">Update Profile</button>
+                                    <button @click="validate(UpdateProfile)" class="btn btn-primary rounded-0 font-weight-bold text-uppercase">{{__('Update Profile')}}</button>
                                 </div>
                             </div>
                         </div>

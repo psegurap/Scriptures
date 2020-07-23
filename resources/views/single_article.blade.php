@@ -44,7 +44,8 @@
                                                 <div class="item-post-meta mt-3">
                                                     <div class="post-meta mb-3 merriweather">
                                                         <span v-for="category in article.categories" class="post-author">
-                                                            <a href="" target="_blank" class="text-capitalize" title="fbtemplates">
+                                                            {{-- <a href="#" target="_blank" class="text-capitalize"> --}}
+                                                            <a href="javascript:void(0)" class="text-capitalize">
                                                                 @if (App::getLocale() == 'es')
                                                                     @{{category.category_es}}
                                                                 @else
@@ -125,7 +126,7 @@
                                                                         @endif
                                                                     </p>
                                                                 </div>
-                                                                <div class="d-flex justify-content-end yanone" v-if="article.author.website != null && article.author.website != ''">
+                                                                <div class="text-md-right mt-1 yanone" v-if="article.author.website != null && article.author.website != ''">
                                                                     <a :href="'//' + article.author.website" class="font-weight-bold" target="_blank">@{{article.author.website}}</a>
                                                                 </div>
                                                             </div>
@@ -340,7 +341,7 @@
 
                     <div class="fbt-main-sidebar col-lg-4">
                         <div class="fbt-main-sidebar__content h-100 pl-lg-3">
-                            <div class="widget FeaturedPost mb-5">
+                            <div v-if='featured_post' class="widget FeaturedPost mb-5">
                                 <div class="fbt-sep-title">
                                     <h4 class="title title-heading-left">{{__('Featured Post')}}</h4>
                                     <div class="title-sep-container">
@@ -421,7 +422,7 @@
                                 </div>
                             </div><!-- .fbt_list_posts -->
 
-                            <div class="widget fbt-sticky-content sticky-top fbt-ad-block">
+                            <div class="widget fbt-sticky-content sticky-top fbt-ad-block d-none d-md-block">
                                 <div class="fbt_ad text-center">
                                     <span class="fbt-ad-title">
                                         {{__('Advertisement')}} <span class="ad_block"></span>

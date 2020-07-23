@@ -22,7 +22,7 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 pb-4 layout-spacing">
                 <div class="px-4 py-3 widget widget-chart-one">
                     <div class="widget-heading mb-0">
-                        <h5 class="align-self-center font-weight-bold text-uppercase mb-0">Users</h5>
+                        <h5 class="align-self-center font-weight-bold text-uppercase mb-0">{{__('Users')}}</h5>
                         <a href="/register">
                             <button class="btn btn-primary font-weight-bold">{{__('New User')}}</button>
                         </a>
@@ -74,7 +74,7 @@
                 <div class="row mt-3">
                     <div class="col-sm-6">
                         <div class="align-items-center d-flex flex-column">
-                            <span class="font-weight-bold h6 text-uppercase text-white">Content Checker</span>
+                            <span class="font-weight-bold h6 text-uppercase text-white">{{__('Content Checker')}}</span>
                             <label class="switch s-outline s-outline-primary mt-1 mb-0">
                                 <input type="checkbox" id="checker-input" :checked="user.filter">
                                 <span class="slider round"></span>
@@ -83,7 +83,7 @@
                     </div>
                     <div class="col-sm-6 mt-2 mt-sm-0">
                         <div class="align-items-center d-flex flex-column">
-                            <span class="font-weight-bold h6 text-uppercase text-white">Administrador</span>
+                            <span class="font-weight-bold h6 text-uppercase text-white">{{__('Administrador')}}</span>
                             <label class="switch s-outline s-outline-primary mt-1 mb-0">
                                 <input type="checkbox" id="admin-input" :checked="user.admin">
                                 <span class="slider round"></span>

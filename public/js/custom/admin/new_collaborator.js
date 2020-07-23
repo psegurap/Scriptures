@@ -59,25 +59,20 @@
             },
             SaveCollaborator(){
                 var go_to_go = true;
-                if(this.dropzone[0].dropzone.files.length == 0){
-                    $.toast({
-                        heading: 'Error',
-                        text: 'Necesitas agregar una imagen.',
-                        showHideTransition: 'fade',
-                        icon: 'error',
-                        position : 'top-right'
-                    })
-                    go_to_go = false;
-                }
-                if(go_to_go){
+                if(this.dropzone[0].dropzone.files.length > 0){
                     $("main").LoadingOverlay("show");
+                    this.collaborator.img_thumbnail = this.dropzone[0].dropzone.files[0].name;
                     this.dropzone[0].dropzone.processQueue();
+
+                }else{
+                    $("main").LoadingOverlay("show");
+                    this.collaborator.img_thumbnail = '---';
+                    this.SaveInformation();
                 }
+                
             },
             SaveInformation: function(){
-                this.collaborator.img_thumbnail = this.dropzone[0].dropzone.files[0].name;
                 main.dropzone[0].dropzone.removeAllFiles();
-                
                 axios.post(homepath + '/admin/collaborators/StoreCollaborator', {collaborator : this.collaborator}).then(function(response){
                     $("main").LoadingOverlay("hide");
                     swal({

@@ -22,6 +22,12 @@
             height: 2px;
             background: black;
         }
+
+        @media only screen and (max-width: 600px) {
+            .title-page{
+                font-size: 2em;
+            }
+        }
     </style>
 @endsection
 @section('content')
@@ -56,9 +62,11 @@
                                                 <div class="row px-2">
                                                     <div class="col-lg-12 mb-4">
                                                         <div class="post-item">
-                                                            <div class="">
-                                                                <img style="border-radius: 100%; max-width: 250px;" alt="" class="lazyloaded colaborator-image" :data-src="homepath + '/images/collaborators/' + collaborator.attach_reference + '/' + collaborator.img_thumbnail"
+                                                            <div class="text-center text-md-left">
+                                                                <img v-if="collaborator.img_thumbnail != '---'" style="border-radius: 100%; max-width: 250px;" alt="" class="lazyloaded colaborator-image" :data-src="homepath + '/images/collaborators/' + collaborator.attach_reference + '/' + collaborator.img_thumbnail"
                                                                 :src="homepath + '/images/collaborators/' + collaborator.attach_reference + '/' + collaborator.img_thumbnail">
+                                                                <img v-else style="border-radius: 100%; max-width: 250px;" alt="" class="lazyloaded colaborator-image" :data-src="homepath + '/images/collaborator_default.png'"
+                                                                :src="homepath + '/images/collaborator_default.png'">
                                                             </div>
                                                         </div>
                                                     </div>

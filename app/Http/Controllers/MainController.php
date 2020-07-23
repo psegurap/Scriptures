@@ -68,7 +68,12 @@ class MainController extends Controller
                 array_push($others_posts, $current_article->id);
             }
         }
-        $others_posts = Article::with('categories')->where('author_id', '!=', $article->author_id)->where('id', '!=', $featured_post->id)->find($others_posts)->take(5);
+        if(isset($featured_post)){
+            $others_posts = Article::with('categories')->where('author_id', '!=', $article->author_id)->where('id', '!=', $featured_post->id)->find($others_posts)->take(5);
+        }else{
+           $others_posts = [];
+        }
+        // dd($article);
         
         return view('single_article', compact('article', 'featured_post', 'others_posts'));
     }

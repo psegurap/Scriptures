@@ -1,10 +1,6 @@
 @extends('layouts.admin')
 @section('title', 'Articles Reviews')
-@section('breadcrumb')
-    <li class="breadcrumb-item"><a href="{{route('admin')}}">{{__('Home')}}</a></li>
-    <li class="breadcrumb-item" aria-current="page"><span>{{__('Articles')}}</span></li>
-    <li class="breadcrumb-item active" aria-current="page"><span>{{__('Reviews')}}</span></li>
-@endsection
+
 @section('styles')
     <link rel="stylesheet" href="{{asset('/admin/assets/css/plugins.css')}}">
     <link rel="stylesheet" href="{{asset('/admin/assets/css/forms/theme-checkbox-radio.css')}}">
@@ -13,13 +9,16 @@
     <link href="{{asset('/admin/plugins/flatpickr/flatpickr.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('/admin/plugins/flatpickr/custom-flatpickr.css')}}" rel="stylesheet" type="text/css">
 
-
-
     <style>
         .searchable-container .searchable-items.list .items .item-content{
             min-width: 100%;
         }
     </style>
+@endsection
+@section('breadcrumb')
+    <li class="breadcrumb-item"><a href="{{route('admin')}}">{{__('Home')}}</a></li>
+    <li class="breadcrumb-item" aria-current="page"><span>{{__('Articles')}}</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span>{{__('Reviews')}}</span></li>
 @endsection
 @section('content')
 <main>
@@ -32,7 +31,7 @@
                         <div class="col-xl-8 col-lg-8 col-md-7 col-sm-6 text-sm-right text-center layout-spacing align-self-center pb-0">
                             <div class="d-flex">
                                 <div class="switch align-self-center">
-                                    <h4 class="font-weight-bold">Articles Reviews</h4>
+                                    <h4 class="font-weight-bold">{{__('Articles Reviews')}}</h4>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +41,7 @@
                                     <div class="input-group">
                                         <input id="dateTimeFlatpickr" v-model="date" class="form-control flatpickr flatpickr-input" type="text" placeholder="Select Month...">
                                         <div class="input-group-append">
-                                          <button class="btn btn-primary" type="button" @click="searchArticles()">Search</button>
+                                          <button class="btn btn-primary" type="button" @click="searchArticles()">{{__('Search')}}</button>
                                         </div>
                                       </div>
                                 </div>
@@ -74,7 +73,7 @@
                             <div class="text-right">
                                 <div class="my-2 my-lg-0">
                                     <div class="d-flex align-items-center">
-                                        <input type="text" v-model="search_article" class="form-control product-search" id="input-search" placeholder="Search articles...">
+                                        <input type="text" v-model="search_article" class="form-control product-search" id="input-search" placeholder="{{__('Search articles...')}}">
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +82,7 @@
                             <div class="item-content">
                                 <div class="user-profile">  
                                     <div class="user-meta-info">
-                                        <p data-name="¿Qué significa clamar “Abba, Padre”?" class="user-name">No results for this date</p> 
+                                        <p data-name="" class="user-name">{{__('No results for this date')}}</p> 
                                     </div>
                                 </div> 
                             </div>

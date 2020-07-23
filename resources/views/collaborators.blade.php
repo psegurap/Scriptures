@@ -53,23 +53,27 @@
                                 <span class="text-uppercase bree title-page">{{__('Collaborators')}}</span>
                             </div>
                         </div>
-                        <div class="col-md-12 px-2">
+                        <div class="col-md-12 px-md-0">
                             <hr class="mt-1 mb-4 diviser"/>
                         </div>
                     </div>
                     <div class="row px-2">
                         <div v-for="collaborator in collaborators" class="col-lg-3 col-md-6 mb-5">
                             <div class="border-bottom pb-3 post-item">
-                                <div class="">
+                                <div class="px-5 px-md-0">
                                     @if (App::getLocale() == 'es')
                                         <a :href="homepath + '/colaborador/' + collaborator.name">
-                                            <img style="border-radius: 100%; width: 100%;" alt="" class="lazyloaded member-image" :data-src="homepath + '/images/collaborators/' + collaborator.attach_reference + '/' + collaborator.img_thumbnail"
+                                            <img v-if="collaborator.img_thumbnail != '---'" style="border-radius: 100%; width: 100%;" alt="" class="lazyloaded member-image" :data-src="homepath + '/images/collaborators/' + collaborator.attach_reference + '/' + collaborator.img_thumbnail"
                                             :src="homepath + '/images/collaborators/' + collaborator.attach_reference + '/' + collaborator.img_thumbnail">
+                                            <img v-else style="border-radius: 100%; width: 100%;" alt="" class="lazyloaded member-image" :data-src="homepath + '/images/collaborator_default.png'"
+                                            :src="homepath + '/images/collaborator_default.png'">
                                         </a>
                                     @else
                                         <a :href="homepath + '/collaborator/' + collaborator.name">
-                                            <img style="border-radius: 100%; width: 100%;" alt="" class="lazyloaded member-image" :data-src="homepath + '/images/collaborators/' + collaborator.attach_reference + '/' + collaborator.img_thumbnail"
+                                            <img v-if="collaborator.img_thumbnail != '---'" style="border-radius: 100%; width: 100%;" alt="" class="lazyloaded member-image" :data-src="homepath + '/images/collaborators/' + collaborator.attach_reference + '/' + collaborator.img_thumbnail"
                                             :src="homepath + '/images/collaborators/' + collaborator.attach_reference + '/' + collaborator.img_thumbnail">
+                                            <img v-else style="border-radius: 100%; width: 100%;" alt="" class="lazyloaded member-image" :data-src="homepath + '/images/collaborator_default.png'"
+                                            :src="homepath + '/images/collaborator_default.png'">
                                         </a>
                                     @endif
                                 </div>

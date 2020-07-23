@@ -21,7 +21,7 @@
             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 pb-4 layout-spacing">
                 <div class="px-4 py-3 widget widget-chart-one">
                     <div class="widget-heading mb-0">
-                        <h5 class="align-self-center font-weight-bold text-uppercase mb-0">Categories</h5>
+                        <h5 class="align-self-center font-weight-bold text-uppercase mb-0">{{__('Categories')}}</h5>
                         <button @click="addCategory()" class="btn btn-primary font-weight-bold">{{__('Create Category')}}</button>
                     </div>
                 </div>
@@ -33,8 +33,8 @@
                         <table id="table" class="table table-hover category-table" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>{{__('Category (es)')}}</th>
-                                    <th>{{__('Category (en)')}}</th>
+                                    <th>{{__('Category')}} (es)</th>
+                                    <th>{{__('Category')}} (en)</th>
                                     <th>{{__('Articles')}}</th>
                                     <th>{{__('Status')}}</th>
                                     <th class="no-content"></th>

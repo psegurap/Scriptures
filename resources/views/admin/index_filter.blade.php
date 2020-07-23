@@ -696,5 +696,5 @@
         var current_month_articles = {!! json_encode($current_month_articles) !!}
     </script>
     <script src="{{asset('/admin/plugins/table/datatable/datatables.js')}}"></script>
-    <script src="{{asset('/js/custom/admin/index_admin.js')}}"></script>
+    <script src="{{asset('/js/custom/admin/index_filter.js')}}"></script>
 @endsection

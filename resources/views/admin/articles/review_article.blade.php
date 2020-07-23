@@ -16,7 +16,7 @@
 @section('breadcrumb')
     <li class="breadcrumb-item"><a href="{{route('admin')}}">{{__('Home')}}</a></li>
     <li class="breadcrumb-item"><a href="/admin/articles">{{__('Articles')}}</a></li>
-    <li class="breadcrumb-item active" aria-current="page"><span>{{__('Review Article')}}</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span>{{__('Article Review')}}</span></li>
 @endsection
 @section('content')
 <main>
@@ -76,24 +76,24 @@
                 <div class="user-profile layout-spacing">
                     <div class="widget-content widget-content-area review_area">
                         <div class="border-bottom text-light mb-2 pb-2">
-                            <label for="">Choose your answer:</label>
+                            <label for="">{{__('Choose your answer')}}:</label>
                             <div class="d-flex">
                                 <div class="n-chk">
                                     <label class="new-control new-radio new-radio-text radio-success">
                                       <input v-validate="'required'" type="radio" class="new-control-input" v-model="review.desicion" value="Approved" name="answer">
-                                      <span class="new-control-indicator"></span><span class="new-radio-content text-white">Approved</span>
+                                      <span class="new-control-indicator"></span><span class="new-radio-content text-white">{{__('Approved')}}</span>
                                     </label>
                                 </div>
                                 <div class="n-chk">
                                     <label class="new-control new-radio new-radio-text radio-warning">
                                       <input v-validate="'required'" type="radio" class="new-control-input" v-model="review.desicion" value="Revision" name="answer">
-                                      <span class="new-control-indicator"></span><span class="new-radio-content text-white">Revision</span>
+                                      <span class="new-control-indicator"></span><span class="new-radio-content text-white">{{__('Revision')}}</span>
                                     </label>
                                 </div>
                                 <div class="n-chk">
                                     <label class="new-control new-radio new-radio-text radio-danger">
                                       <input v-validate="'required'" type="radio" class="new-control-input" v-model="review.desicion" value="Declined" name="answer">
-                                      <span class="new-control-indicator"></span><span class="new-radio-content text-white">Declined</span>
+                                      <span class="new-control-indicator"></span><span class="new-radio-content text-white">{{__('Declined')}}</span>
                                     </label>
                                 </div>
                             </div>
@@ -102,15 +102,15 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="">Leave a comment:</label>
+                                    <label for="">{{__('Leave a comment')}}:</label>
                                     <textarea v-validate="'required'" v-model="review.comment" class="form-control rounded-0" name="comments" cols="30" rows="5" placeholder="{{__('Type your comment...')}}"></textarea>
                                     <span class="text-danger" style="font-size: 12px;" v-show="errors.has('comments')">* @{{ errors.first('comments') }}</span>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="form-group text-right">
-                                    <button v-if="article.reviews.length == 0" @click="validate(SaveReview)" class="btn btn-primary rounded-0 text-uppercase font-weight-bold">Save Review</button>
-                                    <button v-else @click="validate(UpdateReview)" class="btn btn-primary rounded-0 text-uppercase font-weight-bold">Update Review</button>
+                                    <button v-if="article.reviews.length == 0" @click="validate(SaveReview)" class="btn btn-primary rounded-0 text-uppercase font-weight-bold">{{__('Save Review')}}</button>
+                                    <button v-else @click="validate(UpdateReview)" class="btn btn-primary rounded-0 text-uppercase font-weight-bold">{{__('Update Review')}}</button>
                                 </div>
                             </div>
                         </div>
