@@ -20,6 +20,11 @@
     <link rel="stylesheet" href="{{asset('/css/jquery.toast.css')}}">
     <link rel="stylesheet" href="{{asset('/css/summernote.min.css')}}">
     <link href="{{asset('/css/style.css')}}" rel="stylesheet" media="screen">
+    <style>
+        #toTop{
+            z-index: 20;
+        }
+    </style>
     @yield('styles')
 </head>
 
@@ -165,7 +170,7 @@
             <div class="footer-dark footer-black pt-5" id="footer-content">
                 <div class="container pb-4">
                     <div class="row clearfix">
-                        <div class="col-lg-4">
+                        {{-- <div class="col-lg-4">
                             <div class="footer-1 section">
                                 <div class="fbt_list_posts">
                                     <h4 class="title title-heading">
@@ -242,8 +247,8 @@
                                     </div>
                                 </div><!-- .fbt_list_posts -->
                             </div>
-                        </div>
-                        <div class="col-lg-6 ml-lg-auto">
+                        </div> --}}
+                        <div class="col-lg-12">
                             <div class="row">
                                 <div class="col-lg-12 mb-3">
                                     <div class="footer-2 section">
@@ -306,7 +311,7 @@
                                     <div class="footer-5 section">
                                         <div class="widget">
                                             <h4 class="title title-heading">
-                                                Account
+                                                External Links
                                             </h4>
                                             <div class="widget-content list-label-widget-content">
                                                 <ul class="list-unstyled">
@@ -333,7 +338,7 @@
                                     <script>document.write(new Date().getFullYear());</script> Anclados en Su Palabra | {{__('All Rights Reserved')}}
                                 </div>
                             </div>
-                            <div class="col-lg-6">
+                            {{-- <div class="col-lg-6">
                                 <div class="footer-menu section" id="footer-menu">
                                     <div class="widget socialList">
                                         <div class="widget-content">
@@ -357,7 +362,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>

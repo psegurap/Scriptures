@@ -15,10 +15,14 @@
                 <div class="widget widget-chart-one">
                     <div class="widget-heading mb-0">
                         <h5 class="text-uppercase font-weight-bold">{{__('Articles')}}</h5>
+                        <a :href="homepath + '/admin/articles/new'">
+                            <span class="btn badge badge-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>
-    
     
             <div v-for="article in articles" class="col-xl-3 col-lg-4 col-md-4 col-sm-4 col-12 layout-spacing">
                 <div class="widget-three">
@@ -78,9 +82,9 @@
                                     <div class="mb-1">
                                         <span class="badge badge-primary">{{__('Created')}}: </span> <span class="badge badge-light">@{{moment(article.created_at).format('L')}}</span> 
                                     </div>
-                                    <div>
+                                    {{-- <div>
                                         <span class="badge badge-primary">{{__('Translated')}}: </span> <span v-if="article.title_es != '' && article.full_content_es != '' && article.short_description_es != ''" class="badge badge-light">es</span> <span v-if="article.title_en != '' && article.full_content_en != '' && article.short_description_en != ''" class="badge badge-light">en</span>
-                                    </div>
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>

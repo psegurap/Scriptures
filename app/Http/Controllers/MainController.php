@@ -15,27 +15,40 @@ use App;
 
 class MainController extends Controller
 {
+
+    public function CheckersCount(){
+        $result = intval(round(User::where('filter', 1)->count() / 2));
+        return $result;
+    }
+
     public function index()
     {
-        // $checkers_count = intval(round(User::where('filter', 1)->count() / 2));
-        // $slider_post = Article::with('categories', 'author')->orderBy('id', 'desc')->wherehas('reviews', function($review){
-        //     $review->where('desicion', 'Approved');
-        // }, '>=', $checkers_count)->take(4)->get();
-        $slider_post = Article::with('categories', 'author')->orderBy('id', 'desc')->take(4)->get();
+        $checkers_count = $this->CheckersCount();
+
+        $slider_post = Article::with('categories', 'author')->orderBy('id', 'desc')->wherehas('reviews', function($review){
+            $review->where('desicion', 'Approved');
+        }, '>=', $checkers_count)->take(4)->get();
         $slider_ids = $slider_post->pluck('id')->toArray();
-        // dd($slider_ids);
+
+        $dont_miss = Article::with('categories', 'author')->orderBy('id', 'desc')->wherehas('reviews', function($review){
+            $review->where('desicion', 'Approved');
+        }, '>=', $checkers_count)->whereNotIn('id', $slider_ids)->take(4)->get();
+        $dont_miss_id = $dont_miss->pluck('id')->toArray();
+
+        $merged_top = array_merge($slider_ids, $dont_miss_id);
+
         $categories_articles = Category::with(['articles' => function($article) use($slider_ids){
             $article->whereNotIn('article_id', $slider_ids)->get();
         }])->whereHas('articles', function($article) use ($slider_ids){
             $article->whereNotIn('article_id', $slider_ids);
         })->get();
         // dd($categories_articles);
-        return view('index', compact('slider_post'));
+        return view('index', compact('slider_post', 'dont_miss'));
     }
 
     public function single_article($url)
     {
-        $checkers_count = intval(round(User::where('filter', 1)->count() / 2));
+        $checkers_count = $this->CheckersCount();
         $article = Article::with(['categories', 'tags' => function($tag) use ($checkers_count){
             $tag->with(['articles' => function($article) use ($checkers_count){
                 $article->wherehas('reviews', function($review) use ($checkers_count){
@@ -50,13 +63,6 @@ class MainController extends Controller
             }])->get();
         }])->where('url_es', $url)->orwhere('url_en', $url)->first();
 
-        // $article = Article::with(['categories', 'tags' => function($tag) use ($checkers_count){
-        //     $tag->with(['articles'])->get();
-        // }, 'series', 'author' => function($author) use ($url, $checkers_count){
-        //     $author->with(['articles' => function($article) use ($url, $checkers_count){
-        //         $article->inRandomOrder()->where('url_es', '!=', $url)->where('url_en', '!=', $url)->take(6);
-        //     }])->get();
-        // }])->where('url_es', $url)->orwhere('url_en', $url)->first();
 
         $featured_post = Article::with('categories', 'author')->orderBy('id', 'desc')->where('url_es', '!=', $url)->wherehas('reviews', function($review){
             $review->where('desicion', 'Approved');
@@ -87,7 +93,7 @@ class MainController extends Controller
 
     public function single_collaborator($name)
     {
-        $checkers_count = intval(round(User::where('filter', 1)->count() / 2));
+        $checkers_count = $this->CheckersCount();
         $collaborator = Collaborator::with(['articles' => function($article) use ($checkers_count){
             $article->wherehas('reviews', function($review){
                 $review->where('desicion', 'Approved');
@@ -106,7 +112,7 @@ class MainController extends Controller
 
     public function profession(){
 
-        $checkers_count = intval(round(User::where('filter', 1)->count() / 2));
+        $checkers_count = $this->CheckersCount();
         $serie = Serie::with(['articles' => function($article) use ($checkers_count){
             $article->with('author')->wherehas('reviews', function($review){
                     $review->where('desicion', 'Approved');

@@ -6,6 +6,7 @@ $(document).ready(function(){
         el: 'main',
         data: {
             slider_post : slider_post,
+            dont_miss : dont_miss
         },
         watch: {
             

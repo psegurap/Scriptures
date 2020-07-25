@@ -8,7 +8,9 @@
 @endsection
 @section('styles')
     <style>
-        
+        .collaborator_image{
+            box-shadow: 0px 2px 10px 0px #777777;
+        }
     </style>
 @endsection
 @section('content')
@@ -105,7 +107,8 @@
                                                     <div class="col-lg-12">
                                                         <div class="post-pager row bg-secondary" style="background-color: rgba(0, 0, 0, 0.09) !important;">
                                                             <div class="previous col-lg-3 px-4 py-4 text-left">
-                                                                <img style="width: 100%; border-radius: 100%;" :src="homepath + '/images/collaborators/' + article.author.attach_reference + '/' + article.author.img_thumbnail" alt="">
+                                                                <img v-if="article.author.img_thumbnail != '---'" style="width: 100%; border-radius: 100%;" class="collaborator_image" :src="homepath + '/images/collaborators/' + article.author.attach_reference + '/' + article.author.img_thumbnail" alt="">
+                                                                <img v-else style="width: 100%; border-radius: 100%;" class="collaborator_image" :src="homepath + '/images/collaborator_default.png'" alt="">
                                                             </div>
                                                             <div class="next col-lg-9 py-4">
                                                                 @if (App::getLocale() == 'es')
@@ -413,7 +416,7 @@
                                                         <a :href="homepath + '/article/' + other_article.url_en">@{{other_article.title_en}}</a>
                                                     @endif
                                                 </h3>
-                                                <div class="post-meta">
+                                                <div class="post-meta merriweather">
                                                     <span class="post-date published">@{{moment(other_article.created_at).format('LL')}}</span>
                                                 </div>
                                             </div>
@@ -427,7 +430,7 @@
                                     <span class="fbt-ad-title">
                                         {{__('Advertisement')}} <span class="ad_block"></span>
                                     </span>
-                                    <div class="widget-content">
+                                    <div class="widget-content px-3">
                                         <a href="#">
                                             <img alt="Advertisement" class="lazyloaded img-fluid" data-src="{{asset('/images/ad-300x600.jpg')}}"
                                                 src="{{asset('/images/ad-300x600.jpg')}}">
