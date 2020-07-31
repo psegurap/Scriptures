@@ -37,13 +37,21 @@ class MainController extends Controller
 
         $merged_top = array_merge($slider_ids, $dont_miss_id);
 
+        $recent_posts_pagination = Article::with('categories', 'author')->orderBy('id', 'desc')->wherehas('reviews', function($review){
+            $review->where('desicion', 'Approved');
+        }, '>=', $checkers_count)->whereNotIn('id', $merged_top)->paginate(8);
+
+        $featured_post = Article::with('categories', 'author')->orderBy('id', 'desc')->wherehas('reviews', function($review){
+            $review->where('desicion', 'Approved');
+        }, '>=', $checkers_count)->first();
+
         $categories_articles = Category::with(['articles' => function($article) use($slider_ids){
             $article->whereNotIn('article_id', $slider_ids)->get();
         }])->whereHas('articles', function($article) use ($slider_ids){
             $article->whereNotIn('article_id', $slider_ids);
         })->get();
         // dd($categories_articles);
-        return view('index', compact('slider_post', 'dont_miss'));
+        return view('index', compact('slider_post', 'dont_miss', 'recent_posts_pagination', 'featured_post'));
     }
 
     public function single_article($url)
@@ -124,6 +132,17 @@ class MainController extends Controller
 
     public function contact(){
         return view('contact');
+    }
+
+    public function getFooterCategories(){
+        $checkers_count = $this->CheckersCount();
+        $categories = Category::whereHas('articles', function($article) use ($checkers_count){
+            $article->whereHas('reviews', function($review){
+                $review->where('desicion', 'Approved');
+            },'>=', $checkers_count);
+        })->where('status', 1)->inRandomOrder()->take(5)->get();
+
+        return $categories;
     }
 
     public function StoreSubscriber(Request $request){

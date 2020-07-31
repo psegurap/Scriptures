@@ -16,8 +16,8 @@
         }
 
         .audio-icon {
-            background: #6d6d6d;
-            color: white;
+            background: #ffffff;
+            color: black;
             height: 35px;
             width: 35px;
             display: inline-block;
@@ -314,13 +314,13 @@
                             </div>
                         </div><!-- .fbt-block-1 -->
         
-                        <div style="position: relative;width: 100%;" class="p-3 mb-5">
+                        <div style="position: relative;width: 100%;background: black;" class="p-3 mb-5 rounded">
                             <div class="widget fbt-block-2 mb-0" style="width: 100%;height: 100%;top: 0;left: 0;">
                                 <div class="fbt-sep-title">
-                                    <h4 class="title title-heading-left">Podcasts</h4>
+                                    <h4 class="title title-heading-left text-white">Podcasts</h4>
                                     <div class="title-sep-container">
                                         <div class="title-sep sep-double">
-                                            <a href="#" class="view_more bree">View all</a>
+                                            <a href="#" class="view_more bree text-white">View all</a>
                                         </div>
                                     </div>
                                 </div>
@@ -328,83 +328,79 @@
                                     <div class="row">
                                         
                                         <div class="col-lg-12 fbt_list_posts">
-                                            <article class="post mb-3 p-2 rounded" style="box-shadow: 0px 0px 5px 0px #777777;">
+                                            <article class="post mb-3 p-2 rounded" style="box-shadow: rgb(255 255 255) -1px 1px 0px 0px">
                                                 <div class="post-contentalign-items-center">
                                                     <div class="mb-2 fbt-title-caption media-body">
                                                         <h3 class="post-title">
-                                                            <a href="./single_mag.html"> Ne amores quidem sanctos alienos esse.</a>
+                                                            <a href="./single_mag.html" class="text-white"> Ne amores quidem sanctos alienos esse.</a>
                                                         </h3>
                                                         <div class="post-meta">
-                                                            <span class="post-date published merriweather">March 27, 2017</span>
+                                                            <span class="post-date published merriweather text-white">March 27, 2017</span>
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <hr class="mb-2" style="height: 2px;background: black;border-radius: 50px;">
+                                                        <hr class="mb-2" style="height: 1px;background: white;border-radius: 50px;">
                                                     </div>
                                                     <div class="clearfix d-flex">
-                                                        <span class="align-items-center audio-icon d-flex justify-content-center"><i class="fa fa-step-backward"></i></span>
-                                                        <span class="align-items-center audio-icon d-flex justify-content-center mx-3"><i class="fa fa-pause"></i></span>
-                                                        <span class="align-items-center audio-icon d-flex justify-content-center"><i class="fa fa-step-forward"></i></span>
+                                                        <span class="video-icon" style="position: initial"><i class="fa fa-play"></i></span>
                                                     </div>
                                                 </div>
                                             </article>
-                                            <article class="post mb-3 p-2 rounded" style="box-shadow: 0px 0px 5px 0px #777777;">
+                                            <article class="post mb-3 p-2 rounded" style="box-shadow: rgb(255 255 255) -1px 1px 0px 0px">
                                                 <div class="post-contentalign-items-center">
                                                     <div class="mb-2 fbt-title-caption media-body">
                                                         <h3 class="post-title">
-                                                            <a href="./single_mag.html">Mihi vero, inquit, placet agi subtilius et pressius.</a>
+                                                            <a href="./single_mag.html" class="text-white">Mihi vero, inquit, placet agi subtilius et pressius.</a>
                                                         </h3>
                                                         <div class="post-meta">
-                                                            <span class="post-date published merriweather">March 27, 2017</span>
+                                                            <span class="post-date published merriweather text-white">March 27, 2017</span>
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <hr class="mb-2" style="height: 2px;background: black;border-radius: 50px;">
+                                                        <div class="text-right">
+                                                            <span class="merriweather mr-1 text-white">Playing now</span>
+                                                        </div>
+                                                        <hr class="mb-2 mt-0" style="height: 1px; background: white; border-radius: 50px;">
                                                     </div>
+                                                    
                                                     <div class="clearfix d-flex">
-                                                        <span class="align-items-center audio-icon d-flex justify-content-center"><i class="fa fa-step-backward"></i></span>
-                                                        <span class="align-items-center audio-icon d-flex justify-content-center mx-3"><i class="fa fa-pause"></i></span>
-                                                        <span class="align-items-center audio-icon d-flex justify-content-center"><i class="fa fa-step-forward"></i></span>
+                                                        <span class="video-icon" style="position: initial"><i class="fa fa-pause  ml-0"></i></span>
                                                     </div>
                                                 </div>
                                             </article>
-                                            <article class="post mb-3 p-2 rounded" style="box-shadow: 0px 0px 5px 0px #777777;">
+                                            <article class="post mb-3 p-2 rounded" style="box-shadow: rgb(255 255 255) -1px 1px 0px 0px">
                                                 <div class="post-contentalign-items-center">
                                                     <div class="mb-2 fbt-title-caption media-body">
                                                         <h3 class="post-title">
-                                                            <a href="./single_mag.html">Suspendisse sed tortor eget justo aliquam.</a>
+                                                            <a href="./single_mag.html" class="text-white">Suspendisse sed tortor eget justo aliquam.</a>
                                                         </h3>
                                                         <div class="post-meta">
-                                                            <span class="post-date published merriweather">March 28, 2017</span>
+                                                            <span class="post-date published merriweather text-white">March 28, 2017</span>
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <hr class="mb-2" style="height: 2px;background: black;border-radius: 50px;">
+                                                        <hr class="mb-2" style="height: 1px;background: white;border-radius: 50px;">
                                                     </div>
                                                     <div class="clearfix d-flex">
-                                                        <span class="align-items-center audio-icon d-flex justify-content-center"><i class="fa fa-step-backward"></i></span>
-                                                        <span class="align-items-center audio-icon d-flex justify-content-center mx-3"><i class="fa fa-pause"></i></span>
-                                                        <span class="align-items-center audio-icon d-flex justify-content-center"><i class="fa fa-step-forward"></i></span>
+                                                        <span class="video-icon" style="position: initial"><i class="fa fa-play"></i></span>
                                                     </div>
                                                 </div>
                                             </article>
-                                            <article class="post mb-3 p-2 rounded" style="box-shadow: 0px 0px 5px 0px #777777;">
+                                            <article class="post mb-3 p-2 rounded" style="box-shadow: rgb(255 255 255) -1px 1px 0px 0px">
                                                 <div class="post-contentalign-items-center">
                                                     <div class="mb-2 fbt-title-caption media-body">
                                                         <h3 class="post-title">
-                                                            <a href="./single_mag.html">Nunc accumsan ex ligula, in malesuada sapien.</a>
+                                                            <a href="./single_mag.html" class="text-white">Nunc accumsan ex ligula, in malesuada sapien.</a>
                                                         </h3>
                                                         <div class="post-meta">
-                                                            <span class="post-date published merriweather">March 28, 2017</span>
+                                                            <span class="post-date published merriweather text-white">March 28, 2017</span>
                                                         </div>
                                                     </div>
                                                     <div>
-                                                        <hr class="mb-2" style="height: 2px;background: black;border-radius: 50px;">
+                                                        <hr class="mb-2" style="height: 1px;background: white;border-radius: 50px;">
                                                     </div>
                                                     <div class="clearfix d-flex">
-                                                        <span class="align-items-center audio-icon d-flex justify-content-center"><i class="fa fa-step-backward"></i></span>
-                                                        <span class="align-items-center audio-icon d-flex justify-content-center mx-3"><i class="fa fa-pause"></i></span>
-                                                        <span class="align-items-center audio-icon d-flex justify-content-center"><i class="fa fa-step-forward"></i></span>
+                                                        <span class="video-icon" style="position: initial"><i class="fa fa-play"></i></span>
                                                     </div>
                                                 </div>
                                             </article>
@@ -761,7 +757,7 @@
                 </div>
             </div>
         
-            <div class="fbt-gallery mb-5">
+            {{-- <div class="fbt-gallery mb-5">
                 <div class="container fbt-elastic-container fbt-gallery-1">
                     <div class="row px-2">
                         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0 px-2">
@@ -874,7 +870,7 @@
                         </div>
                     </div>
                 </div>
-            </div><!-- .fbt-gallery -->
+            </div><!-- .fbt-gallery --> --}}
         
             <div class="container fbt-elastic-container mb-5">
                 <div class="widget fbt-ad-block">
@@ -899,7 +895,7 @@
                             <div class="main-section" id="main_content">
                                 
                                 <div class="fbt-sep-title">
-                                    <h4 class="title title-heading-left">Recent posts</h4>
+                                    <h4 class="title title-heading-left">{{__('Recent posts')}}</h4>
                                     <div class="title-sep-container">
                                         <div class="title-sep sep-double"></div>
                                     </div>
@@ -907,234 +903,58 @@
                                 
                                 <div class="blog-posts fbt-index-post-wrap">
         
-                                    <div class="fbt_magazine-blog-post fbt-index-post row align-items-center justify-content-between">
+                                    <div v-for="article in recent_posts_pagination.data" class="fbt_magazine-blog-post fbt-index-post row align-items-center justify-content-between">
                                         <div class="col-xl-6 col-md-5">
                                             <div class="fbt-post-thumbnail">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-13.jpg"
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
+                                                @if (App::getLocale() == 'es')
+                                                    <a :href="homepath + '/articulo/' + article.url_es">
+                                                        <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + article.attach_reference + '/' + article.img_thumbnail"
+                                                        :src="homepath + '/images/articles/' + article.attach_reference + '/' + article.img_thumbnail">
+                                                    </a>
+                                                @else
+                                                    <a :href="homepath + '/articulo/' + article.url_en">
+                                                        <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + article.attach_reference + '/' + article.img_thumbnail"
+                                                        :src="homepath + '/images/articles/' + article.attach_reference + '/' + article.img_thumbnail">
+                                                    </a>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="col-xl-6 col-md-7">
                                             <div class="fbt-post-caption mt-3 mt-md-0">
-                                                <span class="post-tag index-post-tag">Design</span>
+                                                <span v-for="category in article.categories" class="post-tag index-post-tag">
+                                                    @if (App::getLocale() == 'es')
+                                                        @{{category.category_es}}
+                                                    @else
+                                                        @{{category.category_en}}
+                                                    @endif
+                                                </span>
                                                 <h3 class="post-title">
-                                                    <a href="./single_mag.html">
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                    </a>
+                                                    @if (App::getLocale() == 'es')
+                                                        <a :href="homepath + '/articulo/' + article.url_es">
+                                                            @{{article.title_es}}
+                                                        </a>
+                                                    @else
+                                                        <a :href="homepath + '/articulo/' + article.url_en">
+                                                            @{{article.title_es}}
+                                                        </a>
+                                                    @endif
                                                 </h3>
-                                                <div class="post-meta mb-2">
-                                                    <span class="post-author"><a href="#">fbtemplates</a></span>
-                                                    <span class="post-date published">June 19, 2019</span>
+                                                <div class="post-meta mb-2 merriweather">
+                                                    <span class="post-author">
+                                                        @if (App::getLocale() == 'es')
+                                                            <a class="text-capitalize" :href="homepath + '/colaborador/' + article.author.name">@{{article.author.name}}</a>
+                                                        @else
+                                                            <a class="text-capitalize" :href="homepath + '/collaborator/' + article.author.name">@{{article.author.name}}</a>
+                                                        @endif
+                                                    </span>
+                                                    <span class="post-date published">@{{moment(article.created_at).format('LL')}}</span>
                                                 </div>
                                                 <p class="post-excerpt">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec facilisis leo
-                                                    et bibendum pretium. Suspendisse ligula neque, ultrices nec interdum fauc…
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <div class="fbt_magazine-blog-post hentry fbt-index-post row align-items-center justify-content-between">
-                                        <div class="col-xl-6 col-md-5">
-                                            <div class="fbt-post-thumbnail">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-14.jpg"
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-md-7">
-                                            <div class="fbt-post-caption mt-3 mt-md-0">
-                                                <span class="post-tag index-post-tag">Friends</span>
-                                                <h3 class="post-title">
-                                                    <a href="./single_mag.html">
-                                                        Nunc tellus libero, tempus id luctus eget, fermentum.
-                                                    </a>
-                                                </h3>
-                                                <div class="post-meta mb-2">
-                                                    <span class="post-author"><a href="#">fbtemplates</a></span>
-                                                    <span class="post-date published">June 05, 2019</span>
-                                                </div>
-                                                <p class="post-excerpt">
-                                                    Donec dolor elit, pellentesque a massa pellentesque, euismod sagittis ipsum.
-                                                    Nullam a diam ac turpis iaculis vulputate. Nunc tellus libero, tempus id…
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <div class="fbt_magazine-blog-post hentry fbt-index-post row align-items-center justify-content-between">
-                                        <div class="col-xl-6 col-md-5">
-                                            <div class="fbt-post-thumbnail">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-15.jpg"
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-md-7">
-                                            <div class="fbt-post-caption mt-3 mt-md-0">
-                                                <span class="post-tag index-post-tag">Slider</span>
-                                                <h3 class="post-title">
-                                                    <a href="./single_mag.html">
-                                                        Nulla sed eros sit amet ipsum mattis pulvinar quis quis sem.
-                                                    </a>
-                                                </h3>
-                                                <div class="post-meta mb-2">
-                                                    <span class="post-author"><a href="#">fbtemplates</a></span>
-                                                    <span class="post-date published">September 13, 2018</span>
-                                                </div>
-                                                <p class="post-excerpt">
-                                                    Fames dictumst massa massa, qui sapien per, mauris id sed cubilia
-                                                    suspendisse neque. Proin natoque consectetuer urna sed sodales, dignissim condiment…
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <div class="fbt_magazine-blog-post hentry fbt-index-post row align-items-center justify-content-between">
-                                        <div class="col-xl-6 col-md-5">
-                                            <div class="fbt-post-thumbnail">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-16.jpg"
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
-                                                <span class="video-icon"><i class="fa fa-play"></i></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-md-7">
-                                            <div class="fbt-post-caption mt-3 mt-md-0">
-                                                <span class="post-tag index-post-tag">Lifestyle</span>
-                                                <h3 class="post-title">
-                                                    <a href="./single_mag.html">
-                                                        Lorem ipsum dolor sit amet. Custom Post Gallery.
-                                                    </a>
-                                                </h3>
-                                                <div class="post-meta mb-2">
-                                                    <span class="post-author"><a href="#">fbtemplates</a></span>
-                                                    <span class="post-date published">May 25, 2018</span>
-                                                </div>
-                                                <p class="post-excerpt">
-                                                    Phasellus deserunt. Convallis perspiciatis fusce fermentum accumsan, arcu
-                                                    aliquam, velit venenatis augue proin, enim etiam dolor. Mi ac lectus vitae …
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <div class="fbt_magazine-blog-post hentry fbt-index-post row align-items-center justify-content-between">
-                                        <div class="col-xl-6 col-md-5">
-                                            <div class="fbt-post-thumbnail">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-17.jpg"
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-md-7">
-                                            <div class="fbt-post-caption mt-3 mt-md-0">
-                                                <span class="post-tag index-post-tag">Friends</span>
-                                                <h3 class="post-title">
-                                                    <a href="./single_mag.html">
-                                                        Lorem ipsum sit amet, consectetur adipiscing elit.
-                                                    </a>
-                                                </h3>
-                                                <div class="post-meta mb-2">
-                                                    <span class="post-author"><a href="#">fbtemplates</a></span>
-                                                    <span class="post-date published">April 02, 2017</span>
-                                                </div>
-                                                <p class="post-excerpt">
-                                                    Phasellus deserunt. Convallis perspiciatis fusce fermentum accumsan, arcu
-                                                    aliquam, velit venenatis augue proin, enim etiam dolor. Mi ac lectus vitae …
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <div class="fbt_magazine-blog-post hentry fbt-index-post row align-items-center justify-content-between">
-                                        <div class="col-xl-6 col-md-5">
-                                            <div class="fbt-post-thumbnail">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-18.jpg"
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-md-7">
-                                            <div class="fbt-post-caption mt-3 mt-md-0">
-                                                <span class="post-tag index-post-tag">Friends</span>
-                                                <h3 class="post-title">
-                                                    <a href="./single_mag.html">
-                                                        Nunc accumsan ex ligula, in sapien consectetur.
-                                                    </a>
-                                                </h3>
-                                                <div class="post-meta mb-2">
-                                                    <span class="post-author"><a href="#">fbtemplates</a></span>
-                                                    <span class="post-date published">March 31, 2017</span>
-                                                </div>
-                                                <p class="post-excerpt">
-                                                    Donec dolor elit, pellentesque a massa pellentesque, euismod sagittis ipsum.
-                                                    Nullam a diam ac turpis iaculis vulputate. Nunc tellus libero, tempus id…
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <div class="fbt_magazine-blog-post hentry fbt-index-post row align-items-center justify-content-between">
-                                        <div class="col-xl-6 col-md-5">
-                                            <div class="fbt-post-thumbnail">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-19.jpg"
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-md-7">
-                                            <div class="fbt-post-caption mt-3 mt-md-0">
-                                                <span class="post-tag index-post-tag">Carousel</span>
-                                                <h3 class="post-title">
-                                                    <a href="./single_mag.html">
-                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                    </a>
-                                                </h3>
-                                                <div class="post-meta mb-2">
-                                                    <span class="post-author"><a href="#">fbtemplates</a></span>
-                                                    <span class="post-date published">March 30, 2017</span>
-                                                </div>
-                                                <p class="post-excerpt">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porttitor leo
-                                                    vel nulla posuere accumsan. Suspendisse sed tortor eget justo aliquam euismod.…
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <div class="fbt_magazine-blog-post hentry fbt-index-post row align-items-center justify-content-between">
-                                        <div class="col-xl-6 col-md-5">
-                                            <div class="fbt-post-thumbnail">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-20.jpg"
-                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-md-7">
-                                            <div class="fbt-post-caption mt-3 mt-md-0">
-                                                <span class="post-tag index-post-tag">People</span>
-                                                <h3 class="post-title">
-                                                    <a href="./single_mag.html">
-                                                        Suspendisse posuere mi lacus, leo gravida eu.
-                                                    </a>
-                                                </h3>
-                                                <div class="post-meta mb-2">
-                                                    <span class="post-author"><a href="#">fbtemplates</a></span>
-                                                    <span class="post-date published">March 28, 2017</span>
-                                                </div>
-                                                <p class="post-excerpt">
-                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut porttitor leo
-                                                    vel nulla posuere accumsan. Suspendisse sed tortor eget justo aliquam euism…
+                                                    @if (App::getLocale() == 'es')
+                                                        @{{article.short_description_es}}
+                                                    @else
+                                                        @{{article.short_description_en}}
+                                                    @endif
                                                 </p>
                                             </div>
                                         </div>
@@ -1143,31 +963,36 @@
                                 </div><!-- .fbt-index-post-wrap -->
         
                                 <div class="pagenav" id="blog-pager">
-                                    <span class="showpageOf">2 / 3</span>
+                                    <span class="showpageOf">@{{recent_posts_pagination.current_page}} / @{{recent_posts_pagination.last_page}}</span>
                                     <span class="showpage firstpage">
-                                        <a href="#">
+                                        <a v-if="recent_posts_pagination.prev_page_url != null" :href="recent_posts_pagination.first_page_url">
+                                            <i class="fa fa-angle-double-left"></i>
+                                        </a>
+                                        <a v-else class="current">
                                             <i class="fa fa-angle-double-left"></i>
                                         </a>
                                     </span>
                                     <span class="showpage">
-                                        <a href="#">
+                                        <a class="" :disabled="recent_posts_pagination.prev_page_url == null" :class="[recent_posts_pagination.prev_page_url == null ? 'current' : '']" :href="recent_posts_pagination.prev_page_url">
                                             <i class="fa fa-angle-left"></i>
                                         </a>
                                     </span>
-                                    <span class="displaypageNum">
-                                        <a href="#">1</a>
+
+                                    <span v-for="index in 1, recent_posts_pagination.last_page" class="displaypageNum" :class="[index != recent_posts_pagination.last_page ? 'mr-1' : '']">
+                                        <a class="" v-if="index != recent_posts_pagination.current_page" :href="homepath + '/?page=' + index">@{{index}}</a>
+                                        <a class=" page current" v-else>@{{index}}</a>
                                     </span>
-                                    <span class="page current">2</span>
+                                    
                                     <span class="displaypageNum">
-                                        <a href="#">3</a>
-                                    </span>
-                                    <span class="displaypageNum">
-                                        <a href="#">
+                                        <a :disabled="recent_posts_pagination.next_page_url == null" :class="[recent_posts_pagination.next_page_url == null ? 'current' : '']" :href="recent_posts_pagination.next_page_url">
                                             <i class="fa fa-angle-right"></i>
                                         </a>
                                     </span>
                                     <span class="displaypageNum lastpage">
-                                        <a href="#">
+                                        <a v-if="recent_posts_pagination.next_page_url != null" :href="recent_posts_pagination.last_page_url" >
+                                            <i class="fa fa-angle-double-right"></i>
+                                        </a>
+                                        <a v-else class="current" >
                                             <i class="fa fa-angle-double-right"></i>
                                         </a>
                                     </span>
@@ -1183,7 +1008,7 @@
         
                             <div class="widget FeaturedPost mb-5">
                                 <div class="fbt-sep-title">
-                                    <h4 class="title title-heading-left">Featured Post</h4>
+                                    <h4 class="title title-heading-left">{{__('Featured Post')}}</h4>
                                     <div class="title-sep-container">
                                         <div class="title-sep sep-double"></div>
                                     </div>
@@ -1191,31 +1016,45 @@
                                 <div class="widget-content">
                                     <div class="FeaturedPostContainer">
                                         <div class="fbt-item-thumbnail">
-                                            <a class="post-image-link" href="./single_mag.html">
-                                                <img alt=" " class="post-thumbnail lazyloaded" data-src="./images/mag-img-20.jpg" 
-                                                    src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                            </a>
+                                            @if (App::getLocale() == 'es')
+                                                <a class="post-image-link" :href="homepath + '/articulo/' + featured_post.url_es">
+                                                    <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + featured_post.attach_reference + '/' + featured_post.img_thumbnail"
+                                                    :src="homepath + '/images/articles/' + featured_post.attach_reference + '/' + featured_post.img_thumbnail">
+                                                </a>
+                                            @else
+                                                <a class="post-image-link" :href="homepath + '/articulo/' + featured_post.url_en">
+                                                    <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + featured_post.attach_reference + '/' + featured_post.img_thumbnail"
+                                                    :src="homepath + '/images/articles/' + article.attach_reference + '/' + featured_post.img_thumbnail">
+                                                </a>
+                                            @endif
                                         </div>
                                         <div class="fbt-title-section mt-3">
-                                            <div class="post-meta mb-2">
-                                                <span class="post-author">fbtemplates</span>
-                                                <span class="post-date published">March 08, 2017</span>
+                                            <div class="post-meta mb-2 merriweather">
+                                                <span v-for="category in featured_post.categories" class="post-author text-capitalize">
+                                                    @{{featured_post.author.name}}
+                                                </span>
+                                                <span class="post-date published">@{{moment(featured_post.created_at).format('LL')}}</span>
                                             </div>
                                             <h3 class="post-title">
-                                                <a href="./single_mag.html">
-                                                    Etiam nec enim id mi maximus consequat sed ut tortor.
-                                                </a>
+                                                @if (App::getLocale() == 'es')
+                                                    <a :href="homepath + '/articulo/' + featured_post.url_es">@{{featured_post.title_es}}</a>
+                                                @else
+                                                    <a :href="homepath + '/article/' + featured_post.url_en">@{{featured_post.title_en}}</a>
+                                                @endif
                                             </h3>
-                                            <p class="post-excerpt">
-                                                Suspendisse posuere mi lacus, vitae fringilla leo gravida eu. Donec a nisi
-                                                vel ligula fringilla tem…
+                                            <p class="post-excerpt ">
+                                                @if (App::getLocale() == 'es')
+                                                    @{{featured_post.short_description_es}}
+                                                @else
+                                                    @{{featured_post.short_description_en}}
+                                                @endif
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
         
-                            <div class="widget fbt_list_posts mb-5">
+                            {{-- <div class="widget fbt_list_posts mb-5">
                                 <div class="fbt-sep-title">
                                     <h4 class="title title-heading-left">Popular Posts</h4>
                                     <div class="title-sep-container">
@@ -1319,14 +1158,14 @@
                                         </div>
                                     </article>
                                 </div>
-                            </div><!-- .fbt_list_posts -->
+                            </div><!-- .fbt_list_posts --> --}}
         
                             <div class="widget fbt-sticky-content sticky-top fbt-ad-block">
                                 <div class="fbt_ad text-center">
                                     <span class="fbt-ad-title">
-                                        Advertisement <span class="ad_block"></span>
+                                        {{__('Advertisement')}} <span class="ad_block"></span>
                                     </span>
-                                    <div class="widget-content">
+                                    <div class="widget-content px-3">
                                         <a href="#">
                                             <img alt="Advertisement" class="lazyloaded img-fluid" data-src="./images/ad-300x600.jpg"
                                                 src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
@@ -1429,6 +1268,10 @@
     <script>
         var slider_post = {!! json_encode($slider_post) !!};
         var dont_miss = {!! json_encode($dont_miss) !!};
+        var recent_posts_pagination = {!! json_encode($recent_posts_pagination) !!};
+        var featured_post = {!! json_encode($featured_post) !!};
+        
+        
     </script>
     <script src="{{asset('/js/custom/general/index.js')}}"></script>
 @endsection

@@ -7,6 +7,7 @@ $(document).ready(function(){
         data: {
             // serie : serie,
             email_address : '',
+            categories : []
         },
         watch: {
             
@@ -16,8 +17,17 @@ $(document).ready(function(){
         },
         mounted: function(){
             var _this = this;
+            this.GetCategories();
         },
         methods: {
+            GetCategories: function(){
+                var _this = this;
+                axios.get(homepath + '/getFooterCategories').then(function(response){
+                    _this.categories = response.data;
+                }).catch(function(error){
+                    console.log(error);
+                })
+            },
             StoreSubscriber: function(){
                 var _this = this;
                 $(".follow-by-email-submit").LoadingOverlay("show");

@@ -48,13 +48,7 @@ Route::get('/contacto', 'MainController@contact');
 Route::post('/NewMessage', 'MailController@ContactMessage');
 
 Route::post('/StoreSubscriber', 'MainController@StoreSubscriber');
-
-Route::get('/subscriber', function(){
-    return view('mails.new_subscriber_es');
-});
-
-
-
+Route::get('/getFooterCategories', 'MainController@getFooterCategories');
 
 Route::group(['middleware' => ['auth']], function(){
     

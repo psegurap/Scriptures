@@ -20,9 +20,24 @@
     <link rel="stylesheet" href="{{asset('/css/jquery.toast.css')}}">
     <link rel="stylesheet" href="{{asset('/css/summernote.min.css')}}">
     <link href="{{asset('/css/style.css')}}" rel="stylesheet" media="screen">
+    <link href="{{asset('/plugins/pace/templates/pace-theme-minimal.tmpl.css')}}" rel="stylesheet" media="screen">
     <style>
         #toTop{
             z-index: 20;
+        }
+
+        #page-wrapper{
+            display: none;
+        }
+
+        .pace-progress {
+            background: #4e4e4e;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            right: 100%;
+            width: 100%;
+            height: 10px; 
         }
     </style>
     @yield('styles')
@@ -275,15 +290,24 @@
                                     <div class="footer-3 section">
                                         <div class="widget">
                                             <h4 class="title title-heading">
-                                                About
+                                                {{__('About Us')}}
                                             </h4>
                                             <div class="widget-content list-label-widget-content">
                                                 <ul class="list-unstyled">
-                                                    <li><a class="label-name" href="#">Home</a></li>
-                                                    <li><a class="label-name" href="#">Lifestyle</a></li>
-                                                    <li><a class="label-name" href="#"> People</a></li>
-                                                    <li><a class="label-name" href="#">Slider</a></li>
-                                                    <li><a class="label-name" href="#">Sport</a></li>
+                                                    @if (App::getLocale() == 'es')
+
+                                                        <li><a class="label-name" href="/profesion-de-fe">{{__('Profesión De Fe')}}</a></li>
+                                                        <li><a class="label-name" href="#">{{__('Nuestra Historia')}}</a></li>
+                                                        <li><a class="label-name" href="/equipo">{{__('Equipo')}}</a></li>
+                                                        <li><a class="label-name" href="/colaboradores">{{__('Colaboradores')}}</a></li>
+                                                        <li><a class="label-name" href="/contacto">{{__('Contacto')}}</a></li>
+                                                    @else
+                                                        <li><a class="label-name" href="/profession-of-faith">{{__('Profession of Faith')}}</a></li>
+                                                        <li><a class="label-name" href="#">{{__('Our History')}}</a></li>
+                                                        <li><a class="label-name" href="/team">{{__('Our Team')}}</a></li>
+                                                        <li><a class="label-name" href="/collaborators">{{__('Collaborators')}}</a></li>
+                                                        <li><a class="label-name" href="/contact">{{__('Contact')}}</a></li>
+                                                    @endif
                                                 </ul>
                                             </div>
                                         </div>
@@ -293,15 +317,17 @@
                                     <div class="footer-4 section">
                                         <div class="widget">
                                             <h4 class="title title-heading">
-                                                Categories
+                                                {{__('Categories')}}
                                             </h4>
                                             <div class="widget-content list-label-widget-content">
                                                 <ul class="list-unstyled">
-                                                    <li><a class="label-name" href="#">Business</a></li>
-                                                    <li><a class="label-name" href="#">Design</a></li>
-                                                    <li><a class="label-name" href="#">Lifestyle</a></li>
-                                                    <li><a class="label-name" href="#">Technology</a></li>
-                                                    <li><a class="label-name" href="#">Training</a></li>
+                                                    <li v-for="category in categories">
+                                                        @if (App::getLocale() == 'es')
+                                                            <a class="label-name" href="#">@{{category.category_es}}</a>
+                                                        @else
+                                                            <a class="label-name" href="#">@{{category.category_en}}</a>
+                                                        @endif
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -311,15 +337,11 @@
                                     <div class="footer-5 section">
                                         <div class="widget">
                                             <h4 class="title title-heading">
-                                                External Links
+                                                {{__('External Links')}}
                                             </h4>
                                             <div class="widget-content list-label-widget-content">
                                                 <ul class="list-unstyled">
-                                                    <li><a class="label-name" href="#">Business</a></li>
-                                                    <li><a class="label-name" href="#">Design</a></li>
-                                                    <li><a class="label-name" href="#">Entertainment</a></li>
-                                                    <li><a class="label-name" href="#">Featured</a></li>
-                                                    <li><a class="label-name" href="#">Technology</a></li>
+                                                    <li v-for="i in 1,4"><a class="label-name" href="#">Enlace #@{{i}}</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -383,9 +405,15 @@
     <script src="{{asset('/js/sweetalert.min.js')}}"></script>
     <script src="{{asset('/js/loadingoverlay.js')}}"></script>
     <script src="{{asset('/js/summernote.min.js')}}"></script>
+    <script src="{{asset('/plugins/pace/pace.js')}}"></script>
 
     <script src="{{asset('/js/main.js')}}"></script>
     <script>
+        $(function() {
+            Pace.on("done", function(){
+                $("#page-wrapper").fadeIn(1000);
+            });
+        });
         const homepath = "{{url('/')}}";
         const lang = "{{App::getLocale()}}";
         moment.locale(lang);

@@ -129,9 +129,7 @@
                                                                         @endif
                                                                     </p>
                                                                 </div>
-                                                                <div class="text-md-right mt-1 yanone" v-if="article.author.website != null && article.author.website != ''">
-                                                                    <a :href="'//' + article.author.website" class="font-weight-bold" target="_blank">@{{article.author.website}}</a>
-                                                                </div>
+                                                                
                                                             </div>
                                                         </div>
                                                     </div>
@@ -354,10 +352,17 @@
                                 <div class="widget-content">
                                     <div class="FeaturedPostContainer">
                                         <div class="fbt-item-thumbnail">
-                                            <a class="post-image-link" href="./single_mag.html">
-                                                <img alt=" " class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + featured_post.attach_reference + '/' + featured_post.img_thumbnail" 
+                                            @if (App::getLocale() == 'es')
+                                                <a class="post-image-link" :href="homepath + '/articulo/' + featured_post.url_es">
+                                                    <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + featured_post.attach_reference + '/' + featured_post.img_thumbnail"
                                                     :src="homepath + '/images/articles/' + featured_post.attach_reference + '/' + featured_post.img_thumbnail">
-                                            </a>
+                                                </a>
+                                            @else
+                                                <a class="post-image-link" :href="homepath + '/articulo/' + featured_post.url_en">
+                                                    <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + featured_post.attach_reference + '/' + featured_post.img_thumbnail"
+                                                    :src="homepath + '/images/articles/' + article.attach_reference + '/' + featured_post.img_thumbnail">
+                                                </a>
+                                            @endif
                                         </div>
                                         <div class="fbt-title-section mt-3">
                                             <div class="post-meta mb-2 merriweather">
