@@ -79,7 +79,7 @@
                                                                     @{{collaborator.info_en}}
                                                                 @endif
                                                             </p>
-                                                            <span v-if="collaborator.website != '' && collaborator.website != null" class="yanone"><a class="font-weight-bold" style="text-decoration: underline;" :href="collaborator.website">@{{collaborator.website}}</a></span>
+                                                            <span v-if="collaborator.website != '' && collaborator.website != null" class="yanone"><a class="font-weight-bold" style="text-decoration: underline;" :href="'//' + collaborator.website">@{{collaborator.website}}</a></span>
                                                         </div>
                                                     </div>
                                                 </div>

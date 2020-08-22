@@ -445,7 +445,6 @@
         const lang = "{{App::getLocale()}}";
         Dropzone.autoDiscover = false;
         moment.locale(lang);
-
     </script>
 
     @yield('scripts')

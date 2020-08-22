@@ -76,8 +76,8 @@
                                             <a :href="homepath + '/article/' + article.url_en">@{{article.title_en}}</a>
                                         @endif
                                     </h6>
-                                    <div class="mb-1">
-                                        <span class="badge badge-primary">{{__('Author')}}: </span> <span class="badge badge-light">@{{article.author.name}}</span> 
+                                    <div class="mb-1" v-for="author in article.authors">
+                                        <span class="badge badge-primary">{{__('Author')}}: </span> <span class="badge badge-light">@{{author.name}}</span> 
                                     </div>
                                     <div class="mb-1">
                                         <span class="badge badge-primary">{{__('Created')}}: </span> <span class="badge badge-light">@{{moment(article.created_at).format('L')}}</span> 

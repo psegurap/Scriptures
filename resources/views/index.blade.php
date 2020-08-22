@@ -64,11 +64,11 @@
                                     </span>
                                     <div class="title-caption p-4">
                                         <div class="post-meta mb-2">
-                                            <span class="post-author">
+                                            <span class="post-author" v-for="author in main_slider_post.authors">
                                                 @if (App::getLocale() == 'es')
-                                                    <a class="text-capitalize" :href="homepath + '/colaborador/' + main_slider_post.author.name">@{{main_slider_post.author.name}}</a>
+                                                    <a class="text-capitalize" :href="homepath + '/colaborador/' + author.name">@{{author.name}}</a>
                                                 @else
-                                                    <a class="text-capitalize" :href="homepath + '/collaborator/' + main_slider_post.author.name">@{{main_slider_post.author.name}}</a>
+                                                    <a class="text-capitalize" :href="homepath + '/collaborator/' + author.name">@{{author.name}}</a>
                                                 @endif
                                             </span>
                                             <span class="post-time">@{{moment(main_slider_post.created_at).format('LL')}}</span>
@@ -113,11 +113,11 @@
                                             </span>
                                             <div class="title-caption p-4">
                                                 <div class="post-meta mb-2">
-                                                    <span class="post-author">
+                                                    <span class="post-author" v-for="author in middle_slider_post.authors">
                                                         @if (App::getLocale() == 'es')
-                                                            <a class="text-capitalize" :href="homepath + '/colaborador/' + middle_slider_post.author.name">@{{middle_slider_post.author.name}}</a>
+                                                            <a class="text-capitalize" :href="homepath + '/colaborador/' + author.name">@{{author.name}}</a>
                                                         @else
-                                                            <a class="text-capitalize" :href="homepath + '/collaborator/' + middle_slider_post.author.name">@{{middle_slider_post.author.name}}</a>
+                                                            <a class="text-capitalize" :href="homepath + '/collaborator/' + author.name">@{{author.name}}</a>
                                                         @endif
                                                     </span>
                                                     <span class="post-time">@{{moment(middle_slider_post.created_at).format('LL')}}</span>
@@ -161,11 +161,11 @@
                                                     </span>
                                                     <div class="title-caption p-4">
                                                         <div class="post-meta mb-2">
-                                                            <span class="post-author">
+                                                            <span class="post-author" v-for="author in small_slider_post.authors">
                                                                 @if (App::getLocale() == 'es')
-                                                                    <a class="text-capitalize" :href="homepath + '/colaborador/' + small_slider_post.author.name">@{{small_slider_post.author.name}}</a>
+                                                                    <a class="text-capitalize" :href="homepath + '/colaborador/' + author.name">@{{author.name}}</a>
                                                                 @else
-                                                                    <a class="text-capitalize" :href="homepath + '/collaborator/' + small_slider_post.author.name">@{{small_slider_post.author.name}}</a>
+                                                                    <a class="text-capitalize" :href="homepath + '/collaborator/' + author.name">@{{author.name}}</a>
                                                                 @endif
                                                             </span>
                                                             <span class="post-time">@{{moment(small_slider_post.created_at).format('LL')}}</span>
@@ -246,12 +246,12 @@
                                                         </a>
                                                     @endif
                                                 </h3>
-                                                <div class="post-meta mb-2 merriweather">
-                                                    <span class="post-author">
+                                                <div class="post-meta mb-2 merriweather" >
+                                                    <span class="post-author" v-for="author in dont_miss_item.authors">
                                                         @if (App::getLocale() == 'es')
-                                                            <a class="text-capitalize" :href="homepath + '/colaborador/' + dont_miss_item.author.name">@{{dont_miss_item.author.name}}</a>
+                                                            <a class="text-capitalize" :href="homepath + '/colaborador/' + author.name">@{{author.name}}</a>
                                                         @else
-                                                            <a class="text-capitalize" :href="homepath + '/collaborator/' + dont_miss_item.author.name">@{{dont_miss_item.author.name}}</a>
+                                                            <a class="text-capitalize" :href="homepath + '/collaborator/' + author.name">@{{author.name}}</a>
                                                         @endif
                                                     </span>
                                                     <span class="post-date published">@{{moment(dont_miss_item.created_at).format('LL')}}</span>
@@ -286,11 +286,11 @@
                                             </div>
                                             <div class="fbt-title-caption text-center pt-3 px-2">
                                                 <div class="post-meta mb-2 merriweather">
-                                                    <span class="post-author">
+                                                    <span class="post-author" v-for="author in dont_miss_item.authors">
                                                         @if (App::getLocale() == 'es')
-                                                            <a class="text-capitalize" :href="homepath + '/colaborador/' + dont_miss_item.author.name">@{{dont_miss_item.author.name}}</a>
+                                                            <a class="text-capitalize" :href="homepath + '/colaborador/' + author.name">@{{author.name}}</a>
                                                         @else
-                                                            <a class="text-capitalize" :href="homepath + '/collaborator/' + dont_miss_item.author.name">@{{dont_miss_item.author.name}}</a>
+                                                            <a class="text-capitalize" :href="homepath + '/collaborator/' + author.name">@{{author.name}}</a>
                                                         @endif
                                                     </span>
                                                     <span class="post-date published">@{{moment(dont_miss_item.created_at).format('LL')}}</span>
@@ -940,11 +940,11 @@
                                                     @endif
                                                 </h3>
                                                 <div class="post-meta mb-2 merriweather">
-                                                    <span class="post-author">
+                                                    <span class="post-author" v-for="author in article.authors">
                                                         @if (App::getLocale() == 'es')
-                                                            <a class="text-capitalize" :href="homepath + '/colaborador/' + article.author.name">@{{article.author.name}}</a>
+                                                            <a class="text-capitalize" :href="homepath + '/colaborador/' + author.name">@{{author.name}}</a>
                                                         @else
-                                                            <a class="text-capitalize" :href="homepath + '/collaborator/' + article.author.name">@{{article.author.name}}</a>
+                                                            <a class="text-capitalize" :href="homepath + '/collaborator/' + author.name">@{{author.name}}</a>
                                                         @endif
                                                     </span>
                                                     <span class="post-date published">@{{moment(article.created_at).format('LL')}}</span>
@@ -1030,8 +1030,8 @@
                                         </div>
                                         <div class="fbt-title-section mt-3">
                                             <div class="post-meta mb-2 merriweather">
-                                                <span v-for="category in featured_post.categories" class="post-author text-capitalize">
-                                                    @{{featured_post.author.name}}
+                                                <span v-for="author in featured_post.authors" class="post-author text-capitalize">
+                                                    @{{author.name}}
                                                 </span>
                                                 <span class="post-date published">@{{moment(featured_post.created_at).format('LL')}}</span>
                                             </div>

@@ -25,7 +25,7 @@
                 attach_reference: '',
                 short_description : '',
                 serie : '',
-                url : '',              
+                url : '',  
             },
             spinner : null,
             
@@ -97,7 +97,6 @@
             SaveInformation: function(){
                 this.article.content = this.summernote.summernote('code');
                 this.article.img_thumbnail = this.dropzone[0].dropzone.files[0].name;
-                this.article.url = this.article.title.replace(/ /gi, '-');
                 main.dropzone[0].dropzone.removeAllFiles();
                 
                 axios.post(homepath + '/admin/articles/StoreArticle', {article_info : this.article}).then(function(response){
@@ -137,7 +136,7 @@
                     blockquoteBreakingLevel: 4,
                     placeholder: codigo,
                     tabsize: 2,
-                    fontSizes: ['8', '9', '10', '11', '12', '14', '17', '18', '24'],
+                    fontSizes: ['8', '9', '10', '11', '12', '14', '17', '18', '19', '20', '24'],
                     height: 500,
                     minHeight: 500,
                     maxHeight: 500,  
@@ -145,7 +144,7 @@
                         // ['style', ['bold', 'italic', 'underline', 'clear']],
                         ['style', ['style']],
                         ['fontsize', ['fontsize']],
-                        ['font', ['bold', 'underline', 'clear', 'strikethrough', 'superscript', 'subscript']],
+                        ['font', ['bold', 'italic', 'underline', 'clear', 'strikethrough', 'superscript', 'subscript']],
                         ['color', ['color']],
                         ['height', ['height']],
                         ['fontname', ['fontname']],

@@ -10,6 +10,7 @@ use App\Team;
 use App\Serie;
 use App\User;
 use App\Category;
+use App\Tag;
 use App\Subscriber;
 use App;
 
@@ -25,23 +26,23 @@ class MainController extends Controller
     {
         $checkers_count = $this->CheckersCount();
 
-        $slider_post = Article::with('categories', 'author')->orderBy('id', 'desc')->wherehas('reviews', function($review){
+        $slider_post = Article::with('categories', 'authors')->orderBy('id', 'desc')->wherehas('reviews', function($review){
             $review->where('desicion', 'Approved');
         }, '>=', $checkers_count)->take(4)->get();
         $slider_ids = $slider_post->pluck('id')->toArray();
 
-        $dont_miss = Article::with('categories', 'author')->orderBy('id', 'desc')->wherehas('reviews', function($review){
+        $dont_miss = Article::with('categories', 'authors')->orderBy('id', 'desc')->wherehas('reviews', function($review){
             $review->where('desicion', 'Approved');
         }, '>=', $checkers_count)->whereNotIn('id', $slider_ids)->take(4)->get();
         $dont_miss_id = $dont_miss->pluck('id')->toArray();
 
         $merged_top = array_merge($slider_ids, $dont_miss_id);
 
-        $recent_posts_pagination = Article::with('categories', 'author')->orderBy('id', 'desc')->wherehas('reviews', function($review){
+        $recent_posts_pagination = Article::with('categories', 'authors')->orderBy('id', 'desc')->wherehas('reviews', function($review){
             $review->where('desicion', 'Approved');
         }, '>=', $checkers_count)->whereNotIn('id', $merged_top)->paginate(8);
 
-        $featured_post = Article::with('categories', 'author')->orderBy('id', 'desc')->wherehas('reviews', function($review){
+        $featured_post = Article::with('categories', 'authors')->orderBy('id', 'desc')->wherehas('reviews', function($review){
             $review->where('desicion', 'Approved');
         }, '>=', $checkers_count)->first();
 
@@ -63,7 +64,7 @@ class MainController extends Controller
                     $review->where('desicion', 'Approved');
                 }, '>=', $checkers_count)->get();
             }])->get();
-        }, 'series', 'author' => function($author) use ($url, $checkers_count){
+        }, 'series', 'authors' => function($author) use ($url, $checkers_count){
             $author->with(['articles' => function($article) use ($url, $checkers_count){
                 $article->wherehas('reviews', function($review){
                     $review->where('desicion', 'Approved');
@@ -72,7 +73,7 @@ class MainController extends Controller
         }])->where('url_es', $url)->orwhere('url_en', $url)->first();
 
 
-        $featured_post = Article::with('categories', 'author')->orderBy('id', 'desc')->where('url_es', '!=', $url)->wherehas('reviews', function($review){
+        $featured_post = Article::with('categories', 'authors')->orderBy('id', 'desc')->where('url_es', '!=', $url)->wherehas('reviews', function($review){
             $review->where('desicion', 'Approved');
         }, '>=', $checkers_count)->first();
 
@@ -83,7 +84,8 @@ class MainController extends Controller
             }
         }
         if(isset($featured_post)){
-            $others_posts = Article::with('categories')->where('author_id', '!=', $article->author_id)->where('id', '!=', $featured_post->id)->find($others_posts)->take(5);
+            // $others_posts = Article::with('categories')->where('author_id', '!=', $article->author_id)->where('id', '!=', $featured_post->id)->find($others_posts)->take(5);
+            $others_posts = Article::with('categories')->where('author_id', '!=', [1,2])->where('id', '!=', $featured_post->id)->find($others_posts)->take(5);
         }else{
            $others_posts = [];
         }
@@ -143,6 +145,17 @@ class MainController extends Controller
         })->where('status', 1)->inRandomOrder()->take(5)->get();
 
         return $categories;
+    }
+
+    public function getFooterTags(){
+        $checkers_count = $this->CheckersCount();
+        $tags = Tag::whereHas('articles', function($article) use ($checkers_count){
+            $article->whereHas('reviews', function($review){
+                $review->where('desicion', 'Approved');
+            },'>=', $checkers_count);
+        })->where('status', 1)->inRandomOrder()->take(5)->get();
+
+        return $tags;
     }
 
     public function StoreSubscriber(Request $request){

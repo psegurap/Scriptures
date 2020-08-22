@@ -7,7 +7,8 @@ $(document).ready(function(){
         data: {
             // serie : serie,
             email_address : '',
-            categories : []
+            categories : [],
+            tags: [],
         },
         watch: {
             
@@ -18,12 +19,21 @@ $(document).ready(function(){
         mounted: function(){
             var _this = this;
             this.GetCategories();
+            this.GetTags();
         },
         methods: {
             GetCategories: function(){
                 var _this = this;
                 axios.get(homepath + '/getFooterCategories').then(function(response){
                     _this.categories = response.data;
+                }).catch(function(error){
+                    console.log(error);
+                })
+            },
+            GetTags: function(){
+                var _this = this;
+                axios.get(homepath + '/getFooterTags').then(function(response){
+                    _this.tags = response.data;
                 }).catch(function(error){
                     console.log(error);
                 })

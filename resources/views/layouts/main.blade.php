@@ -337,11 +337,17 @@
                                     <div class="footer-5 section">
                                         <div class="widget">
                                             <h4 class="title title-heading">
-                                                {{__('External Links')}}
+                                                {{__('Tags')}}
                                             </h4>
                                             <div class="widget-content list-label-widget-content">
                                                 <ul class="list-unstyled">
-                                                    <li v-for="i in 1,4"><a class="label-name" href="#">Enlace #@{{i}}</a></li>
+                                                    <li v-for="tag in tags">
+                                                        @if (App::getLocale() == 'es')
+                                                            <a class="label-name" href="#">@{{tag.tag_es}}</a>
+                                                        @else
+                                                            <a class="label-name" href="#">@{{tag.tag_en}}</a>
+                                                        @endif
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>

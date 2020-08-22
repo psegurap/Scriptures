@@ -101,7 +101,7 @@
                                         @else
                                             <p class="user-name" :data-name="article.title_en">@{{article.title_en}}</p>
                                         @endif
-                                        <p class="user-work" :data-email="article.author.name">@{{article.author.name}}</p>
+                                        <p v-for="author in article.authors" class="user-work" :data-email="author.name">@{{author.name}}</p>
                                     </div>
                                 </div>
                                 <div class="action-btn">

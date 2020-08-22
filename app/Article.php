@@ -34,6 +34,11 @@ class Article extends Model
         return $this->belongsTo('App\Collaborator', 'author_id', 'id');   
     }
 
+    public function authors()
+    {
+        return $this->belongsToMany('App\Collaborator', 'articles_collaborators', 'article_id', 'collaborator_id')->withTimestamps();   
+    }
+
     public function reviews(){
         return $this->hasMany('App\ReviewArticle', 'article_id', 'id');   
     }

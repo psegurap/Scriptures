@@ -105,27 +105,27 @@
                                             <div class="fbt-item-post-pager">
                                                 <div class="card- mt-3 mb-5">
                                                     <div class="col-lg-12">
-                                                        <div class="post-pager row bg-secondary" style="background-color: rgba(0, 0, 0, 0.09) !important;">
-                                                            <div class="previous col-lg-3 px-4 py-4 text-left">
-                                                                <img v-if="article.author.img_thumbnail != '---'" style="width: 100%; border-radius: 100%;" class="collaborator_image" :src="homepath + '/images/collaborators/' + article.author.attach_reference + '/' + article.author.img_thumbnail" alt="">
+                                                        <div v-for="author in article.authors" class="post-pager row bg-secondary" style="background-color: rgba(0, 0, 0, 0.09) !important;">
+                                                            <div class="previous col-lg-3 px-4 py-4 text-left" >
+                                                                <img v-if="author.img_thumbnail != '---'" style="width: 100%; border-radius: 100%;" class="collaborator_image" :src="homepath + '/images/collaborators/' + author.attach_reference + '/' + author.img_thumbnail" alt="">
                                                                 <img v-else style="width: 100%; border-radius: 100%;" class="collaborator_image" :src="homepath + '/images/collaborator_default.png'" alt="">
                                                             </div>
                                                             <div class="next col-lg-9 py-4">
                                                                 @if (App::getLocale() == 'es')
-                                                                    <a class="fbt-older-link h4 author-name" :href="homepath + '/colaborador/' + article.author.name">
-                                                                        <strong class="pr-3">@{{article.author.name}}</strong>
+                                                                    <a class="fbt-older-link h4 author-name" :href="homepath + '/colaborador/' + author.name">
+                                                                        <strong class="pr-3">@{{author.name}}</strong>
                                                                     </a>
                                                                 @else
-                                                                    <a class="fbt-older-link h4 author-name" :href="homepath + '/collaborator/' + article.author.name">
-                                                                        <strong class="pr-3">@{{article.author.name}}</strong>
+                                                                    <a class="fbt-older-link h4 author-name" :href="homepath + '/collaborator/' + author.name">
+                                                                        <strong class="pr-3">@{{author.name}}</strong>
                                                                     </a>
                                                                 @endif
                                                                 <div class="fbt-np-title mt-1 pr-3" style="color: black;">
                                                                     <p class="roboto mb-0" style="font-size: 14px;">
                                                                         @if (App::getLocale() == 'es')
-                                                                            @{{article.author.info_es}}
+                                                                            @{{author.info_es}}
                                                                         @else
-                                                                            @{{article.author.info_en}}
+                                                                            @{{author.info_en}}
                                                                         @endif
                                                                     </p>
                                                                 </div>
@@ -136,16 +136,16 @@
                                                 </div>
                                             </div>
                                         
-                                            <div class="fbt-rel-post-wrapper mb-5" v-show="article.author.articles.length > 0">
+                                            <div class="fbt-rel-post-wrapper mb-5" v-for="author in article.authors" v-show="author.articles.length > 0">
                                                 <div class="title-wrap fbt-sep-title">
-                                                    <h4 class="title title-heading-left">{{__('More from')}} @{{article.author.name}}</h4>
+                                                    <h4 class="title title-heading-left">{{__('More from')}} @{{author.name}}</h4>
                                                     <div class="title-sep-container">
                                                         <div class="title-sep sep-double"></div>
                                                     </div>
                                                 </div>
                                                 <div id="related-posts">
                                                     <div class="row px-2">
-                                                        <div v-for="author_article in article.author.articles" class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4 rp-item px-2">
+                                                        <div v-for="author_article in author.articles" class="col-xl-4 col-lg-6 col-md-4 col-sm-6 mb-4 rp-item px-2">
                                                             <div class="fbt-post-thumbnail">
                                                                 @if (App::getLocale() == 'es')
                                                                     <a :href="homepath + '/articulo/' + author_article.url_es">
@@ -366,8 +366,8 @@
                                         </div>
                                         <div class="fbt-title-section mt-3">
                                             <div class="post-meta mb-2 merriweather">
-                                                <span v-for="category in featured_post.categories" class="post-author text-capitalize">
-                                                    @{{featured_post.author.name}}
+                                                <span v-for="author in featured_post.authors" class="post-author text-capitalize">
+                                                    @{{author.name}}
                                                 </span>
                                                 <span class="post-date published">@{{moment(featured_post.created_at).format('LL')}}</span>
                                             </div>

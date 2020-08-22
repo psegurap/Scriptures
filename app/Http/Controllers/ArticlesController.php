@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App;
 use Auth;
+use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Tag;
 use App\Serie;
@@ -17,11 +18,13 @@ class ArticlesController extends Controller
 {
     public function articles()
     {
+        // $articles = Article::with('authors')->get();
+
         $checkers_count = intval(round(User::where('filter', 1)->count() / 2));
-        $approved_articles = Article::with('categories', 'tags', 'series', 'author')->wherehas('reviews', function($review){
+        $approved_articles = Article::with('categories', 'tags', 'series', 'authors')->wherehas('reviews', function($review){
             $review->where('desicion', 'Approved');
         }, '>=', $checkers_count)->orderBy('id', 'desc')->get();
-        $articles = Article::with('categories', 'tags', 'series', 'author')->orderBy('id', 'desc')->get();
+        $articles = Article::with('categories', 'tags', 'series', 'authors')->orderBy('id', 'desc')->get();
         // dd($approved_articles);
         return view('admin.articles.articles', compact('articles'));
     }
@@ -146,7 +149,7 @@ class ArticlesController extends Controller
     }
 
     public function articles_reviews(){
-        $articles = Article::with(['author', 'reviews' => function($review){
+        $articles = Article::with(['authors', 'reviews' => function($review){
             $review->where('user_id', Auth::user()->id)->get();
         }])->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('id', 'desc')->get();
         // dd($articles);
@@ -154,7 +157,7 @@ class ArticlesController extends Controller
     }
 
     public function review_article($id){
-        $article = Article::with(['author', 'categories', 'reviews' => function($article){
+        $article = Article::with(['authors', 'categories', 'reviews' => function($article){
             $article->where('user_id', Auth::user()->id)->first();
         }])->find($id);
         // dd($article);
@@ -185,7 +188,7 @@ class ArticlesController extends Controller
 
     public function searchReviews(Request $request){
         $date = explode('-', $request->date);
-        $articles = Article::with(['author', 'reviews' => function($review){
+        $articles = Article::with(['authors', 'reviews' => function($review){
             $review->where('user_id', Auth::user()->id)->get();
         }])->whereMonth('created_at', $date[1])->whereYear('created_at', $date[0])->orderBy('id', 'desc')->get();
 

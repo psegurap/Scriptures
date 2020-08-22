@@ -49,6 +49,7 @@ Route::post('/NewMessage', 'MailController@ContactMessage');
 
 Route::post('/StoreSubscriber', 'MainController@StoreSubscriber');
 Route::get('/getFooterCategories', 'MainController@getFooterCategories');
+Route::get('/getFooterTags', 'MainController@getFooterTags');
 
 Route::group(['middleware' => ['auth']], function(){
     
