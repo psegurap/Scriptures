@@ -11,10 +11,6 @@
             font-size: 3em;
         }
 
-        .slider-container .post-meta{
-            font-family: 'Merriweather', serif;
-        }
-
         .audio-icon {
             background: #ffffff;
             color: black;
@@ -23,6 +19,10 @@
             display: inline-block;
             border-radius: 100%;
             font-size: 15px;
+        }
+
+        .other_pictures{
+            box-shadow: -2px 2px 8px -1px #777777;
         }
 
         @media only screen and (max-width: 600px) {
@@ -44,12 +44,12 @@
                                 <div class="fbt-post-thumbnail">
                                     @if (App::getLocale() == 'es')
                                         <a :href="homepath + '/articulo/' + main_slider_post.url_es">
-                                            <img class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + main_slider_post.attach_reference + '/' + main_slider_post.img_thumbnail"
+                                            <img class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + main_slider_post.attach_reference + '/' + main_slider_post.img_thumbnail"
                                             :src="homepath + '/images/articles/' + main_slider_post.attach_reference + '/' + main_slider_post.img_thumbnail">
                                         </a>
                                     @else
                                         <a :href="homepath + '/article/' + main_slider_post.url_en">
-                                            <img class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + main_slider_post.attach_reference + '/' + main_slider_post.img_thumbnail"
+                                            <img class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + main_slider_post.attach_reference + '/' + main_slider_post.img_thumbnail"
                                             :src="homepath + '/images/articles/' + main_slider_post.attach_reference + '/' + main_slider_post.img_thumbnail">
                                         </a>
                                     @endif
@@ -93,12 +93,12 @@
                                         <div class="fbt-post-thumbnail">
                                             @if (App::getLocale() == 'es')
                                                 <a :href="homepath + '/articulo/' + middle_slider_post.url_es">
-                                                    <img class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + middle_slider_post.attach_reference + '/' + middle_slider_post.img_thumbnail"
+                                                    <img class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + middle_slider_post.attach_reference + '/' + middle_slider_post.img_thumbnail"
                                                     :src="homepath + '/images/articles/' + middle_slider_post.attach_reference + '/' + middle_slider_post.img_thumbnail">
                                                 </a>
                                             @else
                                                 <a :href="homepath + '/article/' + middle_slider_post.url_en">
-                                                    <img class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + middle_slider_post.attach_reference + '/' + middle_slider_post.img_thumbnail"
+                                                    <img class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + middle_slider_post.attach_reference + '/' + middle_slider_post.img_thumbnail"
                                                     :src="homepath + '/images/articles/' + middle_slider_post.attach_reference + '/' + middle_slider_post.img_thumbnail">
                                                 </a>
                                             @endif
@@ -141,12 +141,12 @@
                                                 <div class="fbt-post-thumbnail">
                                                     @if (App::getLocale() == 'es')
                                                         <a :href="homepath + '/articulo/' + small_slider_post.url_es">
-                                                            <img class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + small_slider_post.attach_reference + '/' + small_slider_post.img_thumbnail"
+                                                            <img class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + small_slider_post.attach_reference + '/' + small_slider_post.img_thumbnail"
                                                             :src="homepath + '/images/articles/' + small_slider_post.attach_reference + '/' + small_slider_post.img_thumbnail">
                                                         </a>
                                                     @else
                                                         <a :href="homepath + '/article/' + small_slider_post.url_en">
-                                                            <img class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + small_slider_post.attach_reference + '/' + small_slider_post.img_thumbnail"
+                                                            <img class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + small_slider_post.attach_reference + '/' + small_slider_post.img_thumbnail"
                                                             :src="homepath + '/images/articles/' + small_slider_post.attach_reference + '/' + small_slider_post.img_thumbnail">
                                                         </a>
                                                     @endif
@@ -215,12 +215,12 @@
                                             <div class="fbt-post-thumbnail">
                                                 @if (App::getLocale() == 'es')
                                                     <a :href="homepath + '/articulo/' + dont_miss_item.url_es">
-                                                        <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + dont_miss_item.attach_reference + '/' + dont_miss_item.img_thumbnail"
+                                                        <img alt="" class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + dont_miss_item.attach_reference + '/' + dont_miss_item.img_thumbnail"
                                                         :src="homepath + '/images/articles/' + dont_miss_item.attach_reference + '/' + dont_miss_item.img_thumbnail">
                                                     </a>
                                                 @else
                                                     <a :href="homepath + '/articulo/' + dont_miss_item.url_en">
-                                                        <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + dont_miss_item.attach_reference + '/' + dont_miss_item.img_thumbnail"
+                                                        <img alt="" class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + dont_miss_item.attach_reference + '/' + dont_miss_item.img_thumbnail"
                                                         :src="homepath + '/images/articles/' + dont_miss_item.attach_reference + '/' + dont_miss_item.img_thumbnail">
                                                     </a>
                                                 @endif
@@ -246,7 +246,7 @@
                                                         </a>
                                                     @endif
                                                 </h3>
-                                                <div class="post-meta mb-2 merriweather" >
+                                                <div class="post-meta mb-2 " >
                                                     <span class="post-author" v-for="author in dont_miss_item.authors">
                                                         @if (App::getLocale() == 'es')
                                                             <a class="text-capitalize" :href="homepath + '/colaborador/' + author.name">@{{author.name}}</a>
@@ -274,18 +274,18 @@
                                             <div class="fbt-post-thumbnail">
                                                 @if (App::getLocale() == 'es')
                                                     <a :href="homepath + '/articulo/' + dont_miss_item.url_es">
-                                                        <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + dont_miss_item.attach_reference + '/' + dont_miss_item.img_thumbnail"
+                                                        <img alt="" class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + dont_miss_item.attach_reference + '/' + dont_miss_item.img_thumbnail"
                                                         :src="homepath + '/images/articles/' + dont_miss_item.attach_reference + '/' + dont_miss_item.img_thumbnail">
                                                     </a>
                                                 @else
                                                     <a :href="homepath + '/articulo/' + dont_miss_item.url_en">
-                                                        <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + dont_miss_item.attach_reference + '/' + dont_miss_item.img_thumbnail"
+                                                        <img alt="" class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + dont_miss_item.attach_reference + '/' + dont_miss_item.img_thumbnail"
                                                         :src="homepath + '/images/articles/' + dont_miss_item.attach_reference + '/' + dont_miss_item.img_thumbnail">
                                                     </a>
                                                 @endif
                                             </div>
                                             <div class="fbt-title-caption text-center pt-3 px-2">
-                                                <div class="post-meta mb-2 merriweather">
+                                                <div class="post-meta mb-2 ">
                                                     <span class="post-author" v-for="author in dont_miss_item.authors">
                                                         @if (App::getLocale() == 'es')
                                                             <a class="text-capitalize" :href="homepath + '/colaborador/' + author.name">@{{author.name}}</a>
@@ -314,133 +314,133 @@
                             </div>
                         </div><!-- .fbt-block-1 -->
         
-                        <div style="position: relative;width: 100%;background: black;" class="p-3 mb-5 rounded">
-                            <div class="widget fbt-block-2 mb-0" style="width: 100%;height: 100%;top: 0;left: 0;">
-                                <div class="fbt-sep-title">
-                                    <h4 class="title title-heading-left text-white">Podcasts</h4>
-                                    <div class="title-sep-container">
-                                        <div class="title-sep sep-double">
-                                            <a href="#" class="view_more bree text-white">View all</a>
+                        {{-- <div class="widget fbt-block-2 mb-0">
+                            <div class="fbt-sep-title">
+                                <h4 class="title title-heading-left text-white">Podcasts</h4>
+                                <div class="title-sep-container">
+                                    <div class="title-sep sep-double">
+                                        <a href="#" class="view_more bree text-white">View all</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="fbt_mag_block">
+                                <div class="row">
+                                    
+                                    <div class="col-lg-12 fbt_list_posts">
+                                        <article class="post mb-3 p-2 rounded" style="box-shadow: rgb(255 255 255) -1px 1px 0px 0px">
+                                            <div class="post-contentalign-items-center">
+                                                <div class="mb-2 fbt-title-caption media-body">
+                                                    <h3 class="post-title">
+                                                        <a href="./single_mag.html" class="text-white"> Ne amores quidem sanctos alienos esse.</a>
+                                                    </h3>
+                                                    <div class="post-meta">
+                                                        <span class="post-date published  text-white">March 27, 2017</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <hr class="mb-2" style="height: 1px;background: white;border-radius: 50px;">
+                                                </div>
+                                                <div class="clearfix d-flex">
+                                                    <span class="video-icon" style="position: initial"><i class="fa fa-play"></i></span>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="post mb-3 p-2 rounded" style="box-shadow: rgb(255 255 255) -1px 1px 0px 0px">
+                                            <div class="post-contentalign-items-center">
+                                                <div class="mb-2 fbt-title-caption media-body">
+                                                    <h3 class="post-title">
+                                                        <a href="./single_mag.html" class="text-white">Mihi vero, inquit, placet agi subtilius et pressius.</a>
+                                                    </h3>
+                                                    <div class="post-meta">
+                                                        <span class="post-date published  text-white">March 27, 2017</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <div class="text-right">
+                                                        <span class=" mr-1 text-white">Playing now</span>
+                                                    </div>
+                                                    <hr class="mb-2 mt-0" style="height: 1px; background: white; border-radius: 50px;">
+                                                </div>
+                                                
+                                                <div class="clearfix d-flex">
+                                                    <span class="video-icon" style="position: initial"><i class="fa fa-pause  ml-0"></i></span>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="post mb-3 p-2 rounded" style="box-shadow: rgb(255 255 255) -1px 1px 0px 0px">
+                                            <div class="post-contentalign-items-center">
+                                                <div class="mb-2 fbt-title-caption media-body">
+                                                    <h3 class="post-title">
+                                                        <a href="./single_mag.html" class="text-white">Suspendisse sed tortor eget justo aliquam.</a>
+                                                    </h3>
+                                                    <div class="post-meta">
+                                                        <span class="post-date published  text-white">March 28, 2017</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <hr class="mb-2" style="height: 1px;background: white;border-radius: 50px;">
+                                                </div>
+                                                <div class="clearfix d-flex">
+                                                    <span class="video-icon" style="position: initial"><i class="fa fa-play"></i></span>
+                                                </div>
+                                            </div>
+                                        </article>
+                                        <article class="post mb-3 p-2 rounded" style="box-shadow: rgb(255 255 255) -1px 1px 0px 0px">
+                                            <div class="post-contentalign-items-center">
+                                                <div class="mb-2 fbt-title-caption media-body">
+                                                    <h3 class="post-title">
+                                                        <a href="./single_mag.html" class="text-white">Nunc accumsan ex ligula, in malesuada sapien.</a>
+                                                    </h3>
+                                                    <div class="post-meta">
+                                                        <span class="post-date published  text-white">March 28, 2017</span>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <hr class="mb-2" style="height: 1px;background: white;border-radius: 50px;">
+                                                </div>
+                                                <div class="clearfix d-flex">
+                                                    <span class="video-icon" style="position: initial"><i class="fa fa-play"></i></span>
+                                                </div>
+                                            </div>
+                                        </article>
+                                     </div><!-- .fbt_list_posts -->
+                                    <div class="col-lg-6 d-none d-md-inline-block">
+                                        <div class="post-item large">
+                                        
+                                            <div class="fbt-post-thumbnail">
+                                                <a href="./single_mag.html">
+                                                    <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-20.jpg"
+                                                        src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                                                </a>
+                                            </div>
+                                            <div class="fbt-post-caption">
+                                                <span class="post-tag index-post-tag">Design</span>
+                                                <div class="title-caption p-4">
+                                                    <div class="post-meta mb-2">
+                                                        <span class="post-author"><a href="#">fbtemplates</a></span>
+                                                        <span class="post-date published">June 19, 2019</span>
+                                                    </div>
+                                                    <h3 class="post-title">
+                                                        <a href="./single_mag.html">
+                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                                                        </a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div>
-                                <div class="fbt_mag_block">
-                                    <div class="row">
-                                        
-                                        <div class="col-lg-12 fbt_list_posts">
-                                            <article class="post mb-3 p-2 rounded" style="box-shadow: rgb(255 255 255) -1px 1px 0px 0px">
-                                                <div class="post-contentalign-items-center">
-                                                    <div class="mb-2 fbt-title-caption media-body">
-                                                        <h3 class="post-title">
-                                                            <a href="./single_mag.html" class="text-white"> Ne amores quidem sanctos alienos esse.</a>
-                                                        </h3>
-                                                        <div class="post-meta">
-                                                            <span class="post-date published merriweather text-white">March 27, 2017</span>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <hr class="mb-2" style="height: 1px;background: white;border-radius: 50px;">
-                                                    </div>
-                                                    <div class="clearfix d-flex">
-                                                        <span class="video-icon" style="position: initial"><i class="fa fa-play"></i></span>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                            <article class="post mb-3 p-2 rounded" style="box-shadow: rgb(255 255 255) -1px 1px 0px 0px">
-                                                <div class="post-contentalign-items-center">
-                                                    <div class="mb-2 fbt-title-caption media-body">
-                                                        <h3 class="post-title">
-                                                            <a href="./single_mag.html" class="text-white">Mihi vero, inquit, placet agi subtilius et pressius.</a>
-                                                        </h3>
-                                                        <div class="post-meta">
-                                                            <span class="post-date published merriweather text-white">March 27, 2017</span>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <div class="text-right">
-                                                            <span class="merriweather mr-1 text-white">Playing now</span>
-                                                        </div>
-                                                        <hr class="mb-2 mt-0" style="height: 1px; background: white; border-radius: 50px;">
-                                                    </div>
-                                                    
-                                                    <div class="clearfix d-flex">
-                                                        <span class="video-icon" style="position: initial"><i class="fa fa-pause  ml-0"></i></span>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                            <article class="post mb-3 p-2 rounded" style="box-shadow: rgb(255 255 255) -1px 1px 0px 0px">
-                                                <div class="post-contentalign-items-center">
-                                                    <div class="mb-2 fbt-title-caption media-body">
-                                                        <h3 class="post-title">
-                                                            <a href="./single_mag.html" class="text-white">Suspendisse sed tortor eget justo aliquam.</a>
-                                                        </h3>
-                                                        <div class="post-meta">
-                                                            <span class="post-date published merriweather text-white">March 28, 2017</span>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <hr class="mb-2" style="height: 1px;background: white;border-radius: 50px;">
-                                                    </div>
-                                                    <div class="clearfix d-flex">
-                                                        <span class="video-icon" style="position: initial"><i class="fa fa-play"></i></span>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                            <article class="post mb-3 p-2 rounded" style="box-shadow: rgb(255 255 255) -1px 1px 0px 0px">
-                                                <div class="post-contentalign-items-center">
-                                                    <div class="mb-2 fbt-title-caption media-body">
-                                                        <h3 class="post-title">
-                                                            <a href="./single_mag.html" class="text-white">Nunc accumsan ex ligula, in malesuada sapien.</a>
-                                                        </h3>
-                                                        <div class="post-meta">
-                                                            <span class="post-date published merriweather text-white">March 28, 2017</span>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <hr class="mb-2" style="height: 1px;background: white;border-radius: 50px;">
-                                                    </div>
-                                                    <div class="clearfix d-flex">
-                                                        <span class="video-icon" style="position: initial"><i class="fa fa-play"></i></span>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                         </div><!-- .fbt_list_posts -->
-                                        {{-- <div class="col-lg-6 d-none d-md-inline-block">
-                                            <div class="post-item large">
-                                            
-                                                <div class="fbt-post-thumbnail">
-                                                    <a href="./single_mag.html">
-                                                        <img alt="" class="post-thumbnail lazyloaded" data-src="./images/mag-img-20.jpg"
-                                                            src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
-                                                    </a>
-                                                </div>
-                                                <div class="fbt-post-caption">
-                                                    <span class="post-tag index-post-tag">Design</span>
-                                                    <div class="title-caption p-4">
-                                                        <div class="post-meta mb-2">
-                                                            <span class="post-author"><a href="#">fbtemplates</a></span>
-                                                            <span class="post-date published">June 19, 2019</span>
-                                                        </div>
-                                                        <h3 class="post-title">
-                                                            <a href="./single_mag.html">
-                                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                                            </a>
-                                                        </h3>
-                                                    </div>
-                                                </div>
-                                                
-                                            </div>
-                                        </div> --}}
-                                    </div>
-                                </div>
-                            </div><!-- .fbt-block-2 -->
+                            </div>
+                        </div><!-- .fbt-block-2 --> --}}
+                        {{-- <div style="position: relative;width: 100%;background: black;" class="p-3 mb-5 rounded">
                             <div class="cover-soon rounded" style="z-index: 10;width: 100%;height: 100%;position: absolute;top: 0;left: 0;background: #000000eb;">
-                            {{-- <div class="cover-soon rounded" style="z-index: 10;width: 100%;height: 100%;position: absolute;left: 0;background: #000000eb;"> --}}
+                            <div class="cover-soon rounded" style="z-index: 10;width: 100%;height: 100%;position: absolute;left: 0;background: #000000eb;">
                                 <div class="container mt-4">
-                                    <span class="border-bottom d-inline-block merriweather text-white coming-soon-title">{{__('Podcasts Coming Soon')}}</span>
+                                    <span class="border-bottom d-inline-block  text-white coming-soon-title">{{__('Podcasts Coming Soon')}}</span>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
         
                     </div><!-- .fbt-magazine-section -->
         
@@ -639,7 +639,7 @@
                 </div>
             </div><!-- .fbt-gallery --> --}}
         
-            <div class="mb-5" style="position: relative;width: 100%;height: 100%;">
+            {{-- <div class="mb-5" style="position: relative;width: 100%;height: 100%;">
                 <div class="fbt-video-gallery" style="width: 100%;height: 100%;top: 0;left: 0;">
                     <div class="container fbt-elastic-container fbt-gallery-2">
                         <h4 class="title title-heading h2">
@@ -659,7 +659,7 @@
                                     <div class="fbt-post-caption">
                                         <span class="post-tag index-post-tag">Movie</span>
                                         <div class="title-caption p-4">
-                                            <div class="post-meta mb-2 merriweather">
+                                            <div class="post-meta mb-2 ">
                                                 <span class="post-author">
                                                     <a href="#">fbtemplates</a>
                                                 </span>
@@ -752,10 +752,10 @@
                 </div><!-- .fbt-video-gallery -->
                 <div class="cover-soon" style="z-index: 10;width: 100%;height: 100%;position: absolute;top: 0;left: 0;background: #000000eb;">
                     <div class="container mt-4">
-                        <span class="border-bottom d-inline-block merriweather text-white coming-soon-title">{{__('Videos Coming Soon')}}</span>
+                        <span class="border-bottom d-inline-block  text-white coming-soon-title">{{__('Videos Coming Soon')}}</span>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         
             {{-- <div class="fbt-gallery mb-5">
                 <div class="container fbt-elastic-container fbt-gallery-1">
@@ -877,7 +877,7 @@
                     <div class="fbt_ad text-center">
                         <div class="widget-content">
                             <a href="#">
-                                <img alt="" class="img-fluid lazyloaded" data-src="./images/horizontal_ad.jpg" 
+                                <img alt="" class="img-fluid lazyloaded other_pictures" data-src="./images/horizontal_ad.jpg" 
                                     src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
                             </a>
                         </div>
@@ -908,12 +908,12 @@
                                             <div class="fbt-post-thumbnail">
                                                 @if (App::getLocale() == 'es')
                                                     <a :href="homepath + '/articulo/' + article.url_es">
-                                                        <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + article.attach_reference + '/' + article.img_thumbnail"
+                                                        <img alt="" class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + article.attach_reference + '/' + article.img_thumbnail"
                                                         :src="homepath + '/images/articles/' + article.attach_reference + '/' + article.img_thumbnail">
                                                     </a>
                                                 @else
                                                     <a :href="homepath + '/articulo/' + article.url_en">
-                                                        <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + article.attach_reference + '/' + article.img_thumbnail"
+                                                        <img alt="" class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + article.attach_reference + '/' + article.img_thumbnail"
                                                         :src="homepath + '/images/articles/' + article.attach_reference + '/' + article.img_thumbnail">
                                                     </a>
                                                 @endif
@@ -939,7 +939,7 @@
                                                         </a>
                                                     @endif
                                                 </h3>
-                                                <div class="post-meta mb-2 merriweather">
+                                                <div class="post-meta mb-2 ">
                                                     <span class="post-author" v-for="author in article.authors">
                                                         @if (App::getLocale() == 'es')
                                                             <a class="text-capitalize" :href="homepath + '/colaborador/' + author.name">@{{author.name}}</a>
@@ -1018,18 +1018,18 @@
                                         <div class="fbt-item-thumbnail">
                                             @if (App::getLocale() == 'es')
                                                 <a class="post-image-link" :href="homepath + '/articulo/' + featured_post.url_es">
-                                                    <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + featured_post.attach_reference + '/' + featured_post.img_thumbnail"
+                                                    <img alt="" class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + featured_post.attach_reference + '/' + featured_post.img_thumbnail"
                                                     :src="homepath + '/images/articles/' + featured_post.attach_reference + '/' + featured_post.img_thumbnail">
                                                 </a>
                                             @else
                                                 <a class="post-image-link" :href="homepath + '/articulo/' + featured_post.url_en">
-                                                    <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + featured_post.attach_reference + '/' + featured_post.img_thumbnail"
+                                                    <img alt="" class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + featured_post.attach_reference + '/' + featured_post.img_thumbnail"
                                                     :src="homepath + '/images/articles/' + article.attach_reference + '/' + featured_post.img_thumbnail">
                                                 </a>
                                             @endif
                                         </div>
                                         <div class="fbt-title-section mt-3">
-                                            <div class="post-meta mb-2 merriweather">
+                                            <div class="post-meta mb-2 ">
                                                 <span v-for="author in featured_post.authors" class="post-author text-capitalize">
                                                     @{{author.name}}
                                                 </span>

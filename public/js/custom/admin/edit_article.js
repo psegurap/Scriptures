@@ -23,7 +23,7 @@
                 img_thumbnail : null,
                 tags: [],
                 category: '',
-                collaborator : '',
+                collaborator : [],
                 attach_reference: '',
                 short_description : '',
                 serie : '',
@@ -60,6 +60,10 @@
                 this.article.url = this.current_article.url_en;
             }
 
+            this.article.collaborator = this.current_article.authors.map(function(author){
+                return author.collaborator_id;
+            });
+
             this.article.category = this.current_article.categories.map(function(category){
                 return category.category_id;
             });
@@ -78,7 +82,6 @@
             this.article.attach_reference = this.current_article.picture_path;
             this.article.img_thumbnail = this.current_article.img_thumbnail;
             this.article.attach_reference = this.current_article.attach_reference;
-            this.article.collaborator = this.current_article.author_id;
 
             setTimeout(function(){
                 $('.main-container').toggleClass("sidebar-closed");

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
     <title>{{__('Conf')}} | @yield('title') ─ Anclados En Su Palabra</title>
     
-    <link rel="icon" type="image/x-icon" href="{{asset('/images/icon.favicon')}}"/>
+    <link rel="icon" type="image/x-icon" href="{{asset('/images/logos/icon.png')}}"/>
     <link href="{{asset('/admin/assets/css/loader.css')}}" rel="stylesheet" type="text/css" />
     <script src="{{asset('/admin/assets/js/loader.js')}}"></script>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
@@ -44,13 +44,16 @@
         <header class="header navbar navbar-expand-sm">
 
             <ul class="navbar-item theme-brand flex-row  text-center">
-                <li class="nav-item theme-logo">
+                {{-- <li class="nav-item theme-logo">
                     <a href="{{route('admin')}}">
-                        <img src="{{asset('/images/icon.png')}}" class="navbar-logo" alt="logo">
+                        <img src="{{asset('/images/logos/icon.png')}}" class="navbar-logo" alt="logo">
                     </a>
-                </li>
+                </li> --}}
                 <li class="nav-item theme-text">
-                    <a href="{{route('admin')}}" class="nav-link"> ESCRITURAS </a>
+                    <a href="{{route('admin')}}" class="nav-link"> 
+                        <img src="{{asset('/images/logos/logo_top_conf.png')}}" class="navbar-logo" alt="logo">
+                        
+                    </a>
                 </li>
             </ul>
 
@@ -78,7 +81,7 @@
                         </a>
                         <div class="dropdown-menu position-absolute" aria-labelledby="language-dropdown">
                             <a class="dropdown-item d-flex" href="{{url('/') . '/language/es'}}"><img src="{{asset('admin/assets/img/sp.png')}}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;Spanish</span></a>
-                            <a class="dropdown-item d-flex" href="{{url('/') . '/language/en'}}"><img src="{{asset('admin/assets/img/us.png')}}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;English</span></a>
+                            {{-- <a class="dropdown-item d-flex" href="{{url('/') . '/language/en'}}"><img src="{{asset('admin/assets/img/us.png')}}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;English</span></a> --}}
                         </div>
                     </li>
                 @endif

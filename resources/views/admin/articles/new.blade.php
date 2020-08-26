@@ -95,8 +95,7 @@
                                 <span class="text-danger" style="font-size: 12px;" v-show="errors.has('collaborator')">* @{{ errors.first('collaborator') }}</span>
                             </div>
                             <div class="form-group">
-                                <select v-validate="'required'" data-live-search="true" class="selectpicker form-control rounded-0" name="collaborator" v-model="article.collaborator">
-                                    <option value="" disabled selected>Choose an author...</option>
+                                <select v-validate="'required'" multiple data-live-search="true" title="Choose an author..." class="selectpicker form-control rounded-0" name="collaborator" v-model="article.collaborator">
                                     <option v-for="collaborator in collaborators" :value=collaborator.id>
                                             @{{collaborator.name}}
                                     </option>

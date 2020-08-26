@@ -55,23 +55,25 @@ class ArticlesController extends Controller
                 'title_es' => $article_info['title'],
                 'short_description_es' => $article_info['short_description'],
                 'full_content_es' => $article_info['content'],
-                'url_es' => str_replace('?', '', $article_info['url'])
+                'url_es' => str_replace(str_split('\\/:¿*?"<>|'), '', $article_info['url'])
             ];
         }else{
             $article_data = [
                 'title_en' => $article_info['title'],
                 'short_description_en' => $article_info['short_description'],
                 'full_content_en' => $article_info['content'],
-                'url_en' => str_replace('?', '', $article_info['url'])
+                'url_en' => str_replace(str_split('\\/:¿*?"<>|'), '', $article_info['url'])
             ];
         }
 
         $article_data['img_thumbnail'] = $article_info['img_thumbnail'];
         $article_data['attach_reference'] = $article_info['attach_reference'];
-        $article_data['author_id'] = $article_info['collaborator'];
         
         $article = Article::create($article_data);
-
+        
+        $collaborators = Collaborator::find($article_info['collaborator']);
+        $article->authors()->attach($collaborators);
+        
         $categories = Category::find($article_info['category']);
         $article->categories()->attach($categories);
 
@@ -87,7 +89,7 @@ class ArticlesController extends Controller
 
     public function edit($id)
     {
-        $article = Article::with('categories:category_id', 'tags:tag_id', 'series:serie_id')->find($id);
+        $article = Article::with('categories:category_id', 'tags:tag_id', 'series:serie_id', 'authors:collaborator_id')->find($id);
         // dd($article);
         if(App::getLocale() == 'es'){
             $tags = Tag::where('status', 1)->orderBy('tag_es', 'asc')->get();
@@ -114,22 +116,24 @@ class ArticlesController extends Controller
                 'title_es' => $article_info['title'],
                 'short_description_es' => $article_info['short_description'],
                 'full_content_es' => $article_info['content'],
-                'url_es' => str_replace('?', '', $article_info['url'])
+                'url_es' => str_replace(str_split('\\/:¿*?"<>|'), '', $article_info['url'])
             ];
         }else{
             $article_data = [
                 'title_en' => $article_info['title'],
                 'short_description_en' => $article_info['short_description'],
                 'full_content_en' => $article_info['content'],
-                'url_en' => str_replace('?', '', $article_info['url'])
+                'url_en' => str_replace(str_split('\\/:¿*?"<>|'), '', $article_info['url'])
             ];
         }
 
         $article_data['img_thumbnail'] = $article_info['img_thumbnail'];
         $article_data['attach_reference'] = $article_info['attach_reference'];
-        $article_data['author_id'] = $article_info['collaborator'];
         
         $article = Article::find($article_info['id'])->update($article_data);
+
+        $collaborators = Collaborator::find($article_info['collaborator']);
+        Article::find($article_info['id'])->authors()->sync($collaborators);
 
         $categories = Category::find($article_info['category']);
         Article::find($article_info['id'])->categories()->sync($categories);

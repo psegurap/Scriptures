@@ -34,7 +34,22 @@
                 <div class="widget widget-chart-one">
                     <div class="border-bottom flex-column flex-sm-row pb-2 widget-heading">
                         <h5 class="align-self-center font-weight-bold">{{__('Editing article')}}:</h5>
-                        <button @click="validate(UpdateArticle)" class="btn btn-primary btn-sm-block font-weight-bold rounded-0 text-uppercase">{{__('Update Article')}}</button>
+                        <div class="d-flex">
+                            @if (App::getLocale() == 'es')
+                                <a :href="homepath + '/articulo/' + current_article.url_es" target="_blank">
+                                    <span style="height: 100%" class="btn badge badge-warning d-flex align-items-center mr-2">
+                                        <i data-feather="eye"></i>
+                                    </span>
+                                </a>
+                            @else
+                                <a :href="homepath + '/article/' + current_article.url_en" target="_blank">
+                                    <span style="height: 100%" class="btn badge badge-warning d-flex align-items-center mr-2">
+                                        <i data-feather="eye"></i>
+                                    </span>
+                                </a>
+                            @endif
+                            <button @click="validate(UpdateArticle)" class="btn btn-primary btn-sm-block font-weight-bold rounded-0 text-uppercase">{{__('Update Article')}}</button>
+                        </div>
                     </div>
     
                     <div class="widget-content">
@@ -97,8 +112,7 @@
                                 <span class="text-danger" style="font-size: 12px;" v-show="errors.has('collaborator')">* @{{ errors.first('collaborator') }}</span>
                             </div>
                             <div class="form-group">
-                                <select v-validate="'required'" data-live-search="true" name="collaborator" class="selectpicker form-control rounded-0" v-model="article.collaborator">
-                                    <option value="" disabled selected>Choose an author...</option>
+                                <select v-validate="'required'" multiple data-live-search="true" name="collaborator" title="Choose an author..." class="selectpicker form-control rounded-0" v-model="article.collaborator">
                                     <option v-for="collaborator in collaborators" :value=collaborator.id>
                                             @{{collaborator.name}}
                                     </option>

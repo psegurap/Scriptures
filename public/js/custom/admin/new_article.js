@@ -97,6 +97,7 @@
             SaveInformation: function(){
                 this.article.content = this.summernote.summernote('code');
                 this.article.img_thumbnail = this.dropzone[0].dropzone.files[0].name;
+                this.article.url = this.article.title.replace(/ /gi, '-');
                 main.dropzone[0].dropzone.removeAllFiles();
                 
                 axios.post(homepath + '/admin/articles/StoreArticle', {article_info : this.article}).then(function(response){

@@ -35,7 +35,20 @@
                     columns: [
                         // {data : 'id'},
                         {data : 'title_es'},
-                        {data : 'author.name'},
+                        {
+                            data : 'authors',
+                            render: function(data){
+                                var author = '';
+                                for (const ind in data) {
+                                    if (ind >= 1) {
+                                        author = author + " / " + data[ind]['name']; 
+                                    } else {
+                                        author = author + data[ind]['name']; 
+                                    }
+                                }
+                                return author;
+                            }
+                        },
                         // {data : 'articles_count'},
                         {
                             data : 'created_at',

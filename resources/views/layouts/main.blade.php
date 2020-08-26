@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title') ─ Anclados En Su Palabra</title>
-	<link rel="shortcut icon" href="{{asset('/images/icon.favicon')}}" type="image/x-icon">
+	<link rel="shortcut icon" href="{{asset('/images/logos/icon.png')}}" type="image/x-icon">
     <!-- FONTS -->    
     <link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:600,700%7CNunito:300,400" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap" rel="stylesheet">
@@ -13,24 +13,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
     <!-- FONTS -->    
     <link href="{{asset('/css/animate.min.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('/css/fonts.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet" media="screen">
     <link rel="stylesheet" href="{{asset('/css/jquery.toast.css')}}">
     <link rel="stylesheet" href="{{asset('/css/summernote.min.css')}}">
+    <link href="{{asset('/plugins/loader/loader.css')}}" rel="stylesheet" media="screen">
+    <link href="{{asset('/plugins/loader/theme_loader.css')}}" rel="stylesheet" media="screen">
     <link href="{{asset('/css/style.css')}}" rel="stylesheet" media="screen">
-    <link href="{{asset('/plugins/pace/templates/pace-theme-minimal.tmpl.css')}}" rel="stylesheet" media="screen">
+    {{-- <link href="{{asset('/plugins/pace/templates/pace-theme-minimal.tmpl.css')}}" rel="stylesheet" media="screen"> --}}
     <style>
         #toTop{
             z-index: 20;
         }
 
-        #page-wrapper{
-            display: none;
+        .loader{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background-color: #eee;
         }
 
-        .pace-progress {
+        /* #page-wrapper{
+            display: none;
+        } */
+
+        /* .pace-progress {
             background: #4e4e4e;
             position: fixed;
             z-index: 2000;
@@ -38,22 +51,25 @@
             right: 100%;
             width: 100%;
             height: 10px; 
-        }
+        } */
     </style>
     @yield('styles')
 </head>
 
-<body>
+<body onload="$('.loader').fadeOut()">
 
-    
-    <div id="fbt-content-overlay" onclick="closeNav()"></div>
+    <div id="psp_loader" class="loader">
+        <div class="m-loader m-loader--danger"></div>
+    </div>
+
+    {{-- <div id="fbt-content-overlay" onclick="closeNav()"></div>
     <form autocomplete="off" id="search" role="search">
         <div class="input">
             <input class="search" name="search" placeholder="Search..." type="text" />
             <button class="submit fa fa-search" type="submit" value=""></button>
         </div>
         <button id="close" type="reset" value="">×</button>
-    </form><!-- #search -->
+    </form><!-- #search --> --}}
 
     <div id="page-wrapper" class="magazine-view feed-view">
 
@@ -111,11 +127,12 @@
         <nav class="navbar navbar-expand-xl navbar-fbt fbt-nav-skin fbt_sticky_nav m-0 py-2">
             <div class="container nav-mobile-px clearfix">
                 <div class="navbar-brand order-2 order-xl-1 m-auto">
-                    <a href="{{route('index')}}"><img alt="AESP" src="{{asset('/images/logo_black.png')}}"></a>
+                    <a href="{{route('index')}}"><img alt="AESP" src="{{asset('/images/logos/top_main_logo_blue.png')}}"></a>
+                    {{-- <a href="{{route('index')}}"><img alt="AESP" src="{{asset('/images/logos/top_main_logo_blue.png')}}"></a> --}}
                 </div>
                 <button aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler order-1 order-xl-2"
                     data-target="#navbar-menu" data-toggle="collapse" type="button">☰</button>
-                <div class="collapse navbar-collapse justify-content-end order-4 order-xl-3 clearfix bree" id="navbar-menu">
+                <div class="collapse navbar-collapse justify-content-end order-4 order-xl-3 clearfix" id="navbar-menu">
                     <ul class="navbar-nav clearfix d-flex">
                         <li class="nav-item">
                             <a href="{{route('index')}}" class="nav-link">{{__('Home')}}</a>
@@ -163,7 +180,7 @@
                                         <div class="row justify-content-center align-items-center">
                                             <div class="col-lg-6">
                                                 <h2 class="title mb-4 mb-lg-0 text-center text-lg-left">
-                                                    {{__('Subscribe to our Newsletter!')}}
+                                                    {{__('Subscribe to our Content!')}}
                                                 </h2>
                                             </div>
                                             <div class="ml-lg-auto col-lg-6">
@@ -269,7 +286,7 @@
                                     <div class="footer-2 section">
                                         <div class="logoImage">
                                             <div class="widget-content">
-                                                <img alt="" src="{{asset('/images/logo_white.png')}}">
+                                                <img alt="" src="{{asset('/images/logos/bottom_main_logo_white.png')}}">
                                             </div>
                                         </div>
                                         <div class="widget Text">
@@ -411,15 +428,15 @@
     <script src="{{asset('/js/sweetalert.min.js')}}"></script>
     <script src="{{asset('/js/loadingoverlay.js')}}"></script>
     <script src="{{asset('/js/summernote.min.js')}}"></script>
-    <script src="{{asset('/plugins/pace/pace.js')}}"></script>
+    {{-- <script src="{{asset('/plugins/pace/pace.js')}}"></script> --}}
 
     <script src="{{asset('/js/main.js')}}"></script>
     <script>
-        $(function() {
-            Pace.on("done", function(){
-                $("#page-wrapper").fadeIn(1000);
-            });
-        });
+        // $(function() {
+        //     Pace.on("done", function(){
+        //         $("#page-wrapper").fadeIn(1000);
+        //     });
+        // });
         const homepath = "{{url('/')}}";
         const lang = "{{App::getLocale()}}";
         moment.locale(lang);

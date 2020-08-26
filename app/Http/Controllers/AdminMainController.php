@@ -14,9 +14,7 @@ class AdminMainController extends Controller
         $year = date('Y');
         $month = date('m');
 
-        $current_month_articles = Article::with('author')->whereYear('created_at', $year)->whereMonth('created_at', $month)->get();
-        // $current_month_articles = Article::with('author')->whereYear('created_at', '2020')->whereMonth('created_at', '06')->get();
-        // dd($current_month_articles);
+        $current_month_articles = Article::with('authors')->whereYear('created_at', $year)->whereMonth('created_at', $month)->get();
         
         if(Auth::user()->admin == 1 || Auth::user()->developer == 1){
             return view('admin.index_admin', compact('current_month_articles'));

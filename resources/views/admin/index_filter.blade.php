@@ -338,7 +338,7 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase font-weight-bold">{{__('Title')}}</th>
-                                    <th class="text-uppercase font-weight-bold">{{__('Author')}}</th>
+                                    <th class="text-uppercase font-weight-bold">{{__('Author(s)')}}</th>
                                     <th class="text-uppercase font-weight-bold">{{__('Date')}}</th>
                                     <th class="text-uppercase font-weight-bold">{{__('Status')}}</th>
                                     {{-- <th class="no-content"></th> --}}

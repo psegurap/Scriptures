@@ -3,16 +3,9 @@
 @section('styles')
     <style>
         .article-container{
-            box-shadow: -2px 2px 3px -1px #777777;
-            background: #e6e6e670;
+            box-shadow: 0px 2px 5px -1px #000000;
+            background: #ffffff;
             height: 100%;
-        }
-
-        .article-container:hover{
-            transition: all 0.3s ease-out;
-            -webkit-transition: all 0.3s ease-out;
-            -webkit-transform: translateY(-4px);
-            transform: translateY(-4px);
         }
 
         .title-page{
@@ -22,6 +15,10 @@
         .diviser{
             height: 2px;
             background: black;
+        }
+
+        #page-wrapper.magazine-view h3, #page-wrapper.magazine-view .h3{
+            font-size: calc(16px + 2px);
         }
 
         /*---- PERSONAL MEDIAQUERY ----*/
@@ -51,18 +48,25 @@
                     </div>
                     <div class="row px-2">
                         <div v-for="article in serie.articles" class="col-lg-4 col-md-6 mb-4 px-2">
-                            <div class="post-item p-3 article-container">
+                            <div class="post-item p-3 article-container rounded">
                                 <div class="fbt-post-thumbnail">
-                                    <a href="./single_mag.html">
-                                        <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + article.attach_reference + '/' + article.img_thumbnail"
+                                    @if (App::getLocale() == 'es')
+                                        <a :href="homepath + '/articulo/' + article.url_es">
+                                            <img alt="" class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + article.attach_reference + '/' + article.img_thumbnail"
                                             :src="homepath + '/images/articles/' + article.attach_reference + '/' + article.img_thumbnail">
-                                    </a>
+                                        </a>
+                                    @else
+                                        <a :href="homepath + '/article/' + article.url_en">
+                                            <img alt="" class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + article.attach_reference + '/' + article.img_thumbnail"
+                                            :src="homepath + '/images/articles/' + article.attach_reference + '/' + article.img_thumbnail">
+                                        </a>
+                                    @endif
                                 </div>
                                 <div class="fbt-post-caption">
                                     <div class="title-caption pt-3">
                                         <div class="post-meta mb-2 merriweather">
-                                            <span class="post-author text-capitalize">
-                                                @{{article.author.name}}
+                                            <span v-for="author in article.authors" class="post-author text-capitalize">
+                                                @{{author.name}}
                                                 {{-- <a href="#"></a> --}}
                                             </span>
                                             <span class="post-date published">@{{moment(article.created_at).format('LL')}}</span>

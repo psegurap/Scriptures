@@ -1,7 +1,7 @@
 {
     "Home" : "Inicio",
     "About Us" : "Nosotros",
-    "Subscribe to our Newsletter!" : "¡Suscríbete a nuestros anuncios!",
+    "Subscribe to our Content!" : "¡Suscríbete a nuestros contenidos!",
     "Enter your email..." : "Coloca tu correo...",
     "Subscribe" : "Suscribir",
     "Tags" : "Etiquetas",
@@ -150,5 +150,6 @@
     "Videos Coming Soon" : "Videos Próximamente",
     "Don't Miss" : "No te pierdas",
     "Recent posts" : "Publicaciones recientes",
-    "External Links" : "Enlaces Externos"
+    "External Links" : "Enlaces Externos",
+    "Author(s)" : "Autor(es)"
 }

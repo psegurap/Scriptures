@@ -85,7 +85,7 @@ class MainController extends Controller
         }
         if(isset($featured_post)){
             // $others_posts = Article::with('categories')->where('author_id', '!=', $article->author_id)->where('id', '!=', $featured_post->id)->find($others_posts)->take(5);
-            $others_posts = Article::with('categories')->where('author_id', '!=', [1,2])->where('id', '!=', $featured_post->id)->find($others_posts)->take(5);
+            $others_posts = Article::with('categories')->where('id', '!=', $featured_post->id)->find($others_posts)->take(5);
         }else{
            $others_posts = [];
         }
@@ -124,7 +124,7 @@ class MainController extends Controller
 
         $checkers_count = $this->CheckersCount();
         $serie = Serie::with(['articles' => function($article) use ($checkers_count){
-            $article->with('author')->wherehas('reviews', function($review){
+            $article->with('authors')->wherehas('reviews', function($review){
                     $review->where('desicion', 'Approved');
                 }, '>=', $checkers_count)->get();
         }])->find(12);

@@ -72,7 +72,7 @@
                                                     </div>
                                                     <div class="col-lg-12 align-items-center d-flex">
                                                         <div class="post-item">
-                                                            <p class="mb-0 merriweather font-weight-bold">
+                                                            <p class="mb-0 lora font-weight-bold">
                                                                 @if (App::getLocale() == 'es')
                                                                     @{{collaborator.info_es}}
                                                                 @else

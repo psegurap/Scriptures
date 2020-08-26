@@ -11,6 +11,10 @@
         .collaborator_image{
             box-shadow: 0px 2px 10px 0px #777777;
         }
+        .other_pictures{
+            box-shadow: -2px 2px 8px -1px #777777;
+        }
+
     </style>
 @endsection
 @section('content')
@@ -44,7 +48,7 @@
                                                     @endif
                                                 </h1>
                                                 <div class="item-post-meta mt-3">
-                                                    <div class="post-meta mb-3 merriweather">
+                                                    <div class="post-meta mb-3 ">
                                                         <span v-for="category in article.categories" class="post-author">
                                                             {{-- <a href="#" target="_blank" class="text-capitalize"> --}}
                                                             <a href="javascript:void(0)" class="text-capitalize">
@@ -73,8 +77,8 @@
                                                 <div class="col-lg-12">
                                                     <div class="row align-items-center my-4">
                                                         <div class="col-xl-7 text-center text-xl-left mb-3 mb-xl-0">
-                                                            <div class="post-labels pl-xl-5 merriweather">
-                                                                <span class="mr-2">{{__('Tags')}}:</span>
+                                                            <div class="post-labels pl-xl-5 ">
+                                                                <span class="mr-2 lora">{{__('Tags')}}:</span>
                                                                 <span class="label-head Label">
                                                                     <a v-for="tag in article.tags" class="label-link badge text-white py-1 px-3 mr-1 single-tag" href="#">
                                                                         @if (App::getLocale() == 'es')
@@ -121,7 +125,7 @@
                                                                     </a>
                                                                 @endif
                                                                 <div class="fbt-np-title mt-1 pr-3" style="color: black;">
-                                                                    <p class="roboto mb-0" style="font-size: 14px;">
+                                                                    <p class="mb-0 author_desc">
                                                                         @if (App::getLocale() == 'es')
                                                                             @{{author.info_es}}
                                                                         @else
@@ -149,12 +153,12 @@
                                                             <div class="fbt-post-thumbnail">
                                                                 @if (App::getLocale() == 'es')
                                                                     <a :href="homepath + '/articulo/' + author_article.url_es">
-                                                                        <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + author_article.attach_reference + '/' + author_article.img_thumbnail"
+                                                                        <img alt="" class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + author_article.attach_reference + '/' + author_article.img_thumbnail"
                                                                         :src="homepath + '/images/articles/' + author_article.attach_reference + '/' + author_article.img_thumbnail">
                                                                     </a>
                                                                 @else
                                                                     <a :href="homepath + '/article/' + author_article.url_en">
-                                                                        <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + author_article.attach_reference + '/' + author_article.img_thumbnail"
+                                                                        <img alt="" class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + author_article.attach_reference + '/' + author_article.img_thumbnail"
                                                                         :src="homepath + '/images/articles/' + author_article.attach_reference + '/' + author_article.img_thumbnail">
                                                                     </a>
                                                                 @endif
@@ -354,18 +358,18 @@
                                         <div class="fbt-item-thumbnail">
                                             @if (App::getLocale() == 'es')
                                                 <a class="post-image-link" :href="homepath + '/articulo/' + featured_post.url_es">
-                                                    <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + featured_post.attach_reference + '/' + featured_post.img_thumbnail"
+                                                    <img alt="" class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + featured_post.attach_reference + '/' + featured_post.img_thumbnail"
                                                     :src="homepath + '/images/articles/' + featured_post.attach_reference + '/' + featured_post.img_thumbnail">
                                                 </a>
                                             @else
                                                 <a class="post-image-link" :href="homepath + '/articulo/' + featured_post.url_en">
-                                                    <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + featured_post.attach_reference + '/' + featured_post.img_thumbnail"
+                                                    <img alt="" class="post-thumbnail lazyloaded other_pictures" :data-src="homepath + '/images/articles/' + featured_post.attach_reference + '/' + featured_post.img_thumbnail"
                                                     :src="homepath + '/images/articles/' + article.attach_reference + '/' + featured_post.img_thumbnail">
                                                 </a>
                                             @endif
                                         </div>
                                         <div class="fbt-title-section mt-3">
-                                            <div class="post-meta mb-2 merriweather">
+                                            <div class="post-meta mb-2 ">
                                                 <span v-for="author in featured_post.authors" class="post-author text-capitalize">
                                                     @{{author.name}}
                                                 </span>
@@ -401,10 +405,17 @@
                                     <article v-for="other_article in others_posts" class="post mb-3">
                                         <div class="post-content media align-items-center">
                                             <div class="fbt-item-thumbnail clearfix">
-                                                <a href="./single_mag.html">
-                                                    <img alt="" class="post-thumbnail lazyloaded" :data-src="homepath + '/images/articles/' + other_article.attach_reference + '/' + other_article.img_thumbnail"
-                                                        :src="homepath + '/images/articles/' + other_article.attach_reference + '/' + other_article.img_thumbnail">
-                                                </a>
+                                                @if (App::getLocale() == 'es')
+                                                    <a :href="homepath + '/articulo/' + other_article.url_es">
+                                                        <img alt="" class="post-thumbnail lazyloaded rounded other_pictures" :data-src="homepath + '/images/articles/' + other_article.attach_reference + '/' + other_article.img_thumbnail"
+                                                            :src="homepath + '/images/articles/' + other_article.attach_reference + '/' + other_article.img_thumbnail">
+                                                    </a>
+                                                @else
+                                                    <a :href="homepath + '/article/' + other_article.url_en">
+                                                        <img alt="" class="post-thumbnail lazyloaded rounded other_pictures" :data-src="homepath + '/images/articles/' + other_article.attach_reference + '/' + other_article.img_thumbnail"
+                                                            :src="homepath + '/images/articles/' + other_article.attach_reference + '/' + other_article.img_thumbnail">
+                                                    </a>
+                                                @endif
                                             </div>
                                             <div class="ml-3 fbt-title-caption media-body">
                                                 <span v-for="category in other_article.categories" class="pp-post-tag">
@@ -421,7 +432,7 @@
                                                         <a :href="homepath + '/article/' + other_article.url_en">@{{other_article.title_en}}</a>
                                                     @endif
                                                 </h3>
-                                                <div class="post-meta merriweather">
+                                                <div class="post-meta ">
                                                     <span class="post-date published">@{{moment(other_article.created_at).format('LL')}}</span>
                                                 </div>
                                             </div>
