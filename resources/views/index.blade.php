@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Home')
+@section('title'){{__('Home')}}@endsection
 @section('styles')
     <style>
         .video-image{
@@ -136,7 +136,7 @@
         
                                 <div class="col-md-6">
                                     <div class="row">
-                                        <div v-for="small_slider_post in slider_post.slice(2)" class="col-6 col-md-12 pl-md-1 grid-padding-right">
+                                        <div v-for="small_slider_post in slider_post.slice(2)" class="col-md-12 pl-md-1 ">
                                             <div class="post-item small_thumb">
                                                 <div class="fbt-post-thumbnail">
                                                     @if (App::getLocale() == 'es')

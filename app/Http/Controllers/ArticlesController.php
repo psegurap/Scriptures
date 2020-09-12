@@ -55,14 +55,14 @@ class ArticlesController extends Controller
                 'title_es' => $article_info['title'],
                 'short_description_es' => $article_info['short_description'],
                 'full_content_es' => $article_info['content'],
-                'url_es' => str_replace(str_split('\\/:¿*?"<>|'), '', $article_info['url'])
+                'url_es' => str_replace(str_split('\\/:¿*?"<>|!$&():#[]@%+,;='), '', $article_info['url'])
             ];
         }else{
             $article_data = [
                 'title_en' => $article_info['title'],
                 'short_description_en' => $article_info['short_description'],
                 'full_content_en' => $article_info['content'],
-                'url_en' => str_replace(str_split('\\/:¿*?"<>|'), '', $article_info['url'])
+                'url_en' => str_replace(str_split('\\/:¿*?"<>|!$&():#[]@%+,;='), '', $article_info['url'])
             ];
         }
 
@@ -116,14 +116,14 @@ class ArticlesController extends Controller
                 'title_es' => $article_info['title'],
                 'short_description_es' => $article_info['short_description'],
                 'full_content_es' => $article_info['content'],
-                'url_es' => str_replace(str_split('\\/:¿*?"<>|'), '', $article_info['url'])
+                'url_es' => str_replace(str_split('\\/:¿*?"<>|!$&():#[]@%+,;='), '', $article_info['url'])
             ];
         }else{
             $article_data = [
                 'title_en' => $article_info['title'],
                 'short_description_en' => $article_info['short_description'],
                 'full_content_en' => $article_info['content'],
-                'url_en' => str_replace(str_split('\\/:¿*?"<>|'), '', $article_info['url'])
+                'url_en' => str_replace(str_split('\\/:¿*?"<>|!$&():#[]@%+,;='), '', $article_info['url'])
             ];
         }
 

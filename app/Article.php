@@ -29,10 +29,10 @@ class Article extends Model
         return $this->belongsToMany('App\Serie', 'articles_series', 'article_id', 'serie_id')->withTimestamps();   
     }
 
-    public function author()
-    {
-        return $this->belongsTo('App\Collaborator', 'author_id', 'id');   
-    }
+    // public function author()
+    // {
+    //     return $this->belongsTo('App\Collaborator', 'author_id', 'id');   
+    // }
 
     public function authors()
     {

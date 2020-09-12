@@ -145,16 +145,16 @@
                             <div class="dropdown-menu pt-0">
                                 @if (App::getLocale() == 'es')
                                     <a href="/profesion-de-fe" class="dropdown-item">{{__('Profesión de Fe')}}</a>
-                                    <a href="#" class="dropdown-item">{{__('Nuestra Historia')}}</a>
+                                    {{-- <a href="#" class="dropdown-item">{{__('Nuestra Historia')}}</a> --}}
                                     <a href="/equipo" class="dropdown-item">{{__('Equipo')}}</a>
                                     <a href="/colaboradores" class="dropdown-item">{{__('Colaboradores')}}</a>
-                                    <a href="/contacto" class="dropdown-item">{{__('Contacto')}}</a>
+                                    {{-- <a href="/contacto" class="dropdown-item">{{__('Contacto')}}</a> --}}
                                 @else
                                     <a href="/profession-of-faith" class="dropdown-item">{{__('Profession of Faith')}}</a>
-                                    <a href="#" class="dropdown-item">{{__('Our History')}}</a>
+                                    {{-- <a href="#" class="dropdown-item">{{__('Our History')}}</a> --}}
                                     <a href="/team" class="dropdown-item">{{__('Our Team')}}</a>
                                     <a href="/collaborators" class="dropdown-item">{{__('Collaborators')}}</a>
-                                    <a href="/contact" class="dropdown-item">{{__('Contact')}}</a>
+                                    {{-- <a href="/contact" class="dropdown-item">{{__('Contact')}}</a> --}}
                                 @endif
                             </div>
                         </li>
@@ -314,16 +314,16 @@
                                                     @if (App::getLocale() == 'es')
 
                                                         <li><a class="label-name" href="/profesion-de-fe">{{__('Profesión De Fe')}}</a></li>
-                                                        <li><a class="label-name" href="#">{{__('Nuestra Historia')}}</a></li>
+                                                        {{-- <li><a class="label-name" href="#">{{__('Nuestra Historia')}}</a></li> --}}
                                                         <li><a class="label-name" href="/equipo">{{__('Equipo')}}</a></li>
                                                         <li><a class="label-name" href="/colaboradores">{{__('Colaboradores')}}</a></li>
-                                                        <li><a class="label-name" href="/contacto">{{__('Contacto')}}</a></li>
+                                                        {{-- <li><a class="label-name" href="/contacto">{{__('Contacto')}}</a></li> --}}
                                                     @else
                                                         <li><a class="label-name" href="/profession-of-faith">{{__('Profession of Faith')}}</a></li>
-                                                        <li><a class="label-name" href="#">{{__('Our History')}}</a></li>
+                                                        {{-- <li><a class="label-name" href="#">{{__('Our History')}}</a></li> --}}
                                                         <li><a class="label-name" href="/team">{{__('Our Team')}}</a></li>
                                                         <li><a class="label-name" href="/collaborators">{{__('Collaborators')}}</a></li>
-                                                        <li><a class="label-name" href="/contact">{{__('Contact')}}</a></li>
+                                                        {{-- <li><a class="label-name" href="/contact">{{__('Contact')}}</a></li> --}}
                                                     @endif
                                                 </ul>
                                             </div>

@@ -2,8 +2,9 @@
 @section('title'){{__('Collaborators')}}@endsection
 @section('styles')
     <style>
+
         .post-meta {
-            font-size: calc(16px - 2px);
+            font-size: calc(20px - 2px);
         }
 
         .member-image{
@@ -87,7 +88,7 @@
                                             @endif
                                         </h3>
                                         <div class="post-meta mb-0">
-                                            <span class="post-date published font-weight-bold font-italic merriweather">{{__('Collaborating since')}} <span class="text-capitalize">@{{moment(collaborator.created_at).format('MMMM YYYY')}}</span></span>
+                                            <span class="font-italic post-date published">@{{collaborator.country}}</span>
                                         </div>
                                     </div>
                                 </div>

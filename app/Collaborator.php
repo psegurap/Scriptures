@@ -16,7 +16,7 @@ class Collaborator extends Model
     
     public function articles()
     {
-        return $this->belongsToMany('App\Article', 'articles_collaborators', 'article_id', 'collaborator_id')->withTimestamps();   
+        return $this->belongsToMany('App\Article', 'articles_collaborators', 'collaborator_id', 'article_id')->withTimestamps();   
     }
 
 }
