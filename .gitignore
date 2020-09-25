@@ -1,9 +1,9 @@
 /node_modules
 /public/hot
-/public/images/articles/
-/public/images/collaborators/
-/public/images/team/
-/public/images/admin/
+/images/articles/
+/images/collaborators/
+/images/team/
+/images/admin/
 /public/storage
 /storage/*.key
 /vendor
