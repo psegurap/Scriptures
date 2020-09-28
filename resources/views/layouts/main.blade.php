@@ -39,19 +39,19 @@
             background-color: #eee;
         }
 
-        /* #page-wrapper{
-            display: none;
-        } */
+        .footer-black {
+            background-color: #132f66 !important;
+        }
+        nav.navbar {
+            border-bottom: 2px solid #132f66;
+        }
 
-        /* .pace-progress {
-            background: #4e4e4e;
-            position: fixed;
-            z-index: 2000;
-            top: 0;
-            right: 100%;
-            width: 100%;
-            height: 10px; 
-        } */
+        .navbar-fbt .fbt-sidenav, .navbar-fbt .navbar-nav .nav-link, .navbar-fbt .navbar-search {
+            color: #132f66 !important;
+        }
+        .navbar .nav-link {
+            font-size: 1.2em !important;
+        }
     </style>
     @yield('styles')
 </head>
@@ -137,27 +137,33 @@
                         <li class="nav-item">
                             <a href="{{route('index')}}" class="nav-link">{{__('Home')}}</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/colaboradores" class="nav-link">{{__('Colaboradores')}}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/equipo" class="nav-link">{{__('Equipo')}}</a>
+                        </li>
                         {{-- <li class="nav-item">
                             <a href="#" class="nav-link">{{__('Articles')}}</a>
                         </li> --}}
-                        <li class="nav-item dropdown">
+                        {{-- <li class="nav-item dropdown">
                             <a href="javascript:void(0)" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">{{__('About Us')}}</a>
                             <div class="dropdown-menu pt-0">
                                 @if (App::getLocale() == 'es')
-                                    {{-- <a href="/profesion-de-fe" class="dropdown-item">{{__('Profesión de Fe')}}</a> --}}
-                                    {{-- <a href="#" class="dropdown-item">{{__('Nuestra Historia')}}</a> --}}
+                                    <a href="/profesion-de-fe" class="dropdown-item">{{__('Profesión de Fe')}}</a>
+                                    <a href="#" class="dropdown-item">{{__('Nuestra Historia')}}</a>
                                     <a href="/equipo" class="dropdown-item">{{__('Equipo')}}</a>
                                     <a href="/colaboradores" class="dropdown-item">{{__('Colaboradores')}}</a>
-                                    {{-- <a href="/contacto" class="dropdown-item">{{__('Contacto')}}</a> --}}
+                                    <a href="/contacto" class="dropdown-item">{{__('Contacto')}}</a>
                                 @else
-                                    {{-- <a href="/profession-of-faith" class="dropdown-item">{{__('Profession of Faith')}}</a> --}}
-                                    {{-- <a href="#" class="dropdown-item">{{__('Our History')}}</a> --}}
+                                    <a href="/profession-of-faith" class="dropdown-item">{{__('Profession of Faith')}}</a>
+                                    <a href="#" class="dropdown-item">{{__('Our History')}}</a>
                                     <a href="/team" class="dropdown-item">{{__('Our Team')}}</a>
                                     <a href="/collaborators" class="dropdown-item">{{__('Collaborators')}}</a>
-                                    {{-- <a href="/contact" class="dropdown-item">{{__('Contact')}}</a> --}}
+                                    <a href="/contact" class="dropdown-item">{{__('Contact')}}</a>
                                 @endif
                             </div>
-                        </li>
+                        </li> --}}
                         {{-- <li class="nav-item d-inline-block d-md-none">
                             <a href="#" class="nav-link">Donate</a>
                         </li> --}}
